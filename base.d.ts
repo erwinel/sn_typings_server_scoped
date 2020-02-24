@@ -6985,10 +6985,11 @@ declare interface AbstractAjaxProcessorConstructor {
     (value: any): any;
 }
 
-declare interface ScopedAppsGlobal {
-    AbstractAjaxProcessor: AbstractAjaxProcessorConstructor;
+declare namespace NodeJS {
+    export interface Global {
+        AbstractAjaxProcessor: AbstractAjaxProcessorConstructor;
+    }
 }
-
 // #endregion
 
 /**

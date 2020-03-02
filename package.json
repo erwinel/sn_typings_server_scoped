@@ -1,15 +1,18 @@
 {
   "name": "servicenow-server-scoped-dts",
   "version": "0.1.0",
-  "description": "JavaScript Typings for ServiceNow server-side scoped application development",
-  "main": "app.js",
+  "description": "TypeScript definitions for ServiceNow server-side scoped application development",
+  "main": "",
   "author": {
     "name": "Leonard T. Erwine"
   },
-  "scripts": {
-    "build": "tsc --build",
-    "clean": "tsc --build --clean"
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erwinel/sn_typings_server_scoped.git"
   },
+  "typeScriptVersion": "2.7",
+  "types": "index.d.ts",
   "devDependencies": {
     "@types/node": "^8.0.14",
     "typescript": "^3.8.2"

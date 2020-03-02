@@ -1,2 +1,3 @@
 # sn_typings_server_scoped
-ServiceNow Server Scoped Application Typings
+
+TypeScript definitions for ServiceNow server-side scoped application development

@@ -1,4 +1,4 @@
-/// <reference path="base.d.ts" />
+/// <reference path="index.d.ts" />
 
 /**
  * "ttb"="Transform business"; "gtb"="Grow business"; "rtb"="Run business"

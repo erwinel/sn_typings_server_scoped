@@ -7130,7 +7130,7 @@ declare type IRequestState = "requested" | "in_process" | "closed_complete" | "c
  * Fields common to all tables.
  * @interface IGlideTableProperties
  */
-declare interface IGlideTableProperties {
+declare interface IGlideTableProperties extends $$element.IDbObject {
     /**
      * Created by
      * @type {$$rhino.Nilable<$$property.Element>}
@@ -9135,6 +9135,205 @@ declare interface taskFields extends IExtendedGlideTableProperties {
     work_start: $$rhino.Nilable<$$property.GlideObject>;
 }
 declare type taskGlideRecord = GlideRecord & taskFields;
+
+/**
+ * GlideElement values from the Service Order table.
+ * @interface sm_orderFields
+ * @extends {taskFields}
+ */
+declare interface sm_orderFields extends taskFields {
+
+    /**
+     * Asset
+     * @type {$$rhino.Nilable<$$property.generic.Reference<alm_assetFields, alm_assetGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to alm_asset (Asset)
+     */
+    asset: $$rhino.Nilable<$$property.generic.Reference<alm_assetFields, alm_assetGlideRecord>>;
+
+    /**
+     * Assigned vendor
+     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to core_company (Company)
+     */
+    assigned_vendor: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+
+    /**
+     * Billable
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sm_orderFields
+     */
+    billable: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Caller
+     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to sys_user (User)
+     */
+    caller: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+
+    /**
+     * Category
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof taskFields
+     */
+    category: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Estimated end
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof taskFields
+     */
+    estimated_end: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Expected end
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof taskFields
+     */
+    expected_end: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Initiated from
+     * @type {$$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to task (Task)
+     */
+    initiated_from: $$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>;
+    /**
+     * Is catalog
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sm_orderFields
+     */
+    is_catalog: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Opened for
+     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to sys_user (User)
+     */
+    opened_for: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+
+    /**
+     * Previous agent
+     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to sys_user (User)
+     */
+    previous_agent: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    /**
+     * Qualification group
+     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to sys_user_group (Group)
+     */
+    qualification_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    /**
+     * Requested due by
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof taskFields
+     */
+    requested_due_by: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Category
+     * @type {$$rhino.Nilable<$$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to sm_category (Sm Category)
+     */
+    request_category: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+
+    /**
+     * Request type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof taskFields
+     */
+    request_type: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Secure notes
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof taskFields
+     */
+    secure_notes: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Suspended
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sm_orderFields
+     */
+    sla_suspended: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Suspended for
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof taskFields
+     */
+    sla_suspended_for: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Suspended on
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof taskFields
+     */
+    sla_suspended_on: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Suspended reason
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof taskFields
+     */
+    sla_suspended_reason: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Spam
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sm_orderFields
+     */
+    spam: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Subcategory
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof taskFields
+     */
+    subcategory: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Substate
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof sm_orderFields
+     */
+    substate: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * Task created
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sm_orderFields
+     */
+    task_created: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Template
+     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @memberof sm_orderFields
+     * @description Refers to cmdb_model (Product Model)
+     */
+    template: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+
+    /**
+     * Template Workflow Invoked
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sm_orderFields
+     */
+    template_workflow_invoked: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Vendor reference
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof taskFields
+     */
+    vendor_reference: $$rhino.Nilable<$$property.Element>;
+}
 
 /**
  * GlideElement values from the Incident table.
@@ -13716,49 +13915,6 @@ declare interface cmdb_ci_serviceFields extends cmdb_ciFields {
     version: $$rhino.Nilable<$$property.Element>;
 }
 declare type cmdb_ci_serviceGlideRecord = cmdb_ciGlideRecord & cmdb_ci_serviceFields;
-
-/**
- * GlideElement values from the Physical Network table.
- * @interface x_44813_phys_net_networkFields
- * @extends {cmdb_ciFields}
- */
-declare interface x_44813_phys_net_networkFields extends cmdb_ciFields {
-}
-declare type x_44813_phys_net_networkGlideRecord = cmdb_ciGlideRecord & x_44813_phys_net_networkFields;
-
-/**
- * GlideElement values from the Security Classification table.
- * @interface Ix_44813_sec_clsif_definitionFields
- * @extends {Isys_metadataFields}
- */
-declare interface x_44813_sec_clsif_definitionFields extends sys_metadataFields {
-	/**
-	 * Active
-	 * @type {$$property.Boolean}
-	 * @memberof x_44813_sec_clsif_definitionFields
-	 */
-    active: $$property.Boolean;
-	/**
-	 * Name
-	 * @type {$$property.Element}
-	 * @memberof x_44813_sec_clsif_definitionFields
-	 */
-    name: $$property.Element;
-	/**
-	 * Order
-	 * @type {$$rhino.Nilable<$$property.Numeric>}
-	 * @memberof x_44813_sec_clsif_definitionFields
-	 * @description Internal type is integer
-	 */
-    order: $$rhino.Nilable<$$property.Numeric>;
-	/**
-	 * Portion Marking
-	 * @type {$$property.Element}
-	 * @memberof x_44813_sec_clsif_definitionFields
-	 */
-    portion_marking: $$property.Element;
-}
-declare type x_44813_sec_clsif_definitionGlideRecord = sys_metadataGlideRecord & x_44813_sec_clsif_definitionFields;
 
 declare interface change_request_imacFields extends change_requestFields {
     /**

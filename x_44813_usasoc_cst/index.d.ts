@@ -1,12 +1,27 @@
 /// <reference path="../index.d.ts" />
 
+declare type USASOC_CST_LOCATION_APPROVERS_TYPE = "all" | "any";
+
+declare interface x_44813_usasoc_cst_location_approversFields extends IGlideTableProperties {
+    building: $$rhino.Nilable<$$property.generic.Reference<cmn_buildingFields, cmn_buildingGlideRecord>>;
+    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    department: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    business_unit: $$rhino.Nilable<$$property.generic.Reference<business_unitFields, business_unitGlideRecord>>;
+    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    type: $$property.generic.Element<USASOC_CST_LOCATION_APPROVERS_TYPE>;
+    approval_group: $$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>;
+    order: $$property.Numeric;
+}
+declare type x_44813_usasoc_cst_location_approversGlideRecord = GlideRecord & x_44813_usasoc_cst_location_approversFields;
+
 declare namespace x_44813_usasoc_cst {
 
     //#region TaskHelper
 
     export interface ITaskHelper extends ICustomClassBase<ITaskHelper, "TaskHelper"> {
-        getCaller(): sys_userFields | undefined;
+        getCaller(): sys_userFields;
         isVip(): boolean;
+        getDefaultApprovalGroupByCallerLocation(): sys_user_groupFields;
     }
     interface ITaskHelperPrototype extends ICustomClassPrototype1<ITaskHelper, ITaskHelperPrototype, "TaskHelper", string>, ITaskHelper {
         _task: taskGlideRecord;
@@ -18,6 +33,17 @@ declare namespace x_44813_usasoc_cst {
         (task: string | taskFields): TaskHelper;
         getCaller(task: taskFields): sys_userFields | undefined;
         isVip(task: taskFields): boolean;
+        getDefaultApprovalGroupByLocation(user: sys_userFields): sys_user_groupFields | undefined;
+        getLocationApproverRules(): IRuleCacheItem[];
+    }
+    export interface IRuleCacheItem {
+        building?: string;
+        location?: string;
+        department?: string;
+        business_unit?: string;
+        company?: string;
+        type: USASOC_CST_LOCATION_APPROVERS_TYPE;
+        approval_group: sys_user_groupFields;
     }
     export const TaskHelper: Readonly<TaskHelperConstructor> & {
         new (task: string | taskFields): TaskHelper;
@@ -40,9 +66,14 @@ declare namespace x_44813_usasoc_cst {
         getInstanceSdlcStage(): InstanceSdlcStage;
         getNewIdeaAssignmentGroupSysId(): string | undefined;
         getNewIdeaAssignmentGroup(): sys_user_groupGlideRecord | undefined;
+        getDefaultScCatItemApprovalGroupSysId(): string | undefined;
+        getDefaultScCatItemApprovalGroup(): sys_user_groupGlideRecord | undefined;
     }
     interface IUSASOCCustomizationsPrototype extends ICustomClassPrototype0<IUSASOCCustomizations, IUSASOCCustomizationsPrototype, "USASOCCustomizations">, IUSASOCCustomizations {
         _newIdeaAssignmentGroup?: sys_user_groupGlideRecord | {
+            sys_id: string;
+        };
+        _defaultScCatItemApprovalGroup?: sys_user_groupGlideRecord | {
             sys_id: string;
         };
     }
@@ -53,7 +84,9 @@ declare namespace x_44813_usasoc_cst {
         EVENTNAME_TASK_IDEA_NEW: "x_44813_usasoc_cst.idea.new";
         PROPERTY_CATEGORY: "USASOC Customization Settings";
         PROPERTYNAME_INSTANCE_SDLC_STAGE: "x_44813_usasoc_cst.instance_sdlc_stage";
+        PROPERTYNAME_DEFAULT_GIT_INSTANCE_BASE_URL: "x_44813_usasoc_cst.default_git_instance_base_url";
         PROPERTYNAME_NEW_IDEA_ASSIGNMENT_GROUP: "x_44813_usasoc_cst.new_idea_assignment_group";
+        PROPERTYNAME_DEFAULT_SC_CAT_APPROVER_GROUP: "x_44813_usasoc_cst.default_sc_cat_approver_group";
         new (): USASOCCustomizations;
         (): USASOCCustomizations;
     }
@@ -63,7 +96,7 @@ declare namespace x_44813_usasoc_cst {
     
     //#endregion
     
-    //#region USASOCCustomizations
+    //#region UsasocUserNotificationManager
     
     export interface NameLabelAndFailMessage<T extends string> {
         name: T;

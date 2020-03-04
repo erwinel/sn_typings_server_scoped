@@ -7130,7 +7130,7 @@ declare type IRequestState = "requested" | "in_process" | "closed_complete" | "c
  * Fields common to all tables.
  * @interface IGlideTableProperties
  */
-declare interface IGlideTableProperties {
+declare interface IGlideTableProperties extends $$element.IDbObject {
     /**
      * Created by
      * @type {$$rhino.Nilable<$$property.Element>}

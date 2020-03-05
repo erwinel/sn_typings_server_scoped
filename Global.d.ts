@@ -496,7 +496,7 @@ declare interface IApprovalInfo {
 }
 
 declare interface WorkflowApprovalUtils {
-    PENDING_STATES: ['not requested', 'not_required', 'requested'];
+    readonly PENDING_STATES: ['not requested', 'not_required', 'requested'];
 
     /** 
      * this tests whether or not a table is a Task table. If it is a task table then

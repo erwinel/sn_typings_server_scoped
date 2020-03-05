@@ -5,7 +5,7 @@
     <Name>NodejsConsoleApp1</Name>
     <RootNamespace>NodejsConsoleApp1</RootNamespace>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -40,10 +40,22 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="tsconfig.json" />
+    <TypeScriptCompile Include="Global.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="index.d.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="projectManagement.d.ts" />
+    <TypeScriptCompile Include="Glide.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Rhino.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Tables.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="x_44813_phys_net\index.d.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -53,6 +65,11 @@
     <TypeScriptCompile Include="x_44813_usasoc_cst\index.d.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="x_44813_phys_net\" />
+    <Folder Include="x_44813_sec_clsif\" />
+    <Folder Include="x_44813_usasoc_cst\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
   <ProjectExtensions>

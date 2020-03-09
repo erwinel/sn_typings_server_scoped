@@ -2106,11 +2106,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Workflow activity
-     * @type {$$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>}
+     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_activityFields, wf_activityGlideRecord>>}
      * @memberof taskFields
      * @description Refers to wf_activity (Workflow Activity)
      */
-    wf_activity: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+    wf_activity: $$rhino.Nilable<$$property.generic.Reference<wf_activityFields, wf_activityGlideRecord>>;
 
     /**
      * Actual end
@@ -5204,11 +5204,11 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
 
     /**
      * Workflow
-     * @type {$$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>}
+     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_workflowFields, wf_workflowGlideRecord>>}
      * @memberof sc_cat_itemFields
      * @description Refers to wf_workflow (Workflow)
      */
-    workflow: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+    workflow: $$rhino.Nilable<$$property.generic.Reference<wf_workflowFields, wf_workflowGlideRecord>>;
 }
 declare type sc_cat_itemGlideRecord = sys_metadataGlideRecord & sc_cat_itemFields;
 
@@ -5330,11 +5330,11 @@ declare interface sc_req_itemFields extends taskFields {
 
     /**
      * Context
-     * @type {$$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>}
+     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>}
      * @memberof sc_req_itemFields
      * @description Refers to wf_context (Workflow context)
      */
-    context: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+    context: $$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>>;
 
     /**
      * Estimated delivery
@@ -6989,3 +6989,221 @@ declare type incident_taskGlideRecord = taskGlideRecord & incident_taskFields;
 declare interface kb_knowledgeFields extends IExtendedGlideTableProperties {
 
 }
+
+declare interface wf_contextFields extends IGlideTableProperties {
+    /**
+     * Active
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    active: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Activity count
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof wf_contextFields
+     */
+    activity_count: $$rhino.Nilable<$$property.Numeric>;
+    /**
+     * Activity index
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof wf_contextFields
+     */
+    activity_index: $$rhino.Nilable<$$property.Numeric>;
+    /**
+     * Run after bus. rules run
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    after_business_rules: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Auto start
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    auto_start: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Stage rendering
+     * @type {$$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>}
+     * @memberof wf_contextFields
+     */
+    column_renderer: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+    /**
+     * Cumulative to ERT
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    cumulated_avg_ert: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Due
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    due: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Ended
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    ended: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Available actions
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    ert_long_running_actions: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Available actions
+     * @type { $$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    ert_outlier_workflow_actions: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Related record
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof wf_contextFields
+     */
+    id: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof wf_contextFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Parent Workflow
+     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>>}
+     * @memberof wf_contextFields
+     */
+    parent: $$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>>;
+    /**
+     * Parent activity
+     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_executingFields, wf_executingGlideRecord>>}
+     * @memberof wf_contextFields
+     */
+    parent_activity: $$rhino.Nilable<$$property.generic.Reference<wf_executingFields, wf_executingGlideRecord>>;
+    /**
+     * Requires ERT
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    requires_ert: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Result
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof wf_contextFields
+     */
+    result: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Return value
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    return_value: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Running duration
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    running_duration: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Schedule
+     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>}
+     * @memberof wf_contextFields
+     */
+    schedule: $$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>;
+
+    /**
+     * Scratchpad
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    scratchpad: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Stage
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    stage: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+
+    /**
+     * Stage states
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    stage_state: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Started
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    started: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Started by
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    started_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+
+    /**
+     * State
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    state: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Table
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    table: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Timezone
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    timezone: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Available actions
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    without_current_wf_actions: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Workflow
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    workflow: $$rhino.Nilable<$$property.generic.Reference<wf_workflowFields, wf_workflowGlideRecord>>;
+
+    /**
+     * Workflow version
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    workflow_version: $$rhino.Nilable<$$property.generic.Reference<wf_workflow_versionFields, wf_workflow_versionGlideRecord>>;
+}
+declare type wf_contextGlideRecord = GlideRecord & wf_contextFields;
+
+declare interface wf_activityFields extends IGlideTableProperties {
+}
+declare type wf_activityGlideRecord = GlideRecord & wf_activityFields;
+
+declare interface wf_workflowFields extends IGlideTableProperties {
+}
+declare type wf_workflowGlideRecord = GlideRecord & wf_workflowFields;
+
+declare interface wf_executingFields extends IGlideTableProperties {
+}
+declare type wf_executingGlideRecord = GlideRecord & wf_executingFields;
+
+declare interface wf_workflow_versionFields extends IGlideTableProperties {
+}
+declare type wf_workflow_versionGlideRecord = GlideRecord & wf_workflow_versionFields;

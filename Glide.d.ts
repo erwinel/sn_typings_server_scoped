@@ -2307,18 +2307,18 @@ declare class Workflow {
      * Adds a debug message to the log.
      * @memberof Workflow
      * @param {string} message - The message to add to the log.
-     * @param {*} args - Arguments to add to the message.
+     * @param {*} [args] - Arguments to add to the message.
      * @returns {string} The message added to the log.
      */
-    debug(message: string, args: any): string;
+    debug(message: string, args?: any): string;
     /**
      * Adds an error message to the log.
      * @memberof Workflow
      * @param {string} message - The message to add to the log.
-     * @param {*} args - Arguments to add to the message.
+     * @param {*} [args] - Arguments to add to the message.
      * @returns {string} The logged message.
      */
-    error(message: string, args: any): string;
+    error(message: string, args?: any): string;
     /**
      * Returns the specified variable's value.
      * @memberof Workflow
@@ -2330,10 +2330,10 @@ declare class Workflow {
      * Adds an informational message to the log.
      * @memberof Workflow
      * @param {string} message - The message to add to the log.
-     * @param {*} args - Arguments to add to the message.
+     * @param {*} [args] - Arguments to add to the message.
      * @returns {string} The message that is logged.
      */
-    info(message: string, args: any): string;
+    info(message: string, args?: any): string;
     /**
      * Returns the workflow name.
      * @memberof Workflow
@@ -2369,10 +2369,22 @@ declare class Workflow {
      * Adds a warning message to the log.
      * @memberof Workflow
      * @param {string} message - The message to add to the log.
-     * @param {*} args - Arguments to add to the message.
+     * @param {*} [args] - Arguments to add to the message.
      * @returns {string} The logged message.
      */
-    warn(message: string, args: any): string;
+    warn(message: string, args?: any): string;
+}
+
+declare class GlideSchedule {
+    constructor(sysID?: $$rhino.String, timeZone?: $$rhino.String);
+    add(startDate: GlideDateTime, offSet: GlideDuration): GlideDateTime;
+    duration(startDate: GlideDateTime, endDate: GlideDateTime): GlideDuration;
+    getName(): $$rhino.String;
+    isInSchedule(time: GlideDateTime): $$rhino.Boolean;
+    isValid(): $$rhino.Boolean;
+    load(sysID: $$rhino.String, timeZone?: $$rhino.String, excludeSpanID?: $$rhino.String): void;
+    setTimeZone(timeZone: $$rhino.String): void;
+    whenNext(time: GlideDateTime, timeZone: $$rhino.String): $$rhino.Number;
 }
 
 /**

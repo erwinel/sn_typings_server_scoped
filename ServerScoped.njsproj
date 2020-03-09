@@ -65,6 +65,15 @@
     <TypeScriptCompile Include="x_44813_usasoc_cst\index.d.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="x_44813_usasoc_cst\TaskHelper.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="x_44813_usasoc_cst\USASOCCustomizations.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="x_44813_usasoc_cst\UsasocUserNotificationManager.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="x_44813_phys_net\" />

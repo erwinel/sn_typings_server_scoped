@@ -48,8 +48,8 @@ declare namespace x_44813_usasoc_cst {
     export interface UserNotificationsResponse extends IUsasocUserNotificationManagerComplete {
         profileCompliance: UserProfileComplianceCheck;
     }
-    export class UsasocUserNotificationManager{
-        constructor ();
+    export class UsasocUserNotificationManager {
+        constructor();
         static isUsasocUserNotificationManagerFault(result: IUsasocUserNotificationManagerResponse): result is IUsasocUserNotificationManagerFault;
         static getUserGlideObject(user?: $$rhino.String | GlideUser | sys_userFields): GetUserGlideObjectResult | IUsasocUserNotificationManagerFault;
         static checkUserProfileCompliance(sys_user: sys_userFields): UserProfileComplianceCheck;

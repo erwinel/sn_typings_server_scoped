@@ -4,7 +4,7 @@
  *
  * @type {("not requested" | "cancelled" | "requested" | "duplicate" | "not_required" | "approved" | "rejected")}
  */
-declare type TaskAppproval = "not requested" | "cancelled" | "requested" | "duplicate" | "not_required" | "approved" | "rejected";
+declare type TaskApproval = "not requested" | "cancelled" | "requested" | "duplicate" | "not_required" | "approved" | "rejected";
 
 /**
  * email=Email; endpoint_security=Endpoint Security; ids_ips=IDS/IPS; network_monitoring=Network Monitoring; phone=Phone; self-service=Self-service; siem=SIEM; virtual_agent=Virtual Agent; vulnerability_response=Vulnerability Response; walk-in=Walk-in
@@ -399,11 +399,11 @@ declare interface sys_db_objectFields extends sys_metadataFields {
 
     /**
      * User role
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_roleFields, sys_user_roleGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_roleProperty>}
      * @memberof sys_db_objectFields
      * @description Refers to sys_user_role (Role)
      */
-    user_role: $$rhino.Nilable<$$property.generic.Reference<sys_user_roleFields, sys_user_roleGlideRecord>>;
+    user_role: $$rhino.Nilable<sys_user_roleProperty>;
 
     /**
      * Allow access to this table via web services
@@ -1295,11 +1295,11 @@ declare type sys_scopeGlideRecord = sys_packageGlideRecord & sys_scopeFields;
 declare interface sys_user_roleFields extends sys_metadataFields {
     /**
      * Assignable by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_roleFields, sys_user_roleGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_roleProperty>}
      * @memberof sys_user_roleFields
      * @description Refers to sys_user_role (Role)
      */
-    assignable_by: $$rhino.Nilable<$$property.generic.Reference<sys_user_roleFields, sys_user_roleGlideRecord>>;
+    assignable_by: $$rhino.Nilable<sys_user_roleProperty>;
 
     /**
      * Can delegate
@@ -1373,6 +1373,8 @@ declare interface sys_user_roleFields extends sys_metadataFields {
     suffix: $$rhino.Nilable<$$property.Element>;
 }
 declare type sys_user_roleGlideRecord = sys_metadataGlideRecord & sys_user_roleFields;
+declare type sys_user_roleElement = $$element.Reference<sys_user_roleFields, sys_user_roleGlideRecord>;
+declare type sys_user_roleProperty = $$property.generic.ReferenceProperty<sys_user_roleFields, sys_user_roleGlideRecord, sys_user_roleElement>;
 
 /**
  * GlideElement values from the Encryption Context table.
@@ -1417,6 +1419,8 @@ declare interface sys_calendarFields extends sys_metadataFields {
     name: $$rhino.Nilable<$$property.Element>;
 }
 declare type sys_calendarGlideRecord = sys_metadataGlideRecord & sys_calendarFields;
+declare type sys_calendarElement = $$element.Reference<sys_calendarFields, sys_calendarGlideRecord>;
+declare type sys_calendarProperty = $$property.generic.ReferenceProperty<sys_calendarFields, sys_calendarGlideRecord, sys_calendarElement>;
 
 /**
  * GlideElement values from the Agreement table.
@@ -1426,11 +1430,11 @@ declare type sys_calendarGlideRecord = sys_metadataGlideRecord & sys_calendarFie
 declare interface slaFields extends IGlideTableProperties {
     /**
      * Accountable user
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof slaFields
      * @description Refers to sys_user (User)
      */
-    accountable_user: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    accountable_user: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Active
@@ -1457,11 +1461,11 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Business lead
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof slaFields
      * @description Refers to sys_user (User)
      */
-    business_lead: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    business_lead: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Business unit
@@ -1472,11 +1476,11 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Calendar
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_calendarFields, sys_calendarGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_calendarProperty>}
      * @memberof slaFields
      * @description Refers to sys_calendar (Calendar)
      */
-    calendar: $$rhino.Nilable<$$property.generic.Reference<sys_calendarFields, sys_calendarGlideRecord>>;
+    calendar: $$rhino.Nilable<sys_calendarProperty>;
 
     /**
      * Change procedures
@@ -1488,11 +1492,11 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Consultant user
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof slaFields
      * @description Refers to sys_user (User)
      */
-    consultant_user: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    consultant_user: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Contract
@@ -1504,11 +1508,11 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Department
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_departmentProperty>}
      * @memberof slaFields
      * @description Refers to cmn_department (Department)
      */
-    department: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    department: $$rhino.Nilable<cmn_departmentProperty>;
 
     /**
      * Description
@@ -1551,19 +1555,19 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Informed user
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof slaFields
      * @description Refers to sys_user (User)
      */
-    informed_user: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    informed_user: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Maintenance
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_calendarFields, sys_calendarGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_calendarProperty>}
      * @memberof slaFields
      * @description Refers to sys_calendar (Calendar)
      */
-    maintenance: $$rhino.Nilable<$$property.generic.Reference<sys_calendarFields, sys_calendarGlideRecord>>;
+    maintenance: $$rhino.Nilable<sys_calendarProperty>;
 
     /**
      * Name
@@ -1613,11 +1617,11 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Responsible user
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof slaFields
      * @description Refers to sys_user (User)
      */
-    responsible_user: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    responsible_user: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Security notes
@@ -1652,11 +1656,11 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Technical lead
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof slaFields
      * @description Refers to sys_user (User)
      */
-    technical_lead: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    technical_lead: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Transaction load
@@ -1668,13 +1672,15 @@ declare interface slaFields extends IGlideTableProperties {
 
     /**
      * Users
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof slaFields
      * @description Refers to sys_user_group (Group)
      */
-    users: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    users: $$rhino.Nilable<sys_user_groupProperty>;
 }
 declare type slaGlideRecord = GlideRecord & slaFields;
+declare type slaElement = $$element.Reference<slaFields, slaGlideRecord>;
+declare type slaProperty = $$property.generic.ReferenceProperty<slaFields, slaGlideRecord, slaElement>;
 
 /**
  * GlideElement values from the Task table.
@@ -1707,10 +1713,10 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Approval
-     * @type {$$rhino.Nilable<$$property.generic.Element<TaskAppproval>>}
+     * @type {$$rhino.Nilable<$$property.generic.Element<TaskApproval>>}
      * @memberof taskFields
      */
-    approval: $$rhino.Nilable<$$property.generic.Element<TaskAppproval>>;
+    approval: $$rhino.Nilable<$$property.generic.Element<TaskApproval>>;
 
     /**
      * Approval history
@@ -1729,19 +1735,19 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Assigned to
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof taskFields
      * @description Refers to sys_user (User)
      */
-    assigned_to: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    assigned_to: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Assignment group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof taskFields
      * @description Refers to sys_user_group (Group)
      */
-    assignment_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    assignment_group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Business duration
@@ -1753,11 +1759,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Business service
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ci_serviceProperty>}
      * @memberof taskFields
      * @description Refers to cmdb_ci_service (Business Service)
      */
-    business_service: $$rhino.Nilable<$$property.generic.Reference<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord>>;
+    business_service: $$rhino.Nilable<cmdb_ci_serviceProperty>;
 
     /**
      * Duration
@@ -1776,11 +1782,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Closed by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof taskFields
      * @description Refers to sys_user (User)
      */
-    closed_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    closed_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Close notes
@@ -1791,11 +1797,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Configuration item
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ciProperty>}
      * @memberof taskFields
      * @description Refers to cmdb_ci (Configuration Item)
      */
-    cmdb_ci: $$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>;
+    cmdb_ci: $$rhino.Nilable<cmdb_ciProperty>;
 
     /**
      * Additional comments
@@ -1815,11 +1821,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof taskFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Contact type
@@ -1925,11 +1931,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof taskFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Made SLA
@@ -1954,11 +1960,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Opened by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof taskFields
      * @description Refers to sys_user (User)
      */
-    opened_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    opened_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Order
@@ -1969,11 +1975,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>}
+     * @type {$$rhino.Nilable<taskProperty>}
      * @memberof taskFields
      * @description Refers to task (Task)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>;
+    parent: $$rhino.Nilable<taskProperty>;
 
     /**
      * Priority
@@ -1991,11 +1997,11 @@ declare interface taskFields extends IExtendedGlideTableProperties {
 
     /**
      * Rejection goto
-     * @type {$$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>}
+     * @type {$$rhino.Nilable<taskProperty>}
      * @memberof taskFields
      * @description Refers to task (Task)
      */
-    rejection_goto: $$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>;
+    rejection_goto: $$rhino.Nilable<taskProperty>;
 
     /**
      * Service offering
@@ -2143,6 +2149,8 @@ declare interface taskFields extends IExtendedGlideTableProperties {
     work_start: $$rhino.Nilable<$$property.GlideObject>;
 }
 declare type taskGlideRecord = GlideRecord & taskFields;
+declare type taskElement = $$element.Reference<taskFields, taskGlideRecord>;
+declare type taskProperty = $$property.generic.ReferenceProperty<taskFields, taskGlideRecord, taskElement>;
 
 /**
  * GlideElement values from the Service Order table.
@@ -2161,11 +2169,11 @@ declare interface sm_orderFields extends taskFields {
 
     /**
      * Assigned vendor
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof sm_orderFields
      * @description Refers to core_company (Company)
      */
-    assigned_vendor: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    assigned_vendor: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Billable
@@ -2176,11 +2184,11 @@ declare interface sm_orderFields extends taskFields {
 
     /**
      * Caller
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sm_orderFields
      * @description Refers to sys_user (User)
      */
-    caller: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    caller: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Category
@@ -2202,11 +2210,11 @@ declare interface sm_orderFields extends taskFields {
     expected_end: $$rhino.Nilable<$$property.GlideObject>;
     /**
      * Initiated from
-     * @type {$$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>}
+     * @type {$$rhino.Nilable<taskProperty>}
      * @memberof sm_orderFields
      * @description Refers to task (Task)
      */
-    initiated_from: $$rhino.Nilable<$$property.generic.Reference<taskFields, taskGlideRecord>>;
+    initiated_from: $$rhino.Nilable<taskProperty>;
     /**
      * Is catalog
      * @type {$$rhino.Nilable<$$property.Boolean>}
@@ -2215,26 +2223,26 @@ declare interface sm_orderFields extends taskFields {
     is_catalog: $$rhino.Nilable<$$property.Boolean>;
     /**
      * Opened for
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sm_orderFields
      * @description Refers to sys_user (User)
      */
-    opened_for: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    opened_for: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Previous agent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sm_orderFields
      * @description Refers to sys_user (User)
      */
-    previous_agent: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    previous_agent: $$rhino.Nilable<sys_userProperty>;
     /**
      * Qualification group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof sm_orderFields
      * @description Refers to sys_user_group (Group)
      */
-    qualification_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    qualification_group: $$rhino.Nilable<sys_user_groupProperty>;
     /**
      * Requested due by
      * @type {$$rhino.Nilable<$$property.GlideObject>}
@@ -2322,11 +2330,11 @@ declare interface sm_orderFields extends taskFields {
 
     /**
      * Template
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_modelProperty>}
      * @memberof sm_orderFields
      * @description Refers to cmdb_model (Product Model)
      */
-    template: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+    template: $$rhino.Nilable<cmdb_modelProperty>;
 
     /**
      * Template Workflow Invoked
@@ -2365,11 +2373,11 @@ declare interface incidentFields extends taskFields {
 
     /**
      * Caller
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof incidentFields
      * @description Refers to sys_user (User)
      */
-    caller_id: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    caller_id: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Category
@@ -2380,11 +2388,11 @@ declare interface incidentFields extends taskFields {
 
     /**
      * Caused by Change
-     * @type {$$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>}
+     * @type {$$rhino.Nilable<change_requestProperty>}
      * @memberof incidentFields
      * @description Refers to change_request (Change Request)
      */
-    caused_by: $$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>;
+    caused_by: $$rhino.Nilable<change_requestProperty>;
 
     /**
      * Child Incidents
@@ -2423,11 +2431,11 @@ declare interface incidentFields extends taskFields {
 
     /**
      * Parent Incident
-     * @type {$$rhino.Nilable<$$property.generic.Reference<incidentFields, incidentGlideRecord>>}
+     * @type {$$rhino.Nilable<incidentProperty>}
      * @memberof incidentFields
      * @description Refers to incident (Incident)
      */
-    parent_incident: $$rhino.Nilable<$$property.generic.Reference<incidentFields, incidentGlideRecord>>;
+    parent_incident: $$rhino.Nilable<incidentProperty>;
 
     /**
      * Problem
@@ -2439,11 +2447,11 @@ declare interface incidentFields extends taskFields {
 
     /**
      * Last reopened by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof incidentFields
      * @description Refers to sys_user (User)
      */
-    reopened_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    reopened_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Last reopened at
@@ -2468,19 +2476,19 @@ declare interface incidentFields extends taskFields {
 
     /**
      * Resolved by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof incidentFields
      * @description Refers to sys_user (User)
      */
-    resolved_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    resolved_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Change Request
-     * @type {$$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>}
+     * @type {$$rhino.Nilable<change_requestProperty>}
      * @memberof incidentFields
      * @description Refers to change_request (Change Request)
      */
-    rfc: $$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>;
+    rfc: $$rhino.Nilable<change_requestProperty>;
 
     /**
      * Severity
@@ -2519,6 +2527,8 @@ declare interface incidentFields extends taskFields {
     u_vip_priority: $$rhino.Nilable<$$property.Boolean>;
 }
 declare type incidentGlideRecord = taskGlideRecord & incidentFields;
+declare type incidentElement = $$element.Reference<incidentFields, incidentGlideRecord>;
+declare type incidentProperty = $$property.generic.ReferenceProperty<incidentFields, incidentGlideRecord, incidentElement>;
 
 /**
  * GlideElement values from the Change Request table.
@@ -2543,11 +2553,11 @@ declare interface change_requestFields extends taskFields {
 
     /**
      * CAB delegate
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof change_requestFields
      * @description Refers to sys_user (User)
      */
-    cab_delegate: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    cab_delegate: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * CAB recommendation
@@ -2694,11 +2704,11 @@ declare interface change_requestFields extends taskFields {
 
     /**
      * Requested by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof change_requestFields
      * @description Refers to sys_user (User)
      */
-    requested_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    requested_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Requested by date
@@ -2787,6 +2797,8 @@ declare interface change_requestFields extends taskFields {
     type: $$rhino.Nilable<$$property.Element>;
 }
 declare type change_requestGlideRecord = taskGlideRecord & change_requestFields;
+declare type change_requestElement = $$element.Reference<change_requestFields, change_requestGlideRecord>;
+declare type change_requestProperty = $$property.generic.ReferenceProperty<change_requestFields, change_requestGlideRecord, change_requestElement>;
 
 /**
  * GlideElement values from the Change Task table.
@@ -2796,11 +2808,11 @@ declare type change_requestGlideRecord = taskGlideRecord & change_requestFields;
 declare interface change_taskFields extends taskFields {
     /**
      * Change request
-     * @type {$$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>}
+     * @type {$$rhino.Nilable<change_requestProperty>}
      * @memberof change_taskFields
      * @description Refers to change_request (Change Request)
      */
-    change_request: $$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>;
+    change_request: $$rhino.Nilable<change_requestProperty>;
 
     /**
      * Type
@@ -2853,6 +2865,8 @@ declare interface change_taskFields extends taskFields {
     planned_start_date: $$rhino.Nilable<$$property.GlideObject>;
 }
 declare type change_taskGlideRecord = taskGlideRecord & change_taskFields;
+declare type change_taskElement = $$element.Reference<change_taskFields, change_taskGlideRecord>;
+declare type change_taskProperty = $$property.generic.ReferenceProperty<change_taskFields, change_taskGlideRecord, change_taskElement>;
 
 /**
  * GlideElement values from the Problem table.
@@ -2897,11 +2911,11 @@ declare interface problemFields extends taskFields {
 
     /**
      * Change request
-     * @type {$$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>}
+     * @type {$$rhino.Nilable<change_requestProperty>}
      * @memberof problemFields
      * @description Refers to change_request (Change Request)
      */
-    rfc: $$rhino.Nilable<$$property.generic.Reference<change_requestFields, change_requestGlideRecord>>;
+    rfc: $$rhino.Nilable<change_requestProperty>;
 
     /**
      * Workaround
@@ -2967,11 +2981,11 @@ declare interface sys_userFields extends IGlideTableProperties {
 
     /**
      * Building
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_buildingFields, cmn_buildingGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_buildingProperty>}
      * @memberof sys_userFields
      * @description Refers to cmn_building (Building)
      */
-    building: $$rhino.Nilable<$$property.generic.Reference<cmn_buildingFields, cmn_buildingGlideRecord>>;
+    building: $$rhino.Nilable<cmn_buildingProperty>;
 
     /**
      * Business impact
@@ -2996,11 +3010,11 @@ declare interface sys_userFields extends IGlideTableProperties {
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof sys_userFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Cost center
@@ -3034,11 +3048,11 @@ declare interface sys_userFields extends IGlideTableProperties {
 
     /**
      * Department
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_departmentProperty>}
      * @memberof sys_userFields
      * @description Refers to cmn_department (Department)
      */
-    department: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    department: $$rhino.Nilable<cmn_departmentProperty>;
 
     /**
      * EDU Status
@@ -3180,11 +3194,11 @@ declare interface sys_userFields extends IGlideTableProperties {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof sys_userFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Locked out
@@ -3203,11 +3217,11 @@ declare interface sys_userFields extends IGlideTableProperties {
 
     /**
      * Manager
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sys_userFields
      * @description Refers to sys_user (User)
      */
-    manager: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    manager: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Middle name
@@ -3285,11 +3299,11 @@ declare interface sys_userFields extends IGlideTableProperties {
 
     /**
      * Schedule
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
      * @memberof sys_userFields
      * @description Refers to cmn_schedule (Schedule)
      */
-    schedule: $$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>;
+    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
 
     /**
      * Source
@@ -3421,6 +3435,8 @@ declare interface sys_userFields extends IGlideTableProperties {
     zip: $$rhino.Nilable<$$property.Element>;
 }
 declare type sys_userGlideRecord = GlideRecord & sys_userFields;
+declare type sys_userElement = $$element.Reference<sys_userFields, sys_userGlideRecord>;
+declare type sys_userProperty = $$property.generic.ReferenceProperty<sys_userFields, sys_userGlideRecord, sys_userElement>;
 
 /**
  * GlideElement values from the Group table.
@@ -3453,11 +3469,11 @@ declare interface sys_user_groupFields extends IGlideTableProperties {
 
     /**
      * Default assignee
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sys_user_groupFields
      * @description Refers to sys_user (User)
      */
-    default_assignee: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    default_assignee: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Description
@@ -3497,11 +3513,11 @@ declare interface sys_user_groupFields extends IGlideTableProperties {
 
     /**
      * Manager
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sys_user_groupFields
      * @description Refers to sys_user (User)
      */
-    manager: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    manager: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Name
@@ -3512,11 +3528,11 @@ declare interface sys_user_groupFields extends IGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof sys_user_groupFields
      * @description Refers to sys_user_group (Group)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    parent: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Points
@@ -3557,6 +3573,8 @@ declare interface sys_user_groupFields extends IGlideTableProperties {
     vendors: $$rhino.Nilable<IGlideElement>;
 }
 declare type sys_user_groupGlideRecord = GlideRecord & sys_user_groupFields;
+declare type sys_user_groupElement = $$element.Reference<sys_user_groupFields, sys_user_groupGlideRecord>;
+declare type sys_user_groupProperty = $$property.generic.ReferenceProperty<sys_user_groupFields, sys_user_groupGlideRecord, sys_user_groupElement>;
 
 /**
  * GlideElement values from the Schedule table.
@@ -3594,11 +3612,11 @@ declare interface cmn_scheduleFields extends IGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
      * @memberof cmn_scheduleFields
      * @description Refers to cmn_schedule (Schedule)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>;
+    parent: $$rhino.Nilable<cmn_scheduleProperty>;
 
     /**
      * Read only
@@ -3622,6 +3640,8 @@ declare interface cmn_scheduleFields extends IGlideTableProperties {
     type: $$rhino.Nilable<$$property.Element>;
 }
 declare type cmn_scheduleGlideRecord = GlideRecord & cmn_scheduleFields;
+declare type cmn_scheduleElement = $$element.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>;
+declare type cmn_scheduleProperty = $$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>;
 
 /**
  * GlideElement values from the Location table.
@@ -3638,19 +3658,19 @@ declare interface cmn_locationFields extends IGlideTableProperties {
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof cmn_locationFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Contact
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmn_locationFields
      * @description Refers to sys_user (User)
      */
-    contact: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    contact: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Country
@@ -3705,11 +3725,11 @@ declare interface cmn_locationFields extends IGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof cmn_locationFields
      * @description Refers to cmn_location (Location)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    parent: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Phone
@@ -3763,6 +3783,8 @@ declare interface cmn_locationFields extends IGlideTableProperties {
     zip: $$rhino.Nilable<$$property.Element>;
 }
 declare type cmn_locationGlideRecord = GlideRecord & cmn_locationFields;
+declare type cmn_locationElement = $$element.Reference<cmn_locationFields, cmn_locationGlideRecord>;
+declare type cmn_locationProperty = $$property.generic.ReferenceProperty<cmn_locationFields, cmn_locationGlideRecord, cmn_locationElement>;
 
 /**
  * GlideElement values from the Department table.
@@ -3772,11 +3794,11 @@ declare type cmn_locationGlideRecord = GlideRecord & cmn_locationFields;
 declare interface cmn_departmentFields extends IGlideTableProperties {
     /**
      * Business unit
-     * @type {$$rhino.Nilable<$$property.generic.Reference<business_unitFields, business_unitGlideRecord>>}
+     * @type {$$rhino.Nilable<business_unitProperty>}
      * @memberof cmn_departmentFields
      * @description Refers to business_unit (Business Unit)
      */
-    business_unit: $$rhino.Nilable<$$property.generic.Reference<business_unitFields, business_unitGlideRecord>>;
+    business_unit: $$rhino.Nilable<business_unitProperty>;
 
     /**
      * Code
@@ -3787,11 +3809,11 @@ declare interface cmn_departmentFields extends IGlideTableProperties {
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof cmn_departmentFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Cost center
@@ -3803,11 +3825,11 @@ declare interface cmn_departmentFields extends IGlideTableProperties {
 
     /**
      * Department head
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmn_departmentFields
      * @description Refers to sys_user (User)
      */
-    dept_head: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    dept_head: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Description
@@ -3839,21 +3861,23 @@ declare interface cmn_departmentFields extends IGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_departmentProperty>}
      * @memberof cmn_departmentFields
      * @description Refers to cmn_department (Department)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    parent: $$rhino.Nilable<cmn_departmentProperty>;
 
     /**
      * Primary contact
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmn_departmentFields
      * @description Refers to sys_user (User)
      */
-    primary_contact: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    primary_contact: $$rhino.Nilable<sys_userProperty>;
 }
 declare type cmn_departmentGlideRecord = GlideRecord & cmn_departmentFields;
+declare type cmn_departmentElement = $$element.Reference<cmn_departmentFields, cmn_departmentGlideRecord>;
+declare type cmn_departmentProperty = $$property.generic.ReferenceProperty<cmn_departmentFields, cmn_departmentGlideRecord, cmn_departmentElement>;
 
 /**
  * GlideElement values from the Company table.
@@ -3898,11 +3922,11 @@ declare interface core_companyFields extends IGlideTableProperties {
 
     /**
      * Contact
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof core_companyFields
      * @description Refers to sys_user (User)
      */
-    contact: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    contact: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Country
@@ -4002,11 +4026,11 @@ declare interface core_companyFields extends IGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof core_companyFields
      * @description Refers to core_company (Company)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    parent: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Phone
@@ -4126,6 +4150,8 @@ declare interface core_companyFields extends IGlideTableProperties {
     zip: $$rhino.Nilable<$$property.Element>;
 }
 declare type core_companyGlideRecord = GlideRecord & core_companyFields;
+declare type core_companyElement = $$element.Reference<core_companyFields, core_companyGlideRecord>;
+declare type core_companyProperty = $$property.generic.ReferenceProperty<core_companyFields, core_companyGlideRecord, core_companyElement>;
 
 /**
  * GlideElement values from the Building table.
@@ -4135,11 +4161,11 @@ declare type core_companyGlideRecord = GlideRecord & core_companyFields;
 declare interface cmn_buildingFields extends IGlideTableProperties {
     /**
      * Contact
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmn_buildingFields
      * @description Refers to sys_user (User)
      */
-    contact: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    contact: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Floors
@@ -4150,11 +4176,11 @@ declare interface cmn_buildingFields extends IGlideTableProperties {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof cmn_buildingFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Name
@@ -4171,6 +4197,8 @@ declare interface cmn_buildingFields extends IGlideTableProperties {
     notes: $$rhino.Nilable<$$property.Element>;
 }
 declare type cmn_buildingGlideRecord = GlideRecord & cmn_buildingFields;
+declare type cmn_buildingElement = $$element.Reference<cmn_buildingFields, cmn_buildingGlideRecord>;
+declare type cmn_buildingProperty = $$property.generic.ReferenceProperty<cmn_buildingFields, cmn_buildingGlideRecord, cmn_buildingElement>;
 
 /**
  * GlideElement values from the Business Unit table.
@@ -4180,19 +4208,19 @@ declare type cmn_buildingGlideRecord = GlideRecord & cmn_buildingFields;
 declare interface business_unitFields extends IGlideTableProperties {
     /**
      * Business Unit Head
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof business_unitFields
      * @description Refers to sys_user (User)
      */
-    bu_head: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    bu_head: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof business_unitFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Description
@@ -4218,11 +4246,11 @@ declare interface business_unitFields extends IGlideTableProperties {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<business_unitFields, business_unitGlideRecord>>}
+     * @type {$$rhino.Nilable<business_unitProperty>}
      * @memberof business_unitFields
      * @description Refers to business_unit (Business Unit)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<business_unitFields, business_unitGlideRecord>>;
+    parent: $$rhino.Nilable<business_unitProperty>;
 
     /**
      * Domain
@@ -4240,6 +4268,9 @@ declare interface business_unitFields extends IGlideTableProperties {
     sys_domain_path: $$rhino.Nilable<$$property.Element>;
 }
 declare type business_unitGlideRecord = GlideRecord & business_unitFields;
+declare type business_unitElement = $$element.Reference<business_unitFields, business_unitGlideRecord>;
+declare type business_unitProperty = $$property.generic.ReferenceProperty<business_unitFields, business_unitGlideRecord, business_unitElement>;
+
 
 /**
  * GlideElement values from the GlideRecord that contains values from a record in the Progress Worker table.
@@ -4648,11 +4679,11 @@ declare interface sc_categoryFields extends sys_metadataFields {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof sc_categoryFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Hide description (mobile browsing)
@@ -4693,11 +4724,11 @@ declare interface sc_categoryFields extends sys_metadataFields {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_categoryFields, sc_categoryGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_categoryProperty>}
      * @memberof sc_categoryFields
      * @description Refers to sc_category (Category)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<sc_categoryFields, sc_categoryGlideRecord>>;
+    parent: $$rhino.Nilable<sc_categoryProperty>;
 
     /**
      * Roles
@@ -4709,11 +4740,11 @@ declare interface sc_categoryFields extends sys_metadataFields {
 
     /**
      * Catalog
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_catalogFields, sc_catalogGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_catalogProperty>}
      * @memberof sc_categoryFields
      * @description Refers to sc_catalog (Catalog)
      */
-    sc_catalog: $$rhino.Nilable<$$property.generic.Reference<sc_catalogFields, sc_catalogGlideRecord>>;
+    sc_catalog: $$rhino.Nilable<sc_catalogProperty>;
 
     /**
      * Show in CMS
@@ -4730,6 +4761,8 @@ declare interface sc_categoryFields extends sys_metadataFields {
     title: $$rhino.Nilable<$$property.TranslatedText>;
 }
 declare type sc_categoryGlideRecord = sys_metadataGlideRecord & sc_categoryFields;
+declare type sc_categoryElement = $$element.Reference<sc_categoryFields, sc_categoryGlideRecord>;
+declare type sc_categoryProperty = $$property.generic.ReferenceProperty<sc_categoryFields, sc_categoryGlideRecord, sc_categoryElement>;
 
 /**
  * GlideElement values from the Catalog table.
@@ -4797,11 +4830,11 @@ declare interface sc_catalogFields extends sys_metadataFields {
 
     /**
      * Manager
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sc_catalogFields
      * @description Refers to sys_user (User)
      */
-    manager: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    manager: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Title
@@ -4811,6 +4844,8 @@ declare interface sc_catalogFields extends sys_metadataFields {
     title: $$rhino.Nilable<$$property.TranslatedField>;
 }
 declare type sc_catalogGlideRecord = sys_metadataGlideRecord & sc_catalogFields;
+declare type sc_catalogElement = $$element.Reference<sc_catalogFields, sc_catalogGlideRecord>;
+declare type sc_catalogProperty = $$property.generic.ReferenceProperty<sc_catalogFields, sc_catalogGlideRecord, sc_catalogElement>;
 
 /**
  * GlideElement values from the Catalog Item table.
@@ -4842,11 +4877,11 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
 
     /**
      * Category
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_categoryFields, sc_categoryGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_categoryProperty>}
      * @memberof sc_cat_itemFields
      * @description Refers to sc_category (Category)
      */
-    category: $$rhino.Nilable<$$property.generic.Reference<sc_categoryFields, sc_categoryGlideRecord>>;
+    category: $$rhino.Nilable<sc_categoryProperty>;
 
     /**
      * Cost
@@ -4903,11 +4938,11 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
 
     /**
      * Fulfillment group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof sc_cat_itemFields
      * @description Refers to sys_user_group (Group)
      */
-    group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Hide on Service Portal
@@ -4947,11 +4982,11 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof sc_cat_itemFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Meta
@@ -4984,11 +5019,11 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
 
     /**
      * Model
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_modelProperty>}
      * @memberof sc_cat_itemFields
      * @description Refers to cmdb_model (Product Model)
      */
-    model: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+    model: $$rhino.Nilable<cmdb_modelProperty>;
 
     /**
      * Name
@@ -5175,11 +5210,11 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
 
     /**
      * Vendor
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof sc_cat_itemFields
      * @description Refers to core_company (Company)
      */
-    vendor: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    vendor: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Visible on Bundles
@@ -5211,6 +5246,8 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
     workflow: $$rhino.Nilable<$$property.generic.Reference<wf_workflowFields, wf_workflowGlideRecord>>;
 }
 declare type sc_cat_itemGlideRecord = sys_metadataGlideRecord & sc_cat_itemFields;
+declare type sc_cat_itemElement = $$element.Reference<sc_cat_itemFields, sc_cat_itemGlideRecord>;
+declare type sc_cat_itemProperty = $$property.generic.ReferenceProperty<sc_cat_itemFields, sc_cat_itemGlideRecord, sc_cat_itemElement>;
 
 /**
  * GlideElement values from the Request table.
@@ -5249,11 +5286,11 @@ declare interface sc_requestFields extends taskFields {
 
     /**
      * Requested for
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof sc_requestFields
      * @description Refers to sys_user (User)
      */
-    requested_for: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    requested_for: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Request state
@@ -5291,6 +5328,8 @@ declare interface sc_requestFields extends taskFields {
     stage: $$rhino.Nilable<GlideElementWorkflow>;
 }
 declare type sc_requestGlideRecord = taskGlideRecord & sc_requestFields;
+declare type sc_requestElement = $$element.Reference<sc_requestFields, sc_requestGlideRecord>;
+declare type sc_requestProperty = $$property.generic.ReferenceProperty<sc_requestFields, sc_requestGlideRecord, sc_requestElement>;
 
 /**
  * GlideElement values from the Requested Item table.
@@ -5314,27 +5353,27 @@ declare interface sc_req_itemFields extends taskFields {
 
     /**
      * Item
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_cat_itemFields, sc_cat_itemGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_cat_itemProperty>}
      * @memberof sc_req_itemFields
      * @description Refers to sc_cat_item (Catalog Item)
      */
-    cat_item: $$rhino.Nilable<$$property.generic.Reference<sc_cat_itemFields, sc_cat_itemGlideRecord>>;
+    cat_item: $$rhino.Nilable<sc_cat_itemProperty>;
 
     /**
      * Configuration item
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ciProperty>}
      * @memberof sc_req_itemFields
      * @description Refers to cmdb_ci (Configuration Item)
      */
-    configuration_item: $$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>;
+    configuration_item: $$rhino.Nilable<cmdb_ciProperty>;
 
     /**
      * Context
-     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>}
+     * @type {$$rhino.Nilable<wf_contextProperty}
      * @memberof sc_req_itemFields
      * @description Refers to wf_context (Workflow context)
      */
-    context: $$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>>;
+    context: $$rhino.Nilable<wf_contextProperty>;
 
     /**
      * Estimated delivery
@@ -5396,19 +5435,19 @@ declare interface sc_req_itemFields extends taskFields {
 
     /**
      * Request
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_requestFields, sc_requestGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_requestProperty>}
      * @memberof sc_req_itemFields
      * @description Refers to sc_request (Request)
      */
-    request: $$rhino.Nilable<$$property.generic.Reference<sc_requestFields, sc_requestGlideRecord>>;
+    request: $$rhino.Nilable<sc_requestProperty>;
 
     /**
      * Catalog
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_catalogFields, sc_catalogGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_catalogProperty>}
      * @memberof sc_req_itemFields
      * @description Refers to sc_catalog (Catalog)
      */
-    sc_catalog: $$rhino.Nilable<$$property.generic.Reference<sc_catalogFields, sc_catalogGlideRecord>>;
+    sc_catalog: $$rhino.Nilable<sc_catalogProperty>;
 
     /**
      * Sourced
@@ -5422,9 +5461,11 @@ declare interface sc_req_itemFields extends taskFields {
      * @type {$$rhino.Nilable<GlideElementWorkflow>}
      * @memberof sc_req_itemFields
      */
-    stage: $$rhino.Nilable<GlideElementWorkflow>;
+    stage: $$rhino.Nilable<$$property.Workflow>;
 }
 declare type sc_req_itemGlideRecord = taskGlideRecord & sc_req_itemFields;
+declare type sc_req_itemElement = $$element.Reference<sc_req_itemFields, sc_req_itemGlideRecord>;
+declare type sc_req_itemProperty = $$property.generic.ReferenceProperty<sc_req_itemFields, sc_req_itemGlideRecord, sc_req_itemElement>;
 
 /**
  * GlideElement values from the Catalog Task table.
@@ -5441,29 +5482,31 @@ declare interface sc_taskFields extends taskFields {
 
     /**
      * Request
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_requestFields, sc_requestGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_requestProperty>}
      * @memberof sc_taskFields
      * @description Refers to sc_request (Request)
      */
-    request: $$rhino.Nilable<$$property.generic.Reference<sc_requestFields, sc_requestGlideRecord>>;
+    request: $$rhino.Nilable<sc_requestProperty>;
 
     /**
      * Request item
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_req_itemFields, sc_req_itemGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_req_itemProperty>}
      * @memberof sc_taskFields
      * @description Refers to sc_req_item (Requested Item)
      */
-    request_item: $$rhino.Nilable<$$property.generic.Reference<sc_req_itemFields, sc_req_itemGlideRecord>>;
+    request_item: $$rhino.Nilable<sc_req_itemProperty>;
 
     /**
      * Catalog
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_catalogFields, sc_catalogGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_catalogProperty>}
      * @memberof sc_taskFields
      * @description Refers to sc_catalog (Catalog)
      */
-    sc_catalog: $$rhino.Nilable<$$property.generic.Reference<sc_catalogFields, sc_catalogGlideRecord>>;
+    sc_catalog: $$rhino.Nilable<sc_catalogProperty>;
 }
 declare type sc_taskGlideRecord = taskGlideRecord & sc_taskFields;
+declare type sc_taskElement = $$element.Reference<sc_taskFields, sc_taskGlideRecord>;
+declare type sc_taskProperty = $$property.generic.ReferenceProperty<sc_taskFields, sc_taskGlideRecord, sc_taskElement>;
 
 /**
  * GlideElement values from the Service Offering table.
@@ -5503,11 +5546,11 @@ declare interface service_offeringFields extends cmdb_ci_serviceFields {
 
     /**
      * Technical contact
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof service_offeringFields
      * @description Refers to sys_user (User)
      */
-    technical_contact: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    technical_contact: $$rhino.Nilable<sys_userProperty>;
 }
 declare type service_offeringGlideRecord = cmdb_ci_serviceGlideRecord & service_offeringFields;
 
@@ -5585,11 +5628,11 @@ declare type cmdb_model_categoryGlideRecord = GlideRecord & cmdb_model_categoryF
 declare interface cmdb_m2m_model_componentFields extends IGlideTableProperties {
     /**
      * Component
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_modelProperty>}
      * @memberof cmdb_m2m_model_componentFields
      * @description Refers to cmdb_model (Product Model)
      */
-    child: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+    child: $$rhino.Nilable<cmdb_modelProperty>;
 
     /**
      * Is main component
@@ -5608,11 +5651,11 @@ declare interface cmdb_m2m_model_componentFields extends IGlideTableProperties {
 
     /**
      * Bundle
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_modelProperty>}
      * @memberof cmdb_m2m_model_componentFields
      * @description Refers to cmdb_model (Product Model)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+    parent: $$rhino.Nilable<cmdb_modelProperty>;
 }
 declare type cmdb_m2m_model_componentGlideRecord = GlideRecord & cmdb_m2m_model_componentFields;
 
@@ -5741,11 +5784,11 @@ declare interface cmdb_modelFields extends IGlideTableProperties {
 
     /**
      * Manufacturer
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof cmdb_modelFields
      * @description Refers to core_company (Company)
      */
-    manufacturer: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    manufacturer: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Model number
@@ -5763,11 +5806,11 @@ declare interface cmdb_modelFields extends IGlideTableProperties {
 
     /**
      * Owner
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmdb_modelFields
      * @description Refers to sys_user (User)
      */
-    owner: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    owner: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Picture
@@ -5785,11 +5828,11 @@ declare interface cmdb_modelFields extends IGlideTableProperties {
 
     /**
      * Product Catalog Item
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_cat_itemFields, sc_cat_itemGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_cat_itemProperty>}
      * @memberof cmdb_modelFields
      * @description Refers to sc_cat_item (Catalog Item)
      */
-    product_catalog_item: $$rhino.Nilable<$$property.generic.Reference<sc_cat_itemFields, sc_cat_itemGlideRecord>>;
+    product_catalog_item: $$rhino.Nilable<sc_cat_itemProperty>;
 
     /**
      * Height (U)
@@ -5848,6 +5891,8 @@ declare interface cmdb_modelFields extends IGlideTableProperties {
     weight: $$rhino.Nilable<$$property.Numeric>;
 }
 declare type cmdb_modelGlideRecord = GlideRecord & cmdb_modelFields;
+declare type cmdb_modelElement = $$element.Reference<cmdb_modelFields, cmdb_modelGlideRecord>;
+declare type cmdb_modelProperty = $$property.generic.ReferenceProperty<cmdb_modelFields, cmdb_modelGlideRecord, cmdb_modelElement>;
 
 /**
  * GlideElement values from the Asset table.
@@ -5886,19 +5931,19 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Assigned to
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof alm_assetFields
      * @description Refers to sys_user (User)
      */
-    assigned_to: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    assigned_to: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Beneficiary
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof alm_assetFields
      * @description Refers to core_company (Company)
      */
-    beneficiary: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    beneficiary: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Checked in
@@ -5916,11 +5961,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Configuration Item
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ciProperty>}
      * @memberof alm_assetFields
      * @description Refers to cmdb_ci (Configuration Item)
      */
-    ci: $$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>;
+    ci: $$rhino.Nilable<cmdb_ciProperty>;
 
     /**
      * Comments
@@ -5931,11 +5976,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof alm_assetFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Cost
@@ -5961,11 +6006,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Department
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_departmentProperty>}
      * @memberof alm_assetFields
      * @description Refers to cmn_department (Department)
      */
-    department: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    department: $$rhino.Nilable<cmn_departmentProperty>;
 
     /**
      * Depreciated amount
@@ -6070,27 +6115,27 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof alm_assetFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Managed by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof alm_assetFields
      * @description Refers to sys_user (User)
      */
-    managed_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    managed_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Model
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_modelProperty>}
      * @memberof alm_assetFields
      * @description Refers to cmdb_model (Product Model)
      */
-    model: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+    model: $$rhino.Nilable<cmdb_modelProperty>;
 
     /**
      * Model category
@@ -6123,11 +6168,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Owned by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof alm_assetFields
      * @description Refers to sys_user (User)
      */
-    owned_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    owned_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Parent
@@ -6184,11 +6229,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Request line
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sc_req_itemFields, sc_req_itemGlideRecord>>}
+     * @type {$$rhino.Nilable<sc_req_itemProperty>}
      * @memberof alm_assetFields
      * @description Refers to sc_req_item (Requested Item)
      */
-    request_line: $$rhino.Nilable<$$property.generic.Reference<sc_req_itemFields, sc_req_itemGlideRecord>>;
+    request_line: $$rhino.Nilable<sc_req_itemProperty>;
 
     /**
      * Resale price
@@ -6199,11 +6244,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Reserved for
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof alm_assetFields
      * @description Refers to sys_user (User)
      */
-    reserved_for: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    reserved_for: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Residual value
@@ -6275,19 +6320,19 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Supported by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof alm_assetFields
      * @description Refers to sys_user (User)
      */
-    supported_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    supported_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Support group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof alm_assetFields
      * @description Refers to sys_user_group (Group)
      */
-    support_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    support_group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Class
@@ -6313,11 +6358,11 @@ declare interface alm_assetFields extends IGlideTableProperties {
 
     /**
      * Vendor
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof alm_assetFields
      * @description Refers to core_company (Company)
      */
-    vendor: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    vendor: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Warranty expiration
@@ -6367,19 +6412,19 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Assigned to
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmdbFields
      * @description Refers to sys_user (User)
      */
-    assigned_to: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    assigned_to: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Assignment group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof cmdbFields
      * @description Refers to sys_user_group (Group)
      */
-    assignment_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    assignment_group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Checked in
@@ -6397,11 +6442,11 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Company
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof cmdbFields
      * @description Refers to core_company (Company)
      */
-    company: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    company: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Cost
@@ -6435,11 +6480,11 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Department
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_departmentProperty>}
      * @memberof cmdbFields
      * @description Refers to cmn_department (Department)
      */
-    department: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    department: $$rhino.Nilable<cmn_departmentProperty>;
 
     /**
      * Due
@@ -6500,35 +6545,35 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Location
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof cmdbFields
      * @description Refers to cmn_location (Location)
      */
-    location: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    location: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Managed by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmdbFields
      * @description Refers to sys_user (User)
      */
-    managed_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    managed_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Manufacturer
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof cmdbFields
      * @description Refers to core_company (Company)
      */
-    manufacturer: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    manufacturer: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Model ID
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_modelProperty>}
      * @memberof cmdbFields
      * @description Refers to cmdb_model (Product Model)
      */
-    model_id: $$rhino.Nilable<$$property.generic.Reference<cmdb_modelFields, cmdb_modelGlideRecord>>;
+    model_id: $$rhino.Nilable<cmdb_modelProperty>;
 
     /**
      * Name
@@ -6546,11 +6591,11 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Owned by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmdbFields
      * @description Refers to sys_user (User)
      */
-    owned_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    owned_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * PO number
@@ -6583,19 +6628,19 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Supported by
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof cmdbFields
      * @description Refers to sys_user (User)
      */
-    supported_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    supported_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Support group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof cmdbFields
      * @description Refers to sys_user_group (Group)
      */
-    support_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    support_group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Class
@@ -6636,11 +6681,11 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
 
     /**
      * Vendor
-     * @type {$$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>}
+     * @type {$$rhino.Nilable<core_companyProperty>}
      * @memberof cmdbFields
      * @description Refers to core_company (Company)
      */
-    vendor: $$rhino.Nilable<$$property.generic.Reference<core_companyFields, core_companyGlideRecord>>;
+    vendor: $$rhino.Nilable<core_companyProperty>;
 
     /**
      * Warranty expiration
@@ -6681,11 +6726,11 @@ declare interface cmdb_ciFields extends cmdbFields {
 
     /**
      * Approval group
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof cmdb_ciFields
      * @description Refers to sys_user_group (Group)
      */
-    change_control: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    change_control: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Comments
@@ -6759,11 +6804,11 @@ declare interface cmdb_ciFields extends cmdbFields {
 
     /**
      * Maintenance schedule
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
      * @memberof cmdb_ciFields
      * @description Refers to cmn_schedule (Schedule)
      */
-    maintenance_schedule: $$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>;
+    maintenance_schedule: $$rhino.Nilable<cmn_scheduleProperty>;
 
     /**
      * Model number
@@ -6789,11 +6834,11 @@ declare interface cmdb_ciFields extends cmdbFields {
 
     /**
      * Schedule
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
      * @memberof cmdb_ciFields
      * @description Refers to cmn_schedule (Schedule)
      */
-    schedule: $$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>;
+    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
 
     /**
      * Description
@@ -6817,6 +6862,8 @@ declare interface cmdb_ciFields extends cmdbFields {
     subcategory: $$rhino.Nilable<$$property.Element>;
 }
 declare type cmdb_ciGlideRecord = cmdbGlideRecord & cmdb_ciFields;
+declare type cmdb_ciElement = $$element.Reference<cmdb_ciFields, cmdb_ciGlideRecord>;
+declare type cmdb_ciProperty = $$property.generic.ReferenceProperty<cmdb_ciFields, cmdb_ciGlideRecord, cmdb_ciElement>;
 
 /**
  * GlideElement values from the Business Service table.
@@ -6833,11 +6880,11 @@ declare interface cmdb_ci_serviceFields extends cmdb_ciFields {
 
     /**
      * Parent
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ci_serviceProperty>}
      * @memberof cmdb_ci_serviceFields
      * @description Refers to cmdb_ci_service (Business Service)
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord>>;
+    parent: $$rhino.Nilable<cmdb_ci_serviceProperty>;
 
     /**
      * Portfolio status
@@ -6909,11 +6956,11 @@ declare interface cmdb_ci_serviceFields extends cmdb_ciFields {
 
     /**
      * Users supported
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
      * @memberof cmdb_ci_serviceFields
      * @description Refers to sys_user_group (Group)
      */
-    user_group: $$rhino.Nilable<$$property.generic.Reference<sys_user_groupFields, sys_user_groupGlideRecord>>;
+    user_group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Version
@@ -6923,49 +6970,51 @@ declare interface cmdb_ci_serviceFields extends cmdb_ciFields {
     version: $$rhino.Nilable<$$property.Element>;
 }
 declare type cmdb_ci_serviceGlideRecord = cmdb_ciGlideRecord & cmdb_ci_serviceFields;
+declare type cmdb_ci_serviceElement = $$element.Reference<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord>;
+declare type cmdb_ci_serviceProperty = $$property.generic.ReferenceProperty<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord, cmdb_ci_serviceElement>;
 
 declare interface change_request_imacFields extends change_requestFields {
     /**
      * Move department
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_departmentProperty>}
      * @memberof change_request_imacFields
      */
-    move_department: $$rhino.Nilable<$$property.generic.Reference<cmn_departmentFields, cmn_departmentGlideRecord>>;
+    move_department: $$rhino.Nilable<cmn_departmentProperty>;
 
     /**
      * Move from
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof change_request_imacFields
      */
-    move_from: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    move_from: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Move from dc
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ciProperty>}
      * @memberof change_request_imacFields
      */
-    move_from_dc: $$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>;
+    move_from_dc: $$rhino.Nilable<cmdb_ciProperty>;
 
     /**
      * Move to
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_locationProperty>}
      * @memberof change_request_imacFields
      */
-    move_to: $$rhino.Nilable<$$property.generic.Reference<cmn_locationFields, cmn_locationGlideRecord>>;
+    move_to: $$rhino.Nilable<cmn_locationProperty>;
 
     /**
      * Move to dc
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>}
+     * @type {$$rhino.Nilable<cmdb_ciProperty>}
      * @memberof change_request_imacFields
      */
-    move_to_dc: $$rhino.Nilable<$$property.generic.Reference<cmdb_ciFields, cmdb_ciGlideRecord>>;
+    move_to_dc: $$rhino.Nilable<cmdb_ciProperty>;
 
     /**
      * Move user
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>}
+     * @type {$$rhino.Nilable<sys_userProperty>}
      * @memberof change_request_imacFields
      */
-    move_user: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    move_user: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * Network component
@@ -6979,10 +7028,10 @@ declare type change_request_imacGlideRecord = change_requestGlideRecord & change
 declare interface incident_taskFields extends taskFields {
     /**
      * Incident
-     * @type {$$rhino.Nilable<$$property.generic.Reference<incidentFields, incidentGlideRecord>>}
+     * @type {$$rhino.Nilable<incidentProperty>}
      * @memberof incident_taskFields
      */
-    incident: $$rhino.Nilable<$$property.generic.Reference<incidentFields, incidentGlideRecord>>;
+    incident: $$rhino.Nilable<incidentProperty>;
 }
 declare type incident_taskGlideRecord = taskGlideRecord & incident_taskFields;
 
@@ -7072,10 +7121,10 @@ declare interface wf_contextFields extends IGlideTableProperties {
     name: $$rhino.Nilable<$$property.Element>;
     /**
      * Parent Workflow
-     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>>}
+     * @type {$$rhino.Nilable<wf_contextProperty>}
      * @memberof wf_contextFields
      */
-    parent: $$rhino.Nilable<$$property.generic.Reference<wf_contextFields, wf_contextGlideRecord>>;
+    parent: $$rhino.Nilable<wf_contextProperty>;
     /**
      * Parent activity
      * @type {$$rhino.Nilable<$$property.generic.Reference<wf_executingFields, wf_executingGlideRecord>>}
@@ -7108,10 +7157,10 @@ declare interface wf_contextFields extends IGlideTableProperties {
     running_duration: $$rhino.Nilable<$$property.GlideObject>;
     /**
      * Schedule
-     * @type {$$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>}
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
      * @memberof wf_contextFields
      */
-    schedule: $$rhino.Nilable<$$property.generic.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>>;
+    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
 
     /**
      * Scratchpad
@@ -7146,7 +7195,7 @@ declare interface wf_contextFields extends IGlideTableProperties {
      * @type {}
      * @memberof wf_contextFields
      */
-    started_by: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
+    started_by: $$rhino.Nilable<sys_userProperty>;
 
     /**
      * State
@@ -7191,6 +7240,8 @@ declare interface wf_contextFields extends IGlideTableProperties {
     workflow_version: $$rhino.Nilable<$$property.generic.Reference<wf_workflow_versionFields, wf_workflow_versionGlideRecord>>;
 }
 declare type wf_contextGlideRecord = GlideRecord & wf_contextFields;
+declare type wf_contextElement = $$element.Reference<wf_contextFields, wf_contextGlideRecord>;
+declare type wf_contextProperty = $$property.generic.ReferenceProperty<wf_contextFields, wf_contextGlideRecord, wf_contextElement>;
 
 declare interface wf_activityFields extends IGlideTableProperties {
 }

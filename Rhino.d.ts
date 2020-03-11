@@ -74,6 +74,13 @@ declare interface IJavaArray<E> {
     [n: number]: E;
 }
 
+declare class GlideChoiceList extends Packages.com.glide.choice.ChoiceList {
+    constructor();
+}
+declare class GlideChoice extends Packages.com.glide.choice.Choice {
+    constructor(value: $$rhino.String, label: $$rhino.String);
+}
+
 declare namespace Packages {
     export namespace java {
         export namespace lang {
@@ -3494,14 +3501,200 @@ declare namespace Packages {
     export namespace com {
         export namespace glide {
             export namespace choice {
+                export class Choice {
+                    protected constructor(value: $$rhino.String, label: $$rhino.String, sysId?: $$rhino.String);
+                    getLabel(): $$rhino.String;
+                    getValue(): $$rhino.String;
+                    getId(): $$rhino.String;
+                    setId(sysId: $$rhino.String): void;
+                    getImage(): $$rhino.String;
+                    getED(): GlideElementDescriptor;
+                    getSelected(): $$rhino.Boolean;
+                    getUsed(): $$rhino.Boolean;
+                    setLabel(label: $$rhino.String): void;
+                    setValue(value: $$rhino.String): void;
+                    setImage(image: $$rhino.String): void;
+                    setED(ed: GlideElementDescriptor): void;
+                    setSelected(label: $$rhino.Boolean): void;
+                    getRefFileName(): $$rhino.String;
+                    setRefFileName(sysId: $$rhino.String): void;
+                    getUsed(used: $$rhino.String): void;
+                    setParameter(name: $$rhino.String, value: any): void;
+                    getParameter(name: $$rhino.String): any;
+                    getParameters(): Packages.java.util.HashMap<$$rhino.String, any>;
+                    compareTo(obj: any): $$rhino.Number;
+                    isReference(): $$rhino.Boolean;
+                    isMissing(): $$rhino.Boolean;
+                    setMissing(label: $$rhino.Boolean): void;
+                    //getScope(): Packages.com.glide.sys.fencing.Scope;
+                    //setScope(label: Packages.com.glide.sys.fencing.Scope): void;
+                    setParent(parentId: $$rhino.String): void;
+                }
                 export class ChoiceList {
-
+                    protected constructor();
+                    sort(): void;
+                    getChoice(index: $$rhino.String | $$rhino.Number): Choice;
+                    getChoiceNoTrim(index: $$rhino.String): Choice;
+                    getSelectedIndex(): $$rhino.Number;
+                    addNone(): Choice;
+                    removeNone(): void;
+                    add(choice: Choice): $$rhino.Boolean;
+                    addAll(cl: ChoiceList): void;
+                    addFirst(value: $$rhino.String, label: $$rhino.String): Choice;
+                    removeChoice(index: $$rhino.String | $$rhino.Number): Choice;
+                    getLabelOf(value: $$rhino.String): $$rhino.String;
+                    getValueOf(label: $$rhino.String): $$rhino.String;
+                    getSize(): $$rhino.Number;
+                    //getNullOverride(gc: Packages.com.glide.script.GlideController): $$rhino.String;
+                    static getChoiceList(tableName: $$rhino.String, fieldName: $$rhino.String): ChoiceList;
                 }
             }
             export namespace script {
-                export class GlideElement {
-
+                export interface IGlideElementVariable {
+                    getQuestion(): glideapp.questionset.Question;
                 }
+                export interface IGlideElementVariables extends IGlideElement {
+                }
+                export interface IGlideElement extends $$element.IDbObject {
+                    /**
+                     * Returns the name of the field.
+                     * @memberof GlideElement
+                     * @returns {string} Field name.
+                     */
+                    getName(): string;
+                    /**
+                     * Returns the name of the field.
+                     * @memberof GlideElement
+                     * @returns {string} Field name.
+                     */
+                    getTableName(): string;
+                    /**
+                     * Determines if the current field has been modified. This functionality is available for all available data types, except Journal fields.
+                     * @memberof GlideElement
+                     * @returns {boolean} True if the fields have been changed, false if the field has not.
+                     * @description 
+                     */
+                    changes(): boolean;
+                    /**
+                     * Determines if the previous value of the current field matches the specified object.
+                     * @memberof GlideElement
+                     * @param {*} o - An object value to check against the previous value of the current field.
+                     * @returns {boolean} True if the previous value matches, false if it does not.
+                     * @description 
+                     */
+                    changesFrom(o: any): boolean;
+                    /**
+                     * Determines if the new value of a field, after a change, matches the specified object.
+                     * @memberof GlideElement
+                     * @param {*} o - An object value to check against the new value of the current field.
+                     * @returns {boolean} True if the previous value matches, false if it does not.
+                     * @description 
+                     */
+                    changesTo(o: any): boolean;
+                    /**
+                     * Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT for a duration field. Does not require the creation of a GlideDateTime object because the duration field is already a GlideDateTime object.
+                     * @memberof GlideElement
+                     * @returns {number} Number of milliseconds since January 1, 1970, 00:00:00 GMT.
+                     */
+                    dateNumericValue(): number;
+                    /**
+                     * Returns the Boolean value of the specified attribute from the dictionary.
+                     * @memberof GlideElement
+                     * @param {string} attributeName - Attribute name
+                     * @returns {boolean} Boolean value of the attribute. Returns false if the attribute does not exist.
+                     * @description 
+                     */
+                    getBooleanAttribute(attributeName: string): boolean;
+                    /**
+                     * Generates a choice list for a field.
+                     * @memberof GlideElement
+                     * @param {string} [dependent] - A dependent value
+                     * @returns {Array<*>} An array list of choices.
+                     */
+                    getChoices(dependent?: string): any[];
+                    /**
+                     * Returns the choice label for the current choice.
+                     * @memberof GlideElement
+                     * @returns {string} The selected choice's label.
+                     * @description 
+                     */
+                    getChoiceValue(): string;
+                    /**
+                     * Returns the clear text value for Password (2 way encrypted) fields in scoped applications.
+                     * @memberof GlideElement
+                     * @returns {string} The clear text password.
+                     */
+                    getDecryptedValue(): string;
+                    /**
+                     * Gets the formatted display value of the field.
+                     * @memberof GlideElement
+                     * @param {number} [maxCharacters] - Maximum characters desired
+                     * @returns {string} The display value of the field.
+                     */
+                    getDisplayValue(maxCharacters?: number): string;
+                    /**
+                     * Returns the phone number in international format.
+                     * @memberof GlideElement
+                     * @returns {string} The phone number in international format.
+                     */
+                    getGlobalDisplayValue(): string;
+                    /**
+                     * Returns the HTML value of a field.
+                     * @memberof GlideElement
+                     * @param {number} [maxChars] - Maximum number of characters to return.
+                     * @returns {string} HTML value for the field.
+                     */
+                    getHTMLValue(maxChars?: number): string;
+                    /**
+                     * Returns either the most recent journal entry or all journal entries.
+                     * @memberof GlideElement
+                     * @param {number} mostRecent - If 1, returns the most recent entry. If -1, returns all journal entries.
+                     * @returns {string} For the most recent entry, returns a string that contains the field label, timestamp, and user display name of the journal entry.For all journal entries, returns the same information for all journal entries ever entered as a single string with each entry delimited by "\n\n".
+                     */
+                    getJournalEntry(mostRecent: number): string;
+                    /**
+                     * Determines if a field is null.
+                     * @memberof GlideElement
+                     * @returns {boolean} True if the field is null or an empty string, false if not.
+                     */
+                    nil(): boolean;
+                    /**
+                     * Sets the value of a date/time element to the specified number of milliseconds since January 1, 1970 00:00:00 GMT.
+                     * @memberof GlideElement
+                     * @param {number} milliseconds - Number of milliseconds since 1/1/1970
+                     * @description 
+                     */
+                    setDateNumericValue(milliseconds: number): void;
+                    /**
+                     * Sets the display value of the field.
+                     * @memberof GlideElement
+                     * @param {*} value - The value to set for the field.
+                     */
+                    setDisplayValue(value: any): void;
+                    /**
+                     * Adds an error message. Available in Fuji patch 3.
+                     * @memberof GlideElement
+                     * @param {string} errorMessage - The error message.
+                     */
+                    setError(errorMessage: string): void;
+                    /**
+                     * Sets the field to the specified phone number.
+                     * @memberof GlideElement
+                     * @param {*} phoneNumber - The phone number to set. This can be in either the international or local format.
+                     * @param {boolean} strict - When true, specifies that the number specified must match the correct format. When false, the system attempts to correct an improperly formatted phone number.
+                     * @returns {boolean} True if the value was set.
+                     * @description 
+                     */
+                    setPhoneNumber(phoneNumber: any, strict: boolean): boolean;
+                    /**
+                     * Sets the value of a field.
+                     * @memberof GlideElement
+                     * @param {*} value - Object value to set the field to.
+                     * @description 
+                     */
+                    setValue(value: any): void;
+                }
+                export class GlideElement extends $$element.StringBased<string, GlideElement, string> { protected constructor(); }
             }
             export namespace glideobject {
                 export interface IGlideObject {
@@ -3557,6 +3750,126 @@ declare namespace Packages {
                     getDisplayValue(): java.lang.String;
                     getValue(): java.lang.String;
                     getInitialValue(): java.lang.String;
+                }
+            }
+        }
+        export namespace glideapp {
+            export namespace questionset {
+                export class Question {
+                    static readonly YES_NO: 1;
+                    static readonly TEXTAREA: 2;
+                    static readonly RADIO_CHOICES: 3;
+                    static readonly LIKERT_SCALE: 4;
+                    static readonly CHOICE_LIST: 5;
+                    static readonly TEXTFIELD: 6;
+                    static readonly CHECKBOX: 7;
+                    static readonly REFERENCE: 8;
+                    static readonly DATE: 9;
+                    static readonly DATE_TIME: 10;
+                    static readonly LABEL: 11;
+                    static readonly BREAK: 12;
+                    static readonly RENDER_MACRO: 14;
+                    static readonly RENDER_UI_PAGE: 15;
+                    static readonly WIDE_TEXTFIELD: 16;
+                    static readonly RENDER_MACRO_WITH_LABEL: 17;
+                    static readonly LOOKUP_SELECT_BOX: 18;
+                    static readonly CONTAINER_START: 19;
+                    static readonly CONTAINER_END: 20;
+                    static readonly LIST_COLLECTOR: 21;
+                    static readonly LOOKUP_RADIO_CHOICES: 22;
+                    static readonly HTML: 23;
+                    static readonly CONTAINER_SPLIT: 24;
+                    static readonly MASKED: 25;
+                    static readonly EMAIL: 26;
+                    static readonly URL: 27;
+                    static readonly IP_ADDRESS: 28;
+                    static readonly DURATION: 29;
+                    static readonly TABLE_QUESTION: 30;
+                    static readonly TYPE_DEFAULT: 2;
+                    static readonly UI_PAGE: "ui_page";
+                    static readonly MACRO: "macro";
+                    isValueEmpty(): $$rhino.Boolean;
+                    isVariableEditor(): $$rhino.Boolean;
+                    getSet(): QuestionSet;
+                    getDisplayValue(): $$rhino.String;
+                    setDisplayValue(value: $$rhino.String): void;
+                    canRead(): $$rhino.Boolean;
+                    canWrite(): $$rhino.Boolean;
+                    canCreate(): $$rhino.Boolean;
+                    getMode(): $$rhino.Number;
+                    isReadOnly(): $$rhino.Boolean;
+                    getName(): $$rhino.String;
+                    setId(): $$rhino.String;
+                    getLabel(): $$rhino.String;
+                    getMaxLength(): $$rhino.Number;
+                    getValue(): $$rhino.String;
+                    getInitialValue(): $$rhino.String;
+                    setValue(value: $$rhino.String): void;
+                    getExampleText(): $$rhino.String;
+                    getTooltip(): $$rhino.String;
+                    getHelpTag(): $$rhino.String;
+                    getHelpText(): $$rhino.String;
+                    getCreateRoles(): $$rhino.String;
+                    getReadRoles(): $$rhino.String;
+                    getWriteRoles(): $$rhino.String;
+                    getType(): $$rhino.Number;
+                    getOrder(): $$rhino.Number;
+                    getCategory(): $$rhino.String;
+                    isMandatory(): $$rhino.Boolean;
+                    setMandatory(value: $$rhino.Boolean): void;
+                    isShowHelp(): $$rhino.Boolean;
+                    isDoNotSelectFirst(): $$rhino.Boolean;
+                    getScopeID(): $$rhino.String;
+                    getED(): GlideElementDescriptor;
+                    hasPricingImplications(): $$rhino.Boolean;
+                    getDefault(): $$rhino.String;
+                    isIncludeNone(): $$rhino.Boolean;
+                    getMacro(): $$rhino.String;
+                    getSummaryMacro(): $$rhino.String;
+                    getPortalWidget(): $$rhino.String;
+                    getUIPage(): $$rhino.String;
+                    getLookupLabel(): $$rhino.String;
+                    getLookupTable(): $$rhino.String;
+                    getChoiceTable(): $$rhino.String;
+                    getChoiceField(): $$rhino.String;
+                    isLookupUnique(): $$rhino.Boolean;
+                    getLookupValue(): $$rhino.String;
+                    getListTable(): $$rhino.String;
+                    isVisibleSummary(): $$rhino.Boolean;
+                    isVisibleGuide(): $$rhino.Boolean;
+                    isVisibleStandalone(): $$rhino.Boolean;
+                    getDirection(): $$rhino.String;
+                    getAttributes(): $$rhino.String;
+                    getInstructions(): $$rhino.String;
+                    isNumeric(): $$rhino.Boolean;
+                    isDate(): $$rhino.Boolean;
+                    getQuestionSummary(): java.util.Map<any, any>;
+                    getVariableWidth(): $$rhino.String;
+                    getParentContainerID(): $$rhino.String;
+                    isActive(): $$rhino.Boolean;
+                    getCatalogItem(): $$rhino.String;
+                }
+                export class QuestionSet {
+                    getQuestion(): java.util.List<Question>;
+                }
+                export class AbstractChoiceListQuestion extends Question {
+                    getChoiceList(): GlideChoiceList;
+                }
+                export class YesNoQuestion extends Question {
+                    getYesNoList(): GlideChoiceList;
+                }
+                export class ListCollectorQuestion extends Question {
+                    getType(): 21;
+                    getTemplate(): $$rhino.String;
+                    getListTable(): $$rhino.String;
+                    getReferenceQualifier(): $$rhino.String;
+                }
+                export class ReferenceQuestion extends Question {
+                    getType(): 8;
+                    getReference(): $$rhino.String;
+                    getReferenceQualifier(): $$rhino.String;
+                    getReferenceQualifierType(): $$rhino.String;
+                    getVariableAttribute(defaultValue: $$rhino.String, attribute: $$rhino.String): $$rhino.String;
                 }
             }
         }

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="number">
+    <xs:union memberTypes="xs:int xs:long xs:float" />
+  </xs:simpleType>
+  <xs:simpleType name="primitiveTypeName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="undefined" />
+      <xs:enumeration value="null" />
+      <xs:enumeration value="string" />
+      <xs:enumeration value="boolean" />
+      <xs:enumeration value="number" />
+      <xs:enumeration value="function" />
+      <xs:enumeration value="object" />
+      <xs:enumeration value="any" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="typeReference">
+    <xs:sequence>
+      <xs:group ref="typeSpecElements" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="namespace" use="optional" />
+    <xs:attribute name="name" use="required" />
+    <xs:attribute name="kind" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="class" />
+          <xs:enumeration value="interface" />
+          <xs:enumeration value="type" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:group name="typeSpecElements">
+    <xs:choice>
+      <xs:element name="type" nillable="true">
+        <xs:complexType>
+          <xs:attribute name="name" type="primitiveTypeName" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="true" nillable="true" />
+      <xs:element name="false" nillable="true" />
+      <xs:element name="string" type="xs:string" nillable="false" />
+      <xs:element name="number" type="number" nillable="false" />
+      <xs:element name="function" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="param" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="optional" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="altArgSet" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="1">
+                  <xs:element name="param" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+                  <xs:element name="optional" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="return" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:choice minOccurs="1" maxOccurs="1">
+                  <xs:element name="void" nillable="true" />
+                  <xs:group ref="typeSpecElements" />
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ref" type="typeReference" />
+      <xs:element name="generic" nillable="true">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="union" type="typeUnion" />
+      <xs:element name="intersection" type="typeUnion" />
+      <xs:element name="array" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="typeSpecElements" minOccurs="1" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hash" nillable="false">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="typeSpecElements" minOccurs="1" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="object" nillable="false">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="member" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="documentedTypeSpecElements">
+    <xs:sequence>
+      <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:choice>
+        <xs:element name="type" nillable="true">
+          <xs:complexType>
+            <xs:attribute name="name" type="primitiveTypeName" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="true" nillable="true" />
+        <xs:element name="false" nillable="true" />
+        <xs:element name="string" type="xs:string" nillable="false" />
+        <xs:element name="number" type="number" nillable="false" />
+        <xs:element name="function" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="param" type="documentedMember" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="optional" type="documentedMember" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="altArgSet" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="1">
+                    <xs:element name="optional" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="optArg" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="return" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+                    <xs:choice minOccurs="1" maxOccurs="1">
+                      <xs:element name="void" nillable="true" />
+                      <xs:group ref="typeSpecElements" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ref" type="typeReference" />
+        <xs:element name="generic" nillable="true">
+          <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="union" type="typeUnion" />
+        <xs:element name="intersection" type="typeUnion" />
+        <xs:element name="array" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:group ref="typeSpecElements" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="hash" nillable="false">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:group ref="typeSpecElements" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="object" nillable="false">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="member" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="typedMember">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:group ref="typeSpecElements" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="typeUnion">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:group ref="typeSpecElements" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="typeSec">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:group ref="typeSpecElements" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="typeDefinition">
+    <xs:sequence>
+      <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="generic" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:group ref="typeSpecElements" />
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="type" nillable="true">
+          <xs:complexType>
+            <xs:attribute name="name" type="primitiveTypeName" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="true" nillable="true" />
+        <xs:element name="false" nillable="true" />
+        <xs:element name="string" type="xs:string" nillable="false" />
+        <xs:element name="number" type="number" nillable="false" />
+        <xs:element name="function" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="param" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="optional" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="altArgSet" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="1">
+                    <xs:element name="param" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="optional" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="return" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:choice minOccurs="1" maxOccurs="1">
+                    <xs:element name="void" nillable="true" />
+                    <xs:group ref="typeSpecElements" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ref" type="typeReference" />
+        <xs:element name="union" type="typeUnion" />
+        <xs:element name="intersection" type="typeUnion" />
+        <xs:element name="array" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:group ref="typeSpecElements" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="hash" nillable="false">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:group ref="typeSpecElements" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="object" nillable="false">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="member" type="typedMember" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="documentedMember">
+    <xs:sequence minOccurs="0" maxOccurs="1">
+      <xs:group ref="documentedTypeSpecElements" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="interface">
+    <xs:sequence>
+      <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="generic" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:group ref="typeSpecElements" />
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extends" type="typeReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="member" type="documentedMember" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="class">
+    <xs:sequence>
+      <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="generic" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:group ref="typeSpecElements" />
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extends" type="typeReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="implements" type="typeReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="member" type="documentedMember" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="abstract" type="xs:boolean" use="optional" />
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="namespace">
+    <xs:sequence>
+      <xs:element name="summary" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="type" type="typeDefinition" />
+        <xs:element name="class" type="class" />
+        <xs:element name="interface" type="interface" />
+        <xs:element name="namespace" type="namespace" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:element name="TypeDefinitions">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="type" type="typeDefinition" />
+        <xs:element name="class" type="class" />
+        <xs:element name="interface" type="interface" />
+        <xs:element name="namespace" type="namespace" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

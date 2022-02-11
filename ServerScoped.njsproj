@@ -33,7 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.ts" />
-    <Content Include="Document1.xml">
+    <Content Include="Definitions.xsd">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Definitions.xml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="LICENSE" />

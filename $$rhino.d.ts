@@ -74,13 +74,6 @@ declare interface IJavaArray<E> {
     [n: number]: E;
 }
 
-declare class GlideChoiceList extends Packages.com.glide.choice.ChoiceList {
-    constructor();
-}
-declare class GlideChoice extends Packages.com.glide.choice.Choice {
-    constructor(value: $$rhino.String, label: $$rhino.String);
-}
-
 declare namespace Packages {
     export namespace java {
         export namespace lang {
@@ -3874,4 +3867,400 @@ declare namespace Packages {
             }
         }
     }
+}
+
+/**
+ * Neither this namespace, nor types within it are defined in the server-side ServiceNow scripting environment.
+ * @summary Type definitions for Server-side object definitions.
+ * @namespace $$snClass
+ */
+declare namespace $$snClass {
+    /**
+     * Base interface for custom class definitions
+     * @export
+     * @interface ICustomClassBase
+     * @template B - The base class type.
+     * @template N - The name of the custom class type.
+     */
+    export interface ICustomClassBase<B extends ICustomClassBase<B, N>, N extends string> {
+        /**
+         * The type name of the class.
+         * @type {N}
+         */
+        type: N;
+    }
+
+    //#region Prototype definitions
+
+    /**
+     * Prototype for objects whose constructor has no arguments.
+     * @interface ICustomClassPrototype0
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype (self-referencing type)
+     * @template N - The value of the name property for objects constructed with this prototype.
+     */
+     export interface ICustomClassPrototype0<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype0<B, P, N>, N extends string> extends ICustomClassBase<B, N> {
+        /**
+         * Called by {@see Class#create} to initialize the newly instantiated object
+         * @this {P} The current "this" object.
+         */
+        initialize(this: P): void;
+    }
+
+    /**
+     * Prototype for objects whose constructor has one argument.
+     * @interface ICustomClassPrototype1
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype (self-referencing type)
+     * @template N - The value of the type property for objects constructed with this prototype.
+     * @template A - The argument type.
+     */
+     export interface ICustomClassPrototype1<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype1<B, P, N, A>, N extends string, A> extends ICustomClassBase<B, N> {
+        /**
+         * Called by {@see Class#create} to initialize the newly instantiated object
+         * @this {P} The current "this" object.
+         * @param {A} arg - The argument provided to the constructor.
+         */
+        initialize(this: P, arg: A): void;
+    }
+
+    /**
+     * Prototype for objects whose constructor has 2 arguments.
+     * @interface ICustomClassPrototype2
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype (self-referencing type)
+     * @template N - The value of the type property for objects constructed with this prototype.
+     * @template A0 - The first argument type.
+     * @template A1 - The second argument type.
+     */
+     export interface ICustomClassPrototype2<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype2<B, P, N, A0, A1>, N extends string, A0, A1> extends ICustomClassBase<B, N> {
+        /**
+         * Called by {@see Class#create} to initialize the newly instantiated object
+         * @this {P} The current "this" object.
+         * @param {A0} arg0 - The first argument provided to the constructor.
+         * @param {A1} arg1 - The second argument provided to the constructor.
+         */
+        initialize(this: P, arg0: A0, arg1: A1): void;
+    }
+
+    /**
+     * Prototype for objects whose constructor has 3 arguments.
+     * @interface ICustomClassPrototype3
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype (self-referencing type)
+     * @template N - The value of the type property for objects constructed with this prototype.
+     * @template A0 - The first argument type.
+     * @template A1 - The second argument type.
+     * @template A2 - The third argument type.
+     */
+     export interface ICustomClassPrototype3<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype3<B, P, N, A0, A1, A2>, N extends string, A0, A1, A2> extends ICustomClassBase<B, N> {
+        /**
+         * Called by {@see Class#create} to initialize the newly instantiated object
+         * @this {P} The current "this" object.
+         * @param {A0} arg0 - The first argument provided to the constructor.
+         * @param {A1} arg1 - The second argument provided to the constructor.
+         * @param {A2} arg2 - The third argument provided to the constructor.
+         */
+        initialize(this: P, arg0: A0, arg1: A1, arg2: A2): void;
+    }
+
+    /**
+     * Prototype for objects whose constructor has 4 arguments.
+     * @interface ICustomClassPrototype4
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype (self-referencing type)
+     * @template N - The value of the type property for objects constructed with this prototype.
+     * @template A0 - The first argument type.
+     * @template A1 - The second argument type.
+     * @template A2 - The third argument type.
+     * @template A3 - The fourth argument type.
+     */
+     export interface ICustomClassPrototype4<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype4<B, P, N, A0, A1, A2, A3>, N extends string, A0, A1, A2, A3> extends ICustomClassBase<B, N> {
+        /**
+         * Called by {@see Class#create} to initialize the newly instantiated object
+         * @this {P} The current "this" object.
+         * @param {A0} arg0 - The first argument provided to the constructor.
+         * @param {A1} arg1 - The second argument provided to the constructor.
+         * @param {A2} arg2 - The third argument provided to the constructor.
+         * @param {A3} arg3 - The fourth argument provided to the constructor.
+         */
+        initialize(this: P, arg0: A0, arg1: A1, arg2: A2, arg3: A3): void;
+    }
+
+    /**
+     * Prototype for objects whose constructor has a variable nubmer of arguments.
+     * @interface ICustomClassPrototypeN
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype (self-referencing type)
+     * @template N - The value of the type property for objects constructed with this prototype.
+     */
+     export interface ICustomClassPrototypeN<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototypeN<B, P, N>, N extends string> extends ICustomClassBase<B, N> {
+        /**
+         * Called by {@see Class#create} to initialize the newly instantiated object
+         * @this {P} The current "this" object.
+         * @param {...any[]} args- The arguments provided to the constructor.
+         */
+        initialize(this: P, ...args: any[]): void;
+    }
+
+    // #endregion
+
+    //#region Constructor definitions
+
+    /**
+     * A class constructor that has no arguments.
+     * @interface CustomClassConstructor0
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype.
+     * @template I - The constructed object type.
+     */
+     export interface CustomClassConstructor0<B extends ICustomClassBase<B, string>, P extends B & ICustomClassPrototype0<B, P, string>, I extends B> {
+        /**
+         * Creates an instance of CustomClassConstructor0.
+         * @param {A} arg - The constructor argument.
+         */
+        new(): I;
+
+        /**
+         * Creates an instance of CustomClassConstructor0.
+         * @param {A} arg - The constructor argument.
+         */
+        (): I;
+
+        /**
+         * The prototype that will be used to create the new object.
+         * @type {P}
+         */
+        prototype: P;
+    }
+
+    /**
+     * A class constructor that has 1 argument.
+     * @interface CustomClassConstructor1
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype.
+     * @template I - The constructed object type.
+     * @template A - The constructor argument type.
+     */
+     export interface CustomClassConstructor1<B extends ICustomClassBase<B, string>, P extends B & ICustomClassPrototype1<B, P, string, A>, I extends B, A> {
+        /**
+         * Creates an instance of CustomClassConstructor1.
+         * @param {A} arg - The constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        new(arg: A): I;
+
+        /**
+         * Creates an instance of CustomClassConstructor1.
+         * @param {A} arg - The constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        (arg: A): I;
+
+        /**
+         * The prototype that will be used to create the new object.
+         * @type {P}
+         */
+        prototype: P;
+    }
+
+    /**
+     * A class constructor that has 2 arguments.
+     * @interface CustomClassConstructor2
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype.
+     * @template I - The constructed object type.
+     * @template A0 - The argument type for the first constructor argument.
+     * @template A1 - The argument type for the second constructor argument.
+     */
+     export interface CustomClassConstructor2<B extends ICustomClassBase<B, string>, P extends B & ICustomClassPrototype2<B, P, string, A0, A1>, I extends B, A0, A1> {
+        /**
+         * Creates an instance of CustomClassConstructor2.
+         * @param {A0} arg0 - The first constructor argument.
+         * @param {A1} arg1 - The second constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        new(arg0: A0, arg1: A1): I;
+
+        /**
+         * Creates an instance of CustomClassConstructor2.
+         * @param {A0} arg0 - The first constructor argument.
+         * @param {A1} arg1 - The second constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        (arg0: A0, arg1: A1): I;
+
+        /**
+         * The prototype that will be used to create the new object.
+         * @type {P}
+         */
+        prototype: P;
+    }
+
+    /**
+     * A class constructor that has 3 arguments.
+     * @interface CustomClassConstructor3
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype.
+     * @template I - The constructed object type.
+     * @template A0 - The argument type for the first constructor argument.
+     * @template A1 - The argument type for the second constructor argument.
+     * @template A2 - The argument type for the third constructor argument.
+     */
+     export interface CustomClassConstructor3<B extends ICustomClassBase<B, string>, P extends B & ICustomClassPrototype3<B, P, string, A0, A1, A2>, I extends B, A0, A1, A2> {
+        /**
+         * Creates an instance of CustomClassConstructor3.
+         * @param {A0} arg0 - The first constructor argument.
+         * @param {A1} arg1 - The second constructor argument.
+         * @param {A2} arg2 - The third constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        new(arg0: A0, arg1: A1, arg2: A2): I;
+
+        /**
+         * Creates an instance of CustomClassConstructor3.
+         * @param {A0} arg0 - The first constructor argument.
+         * @param {A1} arg1 - The second constructor argument.
+         * @param {A2} arg2 - The third constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        (arg0: A0, arg1: A1, arg2: A2): I;
+
+        /**
+         * The prototype that will be used to create the new object.
+         * @type {P}
+         */
+        prototype: P;
+    }
+
+    /**
+     * A class constructor that has 4 arguments.
+     * @interface CustomClassConstructor4
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype.
+     * @template I - The constructed object type.
+     * @template A0 - The argument type for the first constructor argument.
+     * @template A1 - The argument type for the second constructor argument.
+     * @template A2 - The argument type for the third constructor argument.
+     * @template A3 - The argument type for the fourth constructor argument.
+     */
+     export interface CustomClassConstructor4<B extends ICustomClassBase<B, string>, P extends B & ICustomClassPrototype4<B, P, string, A0, A1, A2, A3>, I extends B, A0, A1, A2, A3> {
+        /**
+         * Creates an instance of CustomClassConstructor4.
+         * @param {A0} arg0 - The first constructor argument.
+         * @param {A1} arg1 - The second constructor argument.
+         * @param {A2} arg2 - The third constructor argument.
+         * @param {A3} arg3 - The fourth constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        new(arg0: A0, arg1: A1, arg2: A2, arg3: A3): I;
+
+        /**
+         * Creates an instance of CustomClassConstructor4.
+         * @param {A0} arg0 - The first constructor argument.
+         * @param {A1} arg1 - The second constructor argument.
+         * @param {A2} arg2 - The third constructor argument.
+         * @param {A3} arg3 - The fourth constructor argument.
+         * @returns {I} - The new object instance.
+         */
+        (arg0: A0, arg1: A1, arg2: A2, arg3: A3): I;
+
+        /**
+         * The prototype that will be used to create the new object.
+         * @type {P}
+         */
+        prototype: P;
+    }
+
+    /**
+     * A class constructor that has a variable number arguments.
+     * @interface CustomClassConstructorN
+     * @template B - The base type shared by the prototype and the object instance.
+     * @template P - The type of prototype.
+     * @template I - The constructed object type.
+     *
+     */
+     export interface CustomClassConstructorN<B extends ICustomClassBase<B, string>, P extends B & ICustomClassPrototypeN<B, P, string>, I extends B> {
+        /**
+         * Creates an instance of CustomClassConstructorN.
+         * @param {...any[]} args - The constructor arguments.
+         * @returns {I} - The new object instance.
+         */
+        new(...args: any[]): I;
+
+        /**
+         * Creates an instance of CustomClassConstructorN.
+         * @param {...any[]} args - The constructor arguments.
+         * @returns {I} - The new object instance.
+         */
+        (): I;
+
+        /**
+         * The prototype that will be used to create the new object.
+         * @type {P}
+         */
+        prototype: P;
+    }
+
+    // #endregion
+}
+
+interface Object {
+    /** The initial value of Object.prototype.constructor is the standard built-in Object constructor. */
+    constructor: Function;
+
+    /** Returns a string representation of an object. */
+    toString(): string;
+
+    /** Returns a date converted to a string using the current locale. */
+    toLocaleString(): string;
+
+    /** Returns the primitive value of the specified object. */
+    valueOf(): Object;
+
+    /**
+     * Determines whether an object has a property with the specified name.
+     * @param v A property name.
+     */
+    hasOwnProperty(v: string): boolean;
+
+    /**
+     * Determines whether an object exists in another object's prototype chain.
+     * @param v Another object whose prototype chain is to be checked.
+     */
+    isPrototypeOf(v: Object): boolean;
+
+    /**
+     * Determines whether a specified property is enumerable.
+     * @param v A property name.
+     */
+    propertyIsEnumerable(v: string): boolean;
+
+    extendsObject<B, P>(baseType: B, protoType: P) : B & P;
+}
+
+declare var Class: {
+    /**
+     * Creates a ServiceNow-compatible object constructor.
+     * @template B - The base type shared for the prototype and the object instance.
+     * @template C - The constructor type.
+     * @returns {C} - The ServiceNow-compatible object constructor.
+     */
+    create<B extends $$snClass.ICustomClassBase<B, string>, C extends $$snClass.CustomClassConstructor0<B, any, any> | $$snClass.CustomClassConstructor1<B, any, any, any> |
+        $$snClass.CustomClassConstructor2<B, any, any, any, any> | $$snClass.CustomClassConstructor3<B, any, any, any, any, any> | $$snClass.CustomClassConstructor4<B, any, any, any, any, any, any> |
+        $$snClass.CustomClassConstructorN<B, any, any>>(): C;
+
+    create2<C extends $$snClass.CustomClassConstructor0<any, $$snClass.ICustomClassPrototype0<any, any, string>, $$snClass.ICustomClassPrototype0<any, any, string>> |
+        $$snClass.CustomClassConstructor1<any, $$snClass.ICustomClassPrototype1<any, any, string, any>, $$snClass.ICustomClassPrototype1<any, any, string, any>, any> |
+        $$snClass.CustomClassConstructor2<any, $$snClass.ICustomClassPrototype2<any, any, string, any, any>, $$snClass.ICustomClassPrototype2<any, any, string, any, any>, any, any> |
+        $$snClass.CustomClassConstructor3<any, $$snClass.ICustomClassPrototype3<any, any, string, any, any, any>, $$snClass.ICustomClassPrototype3<any, any, string, any, any, any>, any, any, any> |
+        $$snClass.CustomClassConstructor4<any, $$snClass.ICustomClassPrototype4<any, any, string, any, any, any, any>, $$snClass.ICustomClassPrototype4<any, any, string, any, any, any, any>, any, any, any, any> |
+        $$snClass.CustomClassConstructorN<any, $$snClass.ICustomClassPrototypeN<any, any, string>, $$snClass.ICustomClassPrototypeN<any, any, string>>>(): C;
+}
+
+declare class GlideChoiceList extends Packages.com.glide.choice.ChoiceList {
+    constructor();
+}
+declare class GlideChoice extends Packages.com.glide.choice.Choice {
+    constructor(value: $$rhino.String, label: $$rhino.String);
 }

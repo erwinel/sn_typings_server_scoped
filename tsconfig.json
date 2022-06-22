@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
-    "module": "none",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
     "target": "es3",
-    "lib": [ "es2015" ]
+    "module": "none",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
+    "lib": [
+      "es2015"
+    ]
   },
   "exclude": [
-    "node_modules",
+    "node_modules/**/*",
     "**/*.spec.ts",
-    "**/*.js",
-    "app.*"
+    "**/*.js"
   ]
 }

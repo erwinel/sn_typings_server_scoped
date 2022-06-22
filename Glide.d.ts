@@ -1,4 +1,6 @@
-/// <reference path="index.d.ts" />
+/// <reference path="$$rhino.d.ts" />
+/// <reference path="$$element.d.ts" />
+/// <reference path="$$property.d.ts" />
 
 /**
  * Query operator values that can be used for string value comparisons.
@@ -15,331 +17,18 @@ declare type NumberQueryOperator = "=" | "!=" | ">" | ">=" | "<" | "<=";
  */
 declare type QueryOperator = StringQueryOperator | NumberQueryOperator;
 
-/**
- * Helper types for GlideElement and GlideRecord objects.
- * @namespace $$element
- */
-declare namespace $$element {
-    /**
-     * Defines members that are common to both GlideRecord and GlideElement objects
-     * @export
-     * @interface IDbObject
-     */
-    export interface IDbObject {
-        /**
-         * Determines if the user's role permits the creation of new records in this field.
-         * @memberof IDbObject
-         * @returns {boolean} True if the field can be created, false otherwise.
-         */
-        canCreate(): boolean;
-        /**
-         * Indicates whether the user's role permits them to read the associated GlideRecord.
-         * @memberof IDbObject
-         * @returns {boolean} True if the field can be read, false otherwise.
-         */
-        canRead(): boolean;
-        /**
-         * Determines whether the user's role permits them to write to the associated GlideRecord.
-         * @memberof IDbObject
-         * @returns {boolean} True if the user can write to the field, false otherwise.
-         */
-        canWrite(): boolean;
-        /**
-         * Returns the value of the specified attribute from the dictionary.
-         * @memberof IDbObject
-         * @param {string} attributeName - Attribute name
-         * @returns {string} Attribute value.
-         * @description 
-         */
-        getAttribute(attributeName: string): string;
-        /**
-         * Returns the element's descriptor.
-         * @memberof IDbObject
-         * @returns {GlideElementDescriptor} Element's descriptor.
-         */
-        getED(): GlideElementDescriptor;
-        /**
-         * Returns the object label.
-         * @memberof IDbObject
-         * @returns {string} Object label.
-         */
-        getLabel(): string;
-        /**
-         * Returns for Element objects, returns the name of the table on which the field resides; Otherwise, retrieves the name of the table associated with the GlideRecord.
-         * @memberof IDbObject
-         * @returns {string} Name of the table. The returned value may be different from the table Class that the record is in. See Tables and Classes in the product documentation.
-         */
-        getTableName(): string;
-    }
-    export interface IValueSpecific<V, E extends IGlideElement, S extends string> extends IGlideElement {
-        changesFrom(o: V | E | $$rhino.Nilable<S>): boolean;
-        changesTo(o: V | E | $$rhino.Nilable<S>): boolean;
-        setValue(obj: V | E | $$rhino.Nilable<S>): void;
-    }
-    export class StringBased<V extends string | number, E extends StringBased<V, E, S>, S extends string> extends Packages.java.lang.String implements IValueSpecific<V, E, S> {
-        /**
-         * Determines if the user's role permits the creation of new records in this field.
-         * @memberof IDbObject
-         * @returns {boolean} True if the field can be created, false otherwise.
-         */
-        canCreate(): boolean;
-        /**
-         * Indicates whether the user's role permits them to read the associated GlideRecord.
-         * @memberof IDbObject
-         * @returns {boolean} True if the field can be read, false otherwise.
-         */
-        canRead(): boolean;
-        /**
-         * Determines whether the user's role permits them to write to the associated GlideRecord.
-         * @memberof IDbObject
-         * @returns {boolean} True if the user can write to the field, false otherwise.
-         */
-        canWrite(): boolean;
-        /**
-         * Determines if the current field has been modified. This functionality is available for all available data types, except Journal fields.
-         * @memberof GlideElement
-         * @returns {boolean} True if the fields have been changed, false if the field has not.
-         * @description 
-         */
-        changes(): boolean;
-        /**
-         * Determines if the previous value of the current field matches the specified object.
-         * @memberof GlideElement
-         * @param {V | E | $$property.Nilable<S>} o - An object value to check against the previous value of the current field.
-         * @returns {boolean} True if the previous value matches, false if it does not.
-         * @description 
-         */
-        changesFrom(o: V | E | $$rhino.Nilable<S>): boolean;
-        /**
-         * Determines if the new value of a field, after a change, matches the specified object.
-         * @memberof GlideElement
-         * @param {V | E | $$property.Nilable<S>} o - An object value to check against the new value of the current field.
-         * @returns {boolean} True if the previous value matches, false if it does not.
-         * @description 
-         */
-        changesTo(o: V | E | $$rhino.Nilable<S>): boolean;
-        /**
-         * Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT for a duration field. Does not require the creation of a GlideDateTime object because the duration field is already a GlideDateTime object.
-         * @memberof GlideElement
-         * @returns {number} Number of milliseconds since January 1, 1970, 00:00:00 GMT.
-         */
-        dateNumericValue(): number;
-        /**
-         * Returns the value of the specified attribute from the dictionary.
-         * @memberof IDbObject
-         * @param {string} attributeName - Attribute name
-         * @returns {string} Attribute value.
-         * @description 
-         */
-        getAttribute(attributeName: string): string;
-        /**
-         * Returns the Boolean value of the specified attribute from the dictionary.
-         * @memberof GlideElement
-         * @param {string} attributeName - Attribute name
-         * @returns {boolean} Boolean value of the attribute. Returns false if the attribute does not exist.
-         * @description 
-         */
-        getBooleanAttribute(attributeName: string): boolean;
-        /**
-         * Generates a choice list for a field.
-         * @memberof GlideElement
-         * @param {string} [dependent] - A dependent value
-         * @returns {Array<*>} An array list of choices.
-         */
-        getChoices(dependent?: string): any[];
-        /**
-         * Returns the choice label for the current choice.
-         * @memberof GlideElement
-         * @returns {string} The selected choice's label.
-         * @description 
-         */
-        getChoiceValue(): string;
-        /**
-         * Returns the clear text value for Password (2 way encrypted) fields in scoped applications.
-         * @memberof GlideElement
-         * @returns {string} The clear text password.
-         */
-        getDecryptedValue(): string;
-        /**
-         * Gets the formatted display value of the field.
-         * @memberof GlideElement
-         * @param {number} [maxCharacters] - Maximum characters desired
-         * @returns {string} The display value of the field.
-         */
-        getDisplayValue(maxCharacters?: number): string;
-        /**
-         * Returns the element's descriptor.
-         * @memberof IDbObject
-         * @returns {GlideElementDescriptor} Element's descriptor.
-         */
-        getED(): GlideElementDescriptor;
-        /**
-         * Returns the phone number in international format.
-         * @memberof GlideElement
-         * @returns {string} The phone number in international format.
-         */
-        getGlobalDisplayValue(): string;
-        /**
-         * Returns the HTML value of a field.
-         * @memberof GlideElement
-         * @param {number} [maxChars] - Maximum number of characters to return.
-         * @returns {string} HTML value for the field.
-         */
-        getHTMLValue(maxChars?: number): string;
-        /**
-         * Returns either the most recent journal entry or all journal entries.
-         * @memberof GlideElement
-         * @param {number} mostRecent - If 1, returns the most recent entry. If -1, returns all journal entries.
-         * @returns {string} For the most recent entry, returns a string that contains the field label, timestamp, and user display name of the journal entry.For all journal entries, returns the same information for all journal entries ever entered as a single string with each entry delimited by "\n\n".
-         */
-        getJournalEntry(mostRecent: number): string;
-        /**
-         * Returns the object label.
-         * @memberof IDbObject
-         * @returns {string} Object label.
-         */
-        getLabel(): string;
-        /**
-         * Returns the name of the field.
-         * @memberof GlideElement
-         * @returns {string} Field name.
-         */
-        getName(): string;
-        /**
-         * Returns the name of the table on which the field resides.
-         * @memberof IDbObject
-         * @returns {string} Name of the table. The returned value may be different from the table Class that the record is in. See Tables and Classes in the product documentation.
-         */
-        getTableName(): string;
-        /**
-         * Determines if a field is null.
-         * @memberof GlideElement
-         * @returns {boolean} True if the field is null or an empty string, false if not.
-         */
-        nil(): boolean;
-        /**
-         * Sets the value of a date/time element to the specified number of milliseconds since January 1, 1970 00:00:00 GMT.
-         * @memberof GlideElement
-         * @param {number} milliseconds - Number of milliseconds since 1/1/1970
-         * @description 
-         */
-        setDateNumericValue(milliseconds: number): void;
-        /**
-         * Sets the display value of the field.
-         * @memberof GlideElement
-         * @param {*} value - The value to set for the field.
-         */
-        setDisplayValue(value: any): void;
-        /**
-         * Adds an error message. Available in Fuji patch 3.
-         * @memberof GlideElement
-         * @param {string} errorMessage - The error message.
-         */
-        setError(errorMessage: string): void;
-        /**
-         * Sets the field to the specified phone number.
-         * @memberof GlideElement
-         * @param {*} phoneNumber - The phone number to set. This can be in either the international or local format.
-         * @param {boolean} strict - When true, specifies that the number specified must match the correct format. When false, the system attempts to correct an improperly formatted phone number.
-         * @returns {boolean} True if the value was set.
-         * @description 
-         */
-        setPhoneNumber(phoneNumber: any, strict: boolean): boolean;
-        /**
-         * Sets the value of a field.
-         * @memberof GlideElement
-         * @param {V | E | $$property.Nilable<S>} value - Object value to set the field to.
-         * @description 
-         */
-        setValue(value: V | E | $$rhino.Nilable<S>): void;
-    }
-    export type Element<S extends string> = IValueSpecific<S, GlideElement, S> & GlideElement;
-    export type Question<S extends string> = GlideappQuestion & {
-        getValue(): $$rhino.StringValue<S>;
-        getInitialValue(): $$rhino.StringValue<S>;
-        setValue(value: $$rhino.StringValue<S>): void;
-    }
-    export type Numeric<N extends number, S extends string> = IValueSpecific<N, GlideElementNumeric, S> & GlideElementNumeric;
-    export type GlideObject<S extends string> = IValueSpecific<S, GlideElementGlideObject, S> & GlideElementGlideObject;
-    export type SysClassName<S extends string> = IValueSpecific<S, GlideElementSysClassName, S> & GlideElementSysClassName;
-    export type TranslatedField<S extends string> = IValueSpecific<S, GlideElementTranslatedField, S> & GlideElementTranslatedField;
-    export type Conditions<S extends string> = IValueSpecific<S, GlideElementConditions, S> & GlideElementConditions;
-    export type Documentation<S extends string> = IValueSpecific<S, GlideElementDocumentation, S> & GlideElementDocumentation;
-    export type Script<S extends string> = IValueSpecific<S, GlideElementScript, S> & GlideElementScript;
-    export type UserImage<S extends string> = IValueSpecific<S, GlideElementUserImage, S> & GlideElementUserImage;
-    export type Password2<S extends string> = IValueSpecific<S, GlideElementPassword2, S> & GlideElementPassword2;
-    export type Counter<N extends number, S extends string> = IValueSpecific<N, GlideElementNumeric, S> & GlideElementNumeric;
-    export interface IReference<P extends IGlideTableProperties, R extends P & GlideRecord> extends IValueSpecific<R, Reference<P, R>, string> {
-        changesFrom(o: R | Reference<P, R> | $$rhino.Nilable<string>): boolean;
-        changesTo(o: R | Reference<P, R> | $$rhino.Nilable<string>): boolean;
-        getReferenceTable(): string;
-        getRefRecord(): R | null | undefined;
-        setValue(obj: R | Reference<P, R> | $$rhino.Nilable<string>): void;
-    }
-    export type Reference<P extends IGlideTableProperties, R extends P & GlideRecord> = IReference<P, R> & GlideElementReference & P;
-    export type ReferenceQuestion<P extends IGlideTableProperties> = GlideappReferenceQuestion & P;
-}
 
 /**
- * Helper types for GlideElement and GlideRecord properties.
- * @namespace $$property
+ *
+ * @type {("starting" | "running" | "complete" | "cancelled" | "unknown")}
  */
-declare namespace $$property {
-    export type Boolean = GlideElementBoolean | $$rhino.BooleanLike;
-    export type BreakdownElement = GlideElementBreakdownElement | $$rhino.String;
-    export type Element = GlideElement | $$rhino.String;
-    export type Compressed = GlideElementCompressed | $$rhino.String;
-    export type Conditions = GlideElementConditions | $$rhino.String;
-    export type Counter = GlideElementCounter | $$rhino.NumberLike<number, string>;
-    export type Currency = GlideElementCurrency | $$rhino.NumberLike<number, string>;
-    export type DataObject = GlideElementDataObject | $$rhino.String;
-    export type Documentation = GlideElementDocumentation | $$rhino.String;
-    export type DocumentId = GlideElementDocumentId | $$rhino.String;
-    export type DomainId = GlideElementDomainId | $$rhino.String;
-    export type FullUTF8 = GlideElementFullUTF8 | $$rhino.String;
-    export type GlideObject = GlideElementGlideObject | $$rhino.String;
-    export type GlideVar = GlideElementGlideVar | $$rhino.String;
-    export type Icon = GlideElementIcon | $$rhino.String;
-    export type InternalType = GlideElementInternalType | $$rhino.String;
-    export type Numeric = GlideElementNumeric | $$rhino.NumberLike<number, string>;
-    export type Password = GlideElementPassword | $$rhino.String;
-    export type Password2 = GlideElementPassword2 | $$rhino.String;
-    export type Price = GlideElementPrice | $$rhino.NumberLike<number, string>;
-    export type Reference = GlideElementReference | GlideElement | $$rhino.String;
-    export type Script = GlideElementScript | $$rhino.String;
-    export type ShortFieldName = GlideElementShortFieldName | $$rhino.String;
-    export type ShortTableName = GlideElementShortTableName | $$rhino.String;
-    export type SourceId = GlideElementSourceId | $$rhino.String;
-    export type SourceName = GlideElementSourceName | $$rhino.String;
-    export type SourceTable = GlideElementSourceTable | $$rhino.String;
-    export type SysClassName = GlideElementSysClassName | $$rhino.String;
-    export type TranslatedField = GlideElementTranslatedField | $$rhino.String;
-    export type TranslatedHTML = GlideElementTranslatedHTML | $$rhino.String;
-    export type TranslatedText = GlideElementTranslatedText | $$rhino.String;
-    export type URL = GlideElementURL | $$rhino.String;
-    export type UserImage = GlideElementUserImage | $$rhino.String;
-    export type Question = GlideappQuestion | $$rhino.String;
-    export type ReferenceQuestion = GlideappReferenceQuestion | Reference | $$rhino.String;
-    export type Variables = IGlideElementVariables | { [key: string]: Question };
-    export type WikiText = GlideElementWikiText | $$rhino.String;
-    export type Workflow = GlideElementWorkflow | $$rhino.String;
-    export namespace generic {
-        export type Element<S extends string> = $$element.Element<S> | S;
-        export type Question<S extends string> = $$element.Question<S> | S;
-        export type ReferenceQuestion<P extends IGlideTableProperties, R extends P & GlideRecord> = $$element.ReferenceQuestion<P> | Reference<P, R>;
-        export type Numeric<N extends number, S extends string> = $$element.Numeric<N, S> | number | S;
-        export type GlideObject<S extends string> = $$element.Element<S> | S;
-        export type SysClassName<S extends string> = $$element.Element<S> | S;
-        export type TranslatedField<S extends string> = $$element.Element<S> | S;
-        export type Conditions<S extends string> = $$element.Element<S> | S;
-        export type Documentation<S extends string> = $$element.Element<S> | S;
-        export type Script<S extends string> = $$element.Element<S> | S;
-        export type UserImage<S extends string> = $$element.Element<S> | S;
-        export type Password2<S extends string> = $$element.Element<S> | S;
-        export type Reference<P extends IGlideTableProperties, R extends P & GlideRecord> = $$element.Reference<P, R> | R | $$rhino.String;
-        export type ReferenceProperty<P extends IGlideTableProperties, R extends P & GlideRecord, E extends $$element.Reference<P, R>> = E | R | $$rhino.String;
-    }
-}
+declare type GlideProgressWorkerState = "starting" | "running" | "complete" | "cancelled" | "unknown";
+
+/**
+ *
+ * @type {("success" | "cancelled" | "error")}
+ */
+declare type GlideProgressWorkerCompletionCode = "success" | "cancelled" | "error";
 
 /**
  * The Scoped GlideElement API provides a number of convenient script methods for dealing with fields and their values. Scoped GlideElement methods are available for the fields of the current GlideRecord.
@@ -1320,6 +1009,7 @@ declare class GlideElementBoolean extends Packages.java.lang.Boolean implements 
      */
     setValue(value: $$rhino.Nilable<$$property.Boolean>): void;
 }
+
 declare class GlideElementBreakdownElement extends $$element.StringBased<string, GlideElementBreakdownElement, string> { protected constructor(); }
 declare class GlideElementCompressed extends $$element.StringBased<string, GlideElementCompressed, string> { protected constructor(); }
 declare class GlideElementConditions extends $$element.StringBased<string, GlideElementConditions, string> { protected constructor(); }
@@ -1874,13 +1564,13 @@ declare class GlideRecord implements IGlideTableProperties, $$element.IDbObject 
      */
     updateMultiple(): void;
     /**
-     * Moves to the next record in the GlideRecord. Provides the same functionality as next(), it is intended to be used in cases where the GlideRecord has a column named next.
+     * Moves to the next record in the GlideRecord. Provides the same functionality asï¿½next(), it is intended to be used in cases where the GlideRecord has a column named next.
      * @memberof GlideRecord
      * @returns {boolean} True if there are more records in the query set.
      */
     _next(): boolean;
     /**
-     * Identical to query(). This method is intended to be used on tables where there is a column named query, which would interfere with using the query() method.
+     * Identical toï¿½query(). This method is intended to be used on tables where there is a column named query, which would interfere with using theï¿½query()ï¿½method.
      * @memberof GlideRecord
      * @param {*} name - Column name on which to query
      * @param {*} value - Value for which to query
@@ -2534,13 +2224,13 @@ declare class GlideSystem {
      */
     getCurrentScopeName(): string;
     /**
-     * Returns the list of error messages for the session that were added by addErrorMessage().
+     * Returns the list of error messages for the session that were added byï¿½addErrorMessage().
      * @memberof GlideSystem
      * @returns {string} List of error messages.
      */
     getErrorMessages(): string;
     /**
-     * Retrieves a message from UI messages that has HTML special characters, and replaces them with escape sequences. For example, &amp; becomes &amp;amp;.
+     * Retrieves a message from UI messages that has HTML special characters, and replaces them with escape sequences. For example,ï¿½&amp;ï¿½becomesï¿½&amp;amp;.
      * @memberof GlideSystem
      * @param {string} id - ID of the message.
      * @param {any[]} [args] - List of strings or other values defined by java.text.MessageFormat, which allows you to produce language-neutral messages for display to users.
@@ -2576,7 +2266,7 @@ declare class GlideSystem {
      */
     getSessionID(): string;
     /**
-     * This method is no longer available. Instead, use gs.getSession().getSessionToken().
+     * This method is no longer available. Instead, useï¿½gs.getSession().getSessionToken().
      * @memberof GlideSystem
      * @returns {string} The session token..
      */
@@ -2912,3 +2602,591 @@ declare class GlideUser {
 }
 
 declare var gs: GlideSystem;
+
+declare interface IAbstractAjaxProcessor {
+    CALLABLE_PREFIX: 'ajaxFunction_';
+    process(): any;
+    newItem(name: string): XMLNode;
+    getParameter(name: string): $$rhino.String;
+    getDocument(): XMLDocument2;
+    getRootElement(): XMLNode;
+    getName(): $$rhino.String;
+    getType(): $$rhino.String;
+    getChars(): $$rhino.String;
+    setAnswer(value: any): void;
+    setError(error: any): void;
+    type: "AbstractAjaxProcessor";
+}
+
+declare interface AbstractAjaxProcessorConstructor {
+    new(value?: any): IAbstractAjaxProcessor;
+    (): any;
+    (value: any): any;
+}
+
+declare namespace global {
+    export var AbstractAjaxProcessor: AbstractAjaxProcessorConstructor;
+    export var TaskStateUtil: TaskStateUtilConstructor;
+    export var  WorkflowApprovalUtils: WorkflowApprovalUtilsConstructor;
+}
+
+/**
+ * GlideElement values from the GlideRecord that contains values from a record in the Progress Worker table.
+ * @interface sys_progress_workerFields
+ * @extends {IGlideTableProperties}
+ */
+declare interface sys_progress_workerFields extends IGlideTableProperties {
+    /**
+     * Error message
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_progress_workerFields
+     */
+    error_message: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Message
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_progress_workerFields
+     */
+    message: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_progress_workerFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Output summary
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_progress_workerFields
+     */
+    output_summary: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Queued Time
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof sys_progress_workerFields
+     * @description Internal type is "glide_duration"
+     */
+    queued_time: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Run in background
+     * @type {$$rhino.Nilable<$$property.generic.Element<("true" | "false")>>}
+     * @memberof sys_progress_workerFields
+     */
+    run_in_background: $$rhino.Nilable<$$property.generic.Element<("true" | "false")>>;
+
+    /**
+     * State
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_progress_workerFields
+     */
+    state: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Completion code
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_progress_workerFields
+     */
+    state_code: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Total Execute Time
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof sys_progress_workerFields
+     * @description Internal type is "glide_duration"
+     */
+    total_execute_time: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Total Run Time
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof sys_progress_workerFields
+     * @description Internal type is "glide_duration"
+     */
+    total_run_time: $$rhino.Nilable<$$property.GlideObject>;
+}
+declare type sys_progress_workerGlideRecord = GlideRecord & sys_progress_workerFields;
+
+/**
+ * GlideElement values from the Attachment table.
+ * @interface sys_attachmentFields
+ * @extends {IGlideTableProperties}
+ */
+declare interface sys_attachmentFields extends IGlideTableProperties {
+    /**
+     * Average image color
+     * @type {$$rhino.Nilable<IGlideElement>}
+     * @memberof sys_attachmentFields
+     * @description Internal type is "color"
+     */
+    average_image_color: $$rhino.Nilable<IGlideElement>;
+
+    /**
+     * Chunk size bytes
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof sys_attachmentFields
+     */
+    chunk_size_bytes: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * Compressed
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sys_attachmentFields
+     */
+    compressed: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Content type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_attachmentFields
+     */
+    content_type: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Encryption context
+     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_encryption_contextFields, sys_encryption_contextGlideRecord>>}
+     * @memberof sys_attachmentFields
+     * @description Refers to sys_encryption_context (Encryption Context)
+     */
+    encryption_context: $$rhino.Nilable<$$property.generic.Reference<sys_encryption_contextFields, sys_encryption_contextGlideRecord>>;
+
+    /**
+     * File name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_attachmentFields
+     */
+    file_name: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Image height
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof sys_attachmentFields
+     */
+    image_height: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * Image width
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof sys_attachmentFields
+     */
+    image_width: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * Size bytes
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof sys_attachmentFields
+     * @description Internal type is "longint"
+     */
+    size_bytes: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * Size compressed
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof sys_attachmentFields
+     * @description Internal type is "longint"
+     */
+    size_compressed: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * State
+     * @type {$$rhino.Nilable<$$property.generic.Element<("pending" | "available" | "not_available" | "available_conditionally")>>}
+     * @memberof sys_attachmentFields
+     */
+    state: $$rhino.Nilable<$$property.generic.Element<("pending" | "available" | "not_available" | "available_conditionally")>>;
+
+    /**
+     * Table name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_attachmentFields
+     */
+    table_name: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Table sys ID
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sys_attachmentFields
+     * @description Internal type is "char"
+     */
+    table_sys_id: $$rhino.Nilable<$$property.Element>;
+}
+declare type sys_attachmentGlideRecord = GlideRecord & sys_attachmentFields;
+
+/**
+ * GlideElement values from the GlideRecord that contains values from a record in the System Plugin table.
+ * @interface v_pluginFields
+ * @extends {IGlideTableProperties}
+ */
+declare interface v_pluginFields extends IGlideTableProperties {
+    /**
+     * Status
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    active: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Available version
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    available_version: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Definition
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    definition: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Description
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    description: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Entitled
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    entitled: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Has demo data
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof v_pluginFields
+     */
+    has_demo_data: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Help
+     * @type {$$rhino.Nilable<$$property.URL>}
+     * @memberof v_pluginFields
+     */
+    help: $$rhino.Nilable<$$property.URL>;
+
+    /**
+     * ID
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    id: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Licensable
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof v_pluginFields
+     */
+    licensable: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Subscription Category
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    license_category: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Subscription Model
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    license_model: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Path
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    path: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Provider
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    provider: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Requires
+     * @type {$$rhino.Nilable<IGlideElement>}
+     * @memberof v_pluginFields
+     * @description Internal type is "glide_list"
+     */
+    requires: $$rhino.Nilable<IGlideElement>;
+
+    /**
+     * Scope
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    scope: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * State
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    state: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Supports Rollback
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof v_pluginFields
+     */
+    supports_rollback: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Trackable
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof v_pluginFields
+     */
+    trackable: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    type: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Version
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof v_pluginFields
+     */
+    version: $$rhino.Nilable<$$property.Element>;
+}
+declare type v_pluginGlideRecord = GlideRecord & v_pluginFields;
+
+declare interface wf_contextFields extends IGlideTableProperties {
+    /**
+     * Active
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    active: $$rhino.Nilable<$$property.Boolean>;
+
+    /**
+     * Activity count
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof wf_contextFields
+     */
+    activity_count: $$rhino.Nilable<$$property.Numeric>;
+    /**
+     * Activity index
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof wf_contextFields
+     */
+    activity_index: $$rhino.Nilable<$$property.Numeric>;
+    /**
+     * Run after bus. rules run
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    after_business_rules: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Auto start
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    auto_start: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Stage rendering
+     * @type {$$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>}
+     * @memberof wf_contextFields
+     */
+    column_renderer: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+    /**
+     * Cumulative to ERT
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    cumulated_avg_ert: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Due
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    due: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Ended
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    ended: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Available actions
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    ert_long_running_actions: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Available actions
+     * @type { $$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    ert_outlier_workflow_actions: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Related record
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof wf_contextFields
+     */
+    id: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof wf_contextFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Parent Workflow
+     * @type {$$rhino.Nilable<wf_contextProperty>}
+     * @memberof wf_contextFields
+     */
+    parent: $$rhino.Nilable<wf_contextProperty>;
+    /**
+     * Parent activity
+     * @type {$$rhino.Nilable<$$property.generic.Reference<wf_executingFields, wf_executingGlideRecord>>}
+     * @memberof wf_contextFields
+     */
+    parent_activity: $$rhino.Nilable<$$property.generic.Reference<wf_executingFields, wf_executingGlideRecord>>;
+    /**
+     * Requires ERT
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof wf_contextFields
+     */
+    requires_ert: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Result
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof wf_contextFields
+     */
+    result: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Return value
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    return_value: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Running duration
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof wf_contextFields
+     */
+    running_duration: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Schedule
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
+     * @memberof wf_contextFields
+     */
+    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+
+    /**
+     * Scratchpad
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    scratchpad: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Stage
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    stage: $$rhino.Nilable<$$property.generic.Reference<IGlideTableProperties, GlideRecord>>;
+
+    /**
+     * Stage states
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    stage_state: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Started
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    started: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Started by
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    started_by: $$rhino.Nilable<sys_userProperty>;
+
+    /**
+     * State
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    state: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Table
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    table: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Timezone
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    timezone: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Available actions
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    without_current_wf_actions: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
+     * Workflow
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    workflow: $$rhino.Nilable<$$property.generic.Reference<wf_workflowFields, wf_workflowGlideRecord>>;
+
+    /**
+     * Workflow version
+     * @type {}
+     * @memberof wf_contextFields
+     */
+    workflow_version: $$rhino.Nilable<$$property.generic.Reference<wf_workflow_versionFields, wf_workflow_versionGlideRecord>>;
+}
+declare type wf_contextGlideRecord = GlideRecord & wf_contextFields;
+declare type wf_contextElement = $$element.Reference<wf_contextFields, wf_contextGlideRecord>;
+declare type wf_contextProperty = $$property.generic.ReferenceProperty<wf_contextFields, wf_contextGlideRecord, wf_contextElement>;
+
+declare interface wf_activityFields extends IGlideTableProperties {
+}
+declare type wf_activityGlideRecord = GlideRecord & wf_activityFields;
+
+declare interface wf_workflowFields extends IGlideTableProperties {
+}
+declare type wf_workflowGlideRecord = GlideRecord & wf_workflowFields;
+
+declare interface wf_executingFields extends IGlideTableProperties {
+}
+declare type wf_executingGlideRecord = GlideRecord & wf_executingFields;
+
+declare interface wf_workflow_versionFields extends IGlideTableProperties {
+}
+declare type wf_workflow_versionGlideRecord = GlideRecord & wf_workflow_versionFields;

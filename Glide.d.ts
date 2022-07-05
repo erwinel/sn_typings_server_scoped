@@ -2625,7 +2625,7 @@ declare interface AbstractAjaxProcessorConstructor {
 }
 
 declare namespace global {
-    export var AbstractAjaxProcessor: AbstractAjaxProcessorConstructor;
+    export var AbstractAjaxProcessor: IAbstractAjaxProcessor;
     export var TaskStateUtil: TaskStateUtilConstructor;
     export var  WorkflowApprovalUtils: WorkflowApprovalUtilsConstructor;
 }

@@ -29,9 +29,6 @@ declare type Task3ScaleValue = 1 | 2 | 3;
 declare type Task3ScaleString = "1" | "2" | "3";
 declare type Task3Scale = Task3ScaleValue | Task3ScaleString;
  
-/**
- *
- */
 declare type TaskPriorityValue = 1 | 2 | 3 | 4 | 5;
 declare type TaskPriorityString = "1" | "2" | "3" | "4" | "5";
 declare type TaskPriority = TaskPriorityValue | TaskPriorityString;
@@ -45,9 +42,9 @@ declare type TaskStateString = "-5" | "1" | "2" | "3" | "4" | "7";
 declare type TaskState = TaskStateValue | TaskStateString;
 
 declare interface TaskStateUtil {
-    /*
-    * static properties and default values
-    */
+    /**
+     * static properties and default values
+     */
     ATTR_INACTIVE_STATES: "close_states";
     ATTR_DEFAULT_WORK: "default_work_state";
     ATTR_DEFAULT_CLOSE: "default_close_state";
@@ -55,25 +52,25 @@ declare interface TaskStateUtil {
     SYSTEM_DEFAULT_WORK: 2; // task work in progress state
     SYSTEM_INACTIVE_STATES: [3, 4, 7]; // task default inactive/close states
 
-    /*
+    /**
      * Get the active status of a given state
      * @param state value of the state field choice
      * @return boolean true if state is an active state
      */
     isStateInactive(state): boolean;
-    /*
+    /**
      * Get the value for the default work state, defaults to 2 if not specified
      * @return int
      */
     getDefaultWorkState(): number;
 
-    /*
+    /**
      * Get the value for the default close state, defaults to 3 if not specified
      * @return int
      */
     getDefaultCloseState(): number;
 
-    /*
+    /**
      * Get the list of inactive state values
      * @return array
      */
@@ -107,11 +104,6 @@ declare interface TaskStateUtil {
     runTaskReopener(): boolean;
 
     readonly type: "TaskStateUtil";
-}
-
-declare interface TaskStateUtilConstructor {
-    new (task?: taskGlideRecord): TaskStateUtil;
-    (task?: taskGlideRecord): TaskStateUtil;
 }
 
 /**

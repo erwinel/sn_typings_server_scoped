@@ -239,11 +239,6 @@ declare interface WorkflowApprovalUtils {
     type: 'WorkflowApprovalUtils'
 }
 
-declare interface WorkflowApprovalUtilsConstructor {
-    new(): WorkflowApprovalUtils;
-    (): WorkflowApprovalUtils;
-}
-
 /**
  * Fields common to all tables.
  * @interface IGlideTableProperties

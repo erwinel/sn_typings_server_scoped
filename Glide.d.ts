@@ -1989,14 +1989,14 @@ declare class GlideSystem {
      * Returns an ASCII string from the specified base64 string.
      * @memberof GlideSystem
      * @param {string} source - A base64 encoded string.
-     * @returns {string} The decoded string..
+     * @returns {string} The decoded string.
      */
     base64Decode(source: string): string;
     /**
      * Creates a base64 string from the specified string.
      * @memberof GlideSystem
      * @param {string} source - The string to be encoded.
-     * @returns {string} The base64 string..
+     * @returns {string} The base64 string.
      */
     base64Encode(source: string): string;
     /**
@@ -2020,7 +2020,7 @@ declare class GlideSystem {
     /**
      * Returns the date and time for the beginning of next week in GMT.
      * @memberof GlideSystem
-     * @returns {string} The GMT beginning of next week, in the format yyyy-mm-dd hh:mm:ss..
+     * @returns {string} The GMT beginning of next week, in the format yyyy-mm-dd hh:mm:ss.
      */
     beginningOfNextWeek(): string;
     /**
@@ -2058,7 +2058,7 @@ declare class GlideSystem {
      * @memberof GlideSystem
      * @param {string} date - Format: yyyy-mm-dd
      * @param {string} range - Start, end, or a time in the 24 hour format hh:mm:ss.
-     * @returns {string} A date and time in the format yyyy-mm-dd hh:mm:ss. If range is start, the returned value is yyyy-mm-dd 00:00:00; If range is end the return value is yyyy-mm-dd 23:59:59..
+     * @returns {string} A date and time in the format yyyy-mm-dd hh:mm:ss. If range is start, the returned value is yyyy-mm-dd 00:00:00; If range is end the return value is yyyy-mm-dd 23:59:59.
      */
     dateGenerate(date: string, range: string): string;
     /**
@@ -2182,45 +2182,45 @@ declare class GlideSystem {
      * @param {*} instance - GlideRecord object, such as "current".
      * @param {string} [parm1] - Saved with the instance if specified.
      * @param {string} [parm2] - Saved with the instance if specified.
-     * @param {*} [expiration] - Date and time to process this event..
+     * @param {*} [expiration] - Date and time to process this event.
      */
     eventQueueScheduled(name: string, instance: any, parm1?: string, parm2?: string, expiration?: any): void;
     /**
      * Executes a job for a scoped application.
      * @memberof GlideSystem
      * @param {GlideRecord} job - The job to be run.
-     * @returns {string} Returns the sysID of the scheduled job. Returns null if the job is global..
+     * @returns {string} Returns the sysID of the scheduled job. Returns null if the job is global.
      * @description 
      */
     executeNow(job: GlideRecord): string;
     /**
      * Generates a GUID that can be used when a unique identifier is required.
      * @memberof GlideSystem
-     * @returns {string} A 32-character hexadecimal GUID..
+     * @returns {string} A 32-character hexadecimal GUID.
      */
     generateGUID(): string;
     /**
      * Gets the caller scope name; returns null if there is no caller.
      * @memberof GlideSystem
-     * @returns {string} The caller's scope name, or null if there is no caller..
+     * @returns {string} The caller's scope name, or null if there is no caller.
      */
     getCallerScopeName(): string;
     /**
      * Gets a string representing the cache version for a CSS file.
      * @memberof GlideSystem
-     * @returns {string} The CSS cache version..
+     * @returns {string} The CSS cache version.
      */
     getCssCacheVersionString(): string;
     /**
      * Gets the ID of the current application as set using the Application Picker.
      * @memberof GlideSystem
-     * @returns {string} The current application's sys_id, or global in none is set..
+     * @returns {string} The current application's sys_id, or global in none is set.
      */
     getCurrentApplicationId(): string;
     /**
      * Gets the name of the current scope.
      * @memberof GlideSystem
-     * @returns {string} The current scope name..
+     * @returns {string} The current scope name.
      */
     getCurrentScopeName(): string;
     /**
@@ -2234,7 +2234,7 @@ declare class GlideSystem {
      * @memberof GlideSystem
      * @param {string} id - ID of the message.
      * @param {any[]} [args] - List of strings or other values defined by java.text.MessageFormat, which allows you to produce language-neutral messages for display to users.
-     * @returns {string} The UI message with HTML special characters replaced with escape sequences..
+     * @returns {string} The UI message with HTML special characters replaced with escape sequences.
      */
     getEscapedMessage(id: string, args?: any[]): string;
     /**
@@ -2242,7 +2242,7 @@ declare class GlideSystem {
      * @memberof GlideSystem
      * @param {string} id - The ID of the message.
      * @param {any[]} [args] - A list of strings or other values defined by java.text.MessageFormat, which allows you to produce language-neutral messages for display to users.
-     * @returns {string} The UI message..
+     * @returns {string} The UI message.
      */
     getMessage(id: string, args?: any[]): string;
     /**
@@ -2250,70 +2250,70 @@ declare class GlideSystem {
      * @memberof GlideSystem
      * @param {string} key - The key for the property whose value should be returned.
      * @param {*} [alt] -  Alternate object to return if the property is not found.
-     * @returns {string} The value of the Glide property, or the alternate object defined above..
+     * @returns {string} The value of the Glide property, or the alternate object defined above.
      */
     getProperty(key: string, alt?: any): string;
     /**
      * Gets a reference to the current Glide session.
      * @memberof GlideSystem
-     * @returns {string} A reference for the current session..
+     * @returns {string} A reference for the current session.
      */
     getSession(): string;
     /**
      * Retrieves the GlideSession session ID.
      * @memberof GlideSystem
-     * @returns {string} The session ID..
+     * @returns {string} The session ID.
      */
     getSessionID(): string;
     /**
      * This method is no longer available. Instead, use�gs.getSession().getSessionToken().
      * @memberof GlideSystem
-     * @returns {string} The session token..
+     * @returns {string} The session token.
      */
     getSessionToken(): string;
     /**
      * Returns the name of the time zone associated with the current user.
      * @memberof GlideSystem
-     * @returns {string} The time zone name..
+     * @returns {string} The time zone name.
      * @description 
      */
     getTimeZoneName(): string;
     /**
      * Gets the current URI for the session.
      * @memberof GlideSystem
-     * @returns {string} The URI..
+     * @returns {string} The URI.
      */
     getUrlOnStack(): string;
     /**
      * Returns a reference to the scoped GlideUser object for the current user.
      * @memberof GlideSystem
-     * @returns {GlideUser} Reference to a scoped user object..
+     * @returns {GlideUser} Reference to a scoped user object.
      * @description 
      */
     getUser(): GlideUser;
     /**
      * Gets the display name of the current user.
      * @memberof GlideSystem
-     * @returns {string} The name field of the current user. Returns Abel Tuter, as opposed to abel.tuter..
+     * @returns {string} The name field of the current user. Returns Abel Tuter, as opposed to abel.tuter.
      */
     getUserDisplayName(): string;
     /**
      * Gets the sys_id of the current user.
      * @memberof GlideSystem
-     * @returns {string} The sys_id of the current user..
+     * @returns {string} The sys_id of the current user.
      */
     getUserID(): string;
     /**
      * Gets the user name, or user id, of the current user.
      * @memberof GlideSystem
-     * @returns {string} The user name of the current user..
+     * @returns {string} The user name of the current user.
      */
     getUserName(): string;
     /**
      * Determines if the current user has the specified role.
      * @memberof GlideSystem
      * @param {*} role - The role to check.
-     * @returns {boolean} True if the user had the role. Returns true for users with the administrator role..
+     * @returns {boolean} True if the user had the role. Returns true for users with the administrator role.
      */
     hasRole(role: any): boolean;
     /**
@@ -2341,7 +2341,7 @@ declare class GlideSystem {
      * Provides a safe way to call from the sandbox, allowing only trusted scripts to be included.
      * @memberof GlideSystem
      * @param {string} name - The name fo the script to include.
-     * @returns {boolean} True if the include worked..
+     * @returns {boolean} True if the include worked.
      */
     include(name: string): boolean;
     /**
@@ -2358,25 +2358,25 @@ declare class GlideSystem {
     /**
      * Determines if debugging is active for a specific scope.
      * @memberof GlideSystem
-     * @returns {boolean} True if either session debugging is active or the log level is set to debug for the specified scope..
+     * @returns {boolean} True if either session debugging is active or the log level is set to debug for the specified scope.
      */
     isDebugging(): boolean;
     /**
      * Checks if the current session is interactive. An example of an interactive session is when a user logs in normally. An example of a non-interactive session is using a SOAP request to retrieve data.
      * @memberof GlideSystem
-     * @returns {boolean} True if the session is interactive..
+     * @returns {boolean} True if the session is interactive.
      */
     isInteractive(): boolean;
     /**
      * Determines if the current user is currently logged in.
      * @memberof GlideSystem
-     * @returns {boolean} True if the current user is logged in..
+     * @returns {boolean} True if the current user is logged in.
      */
     isLoggedIn(): boolean;
     /**
      * You can determine if a request comes from a mobile device.
      * @memberof GlideSystem
-     * @returns {boolean} True if the request comes from a mobile device; otherwise, false..
+     * @returns {boolean} True if the request comes from a mobile device; otherwise, false.
      * @description 
      */
     isMobile(): boolean;
@@ -2412,7 +2412,7 @@ declare class GlideSystem {
      * Queries an object and returns true if the object is null, undefined, or contains an empty string.
      * @memberof GlideSystem
      * @param {*} o - The object to be checked.
-     * @returns {boolean} True if the object is null, undefined, or contains an empty string; otherwise, returns false..
+     * @returns {boolean} True if the object is null, undefined, or contains an empty string; otherwise, returns false.
      */
     nil(o: any): boolean;
     /**
@@ -2448,21 +2448,21 @@ declare class GlideSystem {
      * Determines if a database table exists.
      * @memberof GlideSystem
      * @param {string} name - Name of the table to check for existence.
-     * @returns {boolean} True if the table exists. False if the table was not found..
+     * @returns {boolean} True if the table exists. False if the table was not found.
      */
     tableExists(name: string): boolean;
     /**
      * Replaces UTF-8 encoded characters with ASCII characters.
      * @memberof GlideSystem
      * @param {string} url - A string with UTF-8 percent (%) encoded characters.
-     * @returns {string} A string with encoded characters replaced with ASCII characters..
+     * @returns {string} A string with encoded characters replaced with ASCII characters.
      */
     urlDecode(url: string): string;
     /**
      * Encodes non-ASCII characters, unsafe ASCII characters, and spaces so the returned string can be used on the Internet. Uses UTF-8 encoding. Uses percent (%) encoding.
      * @memberof GlideSystem
      * @param {string} url - The string to be encoded.
-     * @returns {string} A string with non-ASCII characters, unsafe ASCII characters, and spaces encoded..
+     * @returns {string} A string with non-ASCII characters, unsafe ASCII characters, and spaces encoded.
      */
     urlEncode(url: string): string;
     /**
@@ -2480,14 +2480,14 @@ declare class GlideSystem {
      * Takes an XML string and returns a JSON object.
      * @memberof GlideSystem
      * @param {string} xmlString - The XML string to be converted.
-     * @returns {*} A JSON object representing the XML string. Null if unable to process the XML string..
+     * @returns {*} A JSON object representing the XML string. Null if unable to process the XML string.
      */
     xmlToJSON(xmlString: string): any;
     /**
      * Returns a date and time for a certain number of years ago.
      * @memberof GlideSystem
      * @param {number} years - An integer number of years
-     * @returns {string} GMT beginning of the year that is the specified number of years ago, in the format yyyy-mm-dd hh:mm:ss..
+     * @returns {string} GMT beginning of the year that is the specified number of years ago, in the format yyyy-mm-dd hh:mm:ss.
      */
     yearsAgo(years: number): string;
     /**
@@ -2516,7 +2516,7 @@ declare class GlideUser {
     /**
      * Returns the display value of the user's session domain.
      * @memberof GlideUser
-     * @returns {string} The display value of the user's session domain..
+     * @returns {string} The display value of the user's session domain.
      * @description 
      */
     getDomainDisplayValue(): string;
@@ -2551,14 +2551,14 @@ declare class GlideUser {
     /**
      * Returns an iterator containing the list of all groups to which the user belongs. Only active groups are returned.
      * @memberof GlideUser
-     * @returns {Packages.java.util.Iterator<$$rhino.String>} A list of sys_ids for the active groups to which the user belongs..
+     * @returns {Packages.java.util.Iterator<$$rhino.String>} A list of sys_ids for the active groups to which the user belongs.
      * @description 
      */
     getMyGroups(): Packages.java.util.Iterator<$$rhino.String>;
     /**
      * Returns the user ID, or login name, of the current user.
      * @memberof GlideUser
-     * @returns {string} User ID or login name..
+     * @returns {string} User ID or login name.
      * @description 
      */
     getName(): string;
@@ -2573,7 +2573,7 @@ declare class GlideUser {
      * Returns the user object associated with the passed-in user ID (sys_id in sys_user) or user_name.
      * @memberof GlideUser
      * @param {string} id - Unique ID (sys_id) or user_name of the desired user record.
-     * @returns {*} User object associated with the specified sys_id or user_name..
+     * @returns {*} User object associated with the specified sys_id or user_name.
      */
     getUserByID(id: string): any;
     /**
@@ -2587,7 +2587,7 @@ declare class GlideUser {
      * Determines if the current user has the specified role.
      * @memberof GlideUser
      * @param {string} role - Role to check
-     * @returns {boolean} True if the user has the role..
+     * @returns {boolean} True if the user has the role.
      * @description 
      */
     hasRole(role: string): boolean;
@@ -2595,40 +2595,13 @@ declare class GlideUser {
      * Determines if the current user is a member of the specified group.
      * @memberof GlideUser
      * @param {string} group - Group to check
-     * @returns {boolean} True if the user is a member of the group..
+     * @returns {boolean} True if the user is a member of the group.
      * @description 
      */
     isMemberOf(group: string): boolean;
 }
 
 declare var gs: GlideSystem;
-
-declare interface IAbstractAjaxProcessor {
-    CALLABLE_PREFIX: 'ajaxFunction_';
-    process(): any;
-    newItem(name: string): XMLNode;
-    getParameter(name: string): $$rhino.String;
-    getDocument(): XMLDocument2;
-    getRootElement(): XMLNode;
-    getName(): $$rhino.String;
-    getType(): $$rhino.String;
-    getChars(): $$rhino.String;
-    setAnswer(value: any): void;
-    setError(error: any): void;
-    type: "AbstractAjaxProcessor";
-}
-
-declare interface AbstractAjaxProcessorConstructor {
-    new(value?: any): IAbstractAjaxProcessor;
-    (): any;
-    (value: any): any;
-}
-
-declare namespace global {
-    export var AbstractAjaxProcessor: IAbstractAjaxProcessor;
-    export var TaskStateUtil: TaskStateUtilConstructor;
-    export var  WorkflowApprovalUtils: WorkflowApprovalUtilsConstructor;
-}
 
 /**
  * GlideElement values from the GlideRecord that contains values from a record in the Progress Worker table.

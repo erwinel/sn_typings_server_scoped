@@ -1,6 +1,6 @@
 /// <reference path="$$rhino.d.ts" />
 /// <reference path="$$property.d.ts" />
-/// <reference path="glide.d.ts" />
+/// <reference path="Glide.d.ts" />
 
 declare interface IApprovalInfo {
     key: $$rhino.String; // sys_id for the group approval

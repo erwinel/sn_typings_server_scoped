@@ -1,5 +1,5 @@
 /// <reference path="$$rhino.d.ts" />
-/// <reference path="glide.d.ts" />
+/// <reference path="Glide.d.ts" />
 
 /**
  * Helper types for GlideElement and GlideRecord objects.

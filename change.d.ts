@@ -1,5 +1,5 @@
 /// <reference path="$$rhino.d.ts" />
-/// <reference path="glide.d.ts" />
+/// <reference path="Glide.d.ts" />
 /// <reference path="core.d.ts" />
 /// <reference path="task.d.ts" />
 /// <reference path="incident.d.ts" />

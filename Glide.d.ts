@@ -2414,7 +2414,7 @@ declare class GlideSystem {
      * @param {*} o - The object to be checked.
      * @returns {boolean} True if the object is null, undefined, or contains an empty string; otherwise, returns false.
      */
-    nil(o: any): boolean;
+    nil(o: any): o is undefined | null | "";
     /**
      * Returns the date and time for the last day of the quarter for a specified number of quarters ago.
      * @memberof GlideSystem

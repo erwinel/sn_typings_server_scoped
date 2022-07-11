@@ -3876,10 +3876,10 @@ declare namespace Packages {
  */
 declare namespace $$snClass {
     /**
-     * Base interface for custom class definitions
+     * Base interface for custom class definitions.
      * @export
      * @interface ICustomClassBase
-     * @template B - The base class type.
+     * @template B - The base interface type for the custom class. This typically references the implementing interface.
      * @template N - The name of the custom class type.
      */
     export interface ICustomClassBase<B extends ICustomClassBase<B, N>, N extends string> {
@@ -3901,7 +3901,7 @@ declare namespace $$snClass {
      */
      export interface ICustomClassPrototype0<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype0<B, P, N>, N extends string> extends ICustomClassBase<B, N> {
         /**
-         * Called by {@see Class#create} to initialize the newly instantiated object
+         * Called by {@link Class#create} to initialize the newly instantiated object
          * @this {P} The current "this" object.
          */
         initialize(this: P): void;
@@ -3917,7 +3917,7 @@ declare namespace $$snClass {
      */
      export interface ICustomClassPrototype1<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype1<B, P, N, A>, N extends string, A> extends ICustomClassBase<B, N> {
         /**
-         * Called by {@see Class#create} to initialize the newly instantiated object
+         * Called by {@link Class#create} to initialize the newly instantiated object
          * @this {P} The current "this" object.
          * @param {A} arg - The argument provided to the constructor.
          */
@@ -3935,7 +3935,7 @@ declare namespace $$snClass {
      */
      export interface ICustomClassPrototype2<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype2<B, P, N, A0, A1>, N extends string, A0, A1> extends ICustomClassBase<B, N> {
         /**
-         * Called by {@see Class#create} to initialize the newly instantiated object
+         * Called by {@link Class#create} to initialize the newly instantiated object
          * @this {P} The current "this" object.
          * @param {A0} arg0 - The first argument provided to the constructor.
          * @param {A1} arg1 - The second argument provided to the constructor.
@@ -3955,7 +3955,7 @@ declare namespace $$snClass {
      */
      export interface ICustomClassPrototype3<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype3<B, P, N, A0, A1, A2>, N extends string, A0, A1, A2> extends ICustomClassBase<B, N> {
         /**
-         * Called by {@see Class#create} to initialize the newly instantiated object
+         * Called by {@link Class#create} to initialize the newly instantiated object
          * @this {P} The current "this" object.
          * @param {A0} arg0 - The first argument provided to the constructor.
          * @param {A1} arg1 - The second argument provided to the constructor.
@@ -3977,7 +3977,7 @@ declare namespace $$snClass {
      */
      export interface ICustomClassPrototype4<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototype4<B, P, N, A0, A1, A2, A3>, N extends string, A0, A1, A2, A3> extends ICustomClassBase<B, N> {
         /**
-         * Called by {@see Class#create} to initialize the newly instantiated object
+         * Called by {@link Class#create} to initialize the newly instantiated object
          * @this {P} The current "this" object.
          * @param {A0} arg0 - The first argument provided to the constructor.
          * @param {A1} arg1 - The second argument provided to the constructor.
@@ -3996,7 +3996,7 @@ declare namespace $$snClass {
      */
      export interface ICustomClassPrototypeN<B extends ICustomClassBase<B, N>, P extends B & ICustomClassPrototypeN<B, P, N>, N extends string> extends ICustomClassBase<B, N> {
         /**
-         * Called by {@see Class#create} to initialize the newly instantiated object
+         * Called by {@link Class#create} to initialize the newly instantiated object
          * @this {P} The current "this" object.
          * @param {...any[]} args- The arguments provided to the constructor.
          */
@@ -4236,6 +4236,16 @@ interface Object {
      */
     propertyIsEnumerable(v: string): boolean;
 
+    /**
+     * Creates a prototype which extends the prototpe of a base class.
+     *
+     * @template B - The base class type.
+     * @template P - The prototype type.
+     * @param {B} baseType - The base class.
+     * @param {P} protoType - The prototype object.
+     * @returns {(B & P)} A prototype object which extends the prototype of provided base class.
+     * @memberof Object
+     */
     extendsObject<B, P>(baseType: B, protoType: P) : B & P;
 }
 

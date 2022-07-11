@@ -31,7 +31,7 @@ Note that the first generic argument parameter (`IMyTypeBase`) is the same as th
 
 ### Prototype Interface
 
-Define and interface that inherits from the base interface as well as one of the following interfaces, depending upon how many arguments there will be in the constructor:
+Define an interface that inherits from the base interface as well as one of the following interfaces, depending upon how many arguments there will be in the constructor:
 
 - `ICustomClassPrototype0<B, P, N>` - Class constructor has no arguments.
 - `ICustomClassPrototype1<B, P, N, A>`- Class constructor takes 1 argument of type `A`.
@@ -82,7 +82,7 @@ Example:
 
 ```TypeScript
 interface MyTypeConstructor extends $$snClass.CustomClassConstructor1<IMyTypeBase, IMyTypePrototype, MyType, (GlideRecord | undefined)> {
-    areSame(x?: MyType, y?: MyType): boolean;
+    getName(): string;
 }
 ```
 
@@ -106,7 +106,7 @@ declare type MyType = Readonly<IMyTypeBase>;
 
 // Declare the constructor and static members
 interface MyTypeConstructor extends $$snClass.CustomClassConstructor1<IMyTypeBase, IMyTypePrototype, MyType, (GlideRecord | undefined)> {
-    areEqual(x?: MyType, y?: MyType): boolean;
+    getName(): string;
 }
 
 // Implement the class, assigning it to a constant variable with the same name as the class being created.
@@ -145,7 +145,7 @@ constructor definition. This example uses `Readonly<IMyTypeBase>` is the third G
 
 ```TypeScript
 interface MyTypeConstructor extends $$snClass.CustomClassConstructor1<IMyTypeBase, IMyTypePrototype, Readonly<IMyTypeBase>, (GlideRecord | undefined)> {
-    areEqual(x?: MyType, y?: MyType): boolean;
+    getName(): string;
 }
 ```
 

@@ -6,15 +6,14 @@ declare interface IAbstractAjaxProcessor {
     CALLABLE_PREFIX: 'ajaxFunction_';
     process(): any;
     newItem(name: string): XMLNode;
-    getParameter(name: string): $$rhino.String;
+    getParameter(name: string): string;
     getDocument(): XMLDocument2;
     getRootElement(): XMLNode;
-    getName(): $$rhino.String;
+    getName(): string;
     getType(): $$rhino.String;
     getChars(): $$rhino.String;
     setAnswer(value: any): void;
     setError(error: any): void;
-    type: "AbstractAjaxProcessor";
 }
 
 /**
@@ -139,7 +138,7 @@ declare interface IAbstractAjaxProcessor {
     otherEvent = "otherEvent"
 }
 
-export type WorkflowOperationType = "insert" | "update" | "delete";
+declare type WorkflowOperationType = "insert" | "update" | "delete";
 
 declare namespace global {
     export interface AbstractAjaxProcessorConstructor {

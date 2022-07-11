@@ -12,7 +12,7 @@ The basic concept is to define 3 interfaces to represent the custom class:
 
 The `$$snClass` namespace contains helper types that can be used to create define these interfaces.
 
-### THe Base Interface
+### The Base Interface
 
 Define an interface that inherits from the `$$snClass.ICustomClassBase<B, N>` interface and defines the instance members that the class will implement. Generic type parameters are:
 
@@ -141,7 +141,7 @@ const MyType: MyTypeConstructor = (function (): MyTypeConstructor {
 ```
 
 Note: Using the same identifier name for the constant variable that contains the class definition (`const MyType: MyTypeConstructor`) and the type definition (`declare type MyType`) is intentional. If this causes compiler issues, you can omit the type declaration and pass the definition directly to the generic parameter of the
-constructor definition. This example uses `Readonly<IMyTypeBase>` is the third GenericArugment instead of `MyType`:
+constructor definition. This example uses `Readonly<IMyTypeBase>` as the third GenericArugment instead of `MyType`:
 
 ```TypeScript
 interface MyTypeConstructor extends $$snClass.CustomClassConstructor1<IMyTypeBase, IMyTypePrototype, Readonly<IMyTypeBase>, (GlideRecord | undefined)> {

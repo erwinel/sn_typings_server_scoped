@@ -160,7 +160,7 @@ the instance members as is shown in the following example:
 // Define the base interface
 interface IMyAjaxTypeBase extends $$snClass.ICustomClassBase<IMyAjaxTypeBase, "MyAjaxType"> {
     // Client-callable method
-    getDefaultMinLeadTimeDays(): number;
+    getMinLeadTimeDays(): number;
 }
 
 // Define the interface for the prototype
@@ -173,7 +173,7 @@ declare type MyAjaxType = Readonly<IMyAjaxTypeBase> { }
 // Declare the constructor and static members
 interface MyAjaxTypeConstructor extends $$snClass.CustomClassConstructor0<IMyAjaxTypeBase, IMyAjaxTypePrototype, MyAjaxType> {
     // Equivalent server-callable method that doesn't have overhead of an AbstractAjaxProcessor-extended method
-    getDefaultMinLeadTimeDays(): number;
+    getMinLeadTimeDays(number?: value): number;
 }
 
 // Implement the class, assigning it to a constant variable with the same name as the class being created.
@@ -182,9 +182,12 @@ const MyAjaxType: MyAjaxTypeConstructor = (function (): MyAjaxTypeConstructor {
     var myAjaxTypeConstructor: MyAjaxTypeConstructor = Class.create();
 
     // Implement static method
-    myAjaxTypeConstructor.getDefaultMinLeadTimeDays = function(): number {
-        var defaultMinLeadTime: number = parseInt('' + gs.getProperty('x_44813_my_app.default_min_leadTime_days', ''));
-        return isNaN(defaultMinLeadTime) ? 3 : defaultMinLeadTime;
+    myAjaxTypeConstructor.getMinLeadTimeDays = function(value?: number): number {
+        if (isNaN(value) || value < 0) {
+            var defaultMinLeadTime: number = parseInt('' + gs.getProperty('x_44813_my_app.default_min_leadTime_days', ''));
+            return isNaN(defaultMinLeadTime) ? 3 : defaultMinLeadTime;
+        }
+        return value;
     };
 
     // Set the prototype for class construction by extending global.AbstractAjaxProcessor
@@ -193,8 +196,8 @@ const MyAjaxType: MyAjaxTypeConstructor = (function (): MyAjaxTypeConstructor {
         initialize: function() { },
 
         // Implement client-callable instance method
-        getDefaultMinLeadTimeDays(this: IMyAjaxTypePrototype & IAbstractAjaxProcessor): number {
-            return MyAjaxType.getDefaultMinLeadTimeDays();
+        getMinLeadTimeDays(this: IMyAjaxTypePrototype & IAbstractAjaxProcessor): number {
+            return  MyAjaxType.getMinLeadTimeDays(parseInt(this.getParameter('min_lead')));
         },
 
         // Initialize type property.

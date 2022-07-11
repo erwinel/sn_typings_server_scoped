@@ -82,7 +82,7 @@ Example:
 
 ```TypeScript
 interface MyTypeConstructor extends $$snClass.CustomClassConstructor1<IMyTypeBase, IMyTypePrototype, MyType, (GlideRecord | undefined)> {
-    getName(): string;
+    areSame(x?: MyType, y?: MyType): boolean;
 }
 ```
 
@@ -106,7 +106,7 @@ declare type MyType = Readonly<IMyTypeBase>;
 
 // Declare the constructor and static members
 interface MyTypeConstructor extends $$snClass.CustomClassConstructor1<IMyTypeBase, IMyTypePrototype, MyType, (GlideRecord | undefined)> {
-    getName(): string;
+    areSame(x?: MyType, y?: MyType): boolean;
 }
 
 // Implement the class, assigning it to a constant variable with the same name as the class being created.

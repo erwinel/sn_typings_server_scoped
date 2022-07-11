@@ -57,7 +57,7 @@ declare interface TaskStateUtil {
      * @param state value of the state field choice
      * @return boolean true if state is an active state
      */
-    isStateInactive(state): boolean;
+    isStateInactive(state: TaskState): boolean;
     /**
      * Get the value for the default work state, defaults to 2 if not specified
      * @return int

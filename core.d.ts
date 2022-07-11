@@ -171,12 +171,12 @@ declare interface WorkflowApprovalUtils {
     /**
      * Set all specified user approvals to the specified state
      */
-    setUserApprovalsByIds(ids, approvalState, comment?: string, currentStates?: $$rhino.String[]): void;
+    setUserApprovalsByIds(ids: any, approvalState: any, comment?: string, currentStates?: $$rhino.String[]): void;
 
     /**
      * Set specified pending user approvals to the specified state
      */
-    setPendingUserApprovalsByIds(ids, approvalState, comment?: string): void;
+    setPendingUserApprovalsByIds(ids: any, approvalState: any, comment?: string): void;
 
     /**
      * Add a list of ids to the approval list

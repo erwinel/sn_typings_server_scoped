@@ -1954,16 +1954,87 @@ declare class Workflow {
     warn(message: string, args?: any): string;
 }
 
+/**
+ * Provides methods for performing operations on GlideSchedule objects, such as adding new schedule segments to a schedule, determining if a datetime is within the schedule, or setting the schedule timezone.
+ * @class GlideSchedule
+ */
 declare class GlideSchedule {
-    constructor(sysID?: $$rhino.String, timeZone?: $$rhino.String);
+    /**
+     * Instantiates a GlideSchedule object.
+     * @param {string} [sysID] - The system ID for the schedule to load.
+     * @param {string} [timeZone] - The time zone
+     * @memberof GlideSchedule
+     */
+    constructor(sysID?: string, timeZone?: string);
+
+    /**
+     * Adds a new schedule segment to the current schedule.
+     * @param {GlideDateTime} startDate - The starting date of the new schedule segment.
+     * @param {GlideDuration} offSet - The time offset of the new schedule segment.
+     * @returns {GlideDateTime} The schedule updated with the new schedule segment.
+     * @memberof GlideSchedule
+     */
     add(startDate: GlideDateTime, offSet: GlideDuration): GlideDateTime;
+
+    /**
+     * Determines the elapsed time in the schedule between two date time values using the timezone of the schedule or, if that is not specified, the timezone of the session.
+     * @param {GlideDateTime} startDate - The starting datetime.
+     * @param {GlideDateTime} endDate - The ending datetime.
+     * @returns {GlideDuration} - The difference between the starting and ending datetime.
+     * @memberof GlideSchedule
+     */
     duration(startDate: GlideDateTime, endDate: GlideDateTime): GlideDuration;
-    getName(): $$rhino.String;
-    isInSchedule(time: GlideDateTime): $$rhino.Boolean;
-    isValid(): $$rhino.Boolean;
-    load(sysID: $$rhino.String, timeZone?: $$rhino.String, excludeSpanID?: $$rhino.String): void;
-    setTimeZone(timeZone: $$rhino.String): void;
-    whenNext(time: GlideDateTime, timeZone: $$rhino.String): $$rhino.Number;
+
+    /**
+     * Retrieves the schedule name.
+     * @returns {string} The name of the current schedule.
+     * @memberof GlideSchedule
+     */
+    getName(): string;
+
+    /**
+     * Determines if the specified date and time is within the current schedule.
+     * @param {GlideDateTime} time - Date and time value to check.
+     * @returns {boolean} True if the Date and time is within the schedule; otherwise, false.
+     * @memberof GlideSchedule
+     */
+    isInSchedule(time: GlideDateTime): boolean;
+
+    /**
+     * Determines if the current schedule is valid. A schedule is valid if it has at least one schedule span.
+     * @returns {boolean} True if the schedule is valid; otherwise, false.
+     * @memberof GlideSchedule
+     */
+    isValid(): boolean;
+
+    /**
+     * Loads a schedule with the schedule information.
+     * @param {string} sysID - The system ID of the schedule.
+     * @param {string} [timeZone] - The timezone. If a timezone is not specified, or is nil, the current session timezone is used for the schedule.
+     * @param {string} [excludeSpanID] - Any span to exclude.
+     * @memberof GlideSchedule
+     */
+    load(sysID: string, timeZone?: string, excludeSpanID?: string): void;
+
+    /**
+     * Sets the timezone for the current schedule.
+     * @param {string} timeZone - The timezone.
+     * @memberof GlideSchedule
+     */
+    setTimeZone(timeZone: string): void;
+
+    /**
+     * Determines how much time (in milliseconds) until start time of the next schedule item.
+     * This function is intended to be called when the GlideSchedule object (cmn_schedule table) is not currently in the schedule window.
+     * The whenNext() call returns duration (in ms) until the GlideSchedule object is within the schedule.
+     * This function does not return a meaningful value if called when the GlideSchedule object is within the schedule.
+     * @param {GlideDateTime} time - Time to be evaluated.
+     * @param {string} [timeZone] - The Time zone.
+     * @returns {number} - Number of milliseconds until the start time of the next schedule item. Returns -1 if never.
+     * @summary Determines how much time (in milliseconds) until start time of the next schedule item.
+     * @memberof GlideSchedule
+     */
+    whenNext(time: GlideDateTime, timeZone?: string): number;
 }
 
 /**

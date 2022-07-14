@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        "hookyqr.jsdoctagcomplete",
+        "oouo-diogo-perdigao.docthis",
+        "donjayamanne.git-extension-pack",
+        "github.vscode-pull-request-github",
+        "mkaufman.htmlhint",
+        "xabikos.javascriptsnippets",
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "yzhang.markdown-all-in-one",
+        "shd101wyy.markdown-preview-enhanced",
+        "davidanson.vscode-markdownlint",
+        "wayou.vscode-todo-highlight",
+        "amodio.tsl-problem-matcher"
+    ]
+}

@@ -4,15 +4,48 @@
 
 declare interface IAbstractAjaxProcessor {
     CALLABLE_PREFIX: 'ajaxFunction_';
+    
     process(): any;
-    newItem(name: string): XMLNode;
-    getParameter(name: string): string;
-    getDocument(): XMLDocument2;
-    getRootElement(): XMLNode;
-    getName(): string;
+
+    newItem(name: string): IXMLElement;
+
+    /**
+     * returns value of parameter as a Java String instance
+     * @param {string} name - The name of the parameter
+     * @return {$$rhino.String} The value of the parameter.
+     * @memberof IAbstractAjaxProcessor
+     */
+    getParameter(name: string): $$rhino.String;
+
+    getDocument(): XMLDocument2 | undefined;
+
+    getRootElement(): IXMLElement;
+
+    /**
+     * Returns value of "sysparm_name" as a Java String instance
+     * @return {$$rhino.Stringg}
+     * @memberof IAbstractAjaxProcessor
+     */
+    getName(): $$rhino.String;
+    
+    /**
+     * Returns value of "sysparm_value" as a Java String instance
+     * @return {$$rhino.String}
+     * @memberof IAbstractAjaxProcessor
+     */
+    getValue(): $$rhino.String;
+    
+    /**
+     * Returns value of "sysparm_type" as a Java String instance
+     * @return {$$rhino.String}
+     * @memberof IAbstractAjaxProcessor
+     */
     getType(): $$rhino.String;
+
     getChars(): $$rhino.String;
+    
     setAnswer(value: any): void;
+    
     setError(error: any): void;
 }
 

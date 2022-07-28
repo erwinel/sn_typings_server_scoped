@@ -232,9 +232,15 @@ declare class GlideDateTime {
     /**
      * Adds a GlideTime object to the current GlideDateTime object.
      * @memberof GlideDateTime
-     * @param {GlideTime} gd - The GlideTime object to add.
+     * @param {GlideTime} time - The GlideTime object to add.
      */
-    add(gd: GlideTime): void;
+    add(time: GlideTime): void;
+    /**
+     * Adds a GlideDuration object to the current GlideDateTime object.
+     * @memberof GlideDateTime
+     * @param {GlideDuration} duration - The GlideDuration object to add.
+     */
+    add(duration: GlideDuration): void;
     /**
      * Adds the specified number of milliseconds to the current GlideDateTime object.
      * @memberof GlideDateTime
@@ -597,19 +603,17 @@ declare class GlideDateTime {
      */
     setYearUTC(year: number): void;
     /**
-     * Gets the duration difference between two GlideDateTime values.
-     * @memberof GlideDateTime
-     * @param {GlideDateTime} Start - The start value.
-     * @param {GlideDateTime} End - The end value.
-     * @returns {GlideDuration} The duration between the two values.
-     */
-    subtract(Start: GlideDateTime, End: GlideDateTime): GlideDuration;
-    /**
      * Subtracts a specified amount of time from the current GlideDateTime object.
      * @memberof GlideDateTime
      * @param {GlideTime} time - The time value to subtract.
      */
     subtract(time: GlideTime): void;
+    /**
+     * Subtracts a specified amount of time from the current GlideDateTime object.
+     * @memberof GlideDateTime
+     * @param {GlideDuration} duration - The duration value to subtract.
+     */
+    subtract(duration: GlideDuration): void;
     /**
      * Subtracts the specified number of milliseconds from the GlideDateTime object.
      * @memberof GlideDateTime
@@ -622,6 +626,14 @@ declare class GlideDateTime {
      * @returns {string} The date and time stored by the GlideDateTime object in the system time zone and format.
      */
     toString(): string;
+    /**
+     * Gets the duration difference between two GlideDateTime values.
+     * @memberof GlideDateTime
+     * @param {GlideDateTime} Start - The start value.
+     * @param {GlideDateTime} End - The end value.
+     * @returns {GlideDuration} The duration between the two values.
+     */
+    static subtract(Start: GlideDateTime, End: GlideDateTime): GlideDuration;
 }
 
 /**
@@ -633,10 +645,14 @@ declare class GlideDuration {
     /**
      * Add the specified duration to the object.
      * @memberof GlideDuration
-     * @param {GlideDuration} duration - The value to add to the object.
+     * @param {(GlideDuration | number)} duration - The duration or milliseconds to add to the object.
      * @returns {GlideDuration} The sum of the current and the added duration.
      */
-    add(duration: GlideDuration): GlideDuration;
+    add(duration: GlideDuration | number): void;
+    addDaysLocalTime(value: number): void;
+    addSeconds(value: number): void;
+    before(duration: GlideDuration): boolean;
+    after(duration: GlideDuration): boolean;
     /**
      * Instantiates a GlideDuration object.
      * @constructor
@@ -686,6 +702,18 @@ declare class GlideDuration {
      */
     getDurationValue(): string;
     /**
+     * Gets the current error message.
+     * @memberof GlideDuration
+     * @returns {string} The error message.
+     */
+    getErrorMsg(): string;
+    /**
+     * Gets the number of milliseconds.
+     * @memberof GlideDuration
+     * @returns {number} The number of milliseconds.
+     */
+    getNumericValue(): number;
+    /**
      * Gets the rounded number of days. If the time part is more than 12 hours, the return value is rounded up. Otherwise, it is rounded down.
      * @memberof GlideDuration
      * @returns {number} The day part, rounded.
@@ -699,6 +727,12 @@ declare class GlideDuration {
      */
     getValue(): string;
     /**
+     * Determines if a value is a valid duration.
+     * @memberof GlideDuration
+     * @returns {boolean} True if value is valid; otherwise, returns false.
+     */
+    isValid(): boolean;
+    /**
      * Sets the display value.
      * @memberof GlideDuration
      * @param {string} asDisplayed - The duration in "d HH:mm:ss" format.
@@ -711,12 +745,13 @@ declare class GlideDuration {
      * @description 
      */
     setValue(o: any): void;
+    setNumericValue(value: number): void;
     /**
      * Subtracts the specified duration from the current duration.
      * @memberof GlideDuration
      * @param {GlideDuration} duration - The duration to subtract.
      */
-    subtract(duration: GlideDuration): void;
+    subtract(duration: GlideDuration | number): void;
 }
 
 /**
@@ -930,6 +965,12 @@ declare class GlideElementBoolean extends Packages.java.lang.Boolean implements 
      */
     getED(): GlideElementDescriptor;
     /**
+     * Gets a glide object.
+     * @return {*}
+     * @memberof GlideElementBoolean
+     */
+    getGlideObject(): any;
+    /**
      * Returns the phone number in international format.
      * @memberof GlideElementBoolean
      * @returns {string} The phone number in international format.
@@ -1025,7 +1066,15 @@ declare class GlideElementGlideVar extends $$element.StringBased<string, GlideEl
 declare class GlideElementIcon extends $$element.StringBased<string, GlideElementIcon, string> { protected constructor(); }
 declare class GlideElementInternalType extends $$element.StringBased<string, GlideElementInternalType, string> { protected constructor(); }
 declare class GlideElementNameValue extends $$element.StringBased<string, GlideElementNameValue, string> { protected constructor(); }
-declare class GlideElementNumeric extends $$element.StringBased<number, GlideElementNumeric, string> implements $$element.IValueSpecific<number, GlideElementNumeric, string> { protected constructor(); }
+declare class GlideElementNumeric extends $$element.StringBased<number, GlideElementNumeric, string> implements $$element.IValueSpecific<number, GlideElementNumeric, string> {
+    protected constructor();
+    /**
+     * Gets a glide object.
+     * @return {*}
+     * @memberof GlideElementNumeric
+     */
+    getGlideObject(): any;
+}
 declare class GlideElementPassword extends $$element.StringBased<string, GlideElementPassword, string> { protected constructor(); }
 declare class GlideElementPassword2 extends $$element.StringBased<string, GlideElementPassword2, string> { protected constructor(); }
 declare class GlideElementPrice extends $$element.StringBased<number, GlideElementPrice, string> { protected constructor(); }
@@ -1081,12 +1130,21 @@ declare class GlideElementReference extends $$element.StringBased<string, GlideE
      * @description Internal type is "glide_date_time"
      */
     sys_updated_on: $$property.GlideObject;
+
+    /**
+     * Gets a glide object.
+     * @return {*}
+     * @memberof GlideElementReference
+     */
+    getGlideObject(): any;
+
     /**
      * Gets the table name for a reference element.
      * @memberof GlideElementReference
      * @returns {string} The table name of the reference.
      */
     getReferenceTable(): string;
+
     /**
      * Returns a GlideRecord object for a given reference element.
      * @memberof GlideElementReference
@@ -1094,6 +1152,7 @@ declare class GlideElementReference extends $$element.StringBased<string, GlideE
      * @description
      */
     getRefRecord(): GlideRecord | null | undefined;
+
     /**
      * Determines if the previous value of the current field matches the specified object.
      * @memberof GlideElementReference
@@ -1102,6 +1161,7 @@ declare class GlideElementReference extends $$element.StringBased<string, GlideE
      * @description 
      */
     changesFrom(o: GlideRecord | $$rhino.Nilable<$$property.Reference>): boolean;
+
     /**
      * Determines if the new value of a field, after a change, matches the specified object.
      * @memberof GlideElementReference
@@ -1110,6 +1170,7 @@ declare class GlideElementReference extends $$element.StringBased<string, GlideE
      * @description 
      */
     changesTo(o: GlideRecord | $$rhino.Nilable<$$property.Reference>): boolean;
+
     /**
      * Sets the value of a field.
      * @memberof GlideElementReference
@@ -1671,38 +1732,115 @@ declare class GlideScriptableInputStream {
     protected constructor();
 }
 
-declare class XMLNodeIterator {
-    hasNext(): Packages.java.lang.Boolean;
-    next(): XMLNode;
-}
-
-declare class XMLNode {
-    getAttribute(attribute: $$rhino.String): Packages.java.lang.String;
+declare interface IXMLNode {
+    appendChild(newChild: IXMLNode): IXMLNode;
+    cloneNode(deep: $$rhino.Boolean): IXMLNode;
+    compareDocumentPosition(other: IXMLNode): $$rhino.Number;
+    getAttribute(attribute: $$rhino.String): $$rhino.String;
     getAttributes(): any;
     getChildNodeIterator(): XMLNodeIterator;
-    getFirstChild(): XMLNode;
-    getLastChild(): XMLNode;
-    getNodeName(): Packages.java.lang.String;
-    getNodeValue(): Packages.java.lang.String | null;
-    getTextContent(): Packages.java.lang.String | null;
-    hasAttribute(attribute: $$rhino.String): Packages.java.lang.Boolean;
-    toString(): Packages.java.lang.String;
+    getFirstChild(): IXMLNode;
+    getLastChild(): IXMLNode;
+    getNextSibling(): IXMLNode;
+    getNodeType(): $$rhino.Number;
+    getParentNode(): IXMLNode | XMLDocument2;
+    getPrefix(): $$rhino.String;
+    getPreviousSibling(): IXMLNode;
+    getNodeName(): $$rhino.String;
+    getLocalName(): $$rhino.String;
+    getNamespaceURI(): $$rhino.String;
+    getNodeValue(): $$rhino.String | null;
+    getTextContent(): $$rhino.String | null;
+    hasAttribute(attribute: $$rhino.String): $$rhino.Boolean;
+    toString(): $$rhino.String;
 }
 
-declare class XMLDocument2 extends Packages.java.lang.Object {
+declare class XMLNodeIterator {
+    hasNext(): Packages.java.lang.Boolean;
+    next(): IXMLNode;
+}
+
+declare interface IXMLNodeList {
+    contains(str: $$rhino.String): $$rhino.Boolean;
+    containsNS(namespaceURI: $$rhino.String, name: $$rhino.String): $$rhino.Boolean;
+    getLength(): $$rhino.Number;
+    getName(index: $$rhino.Number): $$rhino.String;
+    getNamespaceURI(index: $$rhino.Number): $$rhino.String;
+}
+
+declare interface IXMLAttribute {
+    getName(): $$rhino.String;
+    getOwnerElement(): IXMLElement;
+    getSpecified(): $$rhino.Boolean;
+    getValue(): $$rhino.String;
+    isId(): $$rhino.Boolean;
+    setValue(value: $$rhino.String): void;
+}
+
+declare interface IXMLElement extends IXMLNode {
+    getAttribute(name: $$rhino.String): $$rhino.String;
+    getAttributeNode(name: $$rhino.String): Packages.org.w3c.dom.Element;
+    getAttributeNodeNS(namespaceURI: $$rhino.String, localName: $$rhino.String): IXMLAttribute;
+    getAttributeNS(namespaceURI: $$rhino.String, localName: $$rhino.String): $$rhino.String;
+    getElementsByTagName(name: $$rhino.String): IXMLNodeList;
+    getElementsByTagNameNS(namespaceURI: $$rhino.String, localName: $$rhino.String): IXMLNodeList;
+    getTagName(): $$rhino.String;
+    hasAttribute(name: $$rhino.String): $$rhino.Boolean;
+    hasAttributeNS(namespaceURI: $$rhino.String, localName: $$rhino.String): $$rhino.Boolean;
+    removeAttribute(name: $$rhino.String): void;
+    removeAttributeNode(oldAttr: IXMLAttribute): IXMLAttribute;
+    removeAttributeNS(namespaceURI: $$rhino.String, localName: $$rhino.String): void;
+    setAttribute(name: $$rhino.String, value: $$rhino.String): void;
+    setAttributeNode(newAttr: IXMLAttribute): IXMLAttribute;
+    setAttributeNodeNS(newAttr: IXMLAttribute): IXMLAttribute;
+    setAttributeNS(namespaceURI: $$rhino.String, qualifiedName: $$rhino.String, value: $$rhino.String): void;
+    setIdAttribute(name: $$rhino.String, isId: $$rhino.Boolean): void;
+    setIdAttributeNode(idAttr: IXMLAttribute, isId: $$rhino.Boolean): void;
+    setIdAttributeNS(namespaceURI: $$rhino.String, localName: $$rhino.String, isId: $$rhino.Boolean): void;
+}
+
+declare interface IXMLCharacterData extends IXMLNode {
+    appendData(arg: $$rhino.String): void;
+    deleteData(offset: $$rhino.Number, count: $$rhino.Number): void;
+    getData(): $$rhino.String;
+    getLength(): $$rhino.Number;
+    insertData(offset: $$rhino.Number, arg: $$rhino.String): void;
+    replaceData(offset: $$rhino.Number, count: $$rhino.Number, arg: $$rhino.String): void;
+    setData(data: $$rhino.String): void;
+    substringData(offset: $$rhino.Number, count: $$rhino.Number): $$rhino.String;
+}
+
+declare interface IXMLText extends IXMLCharacterData {
+    getWholeText(): $$rhino.String;
+    isElementContentWhitespace(): $$rhino.Boolean;
+    replaceWholeText(content: $$rhino.String): IXMLText;
+    splitText(offset: $$rhino.Number): IXMLText;
+}
+
+declare interface ICDATASection extends IXMLText { }
+
+declare class XMLDocument2 {
     constructor();
     constructor(inputStream: GlideScriptableInputStream);
-    createElement(name: $$rhino.String, value?: any): XMLNode;
-    createElementWithTextValue(name: $$rhino.String, value?: any): XMLNode;
-    getDocumentElement(): XMLNode;
-    getFirstNode(xpath: $$rhino.String): XMLNode;
-    getNextNode(current: Packages.java.lang.Object): XMLNode;
-    getNode(xpath: $$rhino.String): XMLNode;
-    getNodeText(xpath: $$rhino.String): Packages.java.lang.String;
-    parseXML(xmlDoc: $$rhino.String): Packages.java.lang.Boolean;
-    setCurrent(el: XMLNode): void;
+    createAttribute(name: $$rhino.String): IXMLAttribute;
+    createAttributeNS(namespaceURI: $$rhino.String, qualifiedName: $$rhino.String): IXMLAttribute;
+    createCDATASection(data: $$rhino.String): ICDATASection;
+    createElement(tagName: $$rhino.String): IXMLElement;
+    createElementNS(namespaceURI: $$rhino.String, qualifiedName: $$rhino.String): IXMLElement;
+    createElementWithTextValue(name: $$rhino.String, value?: any): IXMLElement;
+    createTextNode(data: $$rhino.String): IXMLText;
+    getDocumentElement(): IXMLElement;
+    getElementById(elementId: $$rhino.String): IXMLElement;
+    getElementsByTagName(tagname: $$rhino.String): IXMLNodeList;
+    getElementsByTagNameNS(namespaceURI: $$rhino.String, localName: $$rhino.String): IXMLNodeList;
+    getFirstNode(xpath: $$rhino.String): IXMLNode;
+    getNode(xpath: $$rhino.String): IXMLNode;
+    getNodeText(xpath: $$rhino.String): $$rhino.String;
+    normalizeDocument(): void;
+    parseXML(xmlDoc: $$rhino.String): $$rhino.String;
+    setCurrent(el: IXMLNode): void;
     setNamespaceAware(el: $$rhino.Boolean): void;
-    toString(): Packages.java.lang.String;
+    toString(): $$rhino.String;
 }
 
 declare class GlideEmail {
@@ -2037,6 +2175,58 @@ declare class GlideSchedule {
     whenNext(time: GlideDateTime, timeZone?: string): number;
 }
 
+declare class GlideSession {
+    /**
+     * Retrieves a session client value previously set with
+     * putClientData().
+     * @param paramName Name of the client data to retrieve.
+     */
+    getClientData(paramName: string): string;
+    /**
+     * Returns the client IP address.
+     */
+    getClientIP(): string;
+    /**
+     * Returns the application currently selected in the application picker.
+     */
+    getCurrentApplicationId(): string;
+    /**
+     * Returns the session's language code.
+     */
+    getLanguage(): string;
+    /**
+     * Returns the session token.
+     */
+    getSessionToken(): string;
+    /**
+     * Returns the name of the session's time zone.
+     */
+    getTimeZoneName(): string;
+    /**
+     * Returns the URL on the stack. Returns null if the stack is empty.
+     */
+    getUrlOnStack(): string;
+    /**
+     * Returns true if the user is impersonating another user.
+     */
+    isImpersonating(): boolean;
+    /**
+     * Returns true if the session is interactive.
+     */
+    isInteractive(): boolean;
+    /**
+     * Returns true if the user is logged in.
+     */
+    isLoggedIn(): boolean;
+    /**
+     * Sets a session client value that can be retrieved with
+     * getClientData(). This method is used in a server side script that runs when
+     * a form is created.
+     * @param paramName Name of the client data to set.
+     * @param paramValue Value of the client data.
+     */
+    putClientData(paramName: string, paramValue: string): void;
+}
 /**
  * The scoped GlideSystem (referred to by the variable name 'gs' in any server-side JavaScript) API provides a number of convenient methods to get information about the system, the current logged in user, etc.
  * @class GlideSystem
@@ -2327,9 +2517,9 @@ declare class GlideSystem {
     /**
      * Gets a reference to the current Glide session.
      * @memberof GlideSystem
-     * @returns {string} A reference for the current session.
+     * @returns {GlideSession} A reference for the current session.
      */
-    getSession(): string;
+    getSession(): GlideSession;
     /**
      * Retrieves the GlideSession session ID.
      * @memberof GlideSystem

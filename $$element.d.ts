@@ -160,6 +160,12 @@ declare namespace $$element {
          */
         getED(): GlideElementDescriptor;
         /**
+         * Gets a glide object.
+         * @return {*}
+         * @memberof IDbObject
+         */
+        getGlideObject(): any;
+        /**
          * Returns the phone number in international format.
          * @memberof GlideElement
          * @returns {string} The phone number in international format.

@@ -2488,6 +2488,178 @@ declare type cmn_scheduleElement = $$element.Reference<cmn_scheduleFields, cmn_s
 declare type cmn_scheduleProperty = $$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>;
 
 /**
+ * GlideElement values from the Schedule Entry table.
+ * @interface cmn_schedule_spanFields
+ * @extends {IGlideTableProperties}
+ */
+declare interface cmn_schedule_spanFields extends IGlideTableProperties {
+    /**
+     * All day
+     * @type {$$property.Boolean}
+     * @memberof cmn_schedule_spanFields
+     */
+    all_day: $$property.Boolean;
+    /**
+     * Repeat on
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    days_of_week: $$rhino.Nilable<$$property.Element>;
+    /**
+     * End date time
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof cmn_schedule_spanFields
+     */
+    end_date_time: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Float day
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    float_day: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Float week
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    float_week: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Group
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
+     * @memberof cmn_schedule_spanFields
+     */
+    group: $$rhino.Nilable<sys_user_groupProperty>;
+    /**
+     * Month
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof cmn_schedule_spanFields
+     */
+    month: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Monthly type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    monthly_type: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Notes
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    notes: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Overridden Start Date
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof cmn_schedule_spanFields
+     */
+    override_start_date: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Overridden Item
+     * @type {$$rhino.Nilable<cmn_schedule_spanProperty>}
+     * @memberof cmn_schedule_spanFields
+     */
+    parent: $$rhino.Nilable<cmn_schedule_spanProperty>;
+    /**
+     * Repeat every
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof cmn_schedule_spanFields
+     */
+    repeat_count: $$rhino.Nilable<$$property.Numeric>;
+    /**
+     * Repeats
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    repeat_type: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Repeat until
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof cmn_schedule_spanFields
+     */
+    repeat_until: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Schedule
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
+     * @memberof cmn_schedule_spanFields
+     */
+    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+    /**
+     * Show as
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    show_as: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Start date time
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof cmn_schedule_spanFields
+     */
+    start_date_time: $$rhino.Nilable<$$property.GlideObject>;
+    /**
+     * Type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    type: $$rhino.Nilable<$$property.Element>;
+    /**
+     * User
+     * @type {$$rhino.Nilable<sys_userProperty>}
+     * @memberof cmn_schedule_spanFields
+     */
+    user: $$rhino.Nilable<sys_userProperty>;
+    /**
+     * Yearly type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_schedule_spanFields
+     */
+    yearly_type: $$rhino.Nilable<$$property.Element>;
+}
+declare type cmn_schedule_spanGlideRecord = GlideRecord & cmn_schedule_spanFields;
+declare type cmn_schedule_spanElement = $$element.Reference<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord>;
+declare type cmn_schedule_spanProperty = $$property.generic.ReferenceProperty<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord, cmn_schedule_spanElement>;
+
+/**
+ * GlideElement values from the Other Schedule table.
+ * @interface cmn_other_scheduleFields
+ * @extends {IGlideTableProperties}
+ */
+declare interface cmn_other_scheduleFields extends IGlideTableProperties {
+    /**
+     * Child schedule
+     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
+     * @memberof cmn_other_scheduleFields
+     */
+    child_schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+    /**
+     * Schedule
+     * @type {$$rhino.Nilable<cmn_scheduleProperty}
+     * @memberof cmn_other_scheduleFields
+     */
+    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+    /**
+     * Time zone
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_other_scheduleFields
+     */
+    time_zone: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Type
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmn_other_scheduleFields
+     */
+    type: $$rhino.Nilable<$$property.Element>;
+}
+declare type cmn_other_scheduleGlideRecord = GlideRecord & cmn_other_scheduleFields;
+declare type cmn_other_scheduleElement = $$element.Reference<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord>;
+declare type cmn_other_scheduleProperty = $$property.generic.ReferenceProperty<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord, cmn_other_scheduleElement>;
+
+/**
  * GlideElement values from the Location table.
  * @interface cmn_locationFields
  * @extends {IGlideTableProperties}

@@ -159,6 +159,68 @@ declare class GlideDate {
      */
     constructor();
     /**
+     * Adds a specified number of days to the current GlideDateTime object. A negative parameter subtracts days. The method determines the local date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts days using the local date and time values.
+     * @memberof GlideDate
+     * @param {number} days - The number of days to add. Use a negative value to subtract.
+     */
+    addDaysLocalTime(days: number): void;
+    /**
+     * Adds a specified number of days to the current GlideDateTime object. A negative parameter subtracts days. The method determines the UTC date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts days using the UTC date and time values.
+     * @memberof GlideDate
+     * @param {number} days - The number of days to add. Use a negative number to subtract.
+     */
+    addDaysUTC(days: number): void;
+    /**
+     * Adds a specified number of months to the current GlideDateTime object. A negative parameter subtracts months. The method determines the local date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts months using the local date and time values.
+     * @memberof GlideDate
+     * @param {number} months - The number of months to add. use a negative value to subtract.
+     */
+    addMonthsLocalTime(months: number): void;
+    /**
+     * Adds a specified number of months to the current GlideDateTime object. A negative parameter subtracts months. The method determines the UTC date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts months using the UTC date and time values.
+     * @memberof GlideDate
+     * @param {number} months - The number of months to add. Use a negative value to subtract.
+     */
+    addMonthsUTC(months: number): void;
+    /**
+     * Adds a specified number of weeks to the current GlideDateTime object. A negative parameter subtracts weeks. The method determines the local date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts weeks using the local date and time values.
+     * @memberof GlideDate
+     * @param {number} weeks - The number of weeks to add. Use a negative value to subtract.
+     */
+    addWeeksLocalTime(weeks: number): void;
+    /**
+     * Adds a specified number of weeks to the current GlideDateTime object. A negative parameter subtracts weeks. The method determines the UTC date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts weeks using the UTC date and time values.
+     * @memberof GlideDate
+     * @param {number} weeks - The number of weeks to add. Use a negative value to subtract.
+     */
+    addWeeksUTC(weeks: number): void;
+    /**
+     * Adds a specified number of years to the current GlideDateTime object. A negative parameter subtracts years. The method determines the local date and time equivalent to the value stored by the GlideDateTime object, then adds or subtracts years using the local date and time values.
+     * @memberof GlideDate
+     * @param {number} years - The number of years to add. Use a negative value to subtract.
+     */
+    addYearsLocalTime(years: number): void;
+    /**
+     * Adds a specified number of years to the current GlideDateTime object. A negative parameter subtracts years. The date and time value stored by GlideDateTime object is interpreted as being in the UTC time zone.
+     * @memberof GlideDate
+     * @param {number} years - The number of years to add. Use a negative value to subtract.
+     */
+    addYearsUTC(years: number): void;
+    /**
+     * Determines if the GlideDateTime object occurs after the specified GlideDateTime.
+     * @memberof GlideDate
+     * @param {GlideDateTime} gdt - The time to check against.
+     * @returns {boolean} Returns true if the GlideDateTime object's time is after the time specified by the parameter.
+     */
+    after(gdt: GlideDateTime): boolean;
+    /**
+     * Determines if the GlideDateTime object occurs before the specified GlideDateTime.
+     * @memberof GlideDate
+     * @param {GlideDateTime} gdt - The time to check against.
+     * @returns {boolean} Returns true if the GlideDateTime object's time is before the time specified by the parameter.
+     */
+    before(gdt: GlideDateTime): boolean;
+    /**
      * Gets the date in the specified date format.
      * @memberof GlideDate
      * @param {string} format - the desired date format
@@ -858,6 +920,52 @@ declare class GlideTime {
      * @returns {GlideDuration} The duration between the two values.
      */
     subtract(startTime: GlideTime, endTime: GlideTime): GlideDuration;
+}
+
+declare class GlideScheduleDateTime {
+    constructor();
+    constructor(dateTime: GlideDateTime);
+    constructor(dateTime: GlideScheduleDateTime);
+    constructor(userDateTime: string);
+    constructor(ms: number, timeZone: string);
+    setValue(o: any): void;
+    getValueInternal(): string;
+    getValue(): string;
+    setDisplayValue(asDisplayed: string): void;
+    setDisplayValueInternal(value: string): void;
+    isFloating(): boolean;
+    isNullValue(): boolean;
+    getDisplayValue(): string;
+    getDisplayValueInternal(): string;
+    setMS(ms: number): void;
+    getMS(): number;
+    getGlideDateTime(): GlideDateTime;
+    getIntegerDate(): GlideIntegerDate;
+    getTimeZone(): Packages.java.util.TimeZone;
+    getTimeZoneID(): string;
+    setTimeZone(tz: string | Packages.java.util.TimeZone): void;
+    setBeginningOfDay(): void;
+    setEndOfDay(): void;
+    equals(idt: GlideScheduleDateTime): void;
+    compareTo(o: GlideScheduleDateTime): number;
+    convertTimeZone(fromTZ: string, toTZ: string): string;
+    prependTimeZone(fromTZ: string, toTZ: string): string;
+    addSeconds(seconds: number): void;
+    addDays(days: number): void;
+    setIncludeZFormat(value: boolean): void;
+}
+
+declare class GlideIntegerDate {
+    protected constructor();
+    setValue(value: number): void;
+    getValue(): string;
+    getIntegerDateValue(): number;
+    setDisplayValue(asDisplayed: number): void;
+    getDisplayValue(): string;
+    equals(idt: GlideIntegerDate): void;
+    compareTo(o: GlideIntegerDate): number;
+    addDays(days: number): void;
+    daysDiff(end: GlideIntegerDate | number): number;
 }
 
 /**

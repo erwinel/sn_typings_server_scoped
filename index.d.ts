@@ -10,5 +10,6 @@
 /// <reference path="serviceCatalog.d.ts" />
 /// <reference path="knowledge.d.ts" />
 /// <reference path="project.d.ts" />
+/// <reference path="sn_atf.d.ts" />
 
 

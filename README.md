@@ -207,3 +207,19 @@ const MyAjaxType: MyAjaxTypeConstructor = (function (): MyAjaxTypeConstructor {
     return myAjaxTypeConstructor;
 })();
 ```
+
+## Code for Tests
+
+Tests are executed by the ATF application and has variables which are not defined in other types of scripts. To avoid conflicts, you can wrap the code in its own namespace caled `sn_atf`. From there, you can declare the variables that you will pass into your test function.
+
+**Important:** When the TypeScript is compiled, it will generate code which declares the namespace. You only want to use the JavaScript inside the namespace.
+
+Following is an example:
+
+```TypeScript
+namespace sn_atf {
+    (function(inputs: { [key: string]: string; }, outputs: { [key: string]: string; }, steps: ITestStepsFunc, stepResult: ITestStepResult, assertEqual: IAssertEqualFunc) {
+        // add test script here
+    })(inputs, outputs, steps, stepResult, assertEqual);
+}
+```

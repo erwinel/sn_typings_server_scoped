@@ -57,15 +57,16 @@ declare interface IAbstractAjaxProcessor {
  */
  declare enum BaseSystemWorkflowEventNames {
     /**
-     * Informs records in the Workflow Executing Activity [wf_executing] table about the completion of other activities in the same workflow context.
+     * String value used by activity definitions to respond to the onActivityComplete event handler.
+     * @description Informs records in the Workflow Executing Activity [wf_executing] table about the completion of other activities in the same workflow context.
      * If the activity is allowed to set the boolean value for wf_executing.notify_termination, then set the value to true (activity.notify_termination = true) during the onExecute event.
      * Source: Workflow Engine, Process Terminations; Thread: Current thread, current mutex; Listeners: Join activity
-     * @summary String value used by activity definitions to respond to the onActivityComplete event handler.
      * @memberof BaseSystemWorkflowEventNames
      */
     activityComplete = "activityComplete",
     /**
-     * From within activity definitions:
+     * String value used by workflow activities to respond to a request for cancellation.
+     * @description From within activity definitions:
      * 
      * Informs all wf_executing records in a context that the workflow is being canceled.
      * The End activity uses the global workflow.broadcastEvent('cancel') to interrupt the currently running wf_executing records. This changes the state of those records to Cancelled.
@@ -80,22 +81,22 @@ declare interface IAbstractAjaxProcessor {
      * This is a significant difference in that the event does not interrupt a currently executing activity that is still operating within the parameters of the current mutex.
      * Any script can call cancel on a known executing context via the workflow script include.
      * Source: Any script include, scheduled job, UI action, or other source; Thread: Current thread, private mutex; Listeners:All activities, onCancel event handler
-     * @summary String value used by workflow activities to respond to a request for cancellation.
      * @memberof BaseSystemWorkflowEventNames
      */
     cancel = "cancel",
     /**
-     * Informs wf_executing records for approval activities about an approval that completed and triggered the timer event.
+     * String value used by approval activities to respond to a change in the overall approval status of the current record.
+     * @description Informs wf_executing records for approval activities about an approval that completed and triggered the timer event.
      * Approval Coordinator both registers for the event and triggers the event. The child approvals have listeners that determine their approval state.
      * Source: Approval Coordinator triggers the event during its onExecute; Thread: Current thread, current mutex;
      * Listeners: Approval Coordinator, Approval - User, and Approval - Group all have onDetermineApprovalState event handlers.
      * If the state is anything but Requested, the activity is considered finished, and the approval state (Approved, Rejected, Cancelled) is set to the wf_executing.result column
-     * @summary String value used by approval activities to respond to a change in the overall approval status of the current record.
      * @memberof BaseSystemWorkflowEventNames
      */
     determineApprovalState = "determineApprovalState",
     /**
-     * Informs a record in the wf_executing table with the initial state of Executing to proceed with its primary work.
+     * String value used by workflow activities to respond to a Timer activity that has expired.
+     * @description Informs a record in the wf_executing table with the initial state of Executing to proceed with its primary work.
      * The workflow engine, for each transition executed, creates an executing record with a state of Executing. Once created, the executing record is put in a queue for processing.
      * For each item in the queue, the Rhino globals are established, the activity definition that drives the executing record is instantiated, and the run() function is called.
      * When the state of a record is Executing, this function always calls onExecute.
@@ -107,65 +108,64 @@ declare interface IAbstractAjaxProcessor {
      * For Lock activities, this informs a wf_executing record waiting to execute that the specified wait interval has passed and that it should attempt to get the lock again.
      * The execute event for a Lock activity is different because it is called on a separate thread, at specified intervals, and is treated as an outside event.
      * Source: Lock activity via a scheduled job; Thread: Worker thread, private mutex; Listeners: Lock activity, onExecute event handler
-     * @summary String value used by workflow activities to respond to a Timer activity that has expired.
      * @memberof BaseSystemWorkflowEventNames
      */
     execute = "execute",
     /**
-     * When a main workflow calls a subflow, the workflow keeps the ID of the subflow's context in the scratchpad. When the subflow is complete, it triggers the listener event via a business rule.
+     * String value that the workflow (subflow) activity triggers as an event.
+     * @description When a main workflow calls a subflow, the workflow keeps the ID of the subflow's context in the scratchpad. When the subflow is complete, it triggers the listener event via a business rule.
      * The listener event is passed to the parent context on completion of a subflow and is managed by the onListener action of the workflow activity.
      * Source: Business rule that is triggered by the update of a workflow that has a parent; Thread: Current thread, current mutex;
      * Listeners: This event is used by a subflow to inform it's parent flow that it is complete. The parent workflow will react to this event and continue.
-     * @summary String value that the workflow (subflow) activity triggers as an event.
      * @memberof BaseSystemWorkflowEventNames
      */
     listener = "listener",
     /**
-     * When an SLA is paused, the SLA workflows must be paused if there is a timer running.
+     * String value sent to a workflow from an SLA to pause the Timer activity.
+     * @description When an SLA is paused, the SLA workflows must be paused if there is a timer running.
      * Use is exclusive to the SLA timer.
      * Source: SLA; Thread: Business rule thread, private mutex; Listeners: Timer activity
-     * @summary String value sent to a workflow from an SLA to pause the Timer activity.
      * @memberof BaseSystemWorkflowEventNames
      */
     pause = "pause",
     /**
      * String value triggered in the workflow by an Orchestration activity indicating that the MID Server has completed a task.
+     * @description String value triggered in the workflow by an Orchestration activity indicating that the MID Server has completed a task.
      * The onProbe_complete event handler is in the WebServiceActivityHandler and is used by most Orchestration activities.
      * Source: Event used to restate a workflow that is waiting for the MID Server to process a task or activity; Thread: Worker thread, private mutex; Listeners: Orchestration activities
-     * @summary String value triggered in the workflow by an Orchestration activity indicating that the MID Server has completed a task.
      * @memberof BaseSystemWorkflowEventNames
      */
     probe_complete = "probe_complete",
     /**
-     * When an SLA is resumed, the SLA workflows must be resumed as well.
+     * String value used by the Timer activity to resume a paused timer (see {@link BaseSystemWorkflowEventNames#pause}).
+     * @description When an SLA is resumed, the SLA workflows must be resumed as well.
      * Use is exclusive to the SLA timer.
      * Source: SLA; Thread: Business rule thread, private mutex; Listeners: Timer activity
-     * @summary String value used by the Timer activity to resume a paused timer (see {@link BaseSystemWorkflowEventNames#pause}).
      * @memberof BaseSystemWorkflowEventNames
      */
     resume = "resume",
     /**
-     * The End activity checks for this event. This is only in the End activity.
+     * The End activity checks for this event.
+     * @description The End activity checks for this event. This is only in the End activity.
      * Source: Any script can trigger or broadcast the stop event via a script include or workflow Run Script activity; Thread: Current thread, current mutex;
      * Listeners: This event is used by the End activity to exclude the Cancel activity and allow a workflow to end, even if canceled.
-     * @summary The End activity checks for this event.
      * @memberof BaseSystemWorkflowEventNames
      */
     stop = "stop",
     /**
-     * Allows wf_executing records to be informed about a timer activity that has completed and has fired the timer event.
+     * String value used by workflow activities to respond to a Timer activity that has expired.
+     * @description Allows wf_executing records to be informed about a timer activity that has completed and has fired the timer event.
      * The Timer activity schedules a job that calls a script. The script calls fireEvent (wf_executing, timer).
      * Source: Timer activity via a scheduled job; Thread: Worker thread, private mutex; Listeners: Timer activity, onTimer event handler
-     * @summary String value used by workflow activities to respond to a Timer activity that has expired.
      * @memberof BaseSystemWorkflowEventNames
      */
     timer = "timer",
     /**
-     * Informs records in the Workflow Executing Activity [wf_executing] table about an otherEvent that has completed.
+     * String value used by the Join activity to respond to an otherEvent.
+     * @description Informs records in the Workflow Executing Activity [wf_executing] table about an otherEvent that has completed.
      * The Join activity transitions from n number of preceding activities. These preceding activities all create a wf_executing record, which causes a check to see if the record already exists.
      * If the Join already exists, then the Join created by the executing transition sets the wf_executing record for deletion.
      * Source: Join activity; Thread: Current thread, current mutex; Listeners: Join activity, onOtherEvent event handler
-     * @summary String value used by the Join activity to respond to an otherEvent.
      * @memberof BaseSystemWorkflowEventNames
      */
     otherEvent = "otherEvent"
@@ -202,14 +202,13 @@ declare namespace global {
         public constructor();
 
         /**
-         * Typical use of this method is to enable activities that wait for some action to occur before proceeding.
-         * For additional information on using broadcastEvent, refer to Workflow event-specific functions ({@link https://docs.servicenow.com/bundle/rome-servicenow-platform/page/administer/workflow-administration/reference/r_WorkflowEventSpecificFunctions.html}).
-         * See {@link BaseSystemWorkflowEventNames} for available OOB events.
-         *
+         * Sends the specified event (message) into the workflow context to pass along to the executing activities.
          * @param {string} contextId - The context ID.
          * @param {string} eventName - The name of the event.
          * @memberof Workflow
-         * @summary Sends the specified event (message) into the workflow context to pass along to the executing activities.
+         * @description Typical use of this method is to enable activities that wait for some action to occur before proceeding.
+         * For additional information on using broadcastEvent, refer to Workflow event-specific functions ({@link https://docs.servicenow.com/bundle/rome-servicenow-platform/page/administer/workflow-administration/reference/r_WorkflowEventSpecificFunctions.html}).
+         * See {@link BaseSystemWorkflowEventNames} for available OOB events.
          */
         broadcastEvent(contextId: string, eventName: string): void;
 

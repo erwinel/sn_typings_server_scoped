@@ -3870,8 +3870,8 @@ declare namespace Packages {
 }
 
 /**
- * Neither this namespace, nor types within it are defined in the server-side ServiceNow scripting environment.
- * @summary Type definitions for Server-side object definitions.
+ * Type definitions for Server-side object definitions.
+ * @description Neither this namespace, nor types within it are defined in the server-side ServiceNow scripting environment.
  * @namespace $$snClass
  */
 declare namespace $$snClass {

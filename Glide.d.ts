@@ -640,6 +640,12 @@ declare class GlideDateTime {
      */
     setMonthUTC(month: number): void;
     /**
+     * Sets the numeric value of the GlideDateTime object.
+     * @memberof GlideDateTime
+     * @param {number} ms - number of milliseconds since January 1, 1970, 00:00:00 GMT.
+     */
+    setNumericValue(ms: number): void;
+    /**
      * Sets the date and time of the GlideDateTime object.
      * @memberof GlideDateTime
      * @param {string} o - The date and time to use. This parameter may be one of several types:A string in the UTC time zone and the internal format of yyyy-MM-dd HH:mm:ss. Sets the value of the object to the specified date and time. Using the method this way is equivalent to instantiating a new GlideDateTime object using the GlideDateTime(String value) constructor. If the date and time format used does not match the internal format, the method attempts to set the date and time using other available formats. Resolving the date and time this way can lead to inaccurate data due to ambiguity in the day and month values. When using a non-standard date and time format, use etValueUTC(String dt, String format) instead.A GlideDateTime object. Sets the value of the object to the date and time stored by the GlideDateTime passed in the parameter. Using the method this way is equivalent to instantiating a new GlideDateTime object using the GlideDateTime(GlideDateTime g) constructor.A JavaScript Number. Sets the value of the object using the Number value as milliseconds past January 1, 1970 00:00:00 GMT.
@@ -705,17 +711,6 @@ declare class GlideDateTime {
  */
 declare class GlideDuration {
     /**
-     * Add the specified duration to the object.
-     * @memberof GlideDuration
-     * @param {(GlideDuration | number)} duration - The duration or milliseconds to add to the object.
-     * @returns {GlideDuration} The sum of the current and the added duration.
-     */
-    add(duration: GlideDuration | number): void;
-    addDaysLocalTime(value: number): void;
-    addSeconds(value: number): void;
-    before(duration: GlideDuration): boolean;
-    after(duration: GlideDuration): boolean;
-    /**
      * Instantiates a GlideDuration object.
      * @constructor
      */
@@ -738,6 +733,17 @@ declare class GlideDuration {
      * @param {string} displayValue - The display value.
      */
     constructor(displayValue: string);
+    /**
+     * Add the specified duration to the object.
+     * @memberof GlideDuration
+     * @param {(GlideDuration | number)} duration - The duration or milliseconds to add to the object.
+     * @returns {GlideDuration} The sum of the current and the added duration.
+     */
+    add(duration: GlideDuration | number): void;
+    addDaysLocalTime(value: number): void;
+    addSeconds(value: number): void;
+    before(duration: GlideDuration): boolean;
+    after(duration: GlideDuration): boolean;
     /**
      * Gets the duration in the specified format.
      * @memberof GlideDuration
@@ -935,7 +941,8 @@ declare class GlideScheduleDateTime {
     setDisplayValueInternal(value: string): void;
     isFloating(): boolean;
     isNullValue(): boolean;
-    getDisplayValue(): string;
+    // java.lang.SecurityException: Function getDisplayValue is not allowed in scope
+    // getDisplayValue(): string;
     getDisplayValueInternal(): string;
     setMS(ms: number): void;
     getMS(): number;
@@ -2271,13 +2278,12 @@ declare class GlideSchedule {
 
     /**
      * Determines how much time (in milliseconds) until start time of the next schedule item.
-     * This function is intended to be called when the GlideSchedule object (cmn_schedule table) is not currently in the schedule window.
-     * The whenNext() call returns duration (in ms) until the GlideSchedule object is within the schedule.
-     * This function does not return a meaningful value if called when the GlideSchedule object is within the schedule.
      * @param {GlideDateTime} time - Time to be evaluated.
      * @param {string} [timeZone] - The Time zone.
      * @returns {number} - Number of milliseconds until the start time of the next schedule item. Returns -1 if never.
-     * @summary Determines how much time (in milliseconds) until start time of the next schedule item.
+     * @description This function is intended to be called when the GlideSchedule object (cmn_schedule table) is not currently in the schedule window.
+     *              The whenNext() call returns duration (in ms) until the GlideSchedule object is within the schedule.
+     *              This function does not return a meaningful value if called when the GlideSchedule object is within the schedule.
      * @memberof GlideSchedule
      */
     whenNext(time: GlideDateTime, timeZone?: string): number;

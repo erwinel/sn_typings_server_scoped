@@ -2487,6 +2487,126 @@ declare type cmn_scheduleGlideRecord = GlideRecord & cmn_scheduleFields;
 declare type cmn_scheduleElement = $$element.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>;
 declare type cmn_scheduleProperty = $$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>;
 
+declare enum cmn_schedule_entryMonthlyType {
+    /**
+     * Day of the month
+     */
+    DayOfMonth = "dom",
+    /**
+     * Day of the Week
+     */
+    DayOfWeek = "nth",
+    /**
+     * Last Day of the Month
+     */
+    LastDayOfMonth = "ldom",
+    /**
+     * Last Week Day of the Month
+     */
+    LastWeekDayOfMonth = "lwdom"
+}
+
+declare enum cmn_schedule_entryRepeatType {
+    /**
+     * Daily
+     */
+    Daily = "daily",
+    /**
+     * Every Weekday (Mon-Fri)
+     */
+    WeeklyOnWeekdays = "weekdays",
+    /**
+     * Weekly
+     */
+    Weekly = "weekly",
+    /**
+     * Every Weekend (Sat,SUn)
+     */
+    WeeklyOnWeekends = "weekends",
+    /**
+     * Every Mon, Wed, Fri
+     */
+    WeeklyOnMonWedAndFri = "weekends",
+    /**
+     * Every Tue, Thu
+     */
+     WeeklyOnTueAndThu = "weekTT",
+    /**
+     * Monthly
+     */
+    Monthly = "monthly",
+    /**
+     * Yearly
+     */
+    Yearly = "yearly",
+    /**
+     * Specific
+     */
+    Specific = "specific"
+}
+
+declare enum cmn_schedule_entryEntryType {
+    /**
+     * Time off
+     */
+    TimeOff = "time_off",
+    /**
+     * Appointment
+     */
+	Appointment = "appointment",
+    /**
+     * Meeting
+     */
+    Meeting = "meeting",
+    /**
+     * Phone call
+     */
+    PhoneCall = "call",
+    /**
+     * On call
+     */
+    OnCall = "on_call",
+    /**
+     * Time off - In approval
+     */
+    TimeOffInApproval = "time_off_in_approval",
+    /**
+     * Time off - rejected
+     */
+    TimeOffRejected = "time_off_rejected"
+}
+
+declare enum cmn_schedule_entryShowAs {
+    /**
+     * Busy
+     */
+    Busy = "busy",
+    /**
+     * Free
+     */
+    Free = "free",
+    /**
+     * Tentative
+     */
+    Tentative = "tentative",
+    /**
+     * On call
+     */
+    OnCall = "on_call"
+}
+
+declare type cmn_schedule_entryYearlyType = "doy" | "float"
+declare enum cmn_schedule_entryYearlyType2 {
+    /**
+     * Day of the year
+     */
+    DayOfYearh = "doy",
+    /**
+     * Floating
+     */
+    Floating = "float"
+}
+
 /**
  * GlideElement values from the Schedule Entry table.
  * @interface cmn_schedule_spanFields
@@ -2537,16 +2657,16 @@ declare interface cmn_schedule_spanFields extends IGlideTableProperties {
     month: $$rhino.Nilable<$$property.GlideObject>;
     /**
      * Monthly type
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * @type {$$property.generic.Element<cmn_schedule_entryMonthlyType>}
      * @memberof cmn_schedule_spanFields
      */
-    monthly_type: $$rhino.Nilable<$$property.Element>;
+    monthly_type: $$property.generic.Element<cmn_schedule_entryMonthlyType>;
     /**
      * Name
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * @type {$$property.Element}
      * @memberof cmn_schedule_spanFields
      */
-    name: $$rhino.Nilable<$$property.Element>;
+    name: $$property.Element;
     /**
      * Notes
      * @type {$$rhino.Nilable<$$property.Element>}
@@ -2573,10 +2693,11 @@ declare interface cmn_schedule_spanFields extends IGlideTableProperties {
     repeat_count: $$rhino.Nilable<$$property.Numeric>;
     /**
      * Repeats
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * @type {$$rhino.Nilable<$$property.generic.Element<cmn_schedule_entryRepeatType>>}
      * @memberof cmn_schedule_spanFields
+     * @description nil for "Does not repeat"
      */
-    repeat_type: $$rhino.Nilable<$$property.Element>;
+    repeat_type: $$rhino.Nilable<$$property.generic.Element<cmn_schedule_entryRepeatType>>;
     /**
      * Repeat until
      * @type {$$rhino.Nilable<$$property.GlideObject>}
@@ -2591,10 +2712,10 @@ declare interface cmn_schedule_spanFields extends IGlideTableProperties {
     schedule: $$rhino.Nilable<cmn_scheduleProperty>;
     /**
      * Show as
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * @type {$$property.generic.Element<cmn_schedule_entryMonthlyType>}
      * @memberof cmn_schedule_spanFields
      */
-    show_as: $$rhino.Nilable<$$property.Element>;
+    show_as: $$property.generic.Element<cmn_schedule_entryMonthlyType>;
     /**
      * Start date time
      * @type {$$rhino.Nilable<$$property.GlideObject>}
@@ -2603,10 +2724,10 @@ declare interface cmn_schedule_spanFields extends IGlideTableProperties {
     start_date_time: $$rhino.Nilable<$$property.GlideObject>;
     /**
      * Type
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * @type {$$property.generic.Element<cmn_schedule_entryEntryType>}
      * @memberof cmn_schedule_spanFields
      */
-    type: $$rhino.Nilable<$$property.Element>;
+    type: $$property.generic.Element<cmn_schedule_entryEntryType>;
     /**
      * User
      * @type {$$rhino.Nilable<sys_userProperty>}
@@ -2615,10 +2736,10 @@ declare interface cmn_schedule_spanFields extends IGlideTableProperties {
     user: $$rhino.Nilable<sys_userProperty>;
     /**
      * Yearly type
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * @type {$$property.generic.Element<cmn_schedule_entryYearlyType>}
      * @memberof cmn_schedule_spanFields
      */
-    yearly_type: $$rhino.Nilable<$$property.Element>;
+    yearly_type: $$property.generic.Element<cmn_schedule_entryYearlyType>;
 }
 declare type cmn_schedule_spanGlideRecord = GlideRecord & cmn_schedule_spanFields;
 declare type cmn_schedule_spanElement = $$element.Reference<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord>;

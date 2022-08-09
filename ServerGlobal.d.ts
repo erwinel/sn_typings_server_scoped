@@ -5,9 +5,13 @@
 declare interface IAbstractAjaxProcessor {
     CALLABLE_PREFIX: 'ajaxFunction_';
     
+    prototype: IAbstractAjaxProcessor;
+    
+    initialize(request?: GlideServletRequest, responseXML?: XMLDocument2, gc?: GlideController): void;
+
     process(): any;
 
-    newItem(name: string): IXMLElement;
+    newItem(name?: string): IXMLElement;
 
     /**
      * returns value of parameter as a Java String instance

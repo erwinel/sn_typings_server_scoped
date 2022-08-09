@@ -2976,6 +2976,40 @@ declare class GlideUser {
     isMemberOf(group: string): boolean;
 }
 
+declare class GlideController {
+    protected constructor();
+
+    evaluateAsObject(expression: $$rhino.String,): $$rhino.Nilable<Packages.java.lang.Object>;
+}
+
+declare class GlideServletRequest {
+    protected constructor();
+
+    /** Returns an array of headers as a string */
+    getHeaders(name: string): [string];
+
+    /** Returns an array of header names as a string */
+    getHeaderNames(): [string];
+
+    /** Returns the URI of the request */
+    getRequestURI(): string;
+
+    /** Returns the query string from the request */
+    getQueryString(): string;
+
+    /** Returns the content type */
+    getContentType(): string;
+
+    /** Returns an array of parameter names as a string */
+    getParameterNames(): [string];
+
+    /** Returns the header */
+    getHeader(name: string): string;
+
+    /** Returns an object */
+    getParameter(name: string): $$rhino.Nilable<Packages.java.lang.Object>;
+}
+
 declare var gs: GlideSystem;
 
 /**

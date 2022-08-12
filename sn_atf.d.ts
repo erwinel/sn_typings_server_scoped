@@ -30,7 +30,11 @@ declare namespace sn_atf {
     export interface ITestStepResult {
         setOutputMessage(message: string): void;
         setSuccess(): void;
-        setFailed(): void;
+        /**
+         * @memberof ITestStepResult
+         * @throws When the setFailed method is invoked on stepResult, an exception will be thrown.
+         */
+        setFailed(): never;
     }
 
     /**

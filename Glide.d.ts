@@ -937,20 +937,11 @@ declare class GlideScheduleDateTime {
     setValue(o: any): void;
     getValueInternal(): string;
     getValue(): string;
-    setDisplayValue(asDisplayed: string): void;
-    setDisplayValueInternal(value: string): void;
     isFloating(): boolean;
-    isNullValue(): boolean;
-    // java.lang.SecurityException: Function getDisplayValue is not allowed in scope
-    // getDisplayValue(): string;
     getDisplayValueInternal(): string;
     setMS(ms: number): void;
     getMS(): number;
     getGlideDateTime(): GlideDateTime;
-    getIntegerDate(): GlideIntegerDate;
-    getTimeZone(): Packages.java.util.TimeZone;
-    getTimeZoneID(): string;
-    setTimeZone(tz: string | Packages.java.util.TimeZone): void;
     setBeginningOfDay(): void;
     setEndOfDay(): void;
     equals(idt: GlideScheduleDateTime): void;

@@ -12,6 +12,28 @@ declare interface IApprovalInfo {
     }
 }
 
+declare class GlideStringUtil {
+    escapeAllQuotes(sourceString: $$rhino.String): string;
+    dotToUnderBar(sourceString: string): string;
+    escapeForHomePage(sourceString: string): string;
+    escapeHTML(sourceString: string): string;
+    escapeNonPrintable(sourceString: string): string;
+    escapeQueryTermSeparator(sourceString: string): string;
+    escapeTicks(sourceString: string): string;
+    getHTMLValue(sourceString: string): string;
+    getNumeric(sourceString: string): string;
+    isBase64(sourceString: string): boolean;
+    isEligibleSysID(sourceString: string): boolean;
+    newLinesToBreaks(sourceString: string): string;
+    normalizeWhitespace(sourceString: string): string;
+    unEscapeHTML(sourceString: string): string;
+}
+
+declare class GlideXMLUtil {
+    removeInvalidChars(xmlString: string): string;
+    validateXML(xmlString: string, nsAware: boolean, forgiveUnclosed: boolean): string | null;
+}
+
 declare interface WorkflowApprovalUtils {
     readonly PENDING_STATES: ['not requested', 'not_required', 'requested'];
 

@@ -2444,10 +2444,10 @@ declare class GlideSystem {
     /**
      * Returns the date and time for the beginning of the day a specified number of days ago.
      * @memberof GlideSystem
-     * @param {string} days - Integer number of days
+     * @param {number} days - Integer number of days
      * @returns {string} GMT start of the day in the format yyyy-mm-dd hh:mm:ss.
      */
-    daysAgoStart(days: string): string;
+    daysAgoStart(days: number): string;
     /**
      * Writes a debug message to the system log.
      * @memberof GlideSystem

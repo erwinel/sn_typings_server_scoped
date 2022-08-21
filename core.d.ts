@@ -939,6 +939,58 @@ declare interface sys_dictionaryFields extends sys_metadataFields {
 declare type sys_dictionaryGlideRecord = sys_metadataGlideRecord & sys_dictionaryFields;
 
 /**
+ * GlideElement values from the Variables table.
+ * @interface var_dictionaryFields
+ * @extends {sys_dictionaryFields}
+ */
+declare interface var_dictionaryFields extends sys_dictionaryFields {
+    /**
+     * Help
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof var_dictionaryFields
+     */
+    help: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Hint
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof var_dictionaryFields
+     */
+    hint: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Label
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof var_dictionaryFields
+     */
+    label: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Model ID
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof var_dictionaryFields
+     */
+    model_id: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Model Table
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof var_dictionaryFields
+     */
+    model_table: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Order
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof var_dictionaryFields
+     */
+    order: $$rhino.Nilable<$$property.Numeric>;
+}
+declare type var_dictionaryGlideRecord = sys_dictionaryGlideRecord & var_dictionaryFields;
+declare type var_dictionaryElement = $$element.Reference<var_dictionaryFields, var_dictionaryGlideRecord>;
+declare type var_dictionaryProperty = $$property.generic.ReferenceProperty<var_dictionaryFields, var_dictionaryGlideRecord, var_dictionaryElement>;
+
+/**
  * GlideElement values from the Field class table.
  * @interface sys_glide_objectFields
  * @extends {sys_metadataFields}

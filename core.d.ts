@@ -1,32 +1,182 @@
 /// <reference path="$$rhino.d.ts" />
 /// <reference path="$$property.d.ts" />
 /// <reference path="Glide.d.ts" />
+/// <reference path="task.d.ts" />
 
-declare interface IApprovalInfo {
-    key: $$rhino.String; // sys_id for the group approval
-    value: {
-        sys_id: $$rhino.String; // sys_id of the approval record
-        state: $$rhino.String; // current approval state
-        group_id: $$rhino.String; // sys_id of the group on the approval record
-        activity_id: $$rhino.String; // sys_id of the activity that created the approval record
-    }
+declare interface sysapproval_groupFields extends taskFields {
+    /**
+     * Admin override
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof sysapproval_groupFields
+     */
+    admin_override: $$rhino.Nilable<$$property.Boolean>;
+    /**
+     * Approval user
+     * @type {$$rhino.Nilable<sys_userProperty>}
+     * @memberof sysapproval_groupFields
+     */
+    approval_user: $$rhino.Nilable<sys_userProperty>;
+    /**
+     * Handle a rejection by
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sysapproval_groupFields
+     */
+    reject_handling: $$rhino.Nilable<$$property.Element>;
+    /**
+     * Wait for
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof sysapproval_groupFields
+     */
+    wait_for: $$rhino.Nilable<$$property.Element>;
+}
+declare type sysapproval_Element = $$element.Reference<sysapproval_groupFields, sysapproval_groupGlideRecord>;
+declare type sysapproval_groupGlideRecord = taskGlideRecord & sysapproval_groupFields;
+
+declare interface IApprovalRecordInfo {
+    /**
+     * Current approval state.
+     * @type {TaskApproval}
+     * @memberof IApprovalRecordInfo
+     */
+    state: TaskApproval;
+    
+    /**
+     * SysID of the activity that created the approval record
+     * @type {string}
+     * @memberof IApprovalRecordInfo
+     */
+    activity_id: string;
 }
 
+/**
+ * Hash of approvals by approval sys_id.
+ * @interface IApprovalInfo
+ */
+declare interface IApprovalInfo {
+    [key: string]: IApprovalRecordInfo;
+}
+
+/**
+ * Provides string handling methods.
+ * @class GlideStringUtil
+ * @description Reference {@link https://developer.servicenow.com/dev.do#!/reference/api/sandiego/server/no-namespace/GlideStringUtilScopedAPI}.
+ */
 declare class GlideStringUtil {
-    escapeAllQuotes(sourceString: $$rhino.String): string;
-    dotToUnderBar(sourceString: string): string;
-    escapeForHomePage(sourceString: string): string;
-    escapeHTML(sourceString: string): string;
-    escapeNonPrintable(sourceString: string): string;
-    escapeQueryTermSeparator(sourceString: string): string;
-    escapeTicks(sourceString: string): string;
-    getHTMLValue(sourceString: string): string;
-    getNumeric(sourceString: string): string;
-    isBase64(sourceString: string): boolean;
-    isEligibleSysID(sourceString: string): boolean;
-    newLinesToBreaks(sourceString: string): string;
-    normalizeWhitespace(sourceString: string): string;
-    unEscapeHTML(sourceString: string): string;
+    /**
+     * Replaces periods with underscore characters.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with periods replaced with underscores.
+     * @memberof GlideStringUtil
+     */
+    static dotToUnderBar(sourceString: $$rhino.String): string;
+    
+    /**
+     * Removes quotes from a string.
+     * @param {$$rhino.String} sourceString - The string to be processed.
+     * @return {string} The string with quotes removed.
+     * @memberof GlideStringUtil
+     */
+    static escapeAllQuotes(sourceString: $$rhino.String): string;
+    
+    /**
+     * Replaces problem characters with escape characters.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with problem characters replaced with escape characters.
+     * @memberof GlideStringUtil
+     */
+    static escapeForHomePage(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces illegal characters with their escape codes.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with illegal characters replaced with their escape codes.
+     * @memberof GlideStringUtil
+     * @description Using this method removes illegal characters that might cause the UI to render improperly, or trigger a client side attack such as JavaScript or HTML injection.
+     */
+    static escapeHTML(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces non-printable characters with their printable notation.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with non-printable characters replaced with printable notation.
+     * @memberof GlideStringUtil
+     */
+    static escapeNonPrintable(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces query term separators "^" with their escape sequence "^^".
+     * @param {string} sourceString - Text to process.
+     * @return {string} Text with query term separators replaced with the escape characters.
+     * @memberof GlideStringUtil
+     */
+    static escapeQueryTermSeparator(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces quotes with escape characters by adding a backslash before each quote.
+     * @param {string} sourceString - Text to process.
+     * @return {string} Text with backslashes added before quotes.
+     * @memberof GlideStringUtil
+     */
+    static escapeTicks(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces illegal HTML characters into HTML notation.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with illegal characters replaced with HTML notation.
+     * @memberof GlideStringUtil
+     * @description Using this method removes illegal characters that might cause the UI to render improperly, or trigger a client side attack such as JavaScript or HTML injection.
+     */
+    static getHTMLValue(sourceString: $$rhino.String): string;
+
+    /**
+     * Extracts numeric characters from a string.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text containing only numeric characters.
+     * @memberof GlideStringUtil
+     */
+    static getNumeric(sourceString: $$rhino.String): string;
+
+    /**
+     * Validates whether the specified string is a valid base64 string.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {boolean} true if the source string is a base64 formatted string; otherwise, false.
+     * @memberof GlideStringUtil
+     */
+    static isBase64(sourceString: $$rhino.String): boolean;
+
+    /**
+     * Validates whether the specified string is in valid sys_id format.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {boolean} true if the source string is a valid sys_id formatted string; otherwise, false.
+     * @memberof GlideStringUtil
+     * @description The sys_id format is a sequence of 32 hexadecimal characters where all the characters are in the range [0-9, a-f, A-F].
+     */
+    static isEligibleSysID(sourceString: $$rhino.String): boolean;
+
+    /**
+     * Replaces the new line character, /n, with a break code, <br/>.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with new line characters replaced with HTML break code.
+     * @memberof GlideStringUtil
+     */
+    static newLinesToBreaks(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces carriage returns, line feeds, and tabs with spaces, and then removes leading, trailing, and duplicate spaces.
+     * @param {$$rhino.String} sourceString - Text to process.
+     * @return {string} Text with carriage returns, line feeds, and tabs replaced with spaces, and then leading, trailing, and duplicate spaces removed.
+     * @memberof GlideStringUtil
+     */
+    static normalizeWhitespace(sourceString: $$rhino.String): string;
+
+    /**
+     * Replaces escape characters with their respective character.
+     * @param {$$rhino.String} htmlString - String to process.
+     * @return {string} String with the escape characters replaced.
+     * @memberof GlideStringUtil
+     * @description This method replaces these escape characters: &lt; &gt: &nbsp; &amp; &quote;.
+     */
+    static unescapeHTML(htmlString: $$rhino.String): string;
 }
 
 declare class GlideXMLUtil {
@@ -34,228 +184,351 @@ declare class GlideXMLUtil {
     validateXML(xmlString: string, nsAware: boolean, forgiveUnclosed: boolean): string | null;
 }
 
+/**
+ * Workflow approval support utilities
+ * @interface WorkflowApprovalUtils
+ */
 declare interface WorkflowApprovalUtils {
     readonly PENDING_STATES: ['not requested', 'not_required', 'requested'];
-
-    /** 
-     * this tests whether or not a table is a Task table. If it is a task table then
-     * still set the sysapproval column that references the task table. In doing this
-     * we will preserve all the sc_XXX ui_macros for now.
+    
+    /**
+     * Validates whether a table is derived from the task table.
+     * @param {string} tableName - The name of a table.
+     * @return {boolean} true if the specified table is derived from the task table; otherwise, false.
+     * @memberof WorkflowApprovalUtils
      */
     isTask(tableName: string): boolean;
 
     /**
-     * Cancel all approvals for a task
+     * Cancel all approvals for a task.
+     * @param {taskGlideRecord} task - A task record.
+     * @param {string} [comment] - Optional comment for workflow history entry.
+     * @memberof WorkflowApprovalUtils
      */
     cancelAll(task: taskGlideRecord, comment?: string): void;
 
     /**
-    * Set all User approvals for a target record (task or non-task) to the specified state.
-    */
-    setAllApprovalsByTask(target: GlideRecord, approvalState: string, comment?: string): void;
+     * Set all User approvals for a target record (task or non-task) to the specified state.
+     * @param {GlideRecord} target - The target GlideRecord.
+     * @param {TaskApproval} approvalState - The approval state value to set.
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @memberof WorkflowApprovalUtils
+     */
+    setAllApprovalsByTask(target: GlideRecord, approvalState: TaskApproval, comment?: string): void;
 
     /**
-     * Reset all approvals by deleting all of them along with any
-     * workflow associated with the task so that the workflows get
-     * rerun and recalculated.
+     * Reset all approvals by deleting all of them along with any workflow associated with the task so that the workflows get rerun and recalculated.
+     * @param {taskGlideRecord} task - A task record.
+     * @param {string} [comment] - Optional comment for workflow history entry.
+     * @memberof WorkflowApprovalUtils
      */
     reset(task: taskGlideRecord, comment?: string): void;
 
     /**
-     * Restart workflows (this is deprecated and only exists to support legacy
-     * calls to this method - use new Workflow().restartWorkflow(task, true)
-     * instead)
+     * Restart workflow.
+     * @param {taskGlideRecord} task - A task record.
+     * @param {string} [comment] - Optional comment for workflow history entry.
+     * @memberof WorkflowApprovalUtils
+     * @deprecated this is deprecated and only exists to support legacy calls to this method - use new Workflow().restartWorkflow(task, true) instead.
      */
     deleteWorkflows(task: taskGlideRecord, comment?: string): void;
 
     /**
-     * Create user approvals for a sysapproval_group approval
+     * Create user approvals for a sysapproval_group approval.
+     * @param {sysapproval_groupGlideRecord} groupApproval - A record from the 'sysapproval_group' table.
+     * @memberof WorkflowApprovalUtils
      */
-    createUserApprovals(groupApproval: GlideRecord): void;
-    //createUserApprovals(groupApproval: sysapproval_groupGlideRecord): void;
+    createUserApprovals(groupApproval: sysapproval_groupGlideRecord): void;
 
     /**
-     * Get the list of user sys_ids for each member of a group
+     * Get the list of user sys_ids for each member of a group.
+     * @param {string} groupID - The SysID of a user group.
+     * @return {string}
+     * @memberof WorkflowApprovalUtils
      */
-    getMembersOfGroup(groupID: $$rhino.String): $$rhino.String;
+    getMembersOfGroup(groupID: string): string;
 
     /**
-     * Get an object of group approvals that were created by all of the children of
-     * an approval manager activity (we use this to determine if we are about to
-     * create a duplicate and to determine if we are reusing an approval that
-     * we previously created)
-     *
-     * We return an object that has:
-     *       key -> sys_id for the group approval
-     *       value -> { sys_id: sys_id of the approval record
-     *                  state: current approval state
-     *                  group_id: sys_id of the group on the approval record
-     *                  activity_id: sys_id of the activity that created the approval record
-     *                }
+     * Get an object of group approvals that were created by all of the children of an approval manager activity.
+     * @param {string} taskId - The SysID of a task record.
+     * @param {string} amId - The SysID of a user.
+     * @return {IApprovalInfo} Hash of group approvals.
+     * @memberof WorkflowApprovalUtils
+     * @description We use this to determine if we are about to create a duplicate and to determine if we are reusing an approval that we previously created.
      */
-    getGroupApprovalsByApprovalManager(taskId: $$rhino.String, amId: $$rhino.String): IApprovalInfo;
+    getGroupApprovalsByApprovalManager(taskId: string, amId: string): IApprovalInfo;
 
     /**
-     * Get an object of user approvals that were created by all of the children of
-     * an approval manager activity (we use this to determine if we are about to
-     * create a duplicate and to determine if we are reusing an approval that
-     * we previously created)
-     *
-     * We return an object that has:
-     *       key -> sys_id for the user approval
-     *       value -> { sys_id: sys_id of the approval record
-     *                  state: current approval state
-     *                  user_id: sys_id of the user on the approval record
-     *                  activity_id: sys_id of the activity that created the approval record
-     *                }
+     * Get an object of user approvals that were created by all of the children of an approval manager activity.
+     * @param {string} taskId - The SysID of a task record.
+     * @param {string} amId - The SysID of a user.
+     * @return {IApprovalInfo} Hash of user approvals.
+     * @memberof WorkflowApprovalUtils
+     * @description We use this to determine if we are about to create a duplicate and to determine if we are reusing an approval that we previously created.
      */
-    getUserApprovalsByApprovalManager(taskId: $$rhino.String, amId: $$rhino.String): IApprovalInfo;
+    getUserApprovalsByApprovalManager(taskId: string, amId: string): IApprovalInfo;
 
     /**
-     * Get the counts for the user approvals of a task
+     * Get the counts for the user approvals of a task.
+     * @param {string} taskID - The SysID of a task record.
+     * @return {number} The number of user approvals for the specified task.
+     * @memberof WorkflowApprovalUtils
      */
-    getUserApprovalCounts(taskID: $$rhino.String): $$rhino.Number;
+    getUserApprovalCounts(taskID: string): number;
 
     /**
-     * Get the counts for the user approvals of a group approval
+     * Get the counts for the user approvals of a group approval.
+     * @param {string} groupID - The SysID of a user group.
+     * @return {number} The number of user approvals for the specified group.
+     * @memberof WorkflowApprovalUtils
      */
-    getUserGroupApprovalCounts(groupID: $$rhino.String): $$rhino.Number;
+    getUserGroupApprovalCounts(groupID: string): number;
 
     /**
-     * Get the counts for the user approvals of a group approval
-     * by the approval ids
+     * Get the counts for the user approvals of a group approval by the approval ids.
+     * @param {string} approvalID - the SysId of a user approval.
+     * @return {number}
+     * @memberof WorkflowApprovalUtils
      */
-    getGroupUserApprovalCounts(approvalIDs: $$rhino.String): $$rhino.Number;
+    getGroupUserApprovalCounts(approvalID: string): number;
 
     /**
-     * Get the counts for the group approvals of a task
+     * Get the counts for the group approvals of a task.
+     * @param {string} taskID - The SysID of a task record.
+     * @return {number}
+     * @memberof WorkflowApprovalUtils
      */
-    getGroupApprovalCounts(taskID: $$rhino.String): $$rhino.Number;
+    getGroupApprovalCounts(taskID: string): number;
 
     /**
-     * Get the counts for the list of user approvals
-     *
-     * ids is an array of user approval sys_ids
+     * Get the counts for the list of user approvals.
+     * @param {string[]} ids - An array of user approval sys_ids.
+     * @return {number}
+     * @memberof WorkflowApprovalUtils
      */
-    getUserIdListApprovalCounts(ids: $$rhino.String): $$rhino.Number;
+    getUserIdListApprovalCounts(ids: string[]): number;
 
     /**
-     * Get the counts for the list of group approvals
-     *
-     * ids is an array of group approval sys_ids
+     * Get the counts for the list of group approvals.
+     * @param {string[]} ids - An array of group approval sys_ids.
+     * @return {number}
+     * @memberof WorkflowApprovalUtils
      */
-    getGroupIdListApprovalCounts(ids: $$rhino.String): $$rhino.Number;
-
-    getUserApprovalIdsForGroups(groups: $$rhino.String[]): $$rhino.String[];
+    getGroupIdListApprovalCounts(ids: string[]): number;
 
     /**
-     * Set all group approvals of a parent task to the specified state
+     * 
+     * @param {string[]} groups - An array of group sys_ids.
+     * @return {string[]} - An array of user approval sys_ids.
+     * @memberof WorkflowApprovalUtils
      */
-    setGroupApprovalsByTask(taskID: $$rhino.String, approvalState: $$rhino.String, comment?: string, currentStates?: $$rhino.String[]): void;
+    getUserApprovalIdsForGroups(groups: string[]): string[];
 
     /**
-     * Set all group approvals of a parent task to the specified state
+     * Set all group approvals of a parent task to the specified state.
+     * @param {string} taskID - The SysID of a task record.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @param {TaskApproval[]} [currentStates]
+     * @memberof WorkflowApprovalUtils
      */
-    setPendingGroupApprovalsByTask(taskID: $$rhino.String, approvalState: $$rhino.String, comment?: string): void;
+    setGroupApprovalsByTask(taskID: string, approvalState: TaskApproval, comment?: string, currentStates?: TaskApproval[]): void;
 
     /**
-     * Set all specified group approvals to the specified state
+     * Set all group approvals of a parent task to the specified state.
+     * @param {string} taskID - The SysID of a task record.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @memberof WorkflowApprovalUtils
      */
-    setGroupApprovalsByIds(ids: $$rhino.String[], approvalState: $$rhino.String, comment?: string, currentStates?: $$rhino.String[]): void;
+    setPendingGroupApprovalsByTask(taskID: string, approvalState: TaskApproval, comment?: string): void;
 
     /**
-     * Set specified pending group approvals to the specified state
+     * Set all specified group approvals to the specified state.
+     * @param {string[]} ids - An array of group approval sys_ids.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @param {TaskApproval[]} [currentStates]
+     * @memberof WorkflowApprovalUtils
      */
-    setPendingGroupApprovalsByIds(ids: $$rhino.String[], approvalState: $$rhino.String, comment?: string): void;
+    setGroupApprovalsByIds(ids: string[], approvalState: TaskApproval, comment?: string, currentStates?: TaskApproval[]): void;
 
     /**
-     * Set all User approvals of a task to the specified state
-     * - modified to look at document_id for all non-task tables
+     * Set specified pending group approvals to the specified state.
+     * @param {string[]} ids - An array of group approval sys_ids.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @memberof WorkflowApprovalUtils
      */
-    setUserApprovalsByTask(taskID: $$rhino.String, approvalState: $$rhino.String, comment?: string, currentStates?: $$rhino.String[]): void;
+    setPendingGroupApprovalsByIds(ids: string[], approvalState: TaskApproval, comment?: string): void;
 
     /**
-     * Set all pending user approvals of a task to the specified state
-     * - modified to look for document_id when approving a non-task table
+     * Set all User approvals of a task to the specified state.
+     * @param {string} taskID - The SysID of a task record.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @param {TaskApproval[]} [currentStates]
+     * @memberof WorkflowApprovalUtils
+     * @description modified to look at document_id for all non-task tables.
      */
-    setPendingUserApprovalsByTask(taskID: $$rhino.String, approvalState: $$rhino.String, comment?: string): void;
+    setUserApprovalsByTask(taskID: string, approvalState: TaskApproval, comment?: string, currentStates?: TaskApproval[]): void;
 
     /**
-     * Set all user approvals of a group approval to the specified state
+     * Set all pending user approvals of a task to the specified state.
+     * @param {string} taskID - The SysID of a task record.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @memberof WorkflowApprovalUtils
+     * @description modified to look for document_id when approving a non-task table.
      */
-    setUserApprovalsByGroup(groupID: $$rhino.String, approvalState: $$rhino.String, comment?: string, currentStates?: $$rhino.String[]): void;
+    setPendingUserApprovalsByTask(taskID: string, approvalState: TaskApproval, comment?: string): void;
 
     /**
-     * Set all pending user approvals of a group approval to the specified state
+     * Set all user approvals of a group approval to the specified state.
+     * @param {string} groupID - The SysID of a user group.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @param {TaskApproval[]} [currentStates]
+     * @memberof WorkflowApprovalUtils
      */
-    setPendingUserApprovalsByGroup(groupID: $$rhino.String, approvalState: $$rhino.String, comment?: string): void;
+    setUserApprovalsByGroup(groupID: string, approvalState: TaskApproval, comment?: string, currentStates?: TaskApproval[]): void;
 
     /**
-     * Set all specified user approvals to the specified state
+     * Set all pending user approvals of a group approval to the specified state.
+     * @param {string} groupID - The SysID of a user group.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @memberof WorkflowApprovalUtils
      */
-    setUserApprovalsByIds(ids: any, approvalState: any, comment?: string, currentStates?: $$rhino.String[]): void;
+    setPendingUserApprovalsByGroup(groupID: string, approvalState: TaskApproval, comment?: string): void;
 
     /**
-     * Set specified pending user approvals to the specified state
+     * Set all specified user approvals to the specified state.
+     * @param {string[]} ids - An array of user approval sys_ids.
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @param {TaskApproval[]} [currentStates]
+     * @memberof WorkflowApprovalUtils
      */
-    setPendingUserApprovalsByIds(ids: any, approvalState: any, comment?: string): void;
+    setUserApprovalsByIds(ids: string[], approvalState: TaskApproval, comment?: string, currentStates?: TaskApproval[]): void;
 
     /**
-     * Add a list of ids to the approval list
+     * Set specified pending user approvals to the specified state.
+     * @param {*} ids
+     * @param {TaskApproval} approvalState
+     * @param {string} [comment] - Optional comment for approval history entry.
+     * @memberof WorkflowApprovalUtils
      */
-    addIdsToApprovalList(approvals: any[], o: string | string[]): void;
-
-    ///**
-    // * Add a list of user or group ids to the appropriate approval list
-    // */
-    //addUsersAndGroupsToApprovalList(users, groups, o): void;
-
-    ///**
-    // * Create the group approvals from the group list
-    // */
-    //createGroupApprovers(groups, order, state): void;
-
-    ///**
-    // * Add an approval history journal entry for a task record
-    // */
-    //addApprovalHistoryGR(taskGR, msg): void;
-
-    ///**
-    // * Add an approval history journal entry for a task id (read the task record,
-    // * add the journal entry and update the task record)
-    // */
-    //addApprovalHistoryID(taskID, msg: void;
+    setPendingUserApprovalsByIds(ids: any, approvalState: TaskApproval, comment?: string): void;
 
     /**
-     * Get the user name from a user sys_id
+     * Add a list of ids to the approval list.
+     * @param {string[]} approvals - An array of approval sys_ids.
+     * @param {(string | string[])} o - approval sys_ids to add.
+     * @memberof WorkflowApprovalUtils
      */
-    getUserName(userSysId: $$rhino.String): string;
-
+    addIdsToApprovalList(approvals: string[], o: string | string[]): void;
 
     /**
-     * Get approval record for a given task/record id
+     * Add a list of user or group ids to the appropriate approval list.
+     * @param {string[]} users - An array of user record sys_ids.
+     * @param {string[]} groups - An array of user group sys_ids.
+     * @param {(string | string[])} o
+     * @memberof WorkflowApprovalUtils
      */
-    getApprovalRecord(taskID: $$rhino.String): GlideRecord;
-    //getApprovalRecord(taskID: $$rhino.String): sysapproval_approverGlideRecord;
-
-    getRequestedApproversAsString(taskID: $$rhino.String): string;
-
-    resolveUserIdToName(userID: $$rhino.String): string;
-
-    debug(msg: any): void;
+    addUsersAndGroupsToApprovalList(users: any[], groups: any[], o: string | string[]): void;
 
     /**
-    * Get state of all specified user approvals
-    */
-    getUserApprovalStateById(ids: $$rhino.String[]): $$rhino.String | undefined;
+     * Create the group approvals from the group list.
+     * @param {string[]} groups - An array of user group sys_ids.
+     * @param {number} order
+     * @param {TaskApproval} state - The approval state value.
+     * @memberof WorkflowApprovalUtils
+     */
+    createGroupApprovers(groups: string[], order: number, state: TaskApproval): void;
 
     /**
-    * Get state of all specified user approvals
-    */
-    getGroupApprovalStateById(ids: $$rhino.String[]): $$rhino.String | undefined;
+     * Add an approval history journal entry for a task record.
+     * @param {taskGlideRecord} taskGR - A task glide record.
+     * @param {string} msg - The approval history entry message.
+     * @memberof WorkflowApprovalUtils
+     */
+    addApprovalHistoryGR(taskGR: taskGlideRecord, msg: string): void;
 
+    /**
+     * Add an approval history journal entry for a task id.
+     * @param {string} taskID - The SysId of a task record.
+     * @param {string} msg - The journal entry message.
+     * @memberof WorkflowApprovalUtils
+     * @description Reads the task record, adds the journal entry and updates the task record.
+     */
+    addApprovalHistoryID(taskID: string, msg: string): void;
+
+    /**
+     * Get the display name from a user sys_id.
+     * @param {string} userSysId - The SysID of a user record.
+     * @return {string} - The display name of the user or an empty string if the user was not found.
+     * @memberof WorkflowApprovalUtils
+     */
+    getUserName(userSysId: string): string;
+
+    /**
+     * Get approval record for a given task/record id.
+     * @param {string} taskID - The SysId of a task record.
+     * @return {GlideRecord} A record from the 'sysapproval_approver' table.
+     * @memberof WorkflowApprovalUtils
+     */
+    getApprovalRecord(taskID: string): GlideRecord;
+    
+    /**
+     * Gets the names of the requested approvers.
+     * @param {string} taskID - The SysId of a task record.
+     * @return {string} - The names of the requested approvers.
+     * @memberof WorkflowApprovalUtils
+     */
+    getRequestedApproversAsString(taskID: string): string;
+    
+    /**
+     * Gets the first and last name of a user by the user record sys_id.
+     * @param {string} userID - The SysId of a user record.
+     * @return {string} The first and last name of the user or an empty string if the user was not found.
+     * @memberof WorkflowApprovalUtils
+     */
+    resolveUserIdToName(userID: string): string;
+    
+    /**
+     * Writes a debug message to the system log if in debug mode.
+     * @param {string} msg - The message to write to the system logs.
+     * @memberof WorkflowApprovalUtils
+     */
+    debug(msg: string): void;
+
+    /**
+     * Get state of all specified user approvals.
+     * @param {string[]} ids - An array of user approval sys_ids.
+     * @return {(string | undefined)}
+     * @memberof WorkflowApprovalUtils
+     */
+    getUserApprovalStateById(ids: string[]): string | undefined;
+
+    /**
+     * Get state of all specified user approvals.
+     * @param {string[]} ids - An array of group approval sys_ids.
+     * @return {(string | undefined)}
+     * @memberof WorkflowApprovalUtils
+     */
+    getGroupApprovalStateById(ids: string[]): string | undefined;
+
+    /**
+     * Sets the approval record in the current workflow context to unapproved.
+     * @memberof WorkflowApprovalUtils
+     */
     unapprove(): void;
-
+    
+    /**
+     * Sets the approval record in the current workflow context to approved.
+     * @memberof WorkflowApprovalUtils
+     */
     approve(): void;
 
     type: 'WorkflowApprovalUtils'

@@ -82,7 +82,7 @@ declare namespace Packages {
              * @export
              * @class Object
              */
-           export class Object {
+            export class Object {
                 protected constructor();
                 /**
                  * Indicates whether some other object is "equal to" this one.
@@ -103,7 +103,7 @@ declare namespace Packages {
                  */
                 toString(): String;
             }
-           export interface Comparable<T> {
+            export interface Comparable<T> {
                 /**
                  * Compares this object with the specified object for order.
                  * @param o {T}
@@ -117,7 +117,7 @@ declare namespace Packages {
                  */
                 toString(): lang.String;
             }
-           export interface CharSequence {
+            export interface CharSequence {
                 /**
                  * Returns the char value at the specified index.
                  * @param index {$$rhino.Number}
@@ -145,14 +145,14 @@ declare namespace Packages {
                  */
                 toString(): String;
             }
-           export interface Iterable<T> {
+            export interface Iterable<T> {
                 /**
                  * Returns an iterator over the elements in this collection in proper sequence.
                  * @returns {Iterator<E>}
                  */
                 iterator(): util.Iterator<T>;
             }
-           export class Character extends Object implements Comparable<Character> {
+            export class Character extends Object implements Comparable<Character> {
                 protected constructor();
                 /**
                  * Returns the value of this Character object.
@@ -173,7 +173,7 @@ declare namespace Packages {
              * @class String
              * @extends {Object}
              */
-           export class String extends Object implements Comparable<String>, CharSequence {
+            export class String extends Object implements Comparable<String>, CharSequence {
                 protected constructor();
                 /**
                  * Returns the char value at the specified index.
@@ -524,7 +524,7 @@ declare namespace Packages {
              * @export
              * @class Object
              */
-           export abstract class Number extends Object {
+            export abstract class Number extends Object {
                 protected constructor();
                 /**
                  * Returns the value of the specified number as a byte.
@@ -562,7 +562,7 @@ declare namespace Packages {
                  */
                 shortValue(): Short;
             }
-           export class Boolean extends Object {
+            export class Boolean extends Object {
                 protected constructor();
                 /**
                  * Returns the value of this Boolean object as a boolean primitive.
@@ -584,7 +584,7 @@ declare namespace Packages {
              * @class Integer
              * @extends {Object}
              */
-           export class Integer extends Number implements Comparable<Integer> {
+            export class Integer extends Number implements Comparable<Integer> {
                 protected constructor();
 
                 /**
@@ -600,7 +600,7 @@ declare namespace Packages {
              * @class Long
              * @extends {Object}
              */
-           export class Long extends Number implements Comparable<Long> {
+            export class Long extends Number implements Comparable<Long> {
                 protected constructor();
 
                 /**
@@ -616,7 +616,7 @@ declare namespace Packages {
              * @class Double
              * @extends {Object}
              */
-           export class Double extends Number implements Comparable<Double> {
+            export class Double extends Number implements Comparable<Double> {
                 protected constructor();
 
                 /**
@@ -644,7 +644,7 @@ declare namespace Packages {
              * @class InteByteger
              * @extends {Object}
              */
-           export class Byte extends Number implements Comparable<Byte> {
+            export class Byte extends Number implements Comparable<Byte> {
                 protected constructor();
 
                 /**
@@ -660,7 +660,7 @@ declare namespace Packages {
              * @class Float
              * @extends {Object}
              */
-           export class Float extends Number implements Comparable<Float> {
+            export class Float extends Number implements Comparable<Float> {
                 protected constructor();
 
                 /**
@@ -688,7 +688,7 @@ declare namespace Packages {
              * @class Short
              * @extends {Object}
              */
-           export class Short extends Number implements Comparable<Short> {
+            export class Short extends Number implements Comparable<Short> {
                 protected constructor();
 
                 /**
@@ -699,7 +699,7 @@ declare namespace Packages {
                 compareTo(anotherShort: $$rhino.Number): Integer;
             }
 
-           export class StringBuffer extends lang.Object implements CharSequence {
+            export class StringBuffer extends lang.Object implements CharSequence {
                 protected constructor();
                 /**
                  * Appends the string representation of the boolean argument to the sequence.
@@ -1070,7 +1070,7 @@ declare namespace Packages {
             }
         }
        export namespace util {
-           export class Locale extends lang.Object {
+            export class Locale extends lang.Object {
                 protected constructor();
                 /**
                  * Overrides Cloneable.
@@ -1222,7 +1222,7 @@ declare namespace Packages {
              * @export
              * @interface Collection<T>
              */
-           export interface Collection<E> extends lang.Iterable<E> {
+            export interface Collection<E> extends lang.Iterable<E> {
                 /**
                  * Ensures that this collection contains the specified element (optional operation).
                  * @param e {E}
@@ -1320,7 +1320,7 @@ declare namespace Packages {
                  */
                 toString(): lang.String;
             }
-           export interface Iterator<E> {
+            export interface Iterator<E> {
                 /**
                  * Returns true if the iteration has more elements.
                  * @returns {lang.Boolean}
@@ -1336,7 +1336,7 @@ declare namespace Packages {
                  */
                 remove(): void;
             }
-           export interface ListIterator<E> extends Iterator<E> {
+            export interface ListIterator<E> extends Iterator<E> {
                 /**
                  * Inserts the specified element into the list (optional operation).
                  * @param e {E}
@@ -1390,7 +1390,7 @@ declare namespace Packages {
                  */
                 set(e: E): void;
             }
-           export interface List<E> extends util.Collection<E> {
+            export interface List<E> extends util.Collection<E> {
                 /**
                  * Appends the specified element to the end of this list (optional operation).
                  * @param e {E}
@@ -1554,7 +1554,7 @@ declare namespace Packages {
                  */
                 toArray(): lang.Object;
             }
-           export abstract class AbstractCollection<E> extends lang.Object implements util.Collection<E>  {
+            export abstract class AbstractCollection<E> extends lang.Object implements util.Collection<E>  {
                 protected constructor();
                 /**
                  * Ensures that this collection contains the specified element (optional operation).
@@ -1653,7 +1653,7 @@ declare namespace Packages {
                  */
                 toString(): lang.String;
             }
-           export abstract class AbstractList<E> extends AbstractCollection<E> implements List<E> {
+            export abstract class AbstractList<E> extends AbstractCollection<E> implements List<E> {
                 protected constructor();
                 /**
                  * Appends the specified element to the end of this list (optional operation).
@@ -1753,7 +1753,7 @@ declare namespace Packages {
                  */
                 subList(fromIndex: $$rhino.Number, toIndex: $$rhino.Number): List<E>;
             }
-           export class ArrayList<E> extends AbstractList<E> implements List<E> {
+            export class ArrayList<E> extends AbstractList<E> implements List<E> {
                 /**
                  * Appends the specified element to the end of this list.
                  * @param e {E}
@@ -1914,7 +1914,7 @@ declare namespace Packages {
                  */
                 trimToSize(): void;
             }
-           export interface MapEntry<K, V> {
+            export interface MapEntry<K, V> {
                 /**
                  * Compares the specified object with this entry for equality.
                  * @param o {lang.Object}
@@ -1947,7 +1947,7 @@ declare namespace Packages {
                  */
                 setValue(value: V): V;
             }
-           export interface Set<E> extends util.Collection<E> {
+            export interface Set<E> extends util.Collection<E> {
                 /**
                  * Adds the specified element to this set if it is not already present (optional operation).
                  * @param e {E}
@@ -2039,7 +2039,7 @@ declare namespace Packages {
                  */
                 toArray(): lang.Object;
             }
-           export interface Map<K, V> {
+            export interface Map<K, V> {
                 /**
                  * Removes all of the mappings from this map (optional operation).
                  */
@@ -2124,7 +2124,7 @@ declare namespace Packages {
                  */
                 values(): util.Collection<V>;
             }
-           export class AbstractMap<K, V> extends lang.Object implements Map<K, V> {
+            export class AbstractMap<K, V> extends lang.Object implements Map<K, V> {
                 protected constructor();
                 /**
                  * Removes all of the mappings from this map (optional operation).
@@ -2203,7 +2203,7 @@ declare namespace Packages {
                  */
                 values(): util.Collection<V>;
             }
-           export class HashMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
+            export class HashMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
                 protected constructor();
                 /**
                  * Removes all of the mappings from this map.
@@ -2282,7 +2282,7 @@ declare namespace Packages {
                  */
                 values(): util.Collection<V>;
             }
-           export class AbstractSet<E> extends AbstractCollection<E> implements util.Set<E> {
+            export class AbstractSet<E> extends AbstractCollection<E> implements util.Set<E> {
                 protected constructor();
 
                 /**
@@ -2292,7 +2292,7 @@ declare namespace Packages {
                  */
                 removeAll(c: util.Collection<any>): lang.Boolean;
             }
-           export class HashSet<E> extends AbstractSet<E> implements util.Set<E> {
+            export class HashSet<E> extends AbstractSet<E> implements util.Set<E> {
                 protected constructor();
                 /**
                  * Adds the specified element to this set if it is not already present.
@@ -2350,7 +2350,7 @@ declare namespace Packages {
              * @class Date
              * @extends {Object}
              */
-           export class Date extends lang.Object implements lang.Comparable<Date> {
+            export class Date extends lang.Object implements lang.Comparable<Date> {
                 protected constructor();
                 /**
                  * Tests if this date is after the specified date.
@@ -2396,7 +2396,7 @@ declare namespace Packages {
              * Represents a time zone offset, and also figures out daylight savings.
              * @class TimeZone
              */
-           export class TimeZone {
+            export class TimeZone {
                 protected constructor();
                 /**
                  * Creates a copy of this TimeZone.
@@ -2514,8 +2514,8 @@ declare namespace Packages {
 
     export namespace org {
        export namespace w3c {
-           export namespace dom {
-               export interface CharacterData extends Node {
+            export namespace dom {
+                export interface CharacterData extends Node {
                     /**
                      * Append the string to the end of the character data of the node.
                      * @param arg {$$rhino.String}
@@ -2570,7 +2570,7 @@ declare namespace Packages {
                      */
                     substringData(offset: $$rhino.Number, count: $$rhino.Number): Packages.java.lang.String;
                 }
-               export interface Text extends CharacterData {
+                export interface Text extends CharacterData {
                     /**
                      * Returns all text of Text nodes logically-adjacent text nodes to this node, concatenated in document order.
                      * @returns {java.lang.String}
@@ -2597,11 +2597,11 @@ declare namespace Packages {
                      */
                     splitText(offset: $$rhino.Number): Text;
                 }
-               export interface CDATASection extends Text { }
-               export interface Comment extends CharacterData { }
-               export interface DocumentFragment extends Node { }
-               export interface EntityReference extends Node { }
-               export interface ProcessingInstruction extends Node {
+                export interface CDATASection extends Text { }
+                export interface Comment extends CharacterData { }
+                export interface DocumentFragment extends Node { }
+                export interface EntityReference extends Node { }
+                export interface ProcessingInstruction extends Node {
                     /**
                      * The content of this processing instruction.
                      * @returns {java.lang.String}
@@ -2620,7 +2620,7 @@ declare namespace Packages {
                      */
                     setData(data: $$rhino.String): void;
                 }
-               export interface DocumentType extends Node {
+                export interface DocumentType extends Node {
                     /**
                      * A NamedNodeMap containing the general entities, both external and internal, declared in the DTD.
                      * @returns {NamedNodeMap}
@@ -2657,7 +2657,7 @@ declare namespace Packages {
                      */
                     getSystemId(): java.lang.String;
                 }
-               export interface DOMStringList {
+                export interface DOMStringList {
                     /**
                      * Test if a string is part of this DOMStringList.
                      * @param str {$$rhino.String}
@@ -2678,7 +2678,7 @@ declare namespace Packages {
                      */
                     item(index: $$rhino.Number): java.lang.String;
                 }
-               export interface DOMConfiguration {
+                export interface DOMConfiguration {
                     /**
                      * Check if setting a parameter to a specific value is supported.
                      * @param name {$$rhino.String}
@@ -2707,7 +2707,7 @@ declare namespace Packages {
                      */
                     setParameter(name: $$rhino.String, value: object): void;
                 }
-               export interface DOMImplementation {
+                export interface DOMImplementation {
                     /**
                      * Creates a DOM Document object of the specified type with its document element.
                      * @param namespaceURI {$$rhino.String}
@@ -2742,7 +2742,7 @@ declare namespace Packages {
                      */
                     hasFeature(feature: $$rhino.String, version: $$rhino.String): java.lang.Boolean;
                 }
-               export interface Document extends Node {
+                export interface Document extends Node {
                     /**
                      * Attempts to adopt a node from another document to this document.
                      * @param source {Node}
@@ -2950,7 +2950,7 @@ declare namespace Packages {
                      */
                     setXmlVersion(xmlVersion: $$rhino.String): void;
                 }
-               export interface NamedNodeMap {
+                export interface NamedNodeMap {
                     /**
                      * The number of nodes in this map.
                      * @returns {java.lang.Integer}
@@ -3008,7 +3008,7 @@ declare namespace Packages {
                      */
                     setNamedItemNS(arg: Node): Node;
                 }
-               export interface Node {
+                export interface Node {
                     /**
                      * Adds the node newChild to the end of the list of children of this node.
                      * @param newChild {Node}
@@ -3242,7 +3242,7 @@ declare namespace Packages {
                      */
                     setTextContent(textContent: $$rhino.String): void;
                 }
-               export interface Attr {
+                export interface Attr {
                     /**
                      * Returns the name of this attribute.
                      * @returns {java.lang.String}
@@ -3285,7 +3285,7 @@ declare namespace Packages {
                      */
                     setValue(value: $$rhino.String): void;
                 }
-               export interface NodeList {
+                export interface NodeList {
                     /**
                      * Test if a name is part of this NameList.
                      * @param str {$$rhino.String}
@@ -3321,7 +3321,7 @@ declare namespace Packages {
                      */
                     getNamespaceURI(index: $$rhino.Number): java.lang.String;
                 }
-               export interface TypeInfo {
+                export interface TypeInfo {
                     /**
                      * The name of a type declared for the associated element or attribute, or null if unknown.
                      * @returns {java.lang.String}
@@ -3343,7 +3343,7 @@ declare namespace Packages {
                      */
                     isDerivedFrom(typeNamespaceArg: $$rhino.String, typeNameArg: $$rhino.String, derivationMethod: $$rhino.Number): java.lang.Boolean;
                 }
-               export interface Element extends Node {
+                export interface Element extends Node {
                     /**
                      * Retrieves an attribute value by name.
                      * @param name {$$rhino.String}
@@ -3493,8 +3493,8 @@ declare namespace Packages {
 
     export namespace com {
        export namespace glide {
-           export namespace choice {
-               export class Choice {
+            export namespace choice {
+                export class Choice {
                     protected constructor(value: $$rhino.String, label: $$rhino.String, sysId?: $$rhino.String);
                     getLabel(): $$rhino.String;
                     getValue(): $$rhino.String;
@@ -3523,7 +3523,7 @@ declare namespace Packages {
                     //setScope(label: Packages.com.glide.sys.fencing.Scope): void;
                     setParent(parentId: $$rhino.String): void;
                 }
-               export class ChoiceList {
+                export class ChoiceList {
                     protected constructor();
                     sort(): void;
                     getChoice(index: $$rhino.String | $$rhino.Number): Choice;
@@ -3542,13 +3542,13 @@ declare namespace Packages {
                     static getChoiceList(tableName: $$rhino.String, fieldName: $$rhino.String): ChoiceList;
                 }
             }
-           export namespace script {
-               export interface IGlideElementVariable {
+            export namespace script {
+                export interface IGlideElementVariable {
                     getQuestion(): glideapp.questionset.Question;
                 }
-               export interface IGlideElementVariables extends IGlideElement {
+                export interface IGlideElementVariables extends IGlideElement {
                 }
-               export interface IGlideElement extends $$element.IDbObject {
+                export interface IGlideElement extends $$element.IDbObject {
                     /**
                      * Returns the name of the field.
                      * @memberof GlideElement
@@ -3687,10 +3687,10 @@ declare namespace Packages {
                      */
                     setValue(value: any): void;
                 }
-               export class GlideElement extends $$element.StringBased<string, GlideElement, string> { protected constructor(); }
+                export class GlideElement extends $$element.StringBased<string, GlideElement, string> { protected constructor(); }
             }
-           export namespace glideobject {
-               export interface IGlideObject {
+            export namespace glideobject {
+                export interface IGlideObject {
                     handlesChangeDetection(): $$rhino.Boolean;
                     handlesPreviousValueTracking(): $$rhino.Boolean;
                     handlesDefaultValue(): $$rhino.Boolean;
@@ -3713,7 +3713,7 @@ declare namespace Packages {
                     getHTMLValue(i?: $$rhino.Number): java.lang.String;
                     setDefaultValue(o: java.lang.Object): void;
                 }
-               export class AGlideObject implements IGlideObject {
+                export class AGlideObject implements IGlideObject {
                     handlesDefaultValue(): $$rhino.Boolean;
                     handlesChangeDetection(): $$rhino.Boolean;
                     handlesPreviousValueTracking(): $$rhino.Boolean;
@@ -3737,7 +3737,7 @@ declare namespace Packages {
                     setElement(ge: script.GlideElement): void;
                     getHTMLValue(i?: $$rhino.Number): java.lang.String;
                 }
-               export class GlideObject extends AGlideObject {
+                export class GlideObject extends AGlideObject {
                     setValue(value: java.lang.Object): void;
                     setDisplayValue(value: java.lang.String): void;
                     getDisplayValue(): java.lang.String;
@@ -3747,8 +3747,8 @@ declare namespace Packages {
             }
         }
        export namespace glideapp {
-           export namespace questionset {
-               export class Question {
+            export namespace questionset {
+                export class Question {
                     static readonly YES_NO: 1;
                     static readonly TEXTAREA: 2;
                     static readonly RADIO_CHOICES: 3;
@@ -3842,22 +3842,22 @@ declare namespace Packages {
                     isActive(): $$rhino.Boolean;
                     getCatalogItem(): $$rhino.String;
                 }
-               export class QuestionSet {
+                export class QuestionSet {
                     getQuestion(): java.util.List<Question>;
                 }
-               export class AbstractChoiceListQuestion extends Question {
+                export class AbstractChoiceListQuestion extends Question {
                     getChoiceList(): GlideChoiceList;
                 }
-               export class YesNoQuestion extends Question {
+                export class YesNoQuestion extends Question {
                     getYesNoList(): GlideChoiceList;
                 }
-               export class ListCollectorQuestion extends Question {
+                export class ListCollectorQuestion extends Question {
                     getType(): 21;
                     getTemplate(): $$rhino.String;
                     getListTable(): $$rhino.String;
                     getReferenceQualifier(): $$rhino.String;
                 }
-               export class ReferenceQuestion extends Question {
+                export class ReferenceQuestion extends Question {
                     getType(): 8;
                     getReference(): $$rhino.String;
                     getReferenceQualifier(): $$rhino.String;

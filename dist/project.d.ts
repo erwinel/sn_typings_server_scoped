@@ -103,6 +103,10 @@ declare interface pm_portfolioFields extends IGlideTableProperties {
 	 */
 	sys_updated_on: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'pm_portfolio' table
+ * @typedef {(GlideRecord & pm_portfolioFields)} pm_portfolioGlideRecord
+ */
 declare type pm_portfolioGlideRecord = GlideRecord & pm_portfolioFields;
 
 /**
@@ -433,6 +437,10 @@ declare interface planned_taskFields extends taskFields {
 	 */
 	work_effort: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'planned_task' table
+ * @typedef {(taskGlideRecord & planned_taskFields)} planned_taskGlideRecord
+ */
 declare type planned_taskGlideRecord = taskGlideRecord & planned_taskFields;
 
 /**
@@ -554,6 +562,10 @@ declare interface pm_programFields extends planned_taskFields {
 	 */
 	strategic_objectives: GlideElement;
 }
+/**
+ * Record for items from the 'pm_program' table
+ * @typedef {(planned_taskGlideRecord & pm_programFields)} pm_programGlideRecord
+ */
 declare type pm_programGlideRecord = planned_taskGlideRecord & pm_programFields;
 
 /**
@@ -703,6 +715,10 @@ declare interface goalFields extends IGlideTableProperties {
 	 */
 	unit: $$rhino.Nilable<$$property.Reference>;
 }
+/**
+ * Record for items from the 'goal' table
+ * @typedef {(GlideRecord & goalFields)} goalGlideRecord
+ */
 declare type goalGlideRecord = GlideRecord & goalFields;
 
 /**
@@ -759,6 +775,10 @@ declare interface pm_project_taskFields extends planned_taskFields {
 	 */
 	test_plan: $$rhino.Nilable<$$property.Reference>;
 }
+/**
+ * Record for items from the 'pm_project_task' table
+ * @typedef {(planned_taskGlideRecord & pm_project_taskFields)} pm_project_taskGlideRecord
+ */
 declare type pm_project_taskGlideRecord = planned_taskGlideRecord & pm_project_taskFields;
 
 /**
@@ -1101,6 +1121,10 @@ declare interface pm_projectFields extends planned_taskFields {
 	 */
 	value: $$rhino.Nilable<$$property.Currency>;
 }
+/**
+ * Record for items from the 'pm_project' table
+ * @typedef {(planned_taskGlideRecord & pm_projectFields)} pm_projectGlideRecord
+ */
 declare type pm_projectGlideRecord = planned_taskGlideRecord & pm_projectFields;
 
 /**
@@ -1586,6 +1610,10 @@ declare interface dmn_demandFields extends taskFields {
 	visited_state: $$rhino.Nilable<$$property.Element>;
 
 }
+/**
+ * Record for items from the 'dmn_demand' table
+ * @typedef {(taskGlideRecord & dmn_demandFields)} dmn_demandGlideRecord
+ */
 declare type dmn_demandGlideRecord = taskGlideRecord & dmn_demandFields;
 
 /**
@@ -1688,4 +1716,8 @@ declare interface ideaFields extends taskFields {
 	submitter: $$rhino.Nilable<$$property.generic.Reference<sys_userFields, sys_userGlideRecord>>;
 
 }
+/**
+ * Record for items from the 'idea' table
+ * @typedef {(taskGlideRecord & ideaFields)} ideaGlideRecord
+ */
 declare type ideaGlideRecord = taskGlideRecord & ideaFields;

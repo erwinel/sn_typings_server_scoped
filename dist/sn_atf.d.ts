@@ -46,6 +46,10 @@ declare interface sys_atf_step_envFields extends sys_metadataFields {
      */
     type: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_atf_step_env' table
+ * @typedef {(sys_metadataGlideRecord & sys_atf_step_envFields)} sys_atf_step_envGlideRecord
+ */
 declare type sys_atf_step_envGlideRecord = sys_metadataGlideRecord & sys_atf_step_envFields;
 declare type sys_atf_step_envElement = $$element.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>;
 declare type sys_atf_step_envProperty = $$property.generic.ReferenceProperty<sys_atf_step_envFields, sys_atf_step_envGlideRecord, sys_atf_step_envElement>;
@@ -78,6 +82,10 @@ declare interface sys_atf_step_config_categoryFields extends sys_metadataFields 
      */
     step_env: $$rhino.Nilable<$$property.generic.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>>;
 }
+/**
+ * Record for items from the 'sys_atf_step_config_category' table
+ * @typedef {(sys_metadataGlideRecord & sys_atf_step_config_categoryFields)} sys_atf_step_config_categoryGlideRecord
+ */
 declare type sys_atf_step_config_categoryGlideRecord = sys_metadataGlideRecord & sys_atf_step_config_categoryFields;
 declare type sys_atf_step_config_categoryElement = $$element.Reference<sys_atf_step_config_categoryFields, sys_atf_step_config_categoryGlideRecord>;
 declare type sys_atf_step_config_categoryProperty = $$property.generic.ReferenceProperty<sys_atf_step_config_categoryFields, sys_atf_step_config_categoryGlideRecord, sys_atf_step_config_categoryElement>;
@@ -227,6 +235,10 @@ declare interface sys_atf_step_configFields extends sys_metadataFields {
      */
     wizard_redirect: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_atf_step_config' table
+ * @typedef {(sys_metadataGlideRecord & sys_atf_step_configFields)} sys_atf_step_configGlideRecord
+ */
 declare type sys_atf_step_configGlideRecord = sys_metadataGlideRecord & sys_atf_step_configFields;
 declare type sys_atf_step_configElement = $$element.Reference<sys_atf_step_configFields, sys_atf_step_configGlideRecord>;
 declare type sys_atf_step_configProperty = $$property.generic.ReferenceProperty<sys_atf_step_configFields, sys_atf_step_configGlideRecord, sys_atf_step_configElement>;
@@ -245,6 +257,10 @@ declare interface sys_atf_variableFields extends var_dictionaryFields {
      */
     model: $$rhino.Nilable<$$property.generic.Reference<sys_atf_step_configFields, sys_atf_step_configGlideRecord>>;
 }
+/**
+ * Record for items from the 'sys_atf_variable' table
+ * @typedef {(var_dictionaryGlideRecord & sys_atf_variableFields)} sys_atf_variableGlideRecord
+ */
 declare type sys_atf_variableGlideRecord = var_dictionaryGlideRecord & sys_atf_variableFields;
 declare type sys_atf_variableElement = $$element.Reference<sys_atf_variableFields, sys_atf_variableGlideRecord>;
 declare type sys_atf_variableProperty = $$property.generic.ReferenceProperty<sys_atf_variableFields, sys_atf_variableGlideRecord, sys_atf_variableElement>;
@@ -256,6 +272,10 @@ declare type sys_atf_variableProperty = $$property.generic.ReferenceProperty<sys
  */
 declare interface atf_input_variableFields extends sys_atf_variableFields {
 }
+/**
+ * Record for items from the 'atf_input_variable' table
+ * @typedef {(sys_atf_variableGlideRecord & atf_input_variableFields)} atf_input_variableGlideRecord
+ */
 declare type atf_input_variableGlideRecord = sys_atf_variableGlideRecord & atf_input_variableFields;
 declare type atf_input_variableElement = $$element.Reference<atf_input_variableFields, atf_input_variableGlideRecord>;
 declare type atf_input_variableProperty = $$property.generic.ReferenceProperty<atf_input_variableFields, atf_input_variableGlideRecord, atf_input_variableElement>;
@@ -267,6 +287,10 @@ declare type atf_input_variableProperty = $$property.generic.ReferenceProperty<a
  */
 declare interface atf_output_variableFields extends sys_atf_variableFields {
 }
+/**
+ * Record for items from the 'atf_output_variable' table
+ * @typedef {(sys_atf_variableGlideRecord & atf_output_variableFields)} atf_output_variableGlideRecord
+ */
 declare type atf_output_variableGlideRecord = sys_atf_variableGlideRecord & atf_output_variableFields;
 declare type atf_output_variableElement = $$element.Reference<atf_output_variableFields, atf_output_variableGlideRecord>;
 declare type atf_output_variableProperty = $$property.generic.ReferenceProperty<atf_output_variableFields, atf_output_variableGlideRecord, atf_output_variableElement>;

@@ -3082,6 +3082,10 @@ declare interface sys_progress_workerFields extends IGlideTableProperties {
      */
     total_run_time: $$rhino.Nilable<$$property.GlideObject>;
 }
+/**
+ * Record for items from the 'sys_progress_worker' table
+ * @typedef {(GlideRecord & sys_progress_workerFields)} sys_progress_workerGlideRecord
+ */
 declare type sys_progress_workerGlideRecord = GlideRecord & sys_progress_workerFields;
 
 /**
@@ -3186,6 +3190,10 @@ declare interface sys_attachmentFields extends IGlideTableProperties {
      */
     table_sys_id: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_attachment' table
+ * @typedef {(GlideRecord & sys_attachmentFields)} sys_attachmentGlideRecord
+ */
 declare type sys_attachmentGlideRecord = GlideRecord & sys_attachmentFields;
 
 /**
@@ -3342,6 +3350,10 @@ declare interface v_pluginFields extends IGlideTableProperties {
      */
     version: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'v_plugin' table
+ * @typedef {(GlideRecord & v_pluginFields)} v_pluginGlideRecord
+ */
 declare type v_pluginGlideRecord = GlideRecord & v_pluginFields;
 
 declare interface wf_contextFields extends IGlideTableProperties {
@@ -3544,22 +3556,42 @@ declare interface wf_contextFields extends IGlideTableProperties {
      */
     workflow_version: $$rhino.Nilable<$$property.generic.Reference<wf_workflow_versionFields, wf_workflow_versionGlideRecord>>;
 }
+/**
+ * Record for items from the 'wf_context' table
+ * @typedef {(GlideRecord & wf_contextFields)} wf_contextGlideRecord
+ */
 declare type wf_contextGlideRecord = GlideRecord & wf_contextFields;
 declare type wf_contextElement = $$element.Reference<wf_contextFields, wf_contextGlideRecord>;
 declare type wf_contextProperty = $$property.generic.ReferenceProperty<wf_contextFields, wf_contextGlideRecord, wf_contextElement>;
 
 declare interface wf_activityFields extends IGlideTableProperties {
 }
+/**
+ * Record for items from the 'wf_activity' table
+ * @typedef {(GlideRecord & wf_activityFields)} wf_activityGlideRecord
+ */
 declare type wf_activityGlideRecord = GlideRecord & wf_activityFields;
 
 declare interface wf_workflowFields extends IGlideTableProperties {
 }
+/**
+ * Record for items from the 'wf_workflow' table
+ * @typedef {(GlideRecord & wf_workflowFields)} wf_workflowGlideRecord
+ */
 declare type wf_workflowGlideRecord = GlideRecord & wf_workflowFields;
 
 declare interface wf_executingFields extends IGlideTableProperties {
 }
+/**
+ * Record for items from the 'wf_executing' table
+ * @typedef {(GlideRecord & wf_executingFields)} wf_executingGlideRecord
+ */
 declare type wf_executingGlideRecord = GlideRecord & wf_executingFields;
 
 declare interface wf_workflow_versionFields extends IGlideTableProperties {
 }
+/**
+ * Record for items from the 'wf_workflow_version' table
+ * @typedef {(GlideRecord & wf_workflow_versionFields)} wf_workflow_versionGlideRecord
+ */
 declare type wf_workflow_versionGlideRecord = GlideRecord & wf_workflow_versionFields;

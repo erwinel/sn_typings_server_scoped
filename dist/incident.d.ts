@@ -191,6 +191,10 @@ declare interface incidentFields extends taskFields {
      */
     subcategory: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'incident' table
+ * @typedef {(taskGlideRecord & incidentFields)} incidentGlideRecord
+ */
 declare type incidentGlideRecord = taskGlideRecord & incidentFields;
 declare type incidentElement = $$element.Reference<incidentFields, incidentGlideRecord>;
 declare type incidentProperty = $$property.generic.ReferenceProperty<incidentFields, incidentGlideRecord, incidentElement>;
@@ -203,6 +207,10 @@ declare interface incident_taskFields extends taskFields {
      */
     incident: $$rhino.Nilable<incidentProperty>;
 }
+/**
+ * Record for items from the 'incident_task' table
+ * @typedef {(taskGlideRecord & incident_taskFields)} incident_taskGlideRecord
+ */
 declare type incident_taskGlideRecord = taskGlideRecord & incident_taskFields;
 
 /**
@@ -262,6 +270,10 @@ declare interface problemFields extends taskFields {
      */
     work_around: $$rhino.Nilable<IGlideElement>;
 }
+/**
+ * Record for items from the 'problem' table
+ * @typedef {(taskGlideRecord & problemFields)} problemGlideRecord
+ */
 declare type problemGlideRecord = taskGlideRecord & problemFields;
 
 /**
@@ -278,4 +290,8 @@ declare interface problem_taskFields extends taskFields {
      */
     problem: $$rhino.Nilable<$$property.generic.Reference<problemFields, problemGlideRecord>>;
 }
+/**
+ * Record for items from the 'problem_task' table
+ * @typedef {(taskGlideRecord & problem_taskFields)} problem_taskGlideRecord
+ */
 declare type problem_taskGlideRecord = taskGlideRecord & problem_taskFields;

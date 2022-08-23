@@ -22,7 +22,7 @@
     "url": "https://github.com/erwinel/sn_typings_server_scoped/issues"
   },
   "homepage": "https://github.com/erwinel/sn_typings_server_scoped#readme",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "typescript": "^4.7.4"
   },

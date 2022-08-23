@@ -307,6 +307,10 @@ declare interface change_requestFields extends taskFields {
      */
     type: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'change_request' table
+ * @typedef {(taskGlideRecord & change_requestFields)} change_requestGlideRecord
+ */
 declare type change_requestGlideRecord = taskGlideRecord & change_requestFields;
 declare type change_requestElement = $$element.Reference<change_requestFields, change_requestGlideRecord>;
 declare type change_requestProperty = $$property.generic.ReferenceProperty<change_requestFields, change_requestGlideRecord, change_requestElement>;
@@ -375,6 +379,10 @@ declare interface change_taskFields extends taskFields {
      */
     planned_start_date: $$rhino.Nilable<$$property.GlideObject>;
 }
+/**
+ * Record for items from the 'change_task' table
+ * @typedef {(taskGlideRecord & change_taskFields)} change_taskGlideRecord
+ */
 declare type change_taskGlideRecord = taskGlideRecord & change_taskFields;
 declare type change_taskElement = $$element.Reference<change_taskFields, change_taskGlideRecord>;
 declare type change_taskProperty = $$property.generic.ReferenceProperty<change_taskFields, change_taskGlideRecord, change_taskElement>;
@@ -443,6 +451,10 @@ declare interface cmdb_model_categoryFields extends IGlideTableProperties {
      */
     name: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmdb_model_category' table
+ * @typedef {(GlideRecord & cmdb_model_categoryFields)} cmdb_model_categoryGlideRecord
+ */
 declare type cmdb_model_categoryGlideRecord = GlideRecord & cmdb_model_categoryFields;
 
 /**
@@ -482,6 +494,10 @@ declare interface cmdb_m2m_model_componentFields extends IGlideTableProperties {
      */
     parent: $$rhino.Nilable<cmdb_modelProperty>;
 }
+/**
+ * Record for items from the 'cmdb_m2m_model_component' table
+ * @typedef {(GlideRecord & cmdb_m2m_model_componentFields)} cmdb_m2m_model_componentGlideRecord
+ */
 declare type cmdb_m2m_model_componentGlideRecord = GlideRecord & cmdb_m2m_model_componentFields;
 
 /**
@@ -715,6 +731,10 @@ declare interface cmdb_modelFields extends IGlideTableProperties {
      */
     weight: $$rhino.Nilable<$$property.Numeric>;
 }
+/**
+ * Record for items from the 'cmdb_model' table
+ * @typedef {(GlideRecord & cmdb_modelFields)} cmdb_modelGlideRecord
+ */
 declare type cmdb_modelGlideRecord = GlideRecord & cmdb_modelFields;
 declare type cmdb_modelElement = $$element.Reference<cmdb_modelFields, cmdb_modelGlideRecord>;
 declare type cmdb_modelProperty = $$property.generic.ReferenceProperty<cmdb_modelFields, cmdb_modelGlideRecord, cmdb_modelElement>;
@@ -1205,7 +1225,47 @@ declare interface alm_assetFields extends IGlideTableProperties {
      */
     work_notes: $$rhino.Nilable<IGlideElement>;
 }
+/**
+ * Record for items from the 'alm_asset' table
+ * @typedef {(GlideRecord & alm_assetFields)} alm_assetGlideRecord
+ */
 declare type alm_assetGlideRecord = GlideRecord & alm_assetFields;
+declare type alm_assetElement = $$element.Reference<alm_assetFields, alm_assetGlideRecord>;
+declare type alm_assetProperty = $$property.generic.ReferenceProperty<alm_assetFields, alm_assetGlideRecord, alm_assetElement>;
+
+
+declare interface life_cycle_stageFields extends IGlideTableProperties {
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof life_cycle_stageFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+}
+/**
+ * Record for items from the 'life_cycle_stage' table
+ * @typedef {(GlideRecord & life_cycle_stageFields)} life_cycle_stageGlideRecord
+ */
+declare type life_cycle_stageGlideRecord = GlideRecord & life_cycle_stageFields;
+declare type life_cycle_stageElement = $$element.Reference<life_cycle_stageFields, life_cycle_stageGlideRecord>;
+declare type life_cycle_stageProperty = $$property.generic.ReferenceProperty<life_cycle_stageFields, life_cycle_stageGlideRecord, life_cycle_stageElement>;
+
+
+declare interface life_cycle_stage_statusFields extends IGlideTableProperties {
+    /**
+     * Name
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof life_cycle_stage_statusFields
+     */
+    name: $$rhino.Nilable<$$property.Element>;
+}
+/**
+ * Record for items from the 'life_cycle_stage_status' table
+ * @typedef {(GlideRecord & life_cycle_stage_statusFields)} life_cycle_stage_statusGlideRecord
+ */
+declare type life_cycle_stage_statusGlideRecord = GlideRecord & life_cycle_stage_statusFields;
+declare type life_cycle_stage_statusElement = $$element.Reference<life_cycle_stage_statusFields, life_cycle_stage_statusGlideRecord>;
+declare type life_cycle_stage_statusProperty = $$property.generic.ReferenceProperty<life_cycle_stage_statusFields, life_cycle_stage_statusGlideRecord, life_cycle_stage_statusElement>;
 
 /**
  * GlideElement values from the Base Configuration Item table.
@@ -1520,6 +1580,10 @@ declare interface cmdbFields extends IExtendedGlideTableProperties {
      */
     warranty_expiration: $$rhino.Nilable<$$property.GlideObject>;
 }
+/**
+ * Record for items from the 'cmdb' table
+ * @typedef {(GlideRecord & cmdbFields)} cmdbGlideRecord
+ */
 declare type cmdbGlideRecord = GlideRecord & cmdbFields;
 
 /**
@@ -1529,11 +1593,46 @@ declare type cmdbGlideRecord = GlideRecord & cmdbFields;
  */
 declare interface cmdb_ciFields extends cmdbFields {
     /**
+     * Attestation Score
+     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * @memberof cmdb_ciFields
+     */
+    attestation_score: $$rhino.Nilable<$$property.Numeric>;
+
+    /**
+     * Attested
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof cmdb_ciFields
+     */
+    attested: $$rhino.Nilable<$$property.Boolean>;
+    
+    /**
+     * Attested By
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof cmdb_ciFields
+     */
+    attested_by: $$rhino.Nilable<sys_userProperty>;
+
+    /**
+     * Attested Date
+     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * @memberof cmdb_ciFields
+     */
+    attested_date: $$rhino.Nilable<$$property.GlideObject>;
+
+    /**
      * Attributes
      * @type {$$rhino.Nilable<$$property.Element>}
      * @memberof cmdb_ciFields
      */
     attributes: $$rhino.Nilable<$$property.Element>;
+
+    /**
+     * Business Unit
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof cmdb_ciFields
+     */
+    business_unit: $$rhino.Nilable<business_unitProperty>;
 
     /**
      * Can Print
@@ -1586,6 +1685,20 @@ declare interface cmdb_ciFields extends cmdbFields {
     dns_domain: $$rhino.Nilable<$$property.Element>;
 
     /**
+     * Duplicate Of
+     * @type {$$rhino.Nilable<$$property.Boolean>}
+     * @memberof cmdb_ciFields
+     */
+    duplicate_of: $$rhino.Nilable<cmdb_ciProperty>;
+
+    /**
+     * Environment
+     * @type {$$rhino.Nilable<$$property.Element>}
+     * @memberof cmdb_ciFields
+     */
+    environment: $$rhino.Nilable<$$property.Element>;
+ 
+    /**
      * Fault count
      * @type {$$rhino.Nilable<$$property.Numeric>}
      * @memberof cmdb_ciFields
@@ -1621,6 +1734,22 @@ declare interface cmdb_ciFields extends cmdbFields {
     last_discovered: $$rhino.Nilable<$$property.GlideObject>;
 
     /**
+     * Life Cycle Stage
+     * @type {$$rhino.Nilable<life_cycle_stageProperty>}
+     * @memberof cmdb_ciFields
+     * @description Refers to life_cycle_stage (Life Cycle Stage)
+     */
+    life_cycle_stage: $$rhino.Nilable<life_cycle_stageProperty>;
+
+    /**
+     * Life Cycle Stage Status
+     * @type {$$rhino.Nilable<life_cycle_stage_statusProperty>}
+     * @memberof cmdb_ciFields
+     * @description Refers to life_cycle_stage_status (Life Cycle Stage Status)
+     */
+    life_cycle_stage_status: $$rhino.Nilable<life_cycle_stage_statusProperty>;
+ 
+    /**
      * MAC Address
      * @type {$$rhino.Nilable<$$property.Element>}
      * @memberof cmdb_ciFields
@@ -1634,6 +1763,14 @@ declare interface cmdb_ciFields extends cmdbFields {
      * @description Refers to cmn_schedule (Schedule)
      */
     maintenance_schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+
+    /**
+     * Managed by Group
+     * @type {$$rhino.Nilable<sys_user_groupProperty>}
+     * @memberof cmdb_ciFields
+     * @description Refers to sys_user_group (Group)
+     */
+    managed_by_group: $$rhino.Nilable<sys_user_groupProperty>;
 
     /**
      * Model number
@@ -1686,6 +1823,10 @@ declare interface cmdb_ciFields extends cmdbFields {
      */
     subcategory: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmdb_ci' table
+ * @typedef {(cmdbGlideRecord & cmdb_ciFields)} cmdb_ciGlideRecord
+ */
 declare type cmdb_ciGlideRecord = cmdbGlideRecord & cmdb_ciFields;
 declare type cmdb_ciElement = $$element.Reference<cmdb_ciFields, cmdb_ciGlideRecord>;
 declare type cmdb_ciProperty = $$property.generic.ReferenceProperty<cmdb_ciFields, cmdb_ciGlideRecord, cmdb_ciElement>;
@@ -1794,6 +1935,10 @@ declare interface cmdb_ci_serviceFields extends cmdb_ciFields {
      */
     version: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmdb_ci_service' table
+ * @typedef {(cmdb_ciGlideRecord & cmdb_ci_serviceFields)} cmdb_ci_serviceGlideRecord
+ */
 declare type cmdb_ci_serviceGlideRecord = cmdb_ciGlideRecord & cmdb_ci_serviceFields;
 declare type cmdb_ci_serviceElement = $$element.Reference<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord>;
 declare type cmdb_ci_serviceProperty = $$property.generic.ReferenceProperty<cmdb_ci_serviceFields, cmdb_ci_serviceGlideRecord, cmdb_ci_serviceElement>;
@@ -1848,4 +1993,8 @@ declare interface change_request_imacFields extends change_requestFields {
      */
     network_component: $$property.Boolean;
 }
+/**
+ * Record for items from the 'change_request_imac' table
+ * @typedef {(change_requestGlideRecord & change_request_imacFields)} change_request_imacGlideRecord
+ */
 declare type change_request_imacGlideRecord = change_requestGlideRecord & change_request_imacFields;

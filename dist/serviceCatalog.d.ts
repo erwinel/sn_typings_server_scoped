@@ -154,6 +154,10 @@ declare interface sc_categoryFields extends sys_metadataFields {
      */
     title: $$rhino.Nilable<$$property.TranslatedText>;
 }
+/**
+ * Record for items from the 'sc_category' table
+ * @typedef {(sys_metadataGlideRecord & sc_categoryFields)} sc_categoryGlideRecord
+ */
 declare type sc_categoryGlideRecord = sys_metadataGlideRecord & sc_categoryFields;
 declare type sc_categoryElement = $$element.Reference<sc_categoryFields, sc_categoryGlideRecord>;
 declare type sc_categoryProperty = $$property.generic.ReferenceProperty<sc_categoryFields, sc_categoryGlideRecord, sc_categoryElement>;
@@ -237,6 +241,10 @@ declare interface sc_catalogFields extends sys_metadataFields {
      */
     title: $$rhino.Nilable<$$property.TranslatedField>;
 }
+/**
+ * Record for items from the 'sc_catalog' table
+ * @typedef {(sys_metadataGlideRecord & sc_catalogFields)} sc_catalogGlideRecord
+ */
 declare type sc_catalogGlideRecord = sys_metadataGlideRecord & sc_catalogFields;
 declare type sc_catalogElement = $$element.Reference<sc_catalogFields, sc_catalogGlideRecord>;
 declare type sc_catalogProperty = $$property.generic.ReferenceProperty<sc_catalogFields, sc_catalogGlideRecord, sc_catalogElement>;
@@ -639,6 +647,10 @@ declare interface sc_cat_itemFields extends sys_metadataFields {
      */
     workflow: $$rhino.Nilable<$$property.generic.Reference<wf_workflowFields, wf_workflowGlideRecord>>;
 }
+/**
+ * Record for items from the 'sc_cat_item' table
+ * @typedef {(sys_metadataGlideRecord & sc_cat_itemFields)} sc_cat_itemGlideRecord
+ */
 declare type sc_cat_itemGlideRecord = sys_metadataGlideRecord & sc_cat_itemFields;
 declare type sc_cat_itemElement = $$element.Reference<sc_cat_itemFields, sc_cat_itemGlideRecord>;
 declare type sc_cat_itemProperty = $$property.generic.ReferenceProperty<sc_cat_itemFields, sc_cat_itemGlideRecord, sc_cat_itemElement>;
@@ -721,6 +733,10 @@ declare interface sc_requestFields extends taskFields {
      */
     stage: $$rhino.Nilable<GlideElementWorkflow>;
 }
+/**
+ * Record for items from the 'sc_request' table
+ * @typedef {(taskGlideRecord & sc_requestFields)} sc_requestGlideRecord
+ */
 declare type sc_requestGlideRecord = taskGlideRecord & sc_requestFields;
 declare type sc_requestElement = $$element.Reference<sc_requestFields, sc_requestGlideRecord>;
 declare type sc_requestProperty = $$property.generic.ReferenceProperty<sc_requestFields, sc_requestGlideRecord, sc_requestElement>;
@@ -857,6 +873,10 @@ declare interface sc_req_itemFields extends taskFields {
      */
     stage: $$rhino.Nilable<$$property.Workflow>;
 }
+/**
+ * Record for items from the 'sc_req_item' table
+ * @typedef {(taskGlideRecord & sc_req_itemFields)} sc_req_itemGlideRecord
+ */
 declare type sc_req_itemGlideRecord = taskGlideRecord & sc_req_itemFields;
 declare type sc_req_itemElement = $$element.Reference<sc_req_itemFields, sc_req_itemGlideRecord>;
 declare type sc_req_itemProperty = $$property.generic.ReferenceProperty<sc_req_itemFields, sc_req_itemGlideRecord, sc_req_itemElement>;
@@ -898,6 +918,10 @@ declare interface sc_taskFields extends taskFields {
      */
     sc_catalog: $$rhino.Nilable<sc_catalogProperty>;
 }
+/**
+ * Record for items from the 'sc_task' table
+ * @typedef {(taskGlideRecord & sc_taskFields)} sc_taskGlideRecord
+ */
 declare type sc_taskGlideRecord = taskGlideRecord & sc_taskFields;
 declare type sc_taskElement = $$element.Reference<sc_taskFields, sc_taskGlideRecord>;
 declare type sc_taskProperty = $$property.generic.ReferenceProperty<sc_taskFields, sc_taskGlideRecord, sc_taskElement>;
@@ -946,6 +970,10 @@ declare interface service_offeringFields extends cmdb_ci_serviceFields {
      */
     technical_contact: $$rhino.Nilable<sys_userProperty>;
 }
+/**
+ * Record for items from the 'service_offering' table
+ * @typedef {(cmdb_ci_serviceGlideRecord & service_offeringFields)} service_offeringGlideRecord
+ */
 declare type service_offeringGlideRecord = cmdb_ci_serviceGlideRecord & service_offeringFields;
 
 /**

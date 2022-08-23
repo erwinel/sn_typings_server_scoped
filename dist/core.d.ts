@@ -640,6 +640,10 @@ declare interface sys_metadataFields extends IExtendedGlideTableProperties {
      */
     sys_update_name: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_metadata' table
+ * @typedef {(GlideRecord & sys_metadataFields)} sys_metadataGlideRecord
+ */
 declare type sys_metadataGlideRecord = GlideRecord & sys_metadataFields;
 
 /**
@@ -812,6 +816,10 @@ declare interface sys_db_objectFields extends sys_metadataFields {
      */
     ws_access: $$rhino.Nilable<$$property.Boolean>;
 }
+/**
+ * Record for items from the 'sys_db_object' table
+ * @typedef {(sys_metadataGlideRecord & sys_db_objectFields)} sys_db_objectGlideRecord
+ */
 declare type sys_db_objectGlideRecord = sys_metadataGlideRecord & sys_db_objectFields;
 
 /**
@@ -1209,6 +1217,10 @@ declare interface sys_dictionaryFields extends sys_metadataFields {
      */
     xml_view: $$rhino.Nilable<$$property.Boolean>;
 }
+/**
+ * Record for items from the 'sys_dictionary' table
+ * @typedef {(sys_metadataGlideRecord & sys_dictionaryFields)} sys_dictionaryGlideRecord
+ */
 declare type sys_dictionaryGlideRecord = sys_metadataGlideRecord & sys_dictionaryFields;
 
 /**
@@ -1259,6 +1271,10 @@ declare interface var_dictionaryFields extends sys_dictionaryFields {
      */
     order: $$rhino.Nilable<$$property.Numeric>;
 }
+/**
+ * Record for items from the 'var_dictionary' table
+ * @typedef {(sys_dictionaryGlideRecord & var_dictionaryFields)} var_dictionaryGlideRecord
+ */
 declare type var_dictionaryGlideRecord = sys_dictionaryGlideRecord & var_dictionaryFields;
 declare type var_dictionaryElement = $$element.Reference<var_dictionaryFields, var_dictionaryGlideRecord>;
 declare type var_dictionaryProperty = $$property.generic.ReferenceProperty<var_dictionaryFields, var_dictionaryGlideRecord, var_dictionaryElement>;
@@ -1325,6 +1341,10 @@ declare interface sys_glide_objectFields extends sys_metadataFields {
      */
     visible: $$rhino.Nilable<$$property.Boolean>;
 }
+/**
+ * Record for items from the 'sys_glide_object' table
+ * @typedef {(sys_metadataGlideRecord & sys_glide_objectFields)} sys_glide_objectGlideRecord
+ */
 declare type sys_glide_objectGlideRecord = sys_metadataGlideRecord & sys_glide_objectFields;
 
 /**
@@ -1362,6 +1382,10 @@ declare interface sys_numberFields extends sys_metadataFields {
      */
     prefix: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_number' table
+ * @typedef {(sys_metadataGlideRecord & sys_numberFields)} sys_numberGlideRecord
+ */
 declare type sys_numberGlideRecord = sys_metadataGlideRecord & sys_numberFields;
 
 /**
@@ -1447,6 +1471,10 @@ declare interface sys_choiceFields extends IGlideTableProperties {
      */
     value: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_choice' table
+ * @typedef {(GlideRecord & sys_choiceFields)} sys_choiceGlideRecord
+ */
 declare type sys_choiceGlideRecord = GlideRecord & sys_choiceFields;
 
 /**
@@ -1581,6 +1609,10 @@ declare interface sys_dictionary_overrideFields extends sys_metadataFields {
      */
     reference_qual_override: $$rhino.Nilable<$$property.Boolean>;
 }
+/**
+ * Record for items from the 'sys_dictionary_override' table
+ * @typedef {(sys_metadataGlideRecord & sys_dictionary_overrideFields)} sys_dictionary_overrideGlideRecord
+ */
 declare type sys_dictionary_overrideGlideRecord = sys_metadataGlideRecord & sys_dictionary_overrideFields;
 
 /**
@@ -1652,6 +1684,10 @@ declare interface sys_packageFields extends IExtendedGlideTableProperties {
      */
     version: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_package' table
+ * @typedef {(GlideRecord & sys_packageFields)} sys_packageGlideRecord
+ */
 declare type sys_packageGlideRecord = GlideRecord & sys_packageFields;
 
 /**
@@ -1737,6 +1773,10 @@ declare interface sys_scopeFields extends sys_packageFields {
      */
     vendor_prefix: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_scope' table
+ * @typedef {(sys_packageGlideRecord & sys_scopeFields)} sys_scopeGlideRecord
+ */
 declare type sys_scopeGlideRecord = sys_packageGlideRecord & sys_scopeFields;
 
 /**
@@ -1824,6 +1864,10 @@ declare interface sys_user_roleFields extends sys_metadataFields {
      */
     suffix: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_user_role' table
+ * @typedef {(sys_metadataGlideRecord & sys_user_roleFields)} sys_user_roleGlideRecord
+ */
 declare type sys_user_roleGlideRecord = sys_metadataGlideRecord & sys_user_roleFields;
 declare type sys_user_roleElement = $$element.Reference<sys_user_roleFields, sys_user_roleGlideRecord>;
 declare type sys_user_roleProperty = $$property.generic.ReferenceProperty<sys_user_roleFields, sys_user_roleGlideRecord, sys_user_roleElement>;
@@ -1855,6 +1899,10 @@ declare interface sys_encryption_contextFields extends sys_metadataFields {
      */
     type: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_encryption_context' table
+ * @typedef {(sys_metadataGlideRecord & sys_encryption_contextFields)} sys_encryption_contextGlideRecord
+ */
 declare type sys_encryption_contextGlideRecord = sys_metadataGlideRecord & sys_encryption_contextFields;
 
 /**
@@ -1870,6 +1918,10 @@ declare interface sys_calendarFields extends sys_metadataFields {
      */
     name: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_calendar' table
+ * @typedef {(sys_metadataGlideRecord & sys_calendarFields)} sys_calendarGlideRecord
+ */
 declare type sys_calendarGlideRecord = sys_metadataGlideRecord & sys_calendarFields;
 declare type sys_calendarElement = $$element.Reference<sys_calendarFields, sys_calendarGlideRecord>;
 declare type sys_calendarProperty = $$property.generic.ReferenceProperty<sys_calendarFields, sys_calendarGlideRecord, sys_calendarElement>;
@@ -2130,6 +2182,10 @@ declare interface slaFields extends IGlideTableProperties {
      */
     users: $$rhino.Nilable<sys_user_groupProperty>;
 }
+/**
+ * Record for items from the 'sla' table
+ * @typedef {(GlideRecord & slaFields)} slaGlideRecord
+ */
 declare type slaGlideRecord = GlideRecord & slaFields;
 declare type slaElement = $$element.Reference<slaFields, slaGlideRecord>;
 declare type slaProperty = $$property.generic.ReferenceProperty<slaFields, slaGlideRecord, slaElement>;
@@ -2625,6 +2681,10 @@ declare interface sys_userFields extends IGlideTableProperties {
      */
     zip: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'sys_user' table
+ * @typedef {(GlideRecord & sys_userFields)} sys_userGlideRecord
+ */
 declare type sys_userGlideRecord = GlideRecord & sys_userFields;
 declare type sys_userElement = $$element.Reference<sys_userFields, sys_userGlideRecord>;
 declare type sys_userProperty = $$property.generic.ReferenceProperty<sys_userFields, sys_userGlideRecord, sys_userElement>;
@@ -2763,6 +2823,10 @@ declare interface sys_user_groupFields extends IGlideTableProperties {
      */
     vendors: $$rhino.Nilable<IGlideElement>;
 }
+/**
+ * Record for items from the 'sys_user_group' table
+ * @typedef {(GlideRecord & sys_user_groupFields)} sys_user_groupGlideRecord
+ */
 declare type sys_user_groupGlideRecord = GlideRecord & sys_user_groupFields;
 declare type sys_user_groupElement = $$element.Reference<sys_user_groupFields, sys_user_groupGlideRecord>;
 declare type sys_user_groupProperty = $$property.generic.ReferenceProperty<sys_user_groupFields, sys_user_groupGlideRecord, sys_user_groupElement>;
@@ -2830,6 +2894,10 @@ declare interface cmn_scheduleFields extends IGlideTableProperties {
      */
     type: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmn_schedule' table
+ * @typedef {(GlideRecord & cmn_scheduleFields)} cmn_scheduleGlideRecord
+ */
 declare type cmn_scheduleGlideRecord = GlideRecord & cmn_scheduleFields;
 declare type cmn_scheduleElement = $$element.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>;
 declare type cmn_scheduleProperty = $$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>;
@@ -3088,6 +3156,10 @@ declare interface cmn_schedule_spanFields extends IGlideTableProperties {
      */
     yearly_type: $$property.generic.Element<cmn_schedule_entryYearlyType>;
 }
+/**
+ * Record for items from the 'cmn_schedule_span' table
+ * @typedef {(GlideRecord & cmn_schedule_spanFields)} cmn_schedule_spanGlideRecord
+ */
 declare type cmn_schedule_spanGlideRecord = GlideRecord & cmn_schedule_spanFields;
 declare type cmn_schedule_spanElement = $$element.Reference<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord>;
 declare type cmn_schedule_spanProperty = $$property.generic.ReferenceProperty<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord, cmn_schedule_spanElement>;
@@ -3123,6 +3195,10 @@ declare interface cmn_other_scheduleFields extends IGlideTableProperties {
      */
     type: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmn_other_schedule' table
+ * @typedef {(GlideRecord & cmn_other_scheduleFields)} cmn_other_scheduleGlideRecord
+ */
 declare type cmn_other_scheduleGlideRecord = GlideRecord & cmn_other_scheduleFields;
 declare type cmn_other_scheduleElement = $$element.Reference<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord>;
 declare type cmn_other_scheduleProperty = $$property.generic.ReferenceProperty<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord, cmn_other_scheduleElement>;
@@ -3266,6 +3342,10 @@ declare interface cmn_locationFields extends IGlideTableProperties {
      */
     zip: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmn_location' table
+ * @typedef {(GlideRecord & cmn_locationFields)} cmn_locationGlideRecord
+ */
 declare type cmn_locationGlideRecord = GlideRecord & cmn_locationFields;
 declare type cmn_locationElement = $$element.Reference<cmn_locationFields, cmn_locationGlideRecord>;
 declare type cmn_locationProperty = $$property.generic.ReferenceProperty<cmn_locationFields, cmn_locationGlideRecord, cmn_locationElement>;
@@ -3359,6 +3439,10 @@ declare interface cmn_departmentFields extends IGlideTableProperties {
      */
     primary_contact: $$rhino.Nilable<sys_userProperty>;
 }
+/**
+ * Record for items from the 'cmn_department' table
+ * @typedef {(GlideRecord & cmn_departmentFields)} cmn_departmentGlideRecord
+ */
 declare type cmn_departmentGlideRecord = GlideRecord & cmn_departmentFields;
 declare type cmn_departmentElement = $$element.Reference<cmn_departmentFields, cmn_departmentGlideRecord>;
 declare type cmn_departmentProperty = $$property.generic.ReferenceProperty<cmn_departmentFields, cmn_departmentGlideRecord, cmn_departmentElement>;
@@ -3633,6 +3717,10 @@ declare interface core_companyFields extends IGlideTableProperties {
      */
     zip: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'core_company' table
+ * @typedef {(GlideRecord & core_companyFields)} core_companyGlideRecord
+ */
 declare type core_companyGlideRecord = GlideRecord & core_companyFields;
 declare type core_companyElement = $$element.Reference<core_companyFields, core_companyGlideRecord>;
 declare type core_companyProperty = $$property.generic.ReferenceProperty<core_companyFields, core_companyGlideRecord, core_companyElement>;
@@ -3680,6 +3768,10 @@ declare interface cmn_buildingFields extends IGlideTableProperties {
      */
     notes: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'cmn_building' table
+ * @typedef {(GlideRecord & cmn_buildingFields)} cmn_buildingGlideRecord
+ */
 declare type cmn_buildingGlideRecord = GlideRecord & cmn_buildingFields;
 declare type cmn_buildingElement = $$element.Reference<cmn_buildingFields, cmn_buildingGlideRecord>;
 declare type cmn_buildingProperty = $$property.generic.ReferenceProperty<cmn_buildingFields, cmn_buildingGlideRecord, cmn_buildingElement>;
@@ -3751,6 +3843,10 @@ declare interface business_unitFields extends IGlideTableProperties {
      */
     sys_domain_path: $$rhino.Nilable<$$property.Element>;
 }
+/**
+ * Record for items from the 'business_unit' table
+ * @typedef {(GlideRecord & business_unitFields)} business_unitGlideRecord
+ */
 declare type business_unitGlideRecord = GlideRecord & business_unitFields;
 declare type business_unitElement = $$element.Reference<business_unitFields, business_unitGlideRecord>;
 declare type business_unitProperty = $$property.generic.ReferenceProperty<business_unitFields, business_unitGlideRecord, business_unitElement>;

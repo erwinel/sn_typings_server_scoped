@@ -572,6 +572,10 @@ declare interface taskFields extends IExtendedGlideTableProperties {
      */
     work_start: $$rhino.Nilable<$$property.GlideObject>;
 }
+/**
+ * Record for items from the 'task' table
+ * @typedef {(GlideRecord & taskFields)} taskGlideRecord
+ */
 declare type taskGlideRecord = GlideRecord & taskFields;
 declare type taskElement = $$element.Reference<taskFields, taskGlideRecord>;
 declare type taskProperty = $$property.generic.ReferenceProperty<taskFields, taskGlideRecord, taskElement>;

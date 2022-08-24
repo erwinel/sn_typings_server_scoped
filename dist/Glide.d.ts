@@ -1238,13 +1238,6 @@ declare class GlideElementReference extends $$element.StringBased<string, GlideE
     sys_updated_on: $$property.GlideObject;
 
     /**
-     * Gets a glide object.
-     * @return {*}
-     * @memberof GlideElementReference
-     */
-    getGlideObject(): any;
-
-    /**
      * Gets the table name for a reference element.
      * @memberof GlideElementReference
      * @returns {string} The table name of the reference.

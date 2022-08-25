@@ -19,7 +19,7 @@ declare interface IAbstractAjaxProcessor {
      * @return {$$rhino.String} The value of the parameter.
      * @memberof IAbstractAjaxProcessor
      */
-    getParameter(name: string): $$rhino.String;
+    getParameter(name: string): $$rhino.Nilable<$$rhino.String>;
 
     getDocument(): XMLDocument2 | undefined;
 

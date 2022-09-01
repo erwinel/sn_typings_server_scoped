@@ -179,21 +179,362 @@ declare type WorkflowOperationType = "insert" | "update" | "delete";
 
 declare namespace global {
     /**
-     * Various utility functions to assist with javascript Arrays
+     * ArrayUtil API is a script include with useful functions for working with JavaScript arrays.
      * @export
      * @class ArrayUtil
-     * @description https://inscomscd.servicenowservices.com/nav_to.do?uri=sys_script_include.do?sys_id=fb32a2d8c0a80a6000e907036f484b5b
+     * @see {@link https://docs.servicenow.com/bundle/rome-application-development/page/app-store/dev_portal/API_reference/ArrayUtil/concept/c_ArrayUtilAPI.html}
      */
     export class ArrayUtil {
-        concat<T>(parent: Array<T>, child: Array<T>): Array<T>;
-        contains(array: Array<any>, element: any): boolean;
-        convertArray(a: any): Array<any>;
-        diff<T>(a: Array<T>, b: Array<T>): Array<T>;
-        ensureArray(a: any): Array<any>;
-        indexOf(array: Array<any>, element: any, startIndex?: number): number;
-        intersect<T>(a: Array<T>, b: Array<T>): Array<T>;
-        union<T>(a: Array<T>, b: Array<T>): Array<T>;
-        unique<T>(a: Array<T>): Array<T>;
+        /**
+         * Merge two arrays.
+         * @template T - The element type,
+         * @param {T[]} parent - An array to merge.
+         * @param {T[]} child - An array to merge.
+         * @return {T[]} An array of elements from both input arrays. Duplicates are not removed.
+         * @memberof ArrayUtil
+         */
+        concat<T>(parent: T[], child: T[]): T[];
+        
+        /**
+         * Searches the array for the specified element.
+         * @template T - The element type,
+         * @param {T[]} array
+         * @param {T} element
+         * @return {boolean} True if the element exists in the array; otherwise returns false.
+         * @memberof ArrayUtil
+         */
+        contains<T>(array: T[], element: T): boolean;
+        
+        /**
+         * Converts a Java object to an array.
+         * @param {*} a - Object to convert.
+         * @return {any[]} Array created from the object.
+         * @memberof ArrayUtil
+         */
+        convertArray(a: any): any[];
+        /**
+         * Finds the differences between two or more arrays.
+         * @template T - The element type.
+         * @param {T[]} a - The first array.
+         * @param {T[]} b - The second array.
+         * @param {...T[]} c - Zero or more additional arrays.
+         * @return {T[]} - Returns an array of items from array a that were not found in any other input array. Duplicates are removed from the result.
+         * @memberof ArrayUtil
+         */
+        diff<T>(a: T[], b: T[], ...c: T[]): T[];
+        
+        /**
+         * Returns an array from the specified object.
+         * @param {*} obj - Object from which to create an array.
+         * @return {any[]} Array created from the object.
+         * @memberof ArrayUtil
+         */
+        ensureArray(object: any): any[];
+        
+        /**
+         * Searches the array for the element.
+         * @template T - The element type.
+         * @param {T} array - Array to search.
+         * @param {T} element - Element to search for.
+         * @param {number} [startIndex] - The optional zero-based index to start searching from.
+         * @return {number} Zero-based position of the element in the array, or -1 if the element is not found.
+         * @memberof ArrayUtil
+         */
+        indexOf<T>(array: T, element: T, startIndex?: number): number;
+        
+        /**
+         * Finds the elements present in all arrays.
+         * @template T - The element type.
+         * @param {T[]} a - The first array.
+         * @param {T[]} b - The second array.
+         * @param {...T[]} c - Zero or more additional arrays.
+         * @return {T[]} An array of elements from array a that were found in all of the other input arrays. Duplicates are removed.
+         * @memberof ArrayUtil
+         */
+        intersect<T>(a: T[], b: T[], ...c: T[]): T[];
+        /**
+         * Merge two or more arrays.
+         * @template T - The element type.
+         * @param {T[]} a - The first array.
+         * @param {T[]} b - The second array.
+         * @param {...T[]} c - Zero or more additional arrays.
+         * @return {T[]} An array of items from all the input arrays. Duplicates are removed.
+         * @memberof ArrayUtil
+         */
+        union<T>(a: T[], b: T[], ...c: T[]): T[];
+        
+        /**
+         * Removes duplicate items from an array.
+         * @template T - The element type.
+         * @param {T[]} a - The array to check for duplicate elements.
+         * @return {T[]} An array of unique items from the input array.
+         * @memberof ArrayUtil
+         */
+        unique<T>(a: T[]): T[];
+    }/**
+     * TODO: Document global.Optional
+     * @export
+     * @class Optional
+     * @see {@link https://docs.servicenow.com/bundle/rome-application-development/page/app-store/dev_portal/API_reference/Optional/concept/OptionalGlobalAPI.html}
+     */
+    export class Optional<T> {
+        /**
+         * Creates an instance of Optional.
+         * @param {(T | null | undefined)} value - Value to be contained by Optional.
+         * @param {({ (): T | null | undefined })} [lazyGetFn] - Function which returns a value.
+         * Used when you want the Optional to contain data which may be costly to retrieve (like a query) and may not be necessary.
+         * @param {string} [reason] - Reason given when an empty Optional is unwrapped (e.g. using `get()`)
+         * @memberof Optional
+         */
+        constructor(value: T | null | undefined, lazyGetFn?: { (): T | null | undefined }, reason?: string);
+
+        /**
+         * Applies a predicate function, a function that takes a single value and returns true or false, to the record inside the Optional object.
+         * If the function returns true, the method returns the Optional record unchanged. If the function returns false, it returns an empty Optional object.
+         * @param {{ (value: T): boolean }} predicate - Predicate function to apply to the value inside the Optional object.
+         * @return {Optional<U>} Object used to interact with a single record.
+         * @memberof Optional
+         */
+        filter(predicate: { (value: T): boolean }): Optional<T>;
+
+        /**
+         * Function to apply to the results of the query that returned the Optional object.
+         * @template U - The record type.
+         * @param {{ (value: T): Optional<U> }} fn - Function to apply to the results of the query that returned the Optional object.
+         * @return {Optional<U>} Object used to interact with a single record.
+         * @memberof Optional
+         */
+        flatMap<U>(fn: { (value: T): Optional<U> }): Optional<U>;
+
+        /**
+         * Returns the record inside the Optional object, or throws an error if the query does not return a record.
+         * @return {T} The record inside the Optional object. If the value is null or undefined, the system throws an error.
+         * @memberof Optional
+         */
+        get(): T;
+
+        /**
+         * Applies a function to the record within an Optional object. If the Optional object does not contain a record, the function does not execute.
+         * @param {{ (value: T): void }} fn - The function to apply to the record within the Optional object.
+         * @memberof Optional
+         */
+        ifPresent(fn: { (value: T): void }): void;
+
+        /**
+         * Tests whether the current Optional contains no value.
+         * @return {boolean} True if the current Optional contains no value; otherwise, false.
+         * @memberof Optional
+         */
+        isEmpty(): boolean;
+
+        /**
+         * Tests whether the current Optional object contains a value.
+         * @return {boolean} True if the current Optional contains a value; otherwise, false.
+         * @memberof Optional
+         */
+        isPresent(): boolean;
+
+        /**
+         * Applies a function to the result of a query.
+         * @template U - The mapped record type.
+         * @param {{ (value: T): U }} fn - Function to apply to the result of the query.
+         * @return {Optional<U>} Object used to interact with a single record.
+         * @memberof Optional
+         */
+        map<U>(fn: { (value: T): U }): Optional<U>;
+
+        /**
+         * Provides an alternate value if the current Optional is empty.
+         * @template U - The alternate value type.
+         * @param {T} defaultValue - Alternate value to return if the current Optional is empty.
+         * @return {(T | U)} Value within the current Optional object or the alternate value if the current Optional is empty.
+         * @memberof Optional
+         */
+        orElse<U>(defaultValue: U): T | U;
+
+        toString(): string;
+
+        /**
+         * Returns an empty Optional object. Use this method in an Else clause to handle a query that might not return a result.
+         * @static
+         * @template U - Optional value type.
+         * @param {string} [reason] - Optional reason displayed in the log when Optional.get() is called on the empty Optional object.
+         * @return {Optional<U>} Object used to interact with a single record.
+         * @memberof Optional
+         */
+        static empty<U>(reason?: string): Optional<U>;
+        
+        /**
+         * Returns a new Optional object. Instead of containing the record,
+         * the object contains a function to get the record that is only called if and when requested in the code.
+         * @static
+         * @template U - The record type.
+         * @param {({ (): U | null | undefined })} lazyGetFn - Function that returns a single record as a result of a query.
+         * @return {Optional<U>} Object used to interact with a single record.
+         * @memberof Optional
+         */
+        static lazy<U>(lazyGetFn: { (): U | null | undefined }): Optional<U>;
+
+        /**
+         * Wraps a given value in an Optional object. For example, you can wrap the result of a GlideRecord query in an Optional object to use the associated methods.
+         * @static
+         * @template U - The record type.
+         * @param {U} value - Value inside the Optional object.
+         * @return {Optional<U>} Object used to interact with a single record.
+         * @memberof Optional
+         */
+        static of<U>(value: U): Optional<U>;
+    }
+
+    /**
+     * The singleton type for {@link Stream.END}.
+     * @export
+     * @abstract
+     * @class STREAM_END
+     * @hideconstructor
+     */
+    export abstract class STREAM_END { private constructor(); }
+
+    /**
+     * Interacts with a stream of items such as records.
+     * @export
+     * @class Stream
+     * @template T The element type.
+     * @see {@link https://docs.servicenow.com/bundle/rome-application-development/page/app-store/dev_portal/API_reference/Stream/concept/StreamGlobalAPI.html}
+     */
+    export class Stream<T> {
+        /**
+         * Creates an instance of Stream.
+         * @param {({ (): T | STREAM_END })} nextFn - A function that retrieves the next item in the stream or returns {@link Stream.END} if there are no more items.
+         * @memberof Stream
+         */
+        constructor(nextFn: { (): T | STREAM_END });
+
+        /**
+         * Limits the number of results returned by the stream.
+         * @param {number} count - Number of records to return.
+         * @return {Stream<T>} Object used to interact with a stream of items such as records.
+         * @memberof Stream
+         */
+        limit(count: number): Stream<T>;
+
+        /**
+         * Returns results in batches of arrays, each containing the number of records passed to the method.
+         * @param {number} count - Number of records in each array returned from the stream.
+         * @return {Stream<T[]>} Object used to interact with a stream of items such as records.
+         * @memberof Stream
+         */
+        chunk(count: number): Stream<T[]>;
+
+        /**
+         * Applies a function to each item in a stream and returns the updated Stream object.
+         * @template U - The result element type.
+         * @param {{ (obj: T): U }} fn - Function to apply to the result of the query that takes the each item in the stream as input.
+         * @return {Stream<U>} Object containing the stream of records updated after applying the function.
+         * @memberof Stream
+         */
+        map<U>(fn: { (obj: T): U }): Stream<U>;
+
+        /**
+         * Applies a function to every item in a stream. Returns another stream that you can iterate over.
+         * @template U - The result stream element type.
+         * @param {{ (obj: T): Stream<U> }} fn - Function to apply to the result of the query that returns a Stream object.
+         * @return {Stream<U>} Object containing the stream of records updated after applying the function.
+         * @memberof Stream
+         */
+        flatMap<U>(fn: { (obj: T): Stream<U> }): Stream<U>;
+
+        /**
+         * Applies a predicate function to each item in the Stream object.
+         * If the predicate returns true, the method returns the stream.
+         * If the predicate returns false, it returns an empty Stream object.
+         * @param {{ (obj: T): boolean }} predicate - Predicate function to apply to every record or item inside the Stream object.
+         * The function must take each item in the stream as input and return a boolean.
+         * @return {Stream<T>} Object used to interact with a stream of items such as records.
+         * @memberof Stream
+         */
+        filter(predicate: { (obj: T): boolean }): Stream<T>;
+
+        /**
+         * Returns the first record or item in the Stream object that matches the predicate function.
+         * If no predicate function is provided, then the method returns the first record or item in the Stream.
+         * @param {{ (obj: T): boolean }} [predicate] - Optional predicate function to apply to the items inside the Stream object.
+         * The function must take each item in the stream as input and return a boolean.
+         * @return {Optional<T>} Object containing the returned record.
+         * @memberof Stream
+         */
+        find(predicate?: { (obj: T): boolean }): Optional<T>;
+
+        /**
+         * Applies a predicate function, a function that takes a single value and returns true or false, to each item in the stream.
+         * If the predicate returns true for any item in the stream, the method returns true.
+         * @param {{ (obj: T): boolean }} predicate - Predicate function to apply to the items inside the Stream object.
+         * @return {boolean} True if the predicate function returned true for an item in the stream; otherwise, false.
+         * @memberof Stream
+         */
+        some(predicate: { (obj: T): boolean }): boolean;
+
+        /**
+         * Applies a predicate function to every item in the Stream object.
+         * If the predicate returns true for every item in the stream, the method returns true.
+         * If the predicate returns false for any item in the stream, the method returns false.
+         * @param {{ (obj: T): boolean }} predicate - Predicate function to apply to every record or item inside the Stream object.
+         * The function must take each item in the stream as input and return a boolean.
+         * @return {boolean} True if the predicate function returns true for every item in the stream; otherwise, false.
+         * @memberof Stream
+         */
+        every(predicate: { (obj: T): boolean }): boolean;
+
+        /**
+         * Returns an array containing the given number of items from the stream.
+         * @param {number} count - The maximum number of items from the stream to return in the array.
+         * @return {T[]} Array containing the given number of items from the stream.
+         * @memberof Stream
+         */
+        toArray(count: number): T[];
+
+        /**
+         * Executes a reducer function on each item in the stream, resulting in single output value.
+         * @template U - The accumulated value type.
+         * @param {{ (acc: U, cur: T): U }} reducerFn - Function to apply to each item in the stream that reduces the stream to a single value. 
+         * @param {U} initialValue - Value passed to the function as the initial value.
+         * @return {U} Accumulated total of all items returned by the reducer function.
+         * @memberof Stream
+         */
+        reduce<U>(reducerFn: { (acc: U, cur: T): U }, initialValue: U): U;
+
+        /**
+         * Applies the specified function to each record or item in the stream.
+         * @param {{ (obj: T): void }} fn - Function to apply to each item in the stream.
+         * @memberof Stream
+         */
+        forEach(fn: { (obj: T): void }): void;
+
+        toString(): "Stream";
+
+        /**
+         * Returns a Stream object that contains the values from the provided array.
+         * @static
+         * @template U - The element type.
+         * @param {U[]} arr - Array of values to create the stream from.
+         * @return {Stream<U>} Object used to interact with a stream of items such as records.
+         * @memberof Stream
+         */
+        static fromArray<U>(arr: U[]): Stream<U>;
+
+        /**
+         * Combines multiple Streams using a combiner function
+         * @static
+         * @template U - The input stream element type.
+         * @template V - The result stream element type.
+         * @param {{ (...values: U[]): V}} combinerFn - Function which has a N number parameters, one for each Stream, and return a combined value.
+         * @param {...Stream<U>[]} streams - The streams to combine.
+         * @return {Stream<V>} The merged stream.
+         * @memberof Stream
+         */
+        static zip<U, V>(combinerFn: { (...values: U[]): V}, ...streams: Stream<U>[]): Stream<V>;
+
+        static readonly END: STREAM_END;
     }
 
     /**

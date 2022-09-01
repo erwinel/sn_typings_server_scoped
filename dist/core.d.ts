@@ -2831,377 +2831,666 @@ declare type sys_user_groupGlideRecord = GlideRecord & sys_user_groupFields;
 declare type sys_user_groupElement = $$element.Reference<sys_user_groupFields, sys_user_groupGlideRecord>;
 declare type sys_user_groupProperty = $$property.generic.ReferenceProperty<sys_user_groupFields, sys_user_groupGlideRecord, sys_user_groupElement>;
 
-/**
- * GlideElement values from the Schedule table.
- * @interface cmn_scheduleFields
- * @extends {IGlideTableProperties}
- */
-declare interface cmn_scheduleFields extends IGlideTableProperties {
-    /**
-     * Description
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_scheduleFields
-     */
-    description: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Document
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_scheduleFields
-     */
-    document: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Document key
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_scheduleFields
-     */
-    document_key: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_scheduleFields
-     */
-    name: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Parent
-     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
-     * @memberof cmn_scheduleFields
-     * @description Refers to cmn_schedule (Schedule)
-     */
-    parent: $$rhino.Nilable<cmn_scheduleProperty>;
-
-    /**
-     * Read only
-     * @type {$$rhino.Nilable<$$property.Boolean>}
-     * @memberof cmn_scheduleFields
-     */
-    read_only: $$rhino.Nilable<$$property.Boolean>;
-
-    /**
-     * Time zone
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_scheduleFields
-     */
-    time_zone: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Type
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_scheduleFields
-     */
-    type: $$rhino.Nilable<$$property.Element>;
-}
-/**
- * Record for items from the 'cmn_schedule' table
- * @typedef {(GlideRecord & cmn_scheduleFields)} cmn_scheduleGlideRecord
- */
-declare type cmn_scheduleGlideRecord = GlideRecord & cmn_scheduleFields;
-declare type cmn_scheduleElement = $$element.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>;
-declare type cmn_scheduleProperty = $$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>;
-
-declare enum cmn_schedule_entryMonthlyType {
-    /**
-     * Day of the month
-     */
-    DayOfMonth = "dom",
-    /**
-     * Day of the Week
-     */
-    DayOfWeek = "nth",
-    /**
-     * Last Day of the Month
-     */
-    LastDayOfMonth = "ldom",
-    /**
-     * Last Week Day of the Month
-     */
-    LastWeekDayOfMonth = "lwdom"
-}
-
-declare enum cmn_schedule_entryRepeatType {
-    /**
-     * Daily
-     */
-    Daily = "daily",
-    /**
-     * Every Weekday (Mon-Fri)
-     */
-    WeeklyOnWeekdays = "weekdays",
-    /**
-     * Weekly
-     */
-    Weekly = "weekly",
-    /**
-     * Every Weekend (Sat,SUn)
-     */
-    WeeklyOnWeekends = "weekends",
-    /**
-     * Every Mon, Wed, Fri
-     */
-    WeeklyOnMonWedAndFri = "weekends",
-    /**
-     * Every Tue, Thu
-     */
-     WeeklyOnTueAndThu = "weekTT",
-    /**
-     * Monthly
-     */
-    Monthly = "monthly",
-    /**
-     * Yearly
-     */
-    Yearly = "yearly",
-    /**
-     * Specific
-     */
-    Specific = "specific"
-}
-
-declare enum cmn_schedule_entryEntryType {
-    /**
-     * Time off
-     */
-    TimeOff = "time_off",
-    /**
-     * Appointment
-     */
-	Appointment = "appointment",
-    /**
-     * Meeting
-     */
-    Meeting = "meeting",
-    /**
-     * Phone call
-     */
-    PhoneCall = "call",
-    /**
-     * On call
-     */
-    OnCall = "on_call",
-    /**
-     * Time off - In approval
-     */
-    TimeOffInApproval = "time_off_in_approval",
-    /**
-     * Time off - rejected
-     */
-    TimeOffRejected = "time_off_rejected"
-}
-
-declare enum cmn_schedule_entryShowAs {
-    /**
-     * Busy
-     */
-    Busy = "busy",
-    /**
-     * Free
-     */
-    Free = "free",
-    /**
-     * Tentative
-     */
-    Tentative = "tentative",
-    /**
-     * On call
-     */
-    OnCall = "on_call"
-}
-
-declare type cmn_schedule_entryYearlyType = "doy" | "float"
-declare enum cmn_schedule_entryYearlyType2 {
-    /**
-     * Day of the year
-     */
-    DayOfYearh = "doy",
-    /**
-     * Floating
-     */
-    Floating = "float"
-}
+// #region business_calendar
 
 /**
- * GlideElement values from the Schedule Entry table.
- * @interface cmn_schedule_spanFields
- * @extends {IGlideTableProperties}
+ * GlideElement values from the "Business Calendar" table.
+ * @interface business_calendarFields
+ * @extends {sys_metadataFields}
+ * @see {business_calendarGlideRecord}
  */
-declare interface cmn_schedule_spanFields extends IGlideTableProperties {
+declare interface business_calendarFields extends sys_metadataFields {
     /**
-     * All day
-     * @type {$$property.Boolean}
-     * @memberof cmn_schedule_spanFields
-     */
-    all_day: $$property.Boolean;
-    /**
-     * Repeat on
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_schedule_spanFields
-     */
-    days_of_week: $$rhino.Nilable<$$property.Element>;
-    /**
-     * End date time
-     * @type {$$rhino.Nilable<$$property.GlideObject>}
-     * @memberof cmn_schedule_spanFields
-     */
-    end_date_time: $$rhino.Nilable<$$property.GlideObject>;
-    /**
-     * Float day
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_schedule_spanFields
-     */
-    float_day: $$rhino.Nilable<$$property.Element>;
-    /**
-     * Float week
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_schedule_spanFields
-     */
-    float_week: $$rhino.Nilable<$$property.Element>;
-    /**
-     * Group
-     * @type {$$rhino.Nilable<sys_user_groupProperty>}
-     * @memberof cmn_schedule_spanFields
-     */
-    group: $$rhino.Nilable<sys_user_groupProperty>;
-    /**
-     * Month
-     * @type {$$rhino.Nilable<$$property.GlideObject>}
-     * @memberof cmn_schedule_spanFields
-     */
-    month: $$rhino.Nilable<$$property.GlideObject>;
-    /**
-     * Monthly type
-     * @type {$$property.generic.Element<cmn_schedule_entryMonthlyType>}
-     * @memberof cmn_schedule_spanFields
-     */
-    monthly_type: $$property.generic.Element<cmn_schedule_entryMonthlyType>;
-    /**
-     * Name
+     * The "Name" column.
      * @type {$$property.Element}
-     * @memberof cmn_schedule_spanFields
+     * @memberof business_calendarFields
+     * @description mandatory: true; max_length: 80.
+     */
+    calendar_name: $$property.Element;
+
+    /**
+     * The "Description" column.
+     * @type {$$property.Element}
+     * @memberof business_calendarFields
+     * @description max_length: 1000.
+     */
+    description: $$property.Element;
+
+    /**
+     * The "Is legacy schedule" column.
+     * @type {$$property.Boolean}
+     * @memberof business_calendarFields
+     * @description default_value: false.
+     */
+    is_legacy_schedule: $$property.Boolean;
+
+    /**
+     * The "Label" column.
+     * @type {$$property.TranslatedField}
+     * @memberof business_calendarFields
+     * @description mandatory: true; java_class: "GlideElementTranslatedField"; max_length: 80.
+     */
+    label: $$property.TranslatedField;
+
+    /**
+     * Parent calendar which constrains the times for which this schedule is valid
+     * @type {$$property.Reference}
+     * @memberof business_calendarFields
+     * @description column_label: "Parent"; java_class: "com.glide.script.glide_elements.GlideElementReference".
+     */
+    parent: $$property.Reference;
+
+    /**
+     * The "Plural label" column.
+     * @type {$$property.TranslatedField}
+     * @memberof business_calendarFields
+     * @description mandatory: true; java_class: "GlideElementTranslatedField"; max_length: 80.
+     */
+    plural_label: $$property.TranslatedField;
+
+    /**
+     * The "Time zone" column.
+     * @type {$$property.Element}
+     * @memberof business_calendarFields
+     * @description max_length: 40.
+     */
+    time_zone: $$property.Element;
+}
+
+/**
+ * Type of {@link GlideRecord} that can refer to items from the "Business Calendar" (business_calendar) table.
+ * @typedef {(sys_metadataGlideRecord & business_calendarFields)} business_calendarGlideRecord
+ */
+declare type business_calendarGlideRecord = sys_metadataGlideRecord & business_calendarFields;
+
+/**
+ * Type of {@link GlideElementReference} that refers to a record in the "Business Calendar" (business_calendar) table.
+ * @typedef {$$element.Reference<business_calendarFields, business_calendarGlideRecord>} business_calendarGlideRecord
+ */
+declare type business_calendarElement = $$element.Reference<business_calendarFields, business_calendarGlideRecord>;
+
+/**
+ * Type of {@link GlideRecord} property that refers to an item from the "Business Calendar" (business_calendar) table.
+ * @typedef {$$property.generic.ReferenceProperty<business_calendarFields, business_calendarGlideRecord, business_calendarElement>} business_calendarGlideRecord
+ */
+declare type business_calendarProperty = $$property.generic.ReferenceProperty<business_calendarFields, business_calendarGlideRecord, business_calendarElement>;
+
+// #endregion
+
+// #region business_calendar_span
+
+/**
+ * GlideElement values from the "Business Calendar Entry" table.
+ * @interface business_calendar_spanFields
+ * @extends {IExtendedGlideTableProperties}
+ * @see {business_calendar_spanGlideRecord}
+ */
+declare interface business_calendar_spanFields extends IExtendedGlideTableProperties {
+    /**
+     * The "Calendar" column.
+     * @type {$$property.Reference}
+     * @memberof business_calendar_spanFields
+     * @description mandatory: true; java_class: "com.glide.script.glide_elements.GlideElementReference".
+     */
+    calendar: $$property.Reference;
+
+    /**
+     * The "Counter" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    counter: $$property.Numeric;
+
+    /**
+     * The "End" column.
+     * @type {$$property.GlideObject}
+     * @memberof business_calendar_spanFields
+     * @description mandatory: true; internal_type: "calendar_date_time"; java_class: "com.glide.glideobject.CalendarDateTime".
+     */
+    end: $$property.GlideObject;
+
+    /**
+     * The "Index0" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index0: $$property.Numeric;
+
+    /**
+     * The "Index1" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index1: $$property.Numeric;
+
+    /**
+     * The "Index2" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index2: $$property.Numeric;
+
+    /**
+     * The "Index3" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index3: $$property.Numeric;
+
+    /**
+     * The "Index4" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index4: $$property.Numeric;
+
+    /**
+     * The "Index5" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index5: $$property.Numeric;
+
+    /**
+     * The "Index6" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index6: $$property.Numeric;
+
+    /**
+     * The "Index7" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index7: $$property.Numeric;
+
+    /**
+     * The "Index8" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index8: $$property.Numeric;
+
+    /**
+     * The "Index9" column.
+     * @type {$$property.Numeric}
+     * @memberof business_calendar_spanFields
+     */
+    index9: $$property.Numeric;
+
+    /**
+     * The "Name" column.
+     * @type {$$property.Reference}
+     * @memberof business_calendar_spanFields
+     * @description mandatory: true; java_class: "com.glide.script.glide_elements.GlideElementReference".
+     */
+    span_name: $$property.Reference;
+
+    /**
+     * The "Start" column.
+     * @type {$$property.GlideObject}
+     * @memberof business_calendar_spanFields
+     * @description mandatory: true; internal_type: "calendar_date_time"; java_class: "com.glide.glideobject.CalendarDateTime".
+     */
+    start: $$property.GlideObject;
+}
+
+/**
+ * Type of {@link GlideRecord} that can refer to items from the "Business Calendar Entry" (business_calendar_span) table.
+ * @typedef {(GlideRecord & business_calendar_spanFields)} business_calendar_spanGlideRecord
+ */
+declare type business_calendar_spanGlideRecord = GlideRecord & business_calendar_spanFields;
+
+/**
+ * Type of {@link GlideElementReference} that refers to a record in the "Business Calendar Entry" (business_calendar_span) table.
+ * @typedef {$$element.Reference<business_calendar_spanFields, business_calendar_spanGlideRecord>} business_calendar_spanGlideRecord
+ */
+declare type business_calendar_spanElement = $$element.Reference<business_calendar_spanFields, business_calendar_spanGlideRecord>;
+
+/**
+ * Type of {@link GlideRecord} property that refers to an item from the "Business Calendar Entry" (business_calendar_span) table.
+ * @typedef {$$property.generic.ReferenceProperty<business_calendar_spanFields, business_calendar_spanGlideRecord, business_calendar_spanElement>} business_calendar_spanGlideRecord
+ */
+declare type business_calendar_spanProperty = $$property.generic.ReferenceProperty<business_calendar_spanFields, business_calendar_spanGlideRecord, business_calendar_spanElement>;
+
+// #endregion
+
+// #region cmn_schedule
+
+/**
+ * GlideElement values from the "Schedule" table.
+ * @interface cmn_scheduleFields
+ * @extends {business_calendarFields}
+ * @description Schedule during which Changes may be performed.
+ * @see {cmn_scheduleGlideRecord}
+ */
+declare interface cmn_scheduleFields extends business_calendarFields {
+    /**
+     * The "Document" column.
+     * @type {$$property.Element}
+     * @memberof cmn_scheduleFields
+     * @description max_length: 40.
+     */
+    document: $$property.Element;
+
+    /**
+     * The "Document key" column.
+     * @type {$$property.Element}
+     * @memberof cmn_scheduleFields
+     * @description max_length: 32.
+     */
+    document_key: $$property.Element;
+
+    /**
+     * The "Name" column.
+     * @type {$$property.Element}
+     * @memberof cmn_scheduleFields
+     * @description max_length: 80.
      */
     name: $$property.Element;
+
     /**
-     * Notes
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof cmn_schedule_spanFields
+     * Read-only schedules cannot be modified from the user interface
+     * @type {$$property.Boolean}
+     * @memberof cmn_scheduleFields
+     * @description column_label: "Read only"; default_value: false.
      */
-    notes: $$rhino.Nilable<$$property.Element>;
+    read_only: $$property.Boolean;
+
     /**
-     * Overridden Start Date
-     * @type {$$rhino.Nilable<$$property.GlideObject>}
-     * @memberof cmn_schedule_spanFields
+     * The "Type" column.
+     * @type {$$property.Element}
+     * @memberof cmn_scheduleFields
+     * @description max_length: 40.
      */
-    override_start_date: $$rhino.Nilable<$$property.GlideObject>;
+    type: $$property.Element;
+}
+
+/**
+ * Type of {@link GlideRecord} that can refer to items from the "Schedule" (cmn_schedule) table.
+ * @typedef {(business_calendarGlideRecord & cmn_scheduleFields)} cmn_scheduleGlideRecord
+ */
+declare type cmn_scheduleGlideRecord = business_calendarGlideRecord & cmn_scheduleFields;
+
+/**
+ * Type of {@link GlideElementReference} that refers to a record in the "Schedule" (cmn_schedule) table.
+ * @typedef {$$element.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>} cmn_scheduleGlideRecord
+ */
+declare type cmn_scheduleElement = $$element.Reference<cmn_scheduleFields, cmn_scheduleGlideRecord>;
+
+/**
+ * Type of {@link GlideRecord} property that refers to an item from the "Schedule" (cmn_schedule) table.
+ * @typedef {$$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>} cmn_scheduleGlideRecord
+ */
+declare type cmn_scheduleProperty = $$property.generic.ReferenceProperty<cmn_scheduleFields, cmn_scheduleGlideRecord, cmn_scheduleElement>;
+
+// #endregion
+
+// #region cmn_schedule_span
+
+/**
+ * Indicates the monthly recurrance type.
+ * Used by the {@link cmn_schedule_spanFields#monthly_type} column.
+ * @typedef {("dom" | "nth" | "ldom" | "lwdom")} cmn_schedule_entryMonthlyType
+ * @description dom=Day of the month; nth=Day of the Week; ldom=Last Day of the Month; lwdom=Last Week Day of the Month.
+ */
+declare type cmn_schedule_entryMonthlyType = "dom" | "nth" | "ldom" | "lwdom";
+
+/**
+ * Indicates the monthly recurrance type.
+ * Used by the {@link cmn_schedule_spanFields#repeat_type} column.
+ * @typedef {("daily" | "weekdays" | "weekends" | "weekMWF" | "weekTT" | "weekly" | "monthly" | "yearly" | "specific")} cmn_schedule_entryRepeatType
+ * @description daily=Daily; weekdays=Every Weekday (Mon-Fri); weekends=Every Weekend (Sat, Sun); weekMWF=Every Mon, Wed, Fri; weekTT=Every Tue, Thu; weekly=Weekly; monthly=Monthly; yearly=Yearly; specific=Specific.
+ */
+declare type cmn_schedule_entryRepeatType = "daily" | "weekdays" | "weekends" | "weekMWF" | "weekTT" | "weekly" | "monthly" | "yearly" | "specific";
+
+/**
+ * Indicates the monthly recurrance type.
+ * Used by the {@link cmn_schedule_spanFields#type} column.
+ * @typedef {("time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected")} cmn_schedule_entryEntryType
+ * @description time_off=Time off; appointment=Appointment; meeting=Meeting; call=Phone call; on_call=On call; time_off_in_approval=Time off - In approval; time_off_rejected=Time off - rejected.
+ */
+declare type cmn_schedule_entryEntryType = "time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected";
+
+/**
+ * Indicates the monthly recurrance type.
+ * Used by the {@link cmn_schedule_spanFields#show_as} column.
+ * @typedef {("busy" | "free" | "tentative" | "on_call")} cmn_schedule_entryShowAs
+ * @description busy=Busy; free=Free; tentative=Tentative; on_call=On call.
+ */
+declare type cmn_schedule_entryShowAs = "busy" | "free" | "tentative" | "on_call";
+
+/**
+ * Indicates the yearly recurrance type.
+ * Used by the {@link cmn_schedule_spanFields#yearly_type} column.
+ * @typedef {("doy" | "float")} cmn_schedule_entryYearlyType
+ * @description doy=Day of the year; float=Floating.
+ */
+ declare type cmn_schedule_entryYearlyType = "doy" | "float";
+ 
+/**
+ * GlideElement values from the "Schedule Entry" table.
+ * @interface cmn_schedule_spanFields
+ * @extends {business_calendar_spanFields}
+ * @see {cmn_schedule_spanGlideRecord}
+ */
+ declare interface cmn_schedule_spanFields extends business_calendar_spanFields {
     /**
-     * Overridden Item
-     * @type {$$rhino.Nilable<cmn_schedule_spanProperty>}
+     * The "All day" column.
+     * @type {$$property.Boolean}
      * @memberof cmn_schedule_spanFields
+     * @description default_value: false.
      */
-    parent: $$rhino.Nilable<cmn_schedule_spanProperty>;
+    all_day: $$property.Boolean;
+
     /**
-     * Repeat every
-     * @type {$$rhino.Nilable<$$property.Numeric>}
+     * The "Repeat on" column.
+     * @type {$$property.Element}
      * @memberof cmn_schedule_spanFields
+     * @description internal_type: "days_of_week"; max_length: 40; default_value: "1".
      */
-    repeat_count: $$rhino.Nilable<$$property.Numeric>;
+    days_of_week: $$property.Element;
+
     /**
-     * Repeats
-     * @type {$$rhino.Nilable<$$property.generic.Element<cmn_schedule_entryRepeatType>>}
+     * The "End date time" column.
+     * @type {$$property.Element}
      * @memberof cmn_schedule_spanFields
-     * @description nil for "Does not repeat"
+     * @description internal_type: "schedule_date_time"; java_class: "com.glide.script.fencing.ScopedGlideScheduleDateTime".
      */
-    repeat_type: $$rhino.Nilable<$$property.generic.Element<cmn_schedule_entryRepeatType>>;
+    end_date_time: $$property.Element;
+
     /**
-     * Repeat until
-     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * The "Float day" column.
+     * @type {$$property.Element}
      * @memberof cmn_schedule_spanFields
+     * @description max_length: 40; default_value: "1".
      */
-    repeat_until: $$rhino.Nilable<$$property.GlideObject>;
+    float_day: $$property.Element;
+
     /**
-     * Schedule
-     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
+     * The "Float week" column.
+     * @type {$$property.Element}
      * @memberof cmn_schedule_spanFields
+     * @description max_length: 40; default_value: "1".
      */
-    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+    float_week: $$property.Element;
+
     /**
-     * Show as
+     * The "Group" column.
+     * @type {$$property.Reference}
+     * @memberof cmn_schedule_spanFields
+     * @description java_class: "com.glide.script.glide_elements.GlideElementReference".
+     */
+    group: $$property.Reference;
+
+    /**
+     * The "Month" column.
+     * @type {$$property.Numeric}
+     * @memberof cmn_schedule_spanFields
+     * @description internal_type: "month_of_year"; java_class: "MonthOfYear".
+     */
+    month: $$property.Numeric;
+
+    /**
+     * The "Monthly type" column.
      * @type {$$property.generic.Element<cmn_schedule_entryMonthlyType>}
      * @memberof cmn_schedule_spanFields
+     * @description max_length: 40; default_value: "dom".
      */
-    show_as: $$property.generic.Element<cmn_schedule_entryMonthlyType>;
+    monthly_type: $$property.generic.Element<cmn_schedule_entryMonthlyType>;
+
     /**
-     * Start date time
-     * @type {$$rhino.Nilable<$$property.GlideObject>}
+     * The "Name" column.
+     * @type {$$property.Element}
      * @memberof cmn_schedule_spanFields
+     * @description max_length: 80.
      */
-    start_date_time: $$rhino.Nilable<$$property.GlideObject>;
+    name: $$property.Element;
+
     /**
-     * Type
+     * The "Notes" column.
+     * @type {$$property.Element}
+     * @memberof cmn_schedule_spanFields
+     * @description max_length: 1000.
+     */
+    notes: $$property.Element;
+
+    /**
+     * The starting date for the repeating item that this item overrides
+     * @type {$$property.Numeric}
+     * @memberof cmn_schedule_spanFields
+     * @description column_label: "Overridden Start Date"; internal_type: "integer_date"; java_class: "IntegerDate".
+     */
+    override_start_date: $$property.Numeric;
+
+    /**
+     * The repeating item that this item overrides, making this item a single occurrence
+     * @type {$$property.Reference}
+     * @memberof cmn_schedule_spanFields
+     * @description column_label: "Overridden Item"; java_class: "com.glide.script.glide_elements.GlideElementReference".
+     */
+    parent: $$property.Reference;
+
+    /**
+     * The "Repeat every" column.
+     * @type {$$property.Numeric}
+     * @memberof cmn_schedule_spanFields
+     * @description internal_type: "repeat_count"; java_class: "com.glide.script.glide_elements.GlideElementNumeric"; default_value: 1.
+     */
+    repeat_count: $$property.Numeric;
+
+    /**
+     * The "Repeats" column.
+     * @type {$$property.generic.Element<cmn_schedule_entryRepeatType>}
+     * @memberof cmn_schedule_spanFields
+     * @description internal_type: "repeat_type"; max_length: 40.
+     */
+    repeat_type: $$property.generic.Element<cmn_schedule_entryRepeatType>;
+
+    /**
+     * The "Repeat until" column.
+     * @type {$$property.Numeric}
+     * @memberof cmn_schedule_spanFields
+     * @description internal_type: "integer_date"; java_class: "IntegerDate".
+     */
+    repeat_until: $$property.Numeric;
+
+    /**
+     * The "Schedule" column.
+     * @type {$$property.Reference}
+     * @memberof cmn_schedule_spanFields
+     * @description java_class: "com.glide.script.glide_elements.GlideElementReference".
+     */
+    schedule: $$property.Reference;
+
+    /**
+     * The "Show as" column.
+     * @type {$$property.Element}
+     * @memberof cmn_schedule_spanFields
+     * @description max_length: 40; default_value: "busy".
+     */
+    show_as: $$property.generic.Element<cmn_schedule_entryShowAs>;
+
+    /**
+     * The "Start date time" column.
+     * @type {$$property.Element}
+     * @memberof cmn_schedule_spanFields
+     * @description internal_type: "schedule_date_time"; java_class: "com.glide.script.fencing.ScopedGlideScheduleDateTime".
+     */
+    start_date_time: $$property.Element;
+
+    /**
+     * The "Sys ID" column.
+     * @type {$$property.Element}
+     * @memberof cmn_schedule_spanFields
+     * @description internal_type: "GUID"; max_length: 32.
+     */
+    sys_id: $$property.Element;
+
+    /**
+     * The "Type" column.
      * @type {$$property.generic.Element<cmn_schedule_entryEntryType>}
      * @memberof cmn_schedule_spanFields
+     * @description max_length: 40.
      */
     type: $$property.generic.Element<cmn_schedule_entryEntryType>;
+
     /**
-     * User
-     * @type {$$rhino.Nilable<sys_userProperty>}
+     * The "User" column.
+     * @type {$$property.Reference}
      * @memberof cmn_schedule_spanFields
+     * @description java_class: "com.glide.script.glide_elements.GlideElementReference".
      */
-    user: $$rhino.Nilable<sys_userProperty>;
+    user: $$property.Reference;
+
     /**
-     * Yearly type
+     * The "Yearly type" column.
      * @type {$$property.generic.Element<cmn_schedule_entryYearlyType>}
      * @memberof cmn_schedule_spanFields
+     * @description max_length: 40; default_value: "doy".
      */
     yearly_type: $$property.generic.Element<cmn_schedule_entryYearlyType>;
 }
-/**
- * Record for items from the 'cmn_schedule_span' table
- * @typedef {(GlideRecord & cmn_schedule_spanFields)} cmn_schedule_spanGlideRecord
- */
-declare type cmn_schedule_spanGlideRecord = GlideRecord & cmn_schedule_spanFields;
-declare type cmn_schedule_spanElement = $$element.Reference<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord>;
-declare type cmn_schedule_spanProperty = $$property.generic.ReferenceProperty<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord, cmn_schedule_spanElement>;
 
 /**
- * GlideElement values from the Other Schedule table.
+ * Type of {@link GlideRecord} that can refer to items from the "Schedule Entry" (cmn_schedule_span) table.
+ * @typedef {(business_calendar_spanGlideRecord & cmn_schedule_spanFields)} cmn_schedule_spanGlideRecord
+ */
+declare type cmn_schedule_spanGlideRecord = business_calendar_spanGlideRecord & cmn_schedule_spanFields;
+
+/**
+ * Type of {@link GlideElementReference} that refers to a record in the "Schedule Entry" (cmn_schedule_span) table.
+ * @typedef {$$element.Reference<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord>} cmn_schedule_spanGlideRecord
+ */
+declare type cmn_schedule_spanElement = $$element.Reference<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord>;
+
+/**
+ * Type of {@link GlideRecord} property that refers to an item from the "Schedule Entry" (cmn_schedule_span) table.
+ * @typedef {$$property.generic.ReferenceProperty<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord, cmn_schedule_spanElement>} cmn_schedule_spanGlideRecord
+ */
+declare type cmn_schedule_spanProperty = $$property.generic.ReferenceProperty<cmn_schedule_spanFields, cmn_schedule_spanGlideRecord, cmn_schedule_spanElement>;
+
+// #endregion
+
+// #region cmn_other_schedule
+
+declare type cmn_other_scheduleType = "include" | "exclude";
+
+/**
+ * GlideElement values from the "Other Schedule" table.
  * @interface cmn_other_scheduleFields
  * @extends {IGlideTableProperties}
+ * @see {cmn_other_scheduleGlideRecord}
  */
 declare interface cmn_other_scheduleFields extends IGlideTableProperties {
     /**
-     * Child schedule
-     * @type {$$rhino.Nilable<cmn_scheduleProperty>}
+     * The "Other Schedule" column.
+     * @type {$$property.Element}
      * @memberof cmn_other_scheduleFields
+     * @description internal_type: "collection"; max_length: 40.
      */
-    child_schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+    cmn_other_schedule: $$property.Element;
+
     /**
-     * Schedule
-     * @type {$$rhino.Nilable<cmn_scheduleProperty}
+     * The "Child schedule" column.
+     * @type {$$property.Reference}
      * @memberof cmn_other_scheduleFields
+     * @description java_class: "com.glide.script.glide_elements.GlideElementReference".
      */
-    schedule: $$rhino.Nilable<cmn_scheduleProperty>;
+    child_schedule: $$property.Reference;
+
     /**
-     * Time zone
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * The "Schedule" column.
+     * @type {$$property.Reference}
      * @memberof cmn_other_scheduleFields
+     * @description java_class: "com.glide.script.glide_elements.GlideElementReference".
      */
-    time_zone: $$rhino.Nilable<$$property.Element>;
+    schedule: $$property.Reference;
+
     /**
-     * Type
-     * @type {$$rhino.Nilable<$$property.Element>}
+     * The "Created by" column.
+     * @type {$$property.Element}
+     * @memberof cmn_other_scheduleFields
+     * @description max_length: 40.
+     */
+    sys_created_by: $$property.Element;
+
+    /**
+     * The "Created" column.
+     * @type {$$property.GlideObject}
+     * @memberof cmn_other_scheduleFields
+     * @description java_class: "com.glide.glideobject.GlideDateTime".
+     */
+    sys_created_on: $$property.GlideObject;
+
+    /**
+     * The "Sys ID" column.
+     * @type {$$property.Element}
+     * @memberof cmn_other_scheduleFields
+     * @description internal_type: "GUID"; max_length: 32.
+     */
+    sys_id: $$property.Element;
+
+    /**
+     * The "Updates" column.
+     * @type {$$property.Numeric}
      * @memberof cmn_other_scheduleFields
      */
-    type: $$rhino.Nilable<$$property.Element>;
+    sys_mod_count: $$property.Numeric;
+
+    /**
+     * The "Updated by" column.
+     * @type {$$property.Element}
+     * @memberof cmn_other_scheduleFields
+     * @description max_length: 40.
+     */
+    sys_updated_by: $$property.Element;
+
+    /**
+     * The "Updated" column.
+     * @type {$$property.GlideObject}
+     * @memberof cmn_other_scheduleFields
+     * @description java_class: "com.glide.glideobject.GlideDateTime".
+     */
+    sys_updated_on: $$property.GlideObject;
+
+    /**
+     * The "Time zone" column.
+     * @type {$$property.Element}
+     * @memberof cmn_other_scheduleFields
+     * @description max_length: 40.
+     */
+    time_zone: $$property.Element;
+
+    /**
+     * The "Type" column.
+     * @type {$$property.generic.Element<cmn_other_scheduleType>}
+     * @memberof cmn_other_scheduleFields
+     * @description default_value: "include".
+     */
+    type: $$property.generic.Element<cmn_other_scheduleType>;
 }
+
 /**
- * Record for items from the 'cmn_other_schedule' table
+ * Type of {@link GlideRecord} that can refer to items from the "Other Schedule" (cmn_other_schedule) table.
  * @typedef {(GlideRecord & cmn_other_scheduleFields)} cmn_other_scheduleGlideRecord
  */
 declare type cmn_other_scheduleGlideRecord = GlideRecord & cmn_other_scheduleFields;
+
+/**
+ * Type of {@link GlideElementReference} that refers to a record in the "Other Schedule" (cmn_other_schedule) table.
+ * @typedef {$$element.Reference<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord>} cmn_other_scheduleGlideRecord
+ */
 declare type cmn_other_scheduleElement = $$element.Reference<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord>;
+
+/**
+ * Type of {@link GlideRecord} property that refers to an item from the "Other Schedule" (cmn_other_schedule) table.
+ * @typedef {$$property.generic.ReferenceProperty<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord, cmn_other_scheduleElement>} cmn_other_scheduleGlideRecord
+ */
 declare type cmn_other_scheduleProperty = $$property.generic.ReferenceProperty<cmn_other_scheduleFields, cmn_other_scheduleGlideRecord, cmn_other_scheduleElement>;
+
+// #endregion
 
 /**
  * GlideElement values from the Location table.

@@ -3148,10 +3148,10 @@ declare type cmn_schedule_entryRepeatType = "daily" | "weekdays" | "weekends" | 
 /**
  * Indicates the monthly recurrance type.
  * Used by the {@link cmn_schedule_spanFields#type} column.
- * @typedef {("time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected")} cmn_schedule_entryEntryType
- * @description time_off=Time off; appointment=Appointment; meeting=Meeting; call=Phone call; on_call=On call; time_off_in_approval=Time off - In approval; time_off_rejected=Time off - rejected.
+ * @typedef {("exclude" | "time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected")} cmn_schedule_entryEntryType
+ * @description exclude=Excluded; time_off=Time off; appointment=Appointment; meeting=Meeting; call=Phone call; on_call=On call; time_off_in_approval=Time off - In approval; time_off_rejected=Time off - rejected.
  */
-declare type cmn_schedule_entryEntryType = "time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected";
+declare type cmn_schedule_entryEntryType = "exclude" | "time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected";
 
 /**
  * Indicates the monthly recurrance type.

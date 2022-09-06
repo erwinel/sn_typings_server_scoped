@@ -3154,7 +3154,7 @@ declare type cmn_schedule_entryRepeatType = "daily" | "weekdays" | "weekends" | 
 declare type cmn_schedule_entryEntryType = "exclude" | "time_off" | "appointment" | "meeting" | "call" | "on_call" | "time_off_in_approval" | "time_off_rejected";
 
 /**
- * Indicates the monthly recurrance type.
+ * Indicates how the schedule entry is to be depicted.
  * Used by the {@link cmn_schedule_spanFields#show_as} column.
  * @typedef {("busy" | "free" | "tentative" | "on_call")} cmn_schedule_entryShowAs
  * @description busy=Busy; free=Free; tentative=Tentative; on_call=On call.

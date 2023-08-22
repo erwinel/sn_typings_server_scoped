@@ -134,7 +134,7 @@ declare interface IAbstractAjaxProcessor {
  */
 declare type BaseSystemWorkflowEventNames = "activityComplete" | "cancel" | "determineApprovalState" | "execute" | "listener" | "pause" | "probe_complete" | "resume" | "stop" | "timer" | "otherEvent";
 
-declare type WorkflowOperationType = "insert" | "update" | "delete";
+declare type GlideRecordOperationType = "insert" | "update" | "delete";
 
 declare namespace global {
     /**
@@ -909,29 +909,29 @@ declare namespace global {
         /**
          * Runs all workflows for a given record in a given table and its descendant tables.
          * @param {GlideRecord} record - GlideRecord to run workflows against.
-         * @param {WorkflowOperationType} operation - Database operation.
+         * @param {GlideRecordOperationType} operation - Database operation.
          * @memberof Workflow
          */
-        runFlows(record: GlideRecord, operation: WorkflowOperationType): void;
+        runFlows(record: GlideRecord, operation: GlideRecordOperationType): void;
 
         /**
          * Starts a specified workflow.
          * @param {string} workflowId - The sys_id of the workflow to start. This sys_id refers to table wf_workflow.
          * @param {GlideRecord} current - The record to use as current in this workflow. This is normally from the Table field of the workflow properties for this workflow.
-         * @param {WorkflowOperationType} operation - The operation to perform on current.
+         * @param {GlideRecordOperationType} operation - The operation to perform on current.
          * @param {Array<any>} vars - Collection of variables to add to the workflow.
          * @returns {GlideRecord} GlideRecord on table wf_context for the newly created workflow context.
          * @memberof Workflow
          */
-        startFlow(workflowId: string, current: GlideRecord, operation: WorkflowOperationType, vars: Array<any>): GlideRecord;
+        startFlow(workflowId: string, current: GlideRecord, operation: GlideRecordOperationType, vars: Array<any>): GlideRecord;
 
         /**
          * Helper method for business rule Auto start on context.
          * @param {GlideRecord} context - GlideRecord on table wf_context of a new record (the "current" record in the business rule).
-         * @param {WorkflowOperationType} operation - Database operation being performed.
+         * @param {GlideRecordOperationType} operation - Database operation being performed.
          * @memberof Workflow
          */
-        startFlowFromContextInsert(context: GlideRecord, operation: WorkflowOperationType): void;
+        startFlowFromContextInsert(context: GlideRecord, operation: GlideRecordOperationType): void;
         
         /**
          * Used by business rule Start Workflow on table task_sla.
@@ -940,13 +940,13 @@ declare namespace global {
          * @param {string} workflowId - The sys_id of the workflow to start. This sys_id refers to table wf_workflow.
          * @param {number} retroactiveMSecs - Delay in milliseconds used by Activity Timer.
          * @param {GlideRecord} current - GlideRecord of the record to use as current in this workflow. This is normally from the Table field of the workflow properties for this workflow.
-         * @param {WorkflowOperationType} operation - Database operation being performed.
+         * @param {GlideRecordOperationType} operation - Database operation being performed.
          * @param {Array<any>} vars - Collection of variables to add to the workflow.
          * @param {*} [withSchedule] - Schedule used by Activity Timer
          * @returns {GlideRecord}
          * @memberof Workflow A GlideRecord on table wf_context on the inserted record for this newly created workflow context.
          */
-        startFlowRetroactive(workflowId: string, retroactiveMSecs: number, current: GlideRecord, operation: WorkflowOperationType, vars: Array<any>, withSchedule?: any): GlideRecord;
+        startFlowRetroactive(workflowId: string, retroactiveMSecs: number, current: GlideRecord, operation: GlideRecordOperationType, vars: Array<any>, withSchedule?: any): GlideRecord;
     }
 
     export var AbstractAjaxProcessor: IAbstractAjaxProcessor;

@@ -1,0 +1,34 @@
+{
+    "todohighlight.keywords": [
+        {
+            "text": "TODO:",
+            "color": "#fff",
+            "backgroundColor": "#ffbd2a",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "@todo",
+            "color": "#fff",
+            "backgroundColor": "#ffbd2a",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "FIXME:",
+            "color": "#fff",
+            "backgroundColor": "#f06292",
+            "overviewRulerColor": "rgba(240,98,146,0.8)"
+        },
+        {
+            "text": "@deprecated",
+            "color": "#fff",
+            "backgroundColor": "#f06292",
+            "overviewRulerColor": "rgba(240,98,146,0.8)"
+        },
+        {
+            "text": "BUG:",
+            "color": "#fff",
+            "backgroundColor": "#f06292",
+            "overviewRulerColor": "rgba(240,98,146,0.8)"
+        }
+    ]
+}

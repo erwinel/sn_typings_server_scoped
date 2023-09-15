@@ -1,4 +1,4 @@
-# ServiceNow Server-Side Class Creation
+# Using Class.create with TypeScript
 
 ## Example using `$$class.Constructor<TInstance>` and `create<TInstance, TConstructor>()`
 

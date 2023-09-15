@@ -1,303 +1,316 @@
-/**
- * GlideElement values from the Test Step Environment table.
- * @interface sys_atf_step_configFields
- * @extends {sys_metadataFields}
- */
-declare interface sys_atf_step_envFields extends sys_metadataFields {
+/// <reference path="./Packages.d.ts" />
+/// <reference path="./$$rhino.d.ts" />
+/// <reference path="./ElementTypes.d.ts" />
+/// <reference path="./RecordTypes.d.ts" />
+
+declare namespace $$GlideRecord {
     /**
-     * Class name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_envFields
+     * "Output Variables" GlideRecord.
      */
-    class_name: $$rhino.Nilable<$$property.Element>;
+    export type atf_output_variable = $$tableFields.atf_output_variable & sys_atf_variable;
+
+    /**
+     * "Test Variable" GlideRecord.
+     * Extendable: true
+     */
+    export type sys_atf_variable = $$tableFields.sys_atf_variable & var_dictionary;
     
     /**
-     * Description
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_envFields
+     * "Test Step Config" GlideRecord.
      */
-    description: $$rhino.Nilable<$$property.Element>;
+    export type sys_atf_step_config = $$tableFields.sys_atf_step_config & sys_metadata;
     
     /**
-     * Has batch constraint
-     * @type {$$rhino.Nilable<$$property.Boolean>}
-     * @memberof sys_atf_step_envFields
+     * "Test Step Config Category" GlideRecord.
      */
-    has_batch_constraint: $$rhino.Nilable<$$property.Boolean>;
+    export type sys_atf_step_config_category = $$tableFields.sys_atf_step_config_category & sys_metadata;
     
     /**
-     * Name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_envFields
+     * "Input Variables" GlideRecord.
      */
-    name: $$rhino.Nilable<$$property.Element>;
+    export type atf_input_variable = $$tableFields.atf_input_variable & sys_atf_variable;
     
     /**
-     * Order
-     * @type {$$rhino.Nilable<$$property.Numeric>}
-     * @memberof sys_atf_step_envFields
+     * "Test Step Environment" GlideRecord.
      */
-    order: $$rhino.Nilable<$$property.Numeric>;
-    
-    /**
-     * Class type
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_envFields
-     */
-    type: $$rhino.Nilable<$$property.Element>;
+    export type sys_atf_step_env = $$tableFields.sys_atf_step_env & sys_metadata;
 }
-/**
- * Record for items from the 'sys_atf_step_env' table
- * @typedef {(sys_metadataGlideRecord & sys_atf_step_envFields)} sys_atf_step_envGlideRecord
- */
-declare type sys_atf_step_envGlideRecord = sys_metadataGlideRecord & sys_atf_step_envFields;
-declare type sys_atf_step_envElement = $$element.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>;
-declare type sys_atf_step_envProperty = $$property.generic.ReferenceProperty<sys_atf_step_envFields, sys_atf_step_envGlideRecord, sys_atf_step_envElement>;
 
-/**
- * GlideElement values from the Test Step Config Category table.
- * @interface sys_atf_step_config_categoryFields
- * @extends {sys_metadataFields}
- */
-declare interface sys_atf_step_config_categoryFields extends sys_metadataFields {
+declare namespace $$GlideElement {
     /**
-     * Display name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_config_categoryFields
+     * Reference element for the "Output Variables" record type.
      */
-    display_name: $$rhino.Nilable<$$property.Element>;
+    export type atf_output_variable = Reference<$$tableFields.atf_output_variable, $$GlideRecord.atf_output_variable> & sys_atf_variable;
     
     /**
-     * Name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_config_categoryFields
+     * Reference element for the "Test Variable" record type.
      */
-    name: $$rhino.Nilable<$$property.Element>;
+    export type sys_atf_variable = Reference<$$tableFields.sys_atf_variable, $$GlideRecord.sys_atf_variable> & var_dictionary;
     
     /**
-     * Step environment
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>>}
-     * @memberof sys_atf_step_config_categoryFields
-     * @description Refers to sys_atf_step_env (Table)
+     * Reference element for the "Test Step Config" record type.
      */
-    step_env: $$rhino.Nilable<$$property.generic.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>>;
+    export type sys_atf_step_config = Reference<$$tableFields.sys_atf_step_config, $$GlideRecord.sys_atf_step_config> & sys_metadata;
+    
+    /**
+     * Reference element for the "Test Step Config Category" record type.
+     */
+    export type sys_atf_step_config_category = Reference<$$tableFields.sys_atf_step_config_category, $$GlideRecord.sys_atf_step_config_category> & sys_metadata;
+    
+    /**
+     * Reference element for the "Input Variables" record type.
+     */
+    export type atf_input_variable = Reference<$$tableFields.atf_input_variable, $$GlideRecord.atf_input_variable> & sys_atf_variable;
+    
+    /**
+     * Reference element for the "Test Step Environment" record type.
+     */
+    export type sys_atf_step_env = Reference<$$tableFields.sys_atf_step_env, $$GlideRecord.sys_atf_step_env> & sys_metadata;
 }
-/**
- * Record for items from the 'sys_atf_step_config_category' table
- * @typedef {(sys_metadataGlideRecord & sys_atf_step_config_categoryFields)} sys_atf_step_config_categoryGlideRecord
- */
-declare type sys_atf_step_config_categoryGlideRecord = sys_metadataGlideRecord & sys_atf_step_config_categoryFields;
-declare type sys_atf_step_config_categoryElement = $$element.Reference<sys_atf_step_config_categoryFields, sys_atf_step_config_categoryGlideRecord>;
-declare type sys_atf_step_config_categoryProperty = $$property.generic.ReferenceProperty<sys_atf_step_config_categoryFields, sys_atf_step_config_categoryGlideRecord, sys_atf_step_config_categoryElement>;
 
-/**
- * GlideElement values from the Test Step Config table.
- * @interface sys_atf_step_configFields
- * @extends {sys_metadataFields}
- */
-declare interface sys_atf_step_configFields extends sys_metadataFields {
+declare namespace $$tableFields {
     /**
-     * Active
-     * @type {$$rhino.Nilable<$$property.Boolean>}
-     * @memberof sys_atf_step_configFields
+     * "Output Variables" GlideRecord fields.
+     * @see {@link $$GlideRecord.atf_output_variable}
+     * @see {@link $$GlideElement.atf_output_variable}
      */
-    active: $$rhino.Nilable<$$property.Boolean>;
+    export interface atf_output_variable extends sys_atf_variable { }
     
     /**
-     * Batch order constraint
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
+     * "Test Variable" GlideRecord fields.
+     * @see {@link $$GlideRecord.sys_atf_variable}
+     * @see {@link $$GlideElement.sys_atf_variable}
      */
-    batch_order_constraint: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Can mutate page
-     * @type {$$rhino.Nilable<$$property.Boolean>}
-     * @memberof sys_atf_step_configFields
-     */
-    can_mutate_page: $$rhino.Nilable<$$property.Boolean>;
+    export interface sys_atf_variable extends var_dictionary {
+        /**
+         * "Model" column element.
+         * Read-only: true; Max Length: 32.
+         */
+        model: $$GlideElement.sys_atf_step_config;
+    }
     
     /**
-     * Category
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_atf_step_config_categoryFields, sys_atf_step_config_categoryGlideRecord>>}
-     * @memberof sys_atf_step_configFields
-     * @description Refers to sys_atf_step_config_category (Table)
+     * "Test Step Config" GlideRecord fields.
+     * @see {@link $$GlideRecord.sys_atf_step_config}
+     * @see {@link $$GlideElement.sys_atf_step_config}
      */
-    category: $$rhino.Nilable<$$property.generic.Reference<sys_atf_step_config_categoryFields, sys_atf_step_config_categoryGlideRecord>>;
+    export interface sys_atf_step_config extends sys_metadata {
+        /**
+         * "Active" column element.
+         * Type: "True/False" (boolean).
+         * Max Length: 40.
+         * Default Value: true.
+         */
+        active: GlideElement;
+        
+        /**
+         * "Batch order constraint" column element.
+         * Type: "Choice" (choice).
+         * Max Length: 40.
+         */
+        batch_order_constraint: GlideElement;
+        
+        /**
+         * "Can mutate page" column element.
+         * Type: "True/False" (boolean).
+         * Max Length: 40.
+         * Default Value: false.
+         */
+        can_mutate_page: GlideElement;
+        
+        /**
+         * "Category" column element.
+         * Max Length: 32.
+         */
+        category: $$GlideElement.sys_atf_step_config_category;
+        
+        /**
+         * "Class Name" column element.
+         * Max Length: 200.
+         */
+        class_name: GlideElement;
+        
+        /**
+         * "Class type" column element.
+         * Max Length: 40.
+         * Default Value: "script".
+         */
+        class_type: GlideElement;
+        
+        /**
+         * "Deprecated" column element.
+         * Type: "True/False" (boolean).
+         * Max Length: 40.
+         * Default Value: false.
+         */
+        deprecated: GlideElement;
+        
+        /**
+         * "Description generation script" column element.
+         * Type: "Script (Plain)" (script_plain).
+         * Max Length: 8000.
+         */
+        description_generator: GlideElement;
+        
+        /**
+         * "HTML description" column element.
+         * Type: "Translated HTML" (translated_html).
+         * Mandatory: true; Max Length: 8000.
+         */
+        html_description: GlideElement;
+        
+        /**
+         * "Icon" column element.
+         * Max Length: 100.
+         * Default Value: "icon-article-document".
+         */
+        icon: GlideElement;
+        
+        /**
+         * "Input variables" column element.
+         * Type: "Glide Var" (glide_var).
+         * Max Length: 32.
+         */
+        inputs: $$GlideElement.atf_input_variable;
+        
+        /**
+         * "Name" column element.
+         * Type: "Translated Field" (translated_field).
+         * Mandatory: true; Display: true; Max Length: 250.
+         */
+        name: GlideElement;
+        
+        /**
+         * "Order" column element.
+         * Type: "Integer" (integer).
+         * Mandatory: true; Max Length: 40.
+         */
+        order: GlideElement;
+        
+        /**
+         * "Output variables" column element.
+         * Type: "Glide Var" (glide_var).
+         * Max Length: 32.
+         */
+        outputs: $$GlideElement.atf_output_variable;
+        
+        /**
+         * "Step environment" column element.
+         * Mandatory: true; Max Length: 32.
+         * Default Value: "6c2bcea1870312009dccc9ded0e3ecca".
+         */
+        step_env: $$GlideElement.sys_atf_step_env;
+        
+        /**
+         * "Step execution script" column element.
+         * Type: "Script (Plain)" (script_plain).
+         * Max Length: 8000.
+         */
+        step_execution_generator: GlideElement;
+        
+        /**
+         * "Template reminder" column element.
+         * Type: "Translated Text" (translated_text).
+         * Mandatory: true; Max Length: 255.
+         */
+        template_reminder: GlideElement;
+        
+        /**
+         * "Type" column element.
+         * Mandatory: true; Max Length: 32.
+         */
+        type: $$GlideElement.sys_db_object;
+        
+        /**
+         * "Wizard Redirect" column element.
+         * Max Length: 255.
+         */
+        wizard_redirect: GlideElement;
+    }
+
+    /**
+     * "Test Step Config Category" GlideRecord fields.
+     * @see {@link $$GlideRecord.sys_atf_step_config_category}
+     * @see {@link $$GlideElement.sys_atf_step_config_category}
+     */
+    export interface sys_atf_step_config_category extends sys_metadata {
+        /**
+         * "Display name" column element.
+         * Mandatory: true; Max Length: 100.
+         */
+        display_name: GlideElement;
+        
+        /**
+         * "Name" column element.
+         * Mandatory: true; Display: true; Max Length: 100.
+         */
+        name: GlideElement;
+        
+        /**
+         * "Step environment" column element.
+         * Mandatory: true; Max Length: 32.
+         */
+        step_env: $$GlideElement.sys_atf_step_env;
+    }
     
     /**
-     * Class Name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
+     * "Input Variables" GlideRecord fields.
+     * @see {@link $$GlideRecord.atf_input_variable}
+     * @see {@link $$GlideElement.atf_input_variable}
      */
-    class_name: $$rhino.Nilable<$$property.Element>;
+    export interface atf_input_variable extends sys_atf_variable { }
     
     /**
-     * Class type
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
+     * "Test Step Environment" GlideRecord fields.
+     * @see {@link $$GlideRecord.sys_atf_step_env}
+     * @see {@link $$GlideElement.sys_atf_step_env}
      */
-    class_type: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Deprecated
-     * @type {$$rhino.Nilable<$$property.Boolean>}
-     * @memberof sys_atf_step_configFields
-     */
-    deprecated: $$rhino.Nilable<$$property.Boolean>;
-
-    /**
-     * Description generation script
-     * @type {$$rhino.Nilable<$$property.Script>}
-     * @memberof sys_atf_step_configFields
-     */
-    description_generator: $$rhino.Nilable<$$property.Script>;
-
-    /**
-     * HTML description
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
-     * @description Internal type is "html"
-     */
-    html_description: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Icon
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
-     */
-    icon: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Input variables
-     * @type {$$rhino.Nilable<$$property.generic.Reference<atf_input_variableFields, atf_input_variableGlideRecord>>}
-     * @memberof sys_atf_step_configFields
-     * @description Refers to atf_input_variable (Table)
-     */
-    inputs: $$rhino.Nilable<$$property.generic.Reference<atf_input_variableFields, atf_input_variableGlideRecord>>;
-    
-    /**
-     * Name
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
-     */
-    name: $$rhino.Nilable<$$property.Element>;
-
-    /**
-     * Order
-     * @type {$$rhino.Nilable<$$property.Numeric>}
-     * @memberof sys_atf_step_configFields
-     */
-    order: $$rhino.Nilable<$$property.Numeric>;
-
-    /**
-     * Output variables
-     * @type {$$rhino.Nilable<$$property.generic.Reference<atf_output_variableFields, atf_output_variableGlideRecord>>}
-     * @memberof sys_atf_step_configFields
-     * @description Refers to atf_output_variable (Table)
-     */
-    outputs: $$rhino.Nilable<$$property.generic.Reference<atf_output_variableFields, atf_output_variableGlideRecord>>;
-    
-    /**
-     * Step environment
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>>}
-     * @memberof sys_atf_step_configFields
-     * @description Refers to sys_atf_step_env (Table)
-     */
-    step_env: $$rhino.Nilable<$$property.generic.Reference<sys_atf_step_envFields, sys_atf_step_envGlideRecord>>;
-
-    /**
-     * Step execution script
-     * @type {$$rhino.Nilable<$$property.Script>}
-     * @memberof sys_atf_step_configFields
-     */
-    step_execution_generator: $$rhino.Nilable<$$property.Script>;
-
-    /**
-     * Template reminder
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
-     */
-    template_reminder: $$rhino.Nilable<$$property.Element>;
-    
-    /**
-     * Type
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_db_objectFields, sys_db_objectGlideRecord>>}
-     * @memberof sys_atf_step_configFields
-     * @description Refers to sys_db_object (Table)
-     */
-    type: $$rhino.Nilable<$$property.generic.Reference<sys_db_objectFields, sys_db_objectGlideRecord>>;
-
-    /**
-     * Wizard Redirect
-     * @type {$$rhino.Nilable<$$property.Element>}
-     * @memberof sys_atf_step_configFields
-     */
-    wizard_redirect: $$rhino.Nilable<$$property.Element>;
+    export interface sys_atf_step_env extends sys_metadata {
+        /**
+         * "Class name" column element.
+         * Max Length: 200.
+         */
+        class_name: GlideElement;
+        
+        /**
+         * "Description" column element.
+         * Max Length: 1000.
+         */
+        description: GlideElement;
+        
+        /**
+         * "Has batch constraint" column element.
+         * Type: "True/False" (boolean).
+         * Max Length: 40.
+         * Default Value: true.
+         */
+        has_batch_constraint: GlideElement;
+        
+        /**
+         * "Name" column element.
+         * Mandatory: true; Display: true; Max Length: 100.
+         */
+        name: GlideElement;
+        
+        /**
+         * "Order" column element.
+         * Type: "Integer" (integer).
+         * Max Length: 40.
+         */
+        order: GlideElement;
+        
+        /**
+         * "Class type" column element.
+         * Max Length: 40.
+         * Default Value: "java".
+         */
+        type: GlideElement;
+    }
 }
-/**
- * Record for items from the 'sys_atf_step_config' table
- * @typedef {(sys_metadataGlideRecord & sys_atf_step_configFields)} sys_atf_step_configGlideRecord
- */
-declare type sys_atf_step_configGlideRecord = sys_metadataGlideRecord & sys_atf_step_configFields;
-declare type sys_atf_step_configElement = $$element.Reference<sys_atf_step_configFields, sys_atf_step_configGlideRecord>;
-declare type sys_atf_step_configProperty = $$property.generic.ReferenceProperty<sys_atf_step_configFields, sys_atf_step_configGlideRecord, sys_atf_step_configElement>;
-
-/**
- * GlideElement values from the Test Variable table.
- * @interface sys_atf_variableFields
- * @extends {var_dictionaryFields}
- */
-declare interface sys_atf_variableFields extends var_dictionaryFields {
-    /**
-     * Model
-     * @type {$$rhino.Nilable<$$property.generic.Reference<sys_atf_step_configFields, sys_atf_step_configGlideRecord>>}
-     * @memberof sys_atf_variableFields
-     * @description Refers to sys_atf_step_config (Table)
-     */
-    model: $$rhino.Nilable<$$property.generic.Reference<sys_atf_step_configFields, sys_atf_step_configGlideRecord>>;
-}
-/**
- * Record for items from the 'sys_atf_variable' table
- * @typedef {(var_dictionaryGlideRecord & sys_atf_variableFields)} sys_atf_variableGlideRecord
- */
-declare type sys_atf_variableGlideRecord = var_dictionaryGlideRecord & sys_atf_variableFields;
-declare type sys_atf_variableElement = $$element.Reference<sys_atf_variableFields, sys_atf_variableGlideRecord>;
-declare type sys_atf_variableProperty = $$property.generic.ReferenceProperty<sys_atf_variableFields, sys_atf_variableGlideRecord, sys_atf_variableElement>;
-
-/**
- * GlideElement values from the Input Variables table.
- * @interface atf_input_variableFields
- * @extends {sys_atf_variableFields}
- */
-declare interface atf_input_variableFields extends sys_atf_variableFields {
-}
-/**
- * Record for items from the 'atf_input_variable' table
- * @typedef {(sys_atf_variableGlideRecord & atf_input_variableFields)} atf_input_variableGlideRecord
- */
-declare type atf_input_variableGlideRecord = sys_atf_variableGlideRecord & atf_input_variableFields;
-declare type atf_input_variableElement = $$element.Reference<atf_input_variableFields, atf_input_variableGlideRecord>;
-declare type atf_input_variableProperty = $$property.generic.ReferenceProperty<atf_input_variableFields, atf_input_variableGlideRecord, atf_input_variableElement>;
-
-/**
- * GlideElement values from the Output Variables table.
- * @interface atf_output_variableFields
- * @extends {sys_atf_variableFields}
- */
-declare interface atf_output_variableFields extends sys_atf_variableFields {
-}
-/**
- * Record for items from the 'atf_output_variable' table
- * @typedef {(sys_atf_variableGlideRecord & atf_output_variableFields)} atf_output_variableGlideRecord
- */
-declare type atf_output_variableGlideRecord = sys_atf_variableGlideRecord & atf_output_variableFields;
-declare type atf_output_variableElement = $$element.Reference<atf_output_variableFields, atf_output_variableGlideRecord>;
-declare type atf_output_variableProperty = $$property.generic.ReferenceProperty<atf_output_variableFields, atf_output_variableGlideRecord, atf_output_variableElement>;
 
 declare namespace sn_atf {
     export interface ITestStepOutputs {
-        [key: string]: atf_output_variableElement;
+        [key: string]: $$GlideElement.atf_output_variable;
     }
 
     /**

@@ -1,21 +1,9 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "target": "ES2015",
-    "module": "none",
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowJs": false,
-    "lib": [
-      "es2015"
-    ]
-  },
-  "exclude": [
-    "node_modules/**/*",
-    "**/*.spec.ts",
-    "**/*.js"
-  ]
-}
+    "compilerOptions": {
+      "noImplicitAny": false,
+      "module": "none",
+      "target": "ES2015",
+      "lib": ["es2015"],
+      "strict": true
+    }
+  }

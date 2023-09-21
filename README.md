@@ -2,7 +2,7 @@
 
 TypeScript definitions for ServiceNow server-side scoped application development.
 
-See [Using Class.create with TypeScript](./dist/$$class.md) for API class creation.
+See [Using Class.create with TypeScript](./$$class.md) for API class creation.
 
 ## Usage
 

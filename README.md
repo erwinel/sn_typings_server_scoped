@@ -6,7 +6,11 @@ See [Using Class.create with TypeScript](./$$class.md) for API class creation.
 
 [dist/ServiceNow.code-snippets](./dist/ServiceNow.code-snippets) contains VS Code snippets to assist with class creation.
 
-Refer to the [sn_typings_server_global](https://github.com/erwinel/sn_typings_server_global) repository for global type definitions.
+Refer to the following repositories for other ServiceNow type definitions:
+
+- [sn_typings_server_global](https://github.com/erwinel/sn_typings_client_global) Client-Side Scoped.
+- [sn_typings_server_global](https://github.com/erwinel/sn_typings_server_global) Server-Side Global.
+- [sn_typings_server_global](https://github.com/erwinel/sn_typings_client_scoped) Client-Side Global.
 
 ## Usage
 

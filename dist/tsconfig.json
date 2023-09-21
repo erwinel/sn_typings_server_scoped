@@ -2,8 +2,8 @@
     "compilerOptions": {
       "noImplicitAny": false,
       "module": "none",
-      "target": "ES2015",
-      "lib": ["es2015"],
+      "target": "ES2021",
+      "lib": ["ES2021"],
       "strict": true
     }
   }

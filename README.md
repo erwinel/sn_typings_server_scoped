@@ -17,15 +17,10 @@ git commit -m "Added server-scoped SNC typings"
 
 To update submodules, use `submodule update --init --recursive`.
 
+[dist/ServiceNow.code-snippets](./dist/ServiceNow.code-snippets) contains VS Code snippets to assist with class creation.
+
 ## Dev Setup
 
 This is intended to be developed using VS Code. See [/.vscode/extensions.json](./.vscode/extensions.json) for a list of recommended extensions. Dependencies are mananged using [npm](https://www.npmjs.com/).
 
 Run `npm install` from the root folder of this repository to install dependencies.
-
-## TODO
-
-- [X] Move contents of `dist` folder to root of repository.
-- [X] Move `.vscode/ServiceNow.code-snippets` to `dist` folder.
-- [ ] Add documentation for ServiceNow.code-snippets.
-- [X] Change tsconfig `compilerOptions.lib` setting to `["ES2021"]` and change `compilerOptions.target` to `"ES2021"`.

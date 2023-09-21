@@ -25,7 +25,7 @@ Run `npm install` from the root folder of this repository to install dependencie
 
 ## TODO
 
-- [ ] Move contents of `dist` folder to root of repository.
+- [X] Move contents of `dist` folder to root of repository.
 - [ ] Move `.vscode/ServiceNow.code-snippets` to `dist` folder.
 - [ ] Add documentation for ServiceNow.code-snippets.
 - [X] Change tsconfig `compilerOptions.lib` setting to `["ES2021"]` and change `compilerOptions.target` to `"ES2021"`.

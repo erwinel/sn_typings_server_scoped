@@ -12,7 +12,7 @@ Example:
 
 ```powershell
 git submodule add https://github.com/erwinel/sn_typings_server_scoped.git types/snc
-git commit -m "Added server-scoped SNC typings
+git commit -m "Added server-scoped SNC typings"
 ```
 To update submodules, use `submodule update --init --recursive`.
 

@@ -8,9 +8,9 @@ See [Using Class.create with TypeScript](./$$class.md) for API class creation.
 
 Refer to the following repositories for other ServiceNow type definitions:
 
-- [sn_typings_server_global](https://github.com/erwinel/sn_typings_client_global) Client-Side Scoped.
+- [sn_typings_server_global](https://github.com/erwinel/sn_typings_client_scoped) Client-Side Scoped.
 - [sn_typings_server_global](https://github.com/erwinel/sn_typings_server_global) Server-Side Global.
-- [sn_typings_server_global](https://github.com/erwinel/sn_typings_client_scoped) Client-Side Global.
+- [sn_typings_server_global](https://github.com/erwinel/sn_typings_client_global) Client-Side Global.
 
 ## Usage
 

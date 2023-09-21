@@ -28,3 +28,4 @@ Run `npm install` from the root folder of this repository to install dependencie
 - [ ] Move contents of `dist` folder to root of repository.
 - [ ] Move `.vscode/ServiceNow.code-snippets` to `dist` folder.
 - [ ] Add documentation for ServiceNow.code-snippets.
+- [ ] Replace `compilerOptions.lib` settings of tsconfig with equivalent of `es3` and perhaps update `compilerOptions.target` setting.

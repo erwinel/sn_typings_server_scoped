@@ -61,6 +61,7 @@ If the submodules aren't cloned at the same time as the repository is cloned, yo
 ```sh
 git submodule update --init --recursive
 cd types/snc
+git checkout master
 ```
 
 #### DevContainer Configuration

@@ -102,6 +102,7 @@ In the following examples, the submodule exists at `./types/snc`.
 cd types/snc
 git add -A
 git commit -am "[Your message here]"
+git push
 cd ../..
 git commit -am "[Your message here]"
 ```

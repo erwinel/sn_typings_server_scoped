@@ -22,7 +22,7 @@ Until the first version is published, you can reference these types using git su
 
 In this example, the submodule will be added at `./types/snc`:
 
-```bash
+```sh
 mkdir types
 git submodule add https://github.com/erwinel/sn_typings_server_scoped.git types/snc
 cd types/snc
@@ -58,7 +58,7 @@ In this example, the tsconfig.json file is located in the `./src` subdirectory, 
 
 If the submodules aren't cloned at the same time as the repository is cloned, you will need to initialize them using the following command:
 
-```bash
+```sh
 git submodule update --init --recursive
 cd types/snc
 ```

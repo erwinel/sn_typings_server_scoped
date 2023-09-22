@@ -25,6 +25,9 @@ In this example, the submodule will be added at `./types/snc`:
 ```bash
 mkdir types
 git submodule add https://github.com/erwinel/sn_typings_server_scoped.git types/snc
+cd types/snc
+git checkout master
+cd ../..
 git commit -m "Added scoped SNC typings"
 ```
 
@@ -57,6 +60,7 @@ If the submodules aren't cloned at the same time as the repository is cloned, yo
 
 ```bash
 git submodule update --init --recursive
+cd types/snc
 ```
 
 #### DevContainer Configuration
@@ -71,10 +75,34 @@ For the `.devcontainer/devcontainer.json` file, you will need to include the afo
     "ghcr.io/devcontainers-contrib/features/typescript:2": {}
   },
   "postCreateCommand": [
+    "npm install",
     "git submodule update --init --recursive",
-    "npm install"
+    "cd types/snc; git checkout master"
   ]
 }
+```
+
+### Update Submodule from Origin
+
+In the following examples, the submodule exists at `./types/snc`.
+
+```sh
+cd types/snc
+git pull --rebase
+cd ../..
+git commit -am "Updated types/snc submodule to latest revision"
+```
+
+## Push Submodule Updates to Origin
+
+In the following examples, the submodule exists at `./types/snc`.
+
+```sh
+cd types/snc
+git add -A
+git commit -am "[Your message here]"
+cd ../..
+git commit -am "[Your message here]"
 ```
 
 ## Dev Setup

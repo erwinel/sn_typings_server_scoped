@@ -1,22 +1,22 @@
 {
     "recommendations": [
-        "hookyqr.jsdoctagcomplete",
-        "oouo-diogo-perdigao.docthis",
+        "amodio.tsl-problem-matcher",
+        "christian-kohler.npm-intellisense",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
         "donjayamanne.git-extension-pack",
         "github.vscode-pull-request-github",
-        "xabikos.javascriptsnippets",
+        "hookyqr.jsdoctagcomplete",
+        "jmrog.vscode-nuget-package-manager",
         "ms-vscode.vscode-typescript-next",
-        "dbaeumer.vscode-eslint",
-        "yzhang.markdown-all-in-one",
-        "shd101wyy.markdown-preview-enhanced",
-        "davidanson.vscode-markdownlint",
-        "wayou.vscode-todo-highlight",
-        "amodio.tsl-problem-matcher",
-        "starkwang.markdown",
-        "ziyasal.vscode-open-in-github",
+        "oouo-diogo-perdigao.docthis",
         "pflannery.vscode-versionlens",
+        "shd101wyy.markdown-preview-enhanced",
+        "starkwang.markdown",
         "vscode-icons-team.vscode-icons",
-        "christian-kohler.npm-intellisense",
-        "jmrog.vscode-nuget-package-manager"
+        "wayou.vscode-todo-highlight",
+        "xabikos.javascriptsnippets",
+        "yzhang.markdown-all-in-one",
+        "ziyasal.vscode-open-in-github"
     ]
 }

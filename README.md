@@ -4,7 +4,7 @@ TypeScript definitions for ServiceNow server-side scoped application development
 
 - See [Dependent Repository Usage.md](./Dependent-Repository-Usage.md) for instructions on using this repository as a submodule in a TypeScript project.
 - See [Using Class.create with TypeScript](./$$class.md) for API class creation.
-- [dist/ServiceNow.code-snippets](./dist/ServiceNow.code-snippets) contains VS Code snippets to assist with class creation.
+  - [dist/ServiceNow.code-snippets](./dist/ServiceNow.code-snippets) contains VS Code snippets to assist with class creation.
 
 Refer to the following repositories for other ServiceNow type definitions:
 

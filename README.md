@@ -49,7 +49,8 @@ In this example, the tsconfig.json file is located in the `./src` subdirectory, 
     "declaration": true,
     "declarationDir": "../dist/types",
     "outDir": "../dist/js",
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
 ```
@@ -85,7 +86,9 @@ For the `.devcontainer/devcontainer.json` file, you will need to include the afo
 
 ### Update Submodule from Origin
 
-In the following examples, the submodule exists at `./types/snc`.
+The following example shows how to rebase the submodule for `sn_typings_server_scoped` to the latest revision and commit the current revision to the parent repository.
+
+This example assumes that the current working directory is the root of the parent repository, and the submodule exists at `./types/snc`.
 
 ```sh
 cd types/snc
@@ -96,7 +99,9 @@ git commit -am "Updated types/snc submodule to latest revision"
 
 ## Push Submodule Updates to Origin
 
-In the following examples, the submodule exists at `./types/snc`.
+The following example shows how to commit changes you've made changes in the submodule for `sn_typings_server_scoped` and commit the revision to the parent repository.
+
+This example assumes that the current working directory is the root of the parent repository, and the submodule exists at `./types/snc`.
 
 ```sh
 cd types/snc

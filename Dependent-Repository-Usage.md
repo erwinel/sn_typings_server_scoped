@@ -222,6 +222,7 @@ This example assumes that the current working directory is the root of the paren
 cd types/snc
 git pull --rebase
 cd ../..
+git add -A -- ./types/snc
 git commit -am "Updated types/snc submodule to latest revision"
 ```
 
@@ -237,5 +238,6 @@ git add -A
 git commit -am "[Your message here]"
 git push
 cd ../..
+git add -A -- ./types/snc
 git commit -am "[Your message here]"
 ```

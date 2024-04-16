@@ -6,319 +6,320 @@
  * "Action Conditions" (action_conditions) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementActionConditions)} GlideElementActionConditions
  */
-export type GlideElementActionConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementActionConditions;
+declare type GlideElementActionConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementActionConditions;
 
 /**
  * "Audio" (audio) glide element.
  * @typedef {(GlideElement & Packages.com.glide.db_audio.GlideElementAudio)} GlideElementAudio
  */
-export type GlideElementAudio = GlideElement & Packages.com.glide.db_audio.GlideElementAudio;
+declare type GlideElementAudio = GlideElement & Packages.com.glide.db_audio.GlideElementAudio;
 
 /**
  * "True/False" (boolean) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementBoolean)} GlideElementBoolean
  */
-export type GlideElementBoolean = GlideElement & Packages.com.glide.script.glide_elements.GlideElementBoolean;
+declare type GlideElementBoolean = GlideElement & Packages.com.glide.script.glide_elements.GlideElementBoolean;
 
 /**
  * "Breakdown Element" (breakdown_element) glide element.
  * @typedef {(GlideElement & Packages.com.snc.pa.dc.GlideElementBreakdownElement)} GlideElementBreakdownElement
  */
-export type GlideElementBreakdownElement = GlideElement & Packages.com.snc.pa.dc.GlideElementBreakdownElement;
+declare type GlideElementBreakdownElement = GlideElement & Packages.com.snc.pa.dc.GlideElementBreakdownElement;
 
 /**
  * "Compressed" (compressed) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementCompressed)} GlideElementCompressed
  */
-export type GlideElementCompressed = GlideElement & Packages.com.glide.script.glide_elements.GlideElementCompressed;
+declare type GlideElementCompressed = GlideElement & Packages.com.glide.script.glide_elements.GlideElementCompressed;
 
 /**
  * "Conditions" (conditions) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementConditions)} GlideElementConditions
  */
-export type GlideElementConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementConditions;
+declare type GlideElementConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementConditions;
 
 /**
  * "Counter" (counter) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementCounter)} GlideElementCounter
  */
-export type GlideElementCounter = GlideElement & Packages.com.glide.script.glide_elements.GlideElementCounter;
+declare type GlideElementCounter = GlideElement & Packages.com.glide.script.glide_elements.GlideElementCounter;
 
 /**
  * "Currency" (currency) glide element.
  * @typedef {(GlideElement & Packages.com.glide.currency.GlideElementCurrency)} GlideElementCurrency
  */
-export type GlideElementCurrency = GlideElement & Packages.com.glide.currency.GlideElementCurrency;
+declare type GlideElementCurrency = GlideElement & Packages.com.glide.currency.GlideElementCurrency;
 
 /**
- * "FX Currency" (currency2) glide element.
+ * Provides methods to perform operations on Foreign Exchange (FX) Currency fields (also known as Currency2) within the current GlideRecord.
  * @typedef {(GlideElement & Packages.com.glide.currency2.GlideElementCurrency2)} GlideElementCurrency2
+ * @see {@link https://developer.servicenow.com/dev.do#!/reference/api/rome/server/no-namespace/GlideElementCurrency2API}
  */
-export type GlideElementCurrency2 = GlideElement & Packages.com.glide.currency2.GlideElementCurrency2;
+declare type GlideElementCurrency2 = GlideElement & Packages.com.glide.currency2.GlideElementCurrency2;
 
 /**
  * "Data Array" (data_array) glide element.
  * @typedef {(GlideElement & Packages.com.snc.datastructure.GlideElementDataArray)} GlideElementDataArray
  */
-export type GlideElementDataArray = GlideElement & Packages.com.snc.datastructure.GlideElementDataArray;
+declare type GlideElementDataArray = GlideElement & Packages.com.snc.datastructure.GlideElementDataArray;
 
 /**
  * "Data Object" (data_object) glide element.
  * @typedef {(GlideElement & Packages.com.snc.datastructure.GlideElementDataObject)} GlideElementDataObject
  */
-export type GlideElementDataObject = GlideElement & Packages.com.snc.datastructure.GlideElementDataObject;
+declare type GlideElementDataObject = GlideElement & Packages.com.snc.datastructure.GlideElementDataObject;
 
 /**
  * "Data Structure" (data_structure) glide element.
  * @typedef {(GlideElement & Packages.com.snc.datastructure.GlideElementDataStructure)} GlideElementDataStructure
  */
-export type GlideElementDataStructure = GlideElement & Packages.com.snc.datastructure.GlideElementDataStructure;
+declare type GlideElementDataStructure = GlideElement & Packages.com.snc.datastructure.GlideElementDataStructure;
 
 /**
  * "Document ID" (document_id) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementDocumentId)} GlideElementDocumentId
  */
-export type GlideElementDocumentId = GlideElement & Packages.com.glide.script.glide_elements.GlideElementDocumentId;
+declare type GlideElementDocumentId = GlideElement & Packages.com.glide.script.glide_elements.GlideElementDocumentId;
 
 /**
  * "Documentation Field" (documentation_field) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementDocumentation)} GlideElementDocumentation
  */
-export type GlideElementDocumentation = GlideElement & Packages.com.glide.script.glide_elements.GlideElementDocumentation;
+declare type GlideElementDocumentation = GlideElement & Packages.com.glide.script.glide_elements.GlideElementDocumentation;
 
 /**
  * "Domain ID" (domain_id) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementDomainId)} GlideElementDomainId
  */
-export type GlideElementDomainId = GlideElement & Packages.com.glide.script.glide_elements.GlideElementDomainId;
+declare type GlideElementDomainId = GlideElement & Packages.com.glide.script.glide_elements.GlideElementDomainId;
 
 /**
  * "Encrypted Text" (glide_encrypted) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementEncrypted)} GlideElementEncrypted
  */
-export type GlideElementEncrypted = GlideElement & Packages.com.glide.script.glide_elements.GlideElementEncrypted;
+declare type GlideElementEncrypted = GlideElement & Packages.com.glide.script.glide_elements.GlideElementEncrypted;
 
 /**
  * "File Attachment" (file_attachment) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementFileAttachment)} GlideElementFileAttachment
  */
-export type GlideElementFileAttachment = GlideElement & Packages.com.glide.script.glide_elements.GlideElementFileAttachment;
+declare type GlideElementFileAttachment = GlideElement & Packages.com.glide.script.glide_elements.GlideElementFileAttachment;
 
 /**
  * "String (Full UTF-8)" (string_full_utf8) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementFullUTF8)} GlideElementFullUTF8
  */
-export type GlideElementFullUTF8 = GlideElement & Packages.com.glide.script.glide_elements.GlideElementFullUTF8;
+declare type GlideElementFullUTF8 = GlideElement & Packages.com.glide.script.glide_elements.GlideElementFullUTF8;
 
 /**
  * Glide object glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementGlideObject)} GlideElementGlideObject
  */
-export type GlideElementGlideObject = GlideElement & Packages.com.glide.script.glide_elements.GlideElementGlideObject;
+declare type GlideElementGlideObject = GlideElement & Packages.com.glide.script.glide_elements.GlideElementGlideObject;
 
 /**
  * "IP Address (Validated IPV4, IPV6)" (ip_addr) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementIPAddress)} GlideElementIPAddress
  */
-export type GlideElementIPAddress = GlideElement & Packages.com.glide.script.glide_elements.GlideElementIPAddress;
+declare type GlideElementIPAddress = GlideElement & Packages.com.glide.script.glide_elements.GlideElementIPAddress;
 
 /**
  * "Icon" (icon) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementIcon)} GlideElementIcon
  */
-export type GlideElementIcon = GlideElement & Packages.com.glide.script.glide_elements.GlideElementIcon;
+declare type GlideElementIcon = GlideElement & Packages.com.glide.script.glide_elements.GlideElementIcon;
 
 /**
  * "Integer Date" (integer_date) glide element.
  * @typedef {(GlideElement & Packages.com.glide.glideobject.IntegerDate)} GlideIntegerDate
  */
-export type GlideIntegerDate = GlideElement & Packages.com.glide.glideobject.IntegerDate;
+declare type GlideIntegerDate = GlideElement & Packages.com.glide.glideobject.IntegerDate;
 
 /**
  * "Integer Time" (integer_time) glide element.
  * @typedef {(GlideElement & Packages.com.glide.glideobject.IntegerTime)} GlideIntegerTime
  */
-export type GlideIntegerTime = GlideElement & Packages.com.glide.glideobject.IntegerTime;
+declare type GlideIntegerTime = GlideElement & Packages.com.glide.glideobject.IntegerTime;
 
 /**
  * "Internal Type" (internal_type) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementInternalType)} GlideElementInternalType
  */
-export type GlideElementInternalType = GlideElement & Packages.com.glide.script.glide_elements.GlideElementInternalType;
+declare type GlideElementInternalType = GlideElement & Packages.com.glide.script.glide_elements.GlideElementInternalType;
 
 /**
  * Metric (metric) glide element.
  * @typedef {(GlideElement & Packages.com.snc.clotho.script.GlideElementMetric)} GlideElementMetric
  */
-export type GlideElementMetric = GlideElement & Packages.com.snc.clotho.script.GlideElementMetric;
+declare type GlideElementMetric = GlideElement & Packages.com.snc.clotho.script.GlideElementMetric;
 
 /**
  * "Name/Values" (name_values) glide element.
  * @typedef {(GlideElement & Packages.com.glide.glideobject.GlideElementNameValue)} GlideElementNameValue
  */
-export type GlideElementNameValue = GlideElement & Packages.com.glide.glideobject.GlideElementNameValue;
+declare type GlideElementNameValue = GlideElement & Packages.com.glide.glideobject.GlideElementNameValue;
 
 /**
  * "Integer" (integer) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementNumeric)} GlideElementNumeric
  */
-export type GlideElementNumeric = GlideElement & Packages.com.glide.script.glide_elements.GlideElementNumeric;
+declare type GlideElementNumeric = GlideElement & Packages.com.glide.script.glide_elements.GlideElementNumeric;
 
 /**
  * "Password (1 Way Encrypted)" (password) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementPassword)} GlideElementPassword
  */
-export type GlideElementPassword = GlideElement & Packages.com.glide.script.glide_elements.GlideElementPassword;
+declare type GlideElementPassword = GlideElement & Packages.com.glide.script.glide_elements.GlideElementPassword;
 
 /**
  * "Password (2 Way Encrypted)" (password2) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementPassword2)} GlideElementPassword2
  */
-export type GlideElementPassword2 = GlideElement & Packages.com.glide.script.glide_elements.GlideElementPassword2;
+declare type GlideElementPassword2 = GlideElement & Packages.com.glide.script.glide_elements.GlideElementPassword2;
 
 /**
  * "Phone Number (E164)" (phone_number_e164) glide element.
  * @typedef {(GlideElement & Packages.com.glide.PhoneNumber.GlideElementPhoneNumber)} GlideElementPhoneNumber
  */
-export type GlideElementPhoneNumber = GlideElement & Packages.com.glide.PhoneNumber.GlideElementPhoneNumber;
+declare type GlideElementPhoneNumber = GlideElement & Packages.com.glide.PhoneNumber.GlideElementPhoneNumber;
 
 /**
  * "Price" (price) glide element.
  * @typedef {(GlideElement & Packages.com.glide.currency.GlideElementPrice)} GlideElementPrice
  */
-export type GlideElementPrice = GlideElement & Packages.com.glide.currency.GlideElementPrice;
+declare type GlideElementPrice = GlideElement & Packages.com.glide.currency.GlideElementPrice;
 
 /**
  * "Reference" (reference) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementReference)} GlideElementReference
  */
-export type GlideElementReference = GlideElement & Packages.com.glide.script.glide_elements.GlideElementReference;
+declare type GlideElementReference = GlideElement & Packages.com.glide.script.glide_elements.GlideElementReference;
 
 /**
  * "Related Tags" (related_tags) glide element.
  * @typedef {(GlideElement & Packages.com.glide.labels.GlideElementRelatedTags)} GlideElementRelatedTags
  */
-export type GlideElementRelatedTags = GlideElement & Packages.com.glide.labels.GlideElementRelatedTags;
+declare type GlideElementRelatedTags = GlideElement & Packages.com.glide.labels.GlideElementRelatedTags;
 
 /**
  * "Replication Payload" (replication_payload) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementReplicationPayload)} GlideElementReplicationPayload
  */
-export type GlideElementReplicationPayload = GlideElement & Packages.com.glide.script.glide_elements.GlideElementReplicationPayload;
+declare type GlideElementReplicationPayload = GlideElement & Packages.com.glide.script.glide_elements.GlideElementReplicationPayload;
 
 /**
  * "Script (Plain)" (script_plain) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementScript)} GlideElementScript
  */
-export type GlideElementScript = GlideElement & Packages.com.glide.script.glide_elements.GlideElementScript;
+declare type GlideElementScript = GlideElement & Packages.com.glide.script.glide_elements.GlideElementScript;
 
 /**
  * "Short Field Name" (short_field_name) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementShortFieldName)} GlideElementShortFieldName
  */
-export type GlideElementShortFieldName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementShortFieldName;
+declare type GlideElementShortFieldName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementShortFieldName;
 
 /**
  * "Short Table Name" (short_table_name) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementShortTableName)} GlideElementShortTableName
  */
-export type GlideElementShortTableName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementShortTableName;
+declare type GlideElementShortTableName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementShortTableName;
 
 /**
  * "Name-Value Pairs" (simple_name_values) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementSimpleNameValue)} GlideElementSimpleNameValue
  */
-export type GlideElementSimpleNameValue = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSimpleNameValue;
+declare type GlideElementSimpleNameValue = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSimpleNameValue;
 
 /**
  * "Snapshot Template Value" (snapshot_template_value) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementSnapshotTemplateValue)} GlideElementSnapshotTemplateValue
  */
-export type GlideElementSnapshotTemplateValue = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSnapshotTemplateValue;
+declare type GlideElementSnapshotTemplateValue = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSnapshotTemplateValue;
 
 /**
  * "Source ID" (source_id) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceId)} GlideElementSourceId
  */
-export type GlideElementSourceId = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceId;
+declare type GlideElementSourceId = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceId;
 
 /**
  * "Source Name" (source_name) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceName)} GlideElementSourceName
  */
-export type GlideElementSourceName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceName;
+declare type GlideElementSourceName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceName;
 
 /**
  * "Source Table" (source_table) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceTable)} GlideElementSourceTable
  */
-export type GlideElementSourceTable = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceTable;
+declare type GlideElementSourceTable = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSourceTable;
 
 /**
  * "System Class Name" (sys_class_name) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementSysClassName)} GlideElementSysClassName
  */
-export type GlideElementSysClassName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSysClassName;
+declare type GlideElementSysClassName = GlideElement & Packages.com.glide.script.glide_elements.GlideElementSysClassName;
 
 /**
  * "Translated Field" (translated_field) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedField)} GlideElementTranslatedField
  */
-export type GlideElementTranslatedField = GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedField;
+declare type GlideElementTranslatedField = GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedField;
 
 /**
  * "Translated HTML" (translated_html) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedHTML)} GlideElementTranslatedHTML
  */
-export type GlideElementTranslatedHTML = GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedHTML;
+declare type GlideElementTranslatedHTML = GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedHTML;
 
 /**
  * "Translated Text" (translated_text) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedText)} GlideElementTranslatedText
  */
-export type GlideElementTranslatedText = GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedText;
+declare type GlideElementTranslatedText = GlideElement & Packages.com.glide.script.glide_elements.GlideElementTranslatedText;
 
 /**
  * "URL" (url) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementURL)} GlideElementURL
  */
-export type GlideElementURL = GlideElement & Packages.com.glide.script.glide_elements.GlideElementURL;
+declare type GlideElementURL = GlideElement & Packages.com.glide.script.glide_elements.GlideElementURL;
 
 /**
  * "Image" (user_image) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementUserImage)} GlideElementUserImage
  */
-export type GlideElementUserImage = GlideElement & Packages.com.glide.script.glide_elements.GlideElementUserImage;
+declare type GlideElementUserImage = GlideElement & Packages.com.glide.script.glide_elements.GlideElementUserImage;
 
 /**
  *  () glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementVariableConditions)} GlideElementVariableConditions
  */
-export type GlideElementVariableConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementVariableConditions;
+declare type GlideElementVariableConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementVariableConditions;
 
 /**
  * "Variable Conditions" (variable_conditions) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementVariableTemplateValue)} GlideElementVariableTemplateValue
  */
-export type GlideElementVariableTemplateValue = GlideElement & Packages.com.glide.script.glide_elements.GlideElementVariableTemplateValue;
+declare type GlideElementVariableTemplateValue = GlideElement & Packages.com.glide.script.glide_elements.GlideElementVariableTemplateValue;
 
 /**
  * "Video" (video) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementVideo)} GlideElementVideo
  */
-export type GlideElementVideo = GlideElement & Packages.com.glide.script.glide_elements.GlideElementVideo;
+declare type GlideElementVideo = GlideElement & Packages.com.glide.script.glide_elements.GlideElementVideo;
 
 /**
  * "Wiki" (wiki_text) glide element.
  * @typedef {(GlideElement & Packages.com.glide.wiki.GlideElementWikiText)} GlideElementWikiText
  */
-export type GlideElementWikiText = GlideElement & Packages.com.glide.wiki.GlideElementWikiText;
+declare type GlideElementWikiText = GlideElement & Packages.com.glide.wiki.GlideElementWikiText;
 
 /**
  * "Workflow Conditions" (workflow_conditions) glide element.
  * @typedef {(GlideElement & Packages.com.glide.script.glide_elements.GlideElementWorkflowConditions)} GlideElementWorkflowConditions
  */
-export type GlideElementWorkflowConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementWorkflowConditions;
+declare type GlideElementWorkflowConditions = GlideElement & Packages.com.glide.script.glide_elements.GlideElementWorkflowConditions;
 
 // TODO: Create type definition for "String": internal_type='string'; scalar_type: 'string';
 // TODO: Create type definition for "Approval Rules": internal_type: 'approval_rules'; scalar_type: 'string'; scalar_length: 4000;

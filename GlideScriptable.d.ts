@@ -1036,13 +1036,13 @@ declare class GlideRecord implements Packages.com.glide.script.fencing.ScopedGli
      * @param {string} query - An encoded query string.
      */
     addEncodedQuery(query: string): void;
-    
+
     /**
      * Applies a pre-defined GlideDBFunctionBuilder object to a record.
      * @param {GlideDBFunctionBuilder} f - GlideDBFunctionBuilder object that defines a SQL operation.
      */
     addFunction(f: GlideDBFunctionBuilder): void;
-    
+
     /**
      * Adds a filter to return records based on a relationship in a table related to the current GlideRecord.
      * @param {string} joinTable - Name of table to use in the join, such as 'incident'.
@@ -1051,21 +1051,21 @@ declare class GlideRecord implements Packages.com.glide.script.fencing.ScopedGli
      * @return {GlideQueryCondition} Filter that lists records where the relationships match.
      */
     addJoinQuery(joinTable: string, primaryField?: string, joinTableField?: string): GlideQueryCondition;
-    
+
     /**
      * A filter that specifies records where the value of the field passed in the parameter is not null.
      * @param {string} fieldName - The name of the field to be checked.
      * @return {GlideQueryCondition} A filter that specifies records where the value of the field passed in the parameter is not null.
      */
     addNotNullQuery(fieldName: string): GlideQueryCondition;
-    
+
     /**
      * Adds a filter to return records where the value of the specified field is null.
      * @param {string} fieldName - The name of the field to be checked.
      * @return {GlideQueryCondition} The query condition added to the GlideRecord.
      */
     addNullQuery(fieldName: string): GlideQueryCondition;
-    
+
     /**
      * Build a search query and return the rows that match the request.
      * @param {string} name - Name of the table field to query, or one of the following reserved names: 123TEXTQUERY321; 123TEXTINDEXGROUP321.
@@ -1073,7 +1073,7 @@ declare class GlideRecord implements Packages.com.glide.script.fencing.ScopedGli
      * @return {GlideQueryCondition} Query condition added to the GlideRecord.
      */
     addQuery(name: string, value: any): GlideQueryCondition;
-    
+
     /**
      * Provides the ability to build a request, which when executed, returns the rows from the specified table, that match the request.
      * @param {string} name - Table field name.
@@ -1082,51 +1082,51 @@ declare class GlideRecord implements Packages.com.glide.script.fencing.ScopedGli
      * @return {GlideQueryCondition} The query condition that was added to the GlideRecord.
      */
     addQuery(name: string, operator: QueryOperator, value: any): GlideQueryCondition;
-    
+
     /**
      * Adds a filter to return records using an encoded query string.
      * @param {string} query - An encoded query string.
      * @return {GlideQueryCondition} The query condition added to the GlideRecord.
      */
     addQuery(query: string): GlideQueryCondition;
-    
+
     /**
      * Provides atomic add and subtract operations on a specified number field at the database level for the current GlideRecord object.
      * @param {string} field - The name of the field in this GlideRecord to modify.
      * @param {number} value - The amount to add to the value when the record is saved. To perform a subtraction operation, simply pass a negative value.
      */
     addValue(field: string, value: number): void;
-    
+
     /**
      * Sets the values of the specified encoded query terms and applies them to the current GlideRecord.
      * @param {string} queryString - Encoded query to apply to the current GlideRecord.
      */
     applyEncodedQuery(queryString: string): void;
-    
+
     /**
      * Determines if the Access Control Rules, which include the user's roles, permit inserting new records in this table.
      * @return {boolean} Flag that indicates whether the user's roles permit creating of records in this table.
      */
     canCreate(): boolean;
-    
+
     /**
      * Determines if the Access Control Rules, which include the user's roles, permit deleting records in this table.
      * @return {boolean} Flag that indicates whether the user's roles permit deleting of records in this table.
      */
     canDelete(): boolean;
-    
+
     /**
      * Determines if the Access Control Rules (ACLs) permit reading records in this table. This method evaluates all ACL types, such as user roles, scripted ACLs, ACLs with scripted conditions, and so on.
      * @return {boolean} Flag that indicates whether the user's roles permit reading of records in this table.
      */
     canRead(): boolean;
-    
+
     /**
      * Determines if the Access Control Rules, which include the user's roles, permit editing records in this table.
      * @return {boolean} Flag that indicates whether the user's roles permit writing of records in this table.
      */
     canWrite(): boolean;
-    
+
     /**
      * Sets a range of rows to be returned by subsequent queries.
      * @param {number} firstRow - First row to include. Because the index starts at 0, a value of 0 returns the first row.
@@ -1134,18 +1134,18 @@ declare class GlideRecord implements Packages.com.glide.script.fencing.ScopedGli
      * @param {boolean} [forceCount] - Flag that indicates whether to force a row count query.
      */
     chooseWindow(firstRow: number, lastRow: number, forceCount?: boolean): void;
-    
+
     /**
      * Deletes multiple records that satisfy the query condition.
      */
     deleteMultiple(): void;
-    
+
     /**
      * Deletes the current record.
      * @return {boolean} Flag that indicates whether the record was successfully deleted.
      */
     deleteRecord(): boolean;
-    
+
     /**
      * Returns the specified record in the current GlideRecord object.
      * @param {string} name - Name of the instantiated GlideRecord column to search for the specified value parameter.
@@ -1153,280 +1153,280 @@ declare class GlideRecord implements Packages.com.glide.script.fencing.ScopedGli
      * @return {boolean} Flag that indicates whether the requested record was located.
      */
     get(name: string, value: any): boolean;
-    
+
     /**
      * Returns the specified record in the current GlideRecord object.
      * @param {*} value - The sys_id or display value to match.
      * @return {boolean} Flag that indicates whether the requested record was located.
      */
     get(value: any): boolean;
-    
+
     /**
      * Returns the dictionary attributes for the specified field.
      * @param {string} fieldName - Field name for which to return the dictionary attributes.
      * @return {string} Dictionary attributes
      */
     getAttribute(fieldName: string): string;
-    
+
     /**
      * Returns the current table's label.
      * @return {string} Label that identifies the table.
      */
     getClassDisplayValue(): string;
-    
+
     /**
      * Retrieves the display value for the field of the current record.
      * @param {string} fieldName - Field name for which to return the display value.
      * @return {string} Display value for the specified field.
      */
     getDisplayValue(fieldName?: string): string;
-    
+
     /**
      * Retrieves the display value for the current record.
      * @return {string} Display value for the current record.
      */
     getDisplayValue(): string;
-    
+
     /**
      * Returns the element's descriptor.
      * @return {GlideElementDescriptor} The element's descriptor.
      */
     getED(): GlideElementDescriptor;
-    
+
     /**
      * Retrieves the GlideElement object for the specified field.
      * @param {string} fieldName - Column name for which to return the GlideElement object.
      * @return {GlideElement} The GlideElement for the specified column of the current record.
      */
     getElement(fieldName: string): GlideElement;
-    
+
     /**
      * Returns an array of GlideElement objects.
      * @return {GlideElement[]} Array of GlideElement objects. Each object describes a field in the current GlideRecord.
      */
     getElements(): GlideElement[];
-    
+
     /**
      * Retrieves the query condition of the current result set as an encoded query string.
      * @return {string} An encoded query string.
      */
     getEncodedQuery(): string;
-    
+
     /**
      * Returns the field's label.
      * @return {string} The field's label.
      */
     getLabel(): string;
-    
+
     /**
      * Retrieves the last error message. If there is no last error message, null is returned.
      * @return {(string | null)}
      */
     getLastErrorMessage(): string | null;
-    
+
     /**
      * Retrieves the link to the current record.
      * @param {boolean} noStack - Flag indicating whether to append the sysparm_stack parameter to the returned link.
      * @return {string} Link to the current record.
      */
     getLink(noStack: boolean): string;
-    
+
     /**
      * Retrieves the class name for the current record.
      * @return {string} Retrieves the class name for the current record.
      */
     getRecordClassName(): string;
-    
+
     /**
      * Retrieves the number of rows in the query result.
      * @return {number} Number of rows.
      */
     getRowCount(): number;
-    
+
     /**
      * Retrieves the name of the table associated with the GlideRecord.
      * @return {string} The table name.
      */
     getTableName(): string;
-    
+
     /**
      * Gets the primary key of the record, which is usually the sys_id unless otherwise specified.
      * @return {(string | null)} The unique primary key as a String, or null if the key is null.
      */
     getUniqueValue(): string | null;
-    
+
     /**
      * Retrieves the string value of an underlying element in a field.
      * @param {string} name - The name of the field to get the value from.
      * @return {(string | null)} The string value of the underlying element. Returns null if the field is empty or the field does not exist. Boolean values return as "0" and "1" string values instead of false and true.
      */
     getValue(name: string): string | null;
-    
+
     /**
      * Determines if there are any more records in the GlideRecord object.
      * @return {boolean} True if there are more records in the query result set.
      */
     hasNext(): boolean;
-    
+
     /**
      * Creates an empty record suitable for population before an insert.
      */
     initialize(): void;
-    
+
     /**
      * Inserts a new record using the field values that have been set for the current record.
      * @return {(string | null)} Sys_id of the inserted record, or null if the record is not inserted
      */
     insert(): string | null;
-    
+
     /**
      * Checks to see if the current database action is to be aborted.
      * @return {boolean} Flag that indicates if the current database action is to be aborted.
      */
     isActionAborted(): boolean;
-    
+
     /**
      * Verifies whether the specified encoded query is valid.
      * @param {string} query - Encoded query to validate.
      * @return {boolean} Flag that indicates whether the specified encoded query is valid.
      */
     isEncodedQueryValid(query: string): boolean;
-    
+
     /**
      * Checks if the current record is a new record that has not yet been inserted into the database.
      * @return {boolean} True if the record is new and has not been inserted into the database.
      */
     isNewRecord(): boolean;
-    
+
     /**
      * Determines if the current table is valid or if the record was successfully retrieved.
      * @return {boolean} Flag that indicates if the table is valid or if the record was successfully retrieved.
      */
     isValid(): boolean;
-    
+
     /**
      * Verifies whether the specified encoded query is valid.
      * @param {string} query - Encoded query to validate.
      * @return {boolean} Flag that indicates whether the specified encoded query is valid.
      */
     isValidEncodedQuery(query: string): boolean;
-    
+
     /**
      * Determines if the specified field is defined in the current table.
      * @param {string} columnName - The name of the field.
      * @return {boolean} True if the field is defined for the current table.
      */
     isValidField(columnName: string): boolean;
-    
+
     /**
      * Determines if a record was actually returned by the query/get record operation.
      * @return {boolean} Flag that indicates whether a record was actually returned by the query/get operation.
      */
     isValidRecord(): boolean;
-    
+
     /**
      * Verifies whether the record was created in a view or a table.
      * @return {boolean} Flag that indicates whether the record was created in table that is a view.
      */
     isView(): boolean;
-    
+
     /**
      * Creates a new GlideRecord record, sets the default values for the fields, and assigns a unique ID to the record.
      */
     newRecord(): void;
-    
+
     /**
      * Moves to the next record in the GlideRecord object.
      * @return {boolean} Flag that indicates if there is a "next" record in the GlideRecord.
      */
     next(): boolean;
-    
+
     /**
      * Moves to the next record in the GlideRecord object.
      * @return {boolean} Flag that indicates if there is a "next" record in the GlideRecord.
      */
     _next(): boolean;
-    
+
     /**
      * Determines if an operation is insert, update, or delete.
      * @return {GlideRecordOperationType} The current operation.
      */
     operation(): GlideRecordOperationType;
-    
+
     /**
      * Specifies an orderBy column. Call this method more than once to order by multiple columns.
      * @param {string} name - Column name to use to order the records in this GlideRecord object.
      */
     orderBy(name: string): void;
-    
+
     /**
      * Specifies a descending orderBy column. Call this method more than once to order by multiple columns.
      * @param {string} name - Column name to use to order the records in a GlideRecord object.
      */
     orderByDesc(name: string): void;
-    
+
     /**
      * Runs a query against the table based on the filters specified by query methods such as addQuery() and addEncodedQuery().
      * @param {string} field - 
      * @param {string} value -
      */
     query(field: string, value: string): void;
-    
+
     /**
      * Runs a query against the table based on the filters specified by query methods such as addQuery() and addEncodedQuery().
      */
     query(): void;
-    
+
     /**
      * Runs a query against the table based on the filters specified by query methods such as addQuery() and addEncodedQuery().
      * @param {string} field - Name of the field to search for the value specified in the value parameter.
      * @param {string} value - Value to search for in the specified field parameter.
      */
     _query(field: string, value: string): void;
-    
+
     /**
      * Runs a query against the table based on the filters specified by query methods such as addQuery() and addEncodedQuery().
      */
     _query(): void;
-    
+
     /**
      * Sets a flag to indicate if the next database action (insert, update, delete) is to be aborted. This is often used in business rules.
      * @param {boolean} b - True to abort the next action. False if the action is to be allowed.
      */
     setAbortAction(b: boolean): void;
-    
+
     /**
      * Sets the limit for number of records are fetched by the GlideRecord query.
      * @param {number} maxNumRecords - The maximum number of records to fetch.
      */
     setLimit(maxNumRecords: number): void;
-    
+
     /**
      * Sets the sys_id value for the current record.
      * @param {string} guid - GUID to assign to the current record.
      */
     setNewGuidValue(guid: string): void;
-    
+
     /**
      * Sets the value of the field with the specified name to the specified value.
      * @param {string} name - Name of the field.
      * @param {*} value - Value to assign to the field.
      */
     setValue(name: string, value: any): void;
-    
+
     /**
      * Enables or disables the running of business rules, script engines, and audit.
      * @param {boolean} enable - Enables or disables the running of business rules, script engines, and audit.
      */
     setWorkflow(enable: boolean): void;
-    
+
     /**
      * Updates the GlideRecord with any changes that have been made. If the record does not already exist, it is inserted.
      * @param {string} [reason] - Reason for the update. The reason appears in the audit record.
      * @return {(string | null)} Sys_id of the new or updated record. Returns null if the update fails.
      */
     update(reason?: string): string | null;
-    
+
     /**
      * Updates each GlideRecord in a stated query with a specified set of changes.
      */
@@ -1702,7 +1702,7 @@ declare class GlideElement implements Packages.com.glide.script.fencing.ScopedGl
     equals(obj: object): $$rhino.Boolean;
 
     hashCode(): $$rhino.Number;
-    
+
     toString(): $$rhino.String;
     // TODO: Implement getQuestion              from com.glide.script.fencing.ScopedGlideElement                                   under com.glide.script.fencing.ScopedGlideElement (category: catalog)
     // TODO: Implement hasAttribute             from com.glide.script.GlideElement                                                 under com.glide.script.fencing.ScopedGlideElement
@@ -1786,14 +1786,6 @@ declare type GlideDateTimeElement = {
      * @param {number} milliseconds - Number of milliseconds since 1/1/1970
      */
     setDateNumericValue(milliseconds: number): void;
-} & GlideElement;
-
-declare type GlideElementReference = {
-    /**
-     * Gets the table name for a reference element.
-     * @return {string}
-     */
-    getReferenceTable(): string;
 } & GlideElement;
 
 /**
@@ -2159,7 +2151,7 @@ declare class GlideSchedule implements Packages.com.glide.script.fencing.ScopedG
     // TODO: Implement load                     from com.glide.schedules.Schedule                 under com.glide.script.fencing.ScopedGlideSchedule
     // TODO: Implement setTimeZone              from com.glide.schedules.Schedule                 under com.glide.script.fencing.ScopedGlideSchedule
     // TODO: Implement whenNext                 from com.glide.schedules.Schedule                 under com.glide.script.fencing.ScopedGlideSchedule
-    
+
     /**
      * Instantiates a GlideSchedule object.
      * @param {string} [sysID] - The system ID for the schedule to load.
@@ -2894,7 +2886,7 @@ declare class GlideDate implements Packages.com.glide.script.fencing.ScopedGlide
     before(gdt: GlideDateTime | GlideDate): boolean;
 
     equals(obj: GlideDate): boolean;
-    
+
     /**
      * Gets the date in the specified date format.
      * @param {string} format - Desired date format using Java SimpleDateFormat. For example, "dd-MM-yyyy" to get the day, month, and year, or "EEEE" to get the day of the week.
@@ -3083,7 +3075,7 @@ declare class GlideDate implements Packages.com.glide.script.fencing.ScopedGlide
     static subtract(start: GlideDate, end: GlideDate): GlideDuration;
 
     toString(): string;
-    
+
     hashCode(): $$rhino.Number;
 }
 
@@ -3106,9 +3098,9 @@ declare class GlideTime implements Packages.com.glide.script.fencing.ScopedGlide
      * @param {number} milliseconds - The datetime in milliseconds.
      */
     constructor(milliseconds: number);
-    
+
     equals(obj: GlideTime): boolean;
-    
+
     /**
      * Gets the time in the specified format.
      * @param {string} format - The time format.
@@ -3211,7 +3203,7 @@ declare class GlideTime implements Packages.com.glide.script.fencing.ScopedGlide
     // TODO: Implement setDisplayValue         from com.glide.glideobject.GlideTime          under com.glide.script.fencing.ScopedGlideTime
     // TODO: Implement setValue                from com.glide.glideobject.GlideTime          under com.glide.script.fencing.ScopedGlideTime
     // TODO: Implement subtract                from com.glide.script.fencing.ScopedGlideTime under com.glide.script.fencing.ScopedGlideTime
-    
+
     hashCode(): $$rhino.Number;
     toString(): string;
 }
@@ -4751,7 +4743,7 @@ declare class GlideSecureRandomUtil implements Packages.com.glide.sys.security.S
     toString(): $$rhino.String;
 }
 
-declare class GlideLRUCache	implements Packages.com.glide.sys.cache.LRUCache {
+declare class GlideLRUCache implements Packages.com.glide.sys.cache.LRUCache {
     equals(obj: any): $$rhino.Boolean;
     hashCode(): $$rhino.Number;
     toString(): $$rhino.String;
@@ -5541,26 +5533,6 @@ declare class GlideCalendarDateTime implements Packages.com.glide.glideobject.Ca
 declare type AggregationType = "AVG" | "COUNT" | "MIN" | "MAX" | "STDDEV" | "SUM";
 
 declare type AggregationInterval = "date" | "dayofweek" | "hour" | "minute" | "quarter" | "value" | "week" | "year";
-
-/**
- * Provides methods to perform operations on Foreign Exchange (FX) Currency fields (also known as Currency2) within the current GlideRecord.
- * @class GlideElementCurrency2
- * @see {@link https://developer.servicenow.com/dev.do#!/reference/api/rome/server/no-namespace/GlideElementCurrency2API}
- */
-declare class GlideElementCurrency2 implements Packages.com.glide.currency2.GlideElementCurrency2 {
-    compareTo(anotherDouble: $$rhino.Number): $$rhino.Number;
-    isInfinite(): $$rhino.Boolean;
-    isNaN(): $$rhino.Boolean;
-    byteValue(): Packages.java.lang.Byte;
-    doubleValue(): Packages.java.lang.Double;
-    floatValue(): Packages.java.lang.Float;
-    intValue(): Packages.java.lang.Integer;
-    longValue(): Packages.java.lang.Long;
-    shortValue(): Packages.java.lang.Short;
-    equals(obj: any): $$rhino.Boolean;
-    hashCode(): $$rhino.Number;
-    toString(): $$rhino.String;
-}
 
 /**
  * Writes log entries directly to the Import Log [import_log] table.

@@ -1,9 +1,10 @@
 {
-    "compilerOptions": {
-      "noImplicitAny": false,
-      "module": "none",
-      "target": "ES2021",
-      "lib": ["ES2021"],
-      "strict": true
-    }
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "module": "none",
+    "target": "ES2021",
+    "lib": ["ES2021"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   }
+}

@@ -6,4 +6,5 @@
 /// <reference path="sn_schedule_pages.d.ts" />
 /// <reference path="global.d.ts" />
 /// <reference path="GlideScriptable.d.ts" />
+/// <reference path="ElementTypes.d.ts" />
 /// <reference path="RecordTypes.d.ts" />
